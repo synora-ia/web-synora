@@ -22,7 +22,12 @@
     @apply font-sans leading-[1.7];
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply tracking-tight leading-[1.1];
   }
 }
@@ -87,19 +92,21 @@
   }
 
   .glass-nav {
-    @apply bg-[rgba(250,250,250,0.7)] backdrop-blur-md border-b border-black/5 transition-all duration-500;
+    @apply bg-white/70 backdrop-blur-md border-b border-black/5 transition-all duration-500;
   }
 
   .dark .glass-nav {
     @apply bg-black/70 border-white/5;
   }
 
-  .feature-card, .pricing-card {
+  .feature-card,
+  .pricing-card {
     @apply transition-all duration-300 shadow-sm border border-slate-100 bg-white;
     transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
 
-  .feature-card:hover, .pricing-card:hover {
+  .feature-card:hover,
+  .pricing-card:hover {
     @apply -translate-y-1 shadow-2xl dark:shadow-white/5 dark:bg-white/10;
   }
 }
@@ -109,6 +116,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -120,23 +128,53 @@
 }
 
 @keyframes drift {
-  0% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -50px) scale(1.1); }
-  66% { transform: translate(-20px, 20px) scale(0.9); }
-  100% { transform: translate(0, 0) scale(1); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
 }
 
 @keyframes drift-slow {
-  0% { transform: translate(0, 0) rotate(0deg); }
-  33% { transform: translate(-50px, 30px) rotate(5deg); }
-  66% { transform: translate(40px, -20px) rotate(-5deg); }
-  100% { transform: translate(0, 0) rotate(0deg); }
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+  33% {
+    transform: translate(-50px, 30px) rotate(5deg);
+  }
+
+  66% {
+    transform: translate(40px, -20px) rotate(-5deg);
+  }
+
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
 }
 
 @keyframes drift-reverse {
-  0% { transform: translate(0, 0); }
-  50% { transform: translate(40px, 40px); }
-  100% { transform: translate(0, 0); }
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(40px, 40px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
 }
 
 .animate-drift {
