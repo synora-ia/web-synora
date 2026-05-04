@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automatización para Inmobiliarias | Synora</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --font-sans: 'Inter', sans-serif;
+            --font-serif: 'Playfair Display', serif;
+            --color-primary: #000000;
+            --color-accent: #0369a1;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: #000000;
+            background-color: #FAFAFA;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+
+        .font-serif-italic {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-weight: 400;
+            letter-spacing: 0;
+        }
+
+
+        .hero-gradient {
+            background:
+                radial-gradient(circle at 15% 50%, rgba(255, 182, 193, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(255, 223, 186, 0.5) 0%, transparent 50%),
+                radial-gradient(circle at 50% 80%, rgba(255, 105, 180, 0.2) 0%, transparent 50%);
+            background-color: #FAFAFA;
+            position: relative;
+        }
+
+        .btn-hover {
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+        }
+
+        .btn-hover:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-nav {
+            background: rgba(250, 250, 250, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-black selection:text-white">
+
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-40 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="font-bold text-2xl tracking-tight">Synora<span
+                    class="text-slate-400">.</span></a>
+            <div class="hidden lg:flex items-center space-x-8 text-sm font-medium text-slate-600">
+                <a href="index.html#sectores" class="hover:text-black transition-colors">Volver a Sectores</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="mailto:info@synora.es"
+                    class="hidden md:flex items-center px-6 py-2.5 bg-black text-white rounded-full text-sm font-medium btn-hover">
+                    Contactar <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sector Hero -->
+    <header class="hero-gradient pt-40 pb-24 px-6 border-b border-slate-100">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center animate-fade-in-up">
+            <div>
+                <span class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4 block">Sectores /
+                    Inmobiliaria</span>
+                <h1 class="text-6xl md:text-7xl font-bold tracking-tight mb-8">No se trata de captar… <br><span
+                        class="font-serif-italic text-slate-500">sino de convencer.</span></h1>
+                <p class="text-xl text-slate-600 mb-10 max-w-lg">
+                    Dotamos a tu equipo de la autoridad y evidencia necesarias para cerrar en la primera reunión con
+                    datos claros y procesos automáticos.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="mailto:info@synora.es"
+                        class="px-8 py-4 bg-black text-white rounded-full font-bold btn-hover">Solicitar Auditoría</a>
+                </div>
+            </div>
+            <div class="rounded-[3rem] overflow-hidden shadow-2xl">
+                <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80"
+                    alt="Inmobiliaria" class="w-full h-full object-cover">
+            </div>
+        </div>
+    </header>
+
+    <!-- Property Intelligence Section -->
+    <section class="py-32 px-6 bg-slate-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Property Intelligence</h2>
+                <p class="text-lg text-slate-600 max-w-2xl mx-auto">Esta herramienta convierte datos en argumentos
+                    sólidos para los propietarios, eliminando discusiones basadas en opiniones.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 feature-card">
+                    <div class="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center mb-6 text-black">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4">Valoración Real</h4>
+                    <p class="text-slate-600 text-sm">Comparativas ajustadas al mercado local generadas en segundos, con
+                        datos actualizados de zonas y tipologías similares.</p>
+                </div>
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 feature-card">
+                    <div class="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center mb-6 text-black">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4">Análisis Competitivo</h4>
+                    <p class="text-slate-600 text-sm">Puntos fuertes y débiles frente a la competencia directa,
+                        identificados automáticamente para cada inmueble.</p>
+                </div>
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 feature-card">
+                    <div class="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center mb-6 text-black">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2zM7 21l5-5 5 5M7 3l5 5 5-5">
+                            </path>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4">Informe PDF con Marca</h4>
+                    <p class="text-slate-600 text-sm">Listo para enviar o presentar. Incluye datos de demanda, tiempos
+                        de venta y evolución de precios.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Smart Lead Management Section -->
+    <section class="py-32 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-8 text-black">Gestión Inteligente de Leads</h2>
+                    <p class="text-lg text-slate-600 mb-10">
+                        Uno de los mayores puntos de fuga es la gestión manual. Este sistema registra automáticamente
+                        cada contacto en un único lugar, sin importar por dónde haya llegado.
+                    </p>
+
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                            <h5 class="font-bold mb-2">Centralización total</h5>
+                            <p class="text-xs text-slate-500">Todos los leads en un solo lugar, sin herramientas
+                                dispersas.</p>
+                        </div>
+                        <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                            <h5 class="font-bold mb-2">Registro automático</h5>
+                            <p class="text-xs text-slate-500">Cero pérdidas por descuidos o saturación del equipo.</p>
+                        </div>
+                        <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                            <h5 class="font-bold mb-2">Historial completo</h5>
+                            <p class="text-xs text-slate-500">Interacciones visibles desde el primer momento.</p>
+                        </div>
+                        <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                            <h5 class="font-bold mb-2">Omnicanalidad</h5>
+                            <p class="text-xs text-slate-500">WhatsApp, Email, Web y Portales integrados.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-black rounded-[3rem] p-12 text-white relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-purple-600/20 blur-[100px]"></div>
+                    <h3 class="text-2xl font-bold mb-10">Canales Integrados</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-center p-4 bg-white/5 rounded-2xl border border-white/10">
+                            <div
+                                class="w-10 h-10 bg-green-500/20 text-green-400 rounded-lg flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-sm">WhatsApp</h5>
+                                <p class="text-xs text-white/50">Registro automático de cada conversación.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-4 bg-white/5 rounded-2xl border border-white/10">
+                            <div
+                                class="w-10 h-10 bg-blue-500/20 text-blue-400 rounded-lg flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-sm">Correo Electrónico</h5>
+                                <p class="text-xs text-white/50">Captura y clasificación de leads desde la bandeja.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-4 bg-white/5 rounded-2xl border border-white/10">
+                            <div
+                                class="w-10 h-10 bg-purple-500/20 text-purple-400 rounded-lg flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-sm">Portales Inmobiliarios</h5>
+                                <p class="text-xs text-white/50">Idealista, Fotocasa y otros portales conectados.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Integration -->
+    <section class="py-32 px-6 bg-slate-50 border-t border-slate-100 mb-24">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-4xl font-bold mb-6 tracking-tight">Tu Central de Operaciones <br><span
+                            class="font-serif-italic text-slate-500">Inmobiliarias.</span></h2>
+                    <p class="text-lg text-slate-600 mb-8">Unificamos todo el flujo de captación y venta en un panel
+                        diseñado para maximizar el rendimiento de tu equipo.</p>
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div
+                                class="w-6 h-6 bg-black text-white rounded-full flex items-center justify-center shrink-0 mt-1 text-xs">
+                                1</div>
+                            <div>
+                                <h5 class="font-bold">Leads de Portales Centralizados</h5>
+                                <p class="text-sm text-slate-500">Recibe leads de Idealista, Fotocasa y Habitaclia en
+                                    tiempo real con calificación automática.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div
+                                class="w-6 h-6 bg-black text-white rounded-full flex items-center justify-center shrink-0 mt-1 text-xs">
+                                2</div>
+                            <div>
+                                <h5 class="font-bold">Estado de Captaciones</h5>
+                                <p class="text-sm text-slate-500">Controla visualmente en qué fase está cada propiedad,
+                                    desde la primera llamada hasta la firma.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div
+                                class="w-6 h-6 bg-black text-white rounded-full flex items-center justify-center shrink-0 mt-1 text-xs">
+                                3</div>
+                            <div>
+                                <h5 class="font-bold">Análisis de Mercado Integrado</h5>
+                                <p class="text-sm text-slate-500">Accede a las valoraciones de Property Intelligence
+                                    directamente desde la ficha de cada cliente.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-[3rem] shadow-xl border border-slate-100">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"
+                        alt="Dashboard Inmobiliario" class="rounded-2xl shadow-lg mb-6">
+                    <p class="text-center text-sm font-bold text-slate-400 uppercase tracking-widest">Dashboard de
+                        Control Synora</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section class="py-32 px-6 bg-black text-white rounded-[4rem] mx-6 mb-24">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-16">Resultados de Impacto</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-12">
+                <div>
+                    <div class="text-5xl font-bold mb-4 text-green-400">+30%</div>
+                    <p class="text-white/60 uppercase tracking-widest text-xs font-bold">Visitas Efectivas</p>
+                </div>
+                <div>
+                    <div class="text-5xl font-bold mb-4 text-green-400">+20%</div>
+                    <p class="text-white/60 uppercase tracking-widest text-xs font-bold">Tasa de Cierre</p>
+                </div>
+                <div class="col-span-2 md:col-span-1">
+                    <div class="text-5xl font-bold mb-4 text-green-400">24/7</div>
+                    <p class="text-white/60 uppercase tracking-widest text-xs font-bold">Atención Comercial</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA Section -->
+    <section id="contacto" class="py-32 px-6 bg-black text-white text-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10"></div>
+
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-full opacity-20 pointer-events-none">
+            <div
+                class="absolute top-0 left-1/4 w-[40rem] h-[40rem] bg-purple-600 rounded-full mix-blend-screen filter blur-[120px] animate-pulse">
+            </div>
+            <div class="absolute bottom-0 right-1/4 w-[40rem] h-[40rem] bg-orange-600 rounded-full mix-blend-screen filter blur-[120px] animate-pulse"
+                style="animation-delay: 2s;"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto relative z-20">
+            <h2 class="text-5xl md:text-7xl font-bold mb-8 tracking-tight leading-[1.1]">
+                ¿Hablamos de <br> <span class="font-serif-italic text-white/70 block mt-4 font-normal">tu próximo
+                    paso?</span>
+            </h2>
+            <p class="text-xl text-white/60 mb-12">Estamos listos para implementar el sistema que tu negocio necesita.
+            </p>
+
+            <a href="mailto:info@synora.es"
+                class="inline-flex items-center justify-center px-10 py-5 bg-white text-black rounded-full text-lg font-bold btn-hover">
+                Contactar con un experto
+            </a>
+
+            <div class="mt-12 flex items-center justify-center space-x-6 text-white/40 text-sm">
+                <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                        </path>
+                    </svg> info@synora.es</span>
+                <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.826L10.242 10.242m4.826 4.826l1.101-1.102a4 4 0 00-5.656-5.656l-1.1 1.1">
+                        </path>
+                    </svg> synora.es</span>
+            </div>
+        </div>
+
+        <footer
+            class="max-w-7xl mx-auto relative z-20 mt-32 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between text-[10px] text-white/40 uppercase tracking-widest">
+            <div class="mb-4 md:mb-0">&copy; 2026 Synora Solutions. Todos los derechos reservados.</div>
+            <div class="flex space-x-8">
+                <a href="#" class="hover:text-white transition-colors">Aviso Legal</a>
+                <a href="#" class="hover:text-white transition-colors">Privacidad</a>
+                <a href="#" class="hover:text-white transition-colors">Cookies</a>
+            </div>
+        </footer>
+    </section>
+
+</body>
+
+</html>

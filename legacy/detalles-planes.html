@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Planes | Synora - Automatización Inteligente</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --font-sans: 'Inter', sans-serif;
+            --font-serif: 'Playfair Display', serif;
+            --color-primary: #000000;
+            --color-accent: #0369a1;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: #000000;
+            background-color: #FAFAFA;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+
+        .font-serif-italic {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-weight: 400;
+            letter-spacing: 0;
+        }
+
+        /* Noise Overlay for texture */
+
+        /* Hero Gradient (Aurora effect) */
+        .hero-gradient {
+            background:
+                radial-gradient(circle at 15% 50%, rgba(255, 182, 193, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(255, 223, 186, 0.5) 0%, transparent 50%),
+                radial-gradient(circle at 50% 80%, rgba(255, 105, 180, 0.2) 0%, transparent 50%);
+            background-color: #FAFAFA;
+            position: relative;
+        }
+
+        /* Dark Section Gradient */
+        .dark-gradient {
+            background:
+                radial-gradient(circle at 0% 100%, #6b21a8 0%, transparent 60%),
+                radial-gradient(circle at 100% 0%, #d946ef 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, #f97316 0%, transparent 70%);
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        /* Button hover interactions */
+        .btn-hover {
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+        }
+
+        .btn-hover:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Glassmorphism nav */
+        .glass-nav {
+            background: rgba(250, 250, 250, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        /* Custom styles for details page */
+        .table-container {
+            background: white;
+            border-radius: 2.5rem;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* Pricing Card Hover Consistency */
+        .pricing-card {
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-black selection:text-white">
+
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-40 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="font-bold text-2xl tracking-tight">Synora<span class="text-slate-400">.</span></a>
+            <div class="hidden lg:flex items-center space-x-8 text-sm font-medium text-slate-600">
+                <a href="index.html#precios" class="hover:text-black transition-colors">Volver a Precios</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="#contacto" class="hidden md:flex items-center px-6 py-2.5 bg-black text-white rounded-full text-sm font-medium btn-hover">
+                    Contactar <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-gradient pt-40 pb-20 px-6 text-center">
+        <div class="max-w-4xl mx-auto animate-fade-in-up">
+            <h1 class="text-6xl md:text-8xl font-bold text-black mb-8 tracking-tight leading-[0.95]">
+                Tu escala de <br> <span class="font-serif-italic text-slate-500">crecimiento.</span>
+            </h1>
+            <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+                Diseñamos planes que se adaptan al volumen real de tu negocio. Sin sorpresas, con todo incluido.
+            </p>
+        </div>
+    </header>
+
+    <!-- Comparative Matrix -->
+    <section class="py-24 px-6 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="table-container overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="border-b border-slate-100">
+                                <th class="p-8 text-slate-400 font-medium text-sm">Características</th>
+                                <th class="p-8">
+                                    <span class="block text-xl font-bold text-black">Esencial</span>
+                                    <span class="text-xs text-slate-400">79€/mes</span>
+                                </th>
+                                <th class="p-8 bg-black text-white">
+                                    <span class="block text-xl font-bold">Crecimiento</span>
+                                    <span class="text-xs text-white/50">149€/mes</span>
+                                </th>
+                                <th class="p-8">
+                                    <span class="block text-xl font-bold text-black">Pro</span>
+                                    <span class="text-xs text-slate-400">Desde 299€/mes</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm text-slate-600">
+
+                            <tr class="border-b border-slate-50">
+                                <td class="p-6 font-medium text-black">Setup Inicial (Inversión)</td>
+                                <td class="p-6">250€</td>
+                                <td class="p-6">Desde 400€</td>
+                                <td class="p-6">Desde 700€</td>
+                            </tr>
+                            <tr class="border-b border-slate-50">
+                                <td class="p-6 font-medium text-black">WhatsApp Chatbot</td>
+                                <td class="p-6">Básico</td>
+                                <td class="p-6">Avanzado (IA)</td>
+                                <td class="p-6">Multi-agente IA</td>
+                            </tr>
+                            <tr class="border-b border-slate-50">
+                                <td class="p-6 font-medium text-black">Dashboard de Métricas</td>
+                                <td class="p-6">Simple</td>
+                                <td class="p-6">Avanzado (BI)</td>
+                                <td class="p-6">Personalizado ERP</td>
+                            </tr>
+                            <tr class="border-b border-slate-50">
+                                <td class="p-6 font-medium text-black">Soporte Técnico</td>
+                                <td class="p-6">Email</td>
+                                <td class="p-6">Prioritario</td>
+                                <td class="p-6">24/7 + Consultoría</td>
+                            </tr>
+                            <tr>
+                                <td class="p-6 font-medium text-black">Software Incluido</td>
+                                <td class="p-6 text-green-600 font-bold">✓ Todo incluido</td>
+                                <td class="p-6 text-green-600 font-bold">✓ Todo incluido</td>
+                                <td class="p-6 text-green-600 font-bold">✓ Todo incluido</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why "Everything Included"? -->
+    <section class="py-32 px-6 bg-slate-50">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-5xl font-bold mb-16 text-center text-black tracking-tight leading-[1.1]">Sin facturas sorpresa. <br> <span class="font-serif-italic text-slate-400">Tu cuota mensual lo cubre todo.</span></h2>
+            
+            <div class="grid md:grid-cols-2 gap-16">
+                <div class="space-y-6">
+                    <h4 class="text-2xl font-bold text-black">¿Qué pagamos nosotros?</h4>
+                    <p class="text-slate-600 text-base leading-relaxed">
+                        Dentro de tu cuota mensual de Synora, nosotros asumimos los costes de las suscripciones premium necesarias:
+                    </p>
+                    <ul class="space-y-3 text-slate-700">
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-3 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Servidores y Hosting (n8n Enterprise)</li>
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-3 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Consumo de Inteligencia Artificial</li>
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-3 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Integraciones (Make/Zapier)</li>
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-3 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> WhatsApp Business API</li>
+                    </ul>
+                </div>
+                <div class="space-y-6">
+                    <h4 class="text-2xl font-bold text-black">¿Qué ganas tú?</h4>
+                    <p class="text-slate-600 text-base leading-relaxed">
+                        Transparencia y simplicidad contable. Una sola factura al mes de un solo proveedor local.
+                    </p>
+                    <ul class="space-y-3 text-slate-700">
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-3 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Olvídate de gestionar 5 suscripciones</li>
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-3 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Costes predecibles mes a mes</li>
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-3 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Monitorización 24/7 incluida</li>
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-3 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Evolución constante sin pagar más</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommendation Guide -->
+    <section class="py-32 px-6 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-black mb-4 tracking-tight">¿Cuál es el plan para ti?</h2>
+                <p class="text-slate-500">Guía rápida según tu momento actual.</p>
+            </div>
+
+            <div class="grid gap-6">
+                <div class="p-8 rounded-[2.5rem] bg-slate-50 border border-slate-100 flex flex-col md:flex-row gap-6 items-center pricing-card">
+                    <div class="w-16 h-16 bg-green-100 text-green-700 rounded-2xl flex items-center justify-center font-bold text-2xl shrink-0">E</div>
+                    <div>
+                        <h4 class="text-xl font-bold text-black mb-2">"Solo quiero dejar de perder clientes"</h4>
+                        <p class="text-slate-500 text-sm">Ideal para autónomos o pymes que necesitan respuesta inmediata 24/7. El **Plan Esencial** es tu puerta de entrada.</p>
+                    </div>
+                </div>
+                <div class="p-8 rounded-[2.5rem] bg-black text-white flex flex-col md:flex-row gap-6 items-center shadow-2xl shadow-black/20 transform scale-[1.02] pricing-card">
+                    <div class="w-16 h-16 bg-white/10 text-white rounded-2xl flex items-center justify-center font-bold text-2xl shrink-0">C</div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-2">"Quiero un sistema de ventas serio"</h4>
+                        <p class="text-white/60 text-sm">Para empresas que manejan volumen de leads y necesitan calificarlos estratégicamente. El **Plan Crecimiento** es nuestra recomendación.</p>
+                    </div>
+                </div>
+                <div class="p-8 rounded-[2.5rem] bg-slate-50 border border-slate-100 flex flex-col md:flex-row gap-6 items-center pricing-card">
+                    <div class="w-16 h-16 bg-red-100 text-red-700 rounded-2xl flex items-center justify-center font-bold text-2xl shrink-0">P</div>
+                    <div>
+                        <h4 class="text-xl font-bold text-black mb-2">"Necesito eficiencia operativa total"</h4>
+                        <p class="text-slate-500 text-sm">Para empresas que quieren integrar automatización en todo su flujo de trabajo y software propio. El **Plan Pro** es tu aliado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA Section -->
+    <section id="contacto" class="py-32 px-6 bg-black text-white text-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10"></div>
+
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-full opacity-20 pointer-events-none">
+            <div class="absolute top-0 left-1/4 w-[40rem] h-[40rem] bg-purple-600 rounded-full mix-blend-screen filter blur-[120px] animate-pulse"></div>
+            <div class="absolute bottom-0 right-1/4 w-[40rem] h-[40rem] bg-orange-600 rounded-full mix-blend-screen filter blur-[120px] animate-pulse" style="animation-delay: 2s;"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto relative z-20">
+            <h2 class="text-5xl md:text-7xl font-bold mb-8 tracking-tight leading-[1.1]">
+                ¿Hablamos de <br> <span class="font-serif-italic text-white/70 block mt-4 font-normal">tu próximo paso?</span>
+            </h2>
+            <p class="text-xl text-white/60 mb-12">Estamos listos para implementar el sistema que tu negocio necesita.</p>
+
+            <a href="mailto:info@synora.es" class="inline-flex items-center justify-center px-10 py-5 bg-white text-black rounded-full text-lg font-bold btn-hover">
+                Contactar con Synora
+            </a>
+
+            <div class="mt-12 flex items-center justify-center space-x-6 text-white/40 text-sm">
+                <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg> info@synora.es</span>
+                <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.826L10.242 10.242m4.826 4.826l1.101-1.102a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg> synora.es</span>
+            </div>
+        </div>
+
+        <footer class="max-w-7xl mx-auto relative z-20 mt-32 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between text-[10px] text-white/40 uppercase tracking-widest">
+            <div class="mb-4 md:mb-0">&copy; 2026 Synora Solutions. Todos los derechos reservados.</div>
+            <div class="flex space-x-8">
+                <a href="#" class="hover:text-white transition-colors">Aviso Legal</a>
+                <a href="#" class="hover:text-white transition-colors">Privacidad</a>
+                <a href="#" class="hover:text-white transition-colors">Cookies</a>
+            </div>
+        </footer>
+    </section>
+
+</body>
+
+</html>

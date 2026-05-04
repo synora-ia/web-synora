@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | Synora</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-sans: 'Inter', sans-serif;
+            --font-serif: 'Playfair Display', serif;
+        }
+        body {
+            font-family: var(--font-sans);
+            color: #000000;
+            background-color: #FAFAFA;
+            line-height: 1.7;
+        }
+        .font-serif-italic {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-weight: 400;
+        }
+        .glass-nav {
+            background: rgba(250, 250, 250, 0.7);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 15% 50%, rgba(255, 182, 193, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 85% 30%, rgba(255, 223, 186, 0.4) 0%, transparent 50%);
+        }
+        .input-focus:focus {
+            outline: none;
+            border-color: #000;
+            box-shadow: 0 0 0 4px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-40 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="font-bold text-2xl tracking-tight">Synora.</a>
+            <div class="hidden lg:flex items-center space-x-8 text-sm font-medium text-slate-600">
+                <a href="index.html" class="hover:text-black transition-colors">Inicio</a>
+                <a href="index.html#que-hacemos" class="hover:text-black transition-colors">Soluciones</a>
+                <a href="index.html#sectores" class="hover:text-black transition-colors">Sectores</a>
+                <a href="index.html#precios" class="hover:text-black transition-colors">Precios</a>
+            </div>
+            <a href="index.html" class="text-sm font-semibold hover:underline">Volver al inicio</a>
+        </div>
+    </nav>
+
+    <main class="pt-40 pb-32 px-6 hero-gradient min-h-screen">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20">
+            <!-- Left Side: Info -->
+            <div class="animate-fade-in-up">
+                <h1 class="text-6xl md:text-7xl font-bold tracking-tight mb-8">Hablemos.</h1>
+                <p class="text-xl text-slate-600 mb-12 max-w-lg">
+                    Cuéntanos qué tareas consumen tu tiempo y te mostraremos cómo la automatización puede ayudarte a ganar eficiencia y reducir errores.
+                </p>
+
+                <div class="space-y-8">
+                    <div class="flex items-center space-x-6">
+                        <div class="w-12 h-12 bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Email</p>
+                            <a href="mailto:info@synora.es" class="text-lg font-medium hover:underline">info@synora.es</a>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-6">
+                        <div class="w-12 h-12 bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Instagram</p>
+                            <a href="#" class="text-lg font-medium hover:underline">@synora.solutions</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-20 p-8 bg-black rounded-[2.5rem] text-white">
+                    <h3 class="text-2xl font-bold mb-4">¿Por qué Synora?</h3>
+                    <p class="text-white/60 text-sm leading-relaxed mb-6">
+                        No somos una agencia de software al uso. Somos tus socios tecnológicos para que tu negocio sea más rentable sin añadir más horas a tu jornada.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="text-xs font-medium px-4 py-2 bg-white/10 rounded-full text-center">Soluciones a medida</div>
+                        <div class="text-xs font-medium px-4 py-2 bg-white/10 rounded-full text-center">Sin dependencia IT</div>
+                        <div class="text-xs font-medium px-4 py-2 bg-white/10 rounded-full text-center">Resultados en semanas</div>
+                        <div class="text-xs font-medium px-4 py-2 bg-white/10 rounded-full text-center">Acompañamiento real</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Form -->
+            <div class="bg-white p-10 rounded-[3rem] shadow-xl shadow-slate-200/50 border border-slate-100">
+                <form action="#" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="text-sm font-semibold ml-1">Nombre</label>
+                            <input type="text" placeholder="Tu nombre" class="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl input-focus transition-all">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-semibold ml-1">Empresa</label>
+                            <input type="text" placeholder="Nombre de tu negocio" class="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl input-focus transition-all">
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-sm font-semibold ml-1">Email profesional</label>
+                        <input type="email" placeholder="email@ejemplo.com" class="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl input-focus transition-all">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-sm font-semibold ml-1">Sector</label>
+                        <select class="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl input-focus transition-all appearance-none">
+                            <option>Inmobiliaria</option>
+                            <option>Clínica Dental</option>
+                            <option>Fisioterapia / Podología</option>
+                            <option>Restaurante</option>
+                            <option>Servicios Locales</option>
+                            <option>Gimnasios / Personal Trainer</option>
+                            <option>Otro</option>
+                        </select>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-sm font-semibold ml-1">¿Cómo podemos ayudarte?</label>
+                        <textarea rows="4" placeholder="Cuéntanos brevemente qué procesos te gustaría automatizar..." class="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl input-focus transition-all"></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-5 bg-black text-white rounded-2xl font-bold text-lg hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-black/10">
+                        Enviar solicitud
+                    </button>
+                    <p class="text-center text-xs text-slate-400 mt-6">
+                        Al enviar este formulario, aceptas nuestra <a href="#" class="underline">Política de Privacidad</a>.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="py-32 px-6 bg-black text-white text-center relative overflow-hidden mt-24">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10"></div>
+
+        <!-- Abstract glowing background elements -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-full opacity-20 pointer-events-none">
+            <div class="absolute top-0 left-1/4 w-[40rem] h-[40rem] bg-purple-600 rounded-full mix-blend-screen filter blur-[120px] animate-pulse">
+            </div>
+            <div class="absolute bottom-0 right-1/4 w-[40rem] h-[40rem] bg-orange-600 rounded-full mix-blend-screen filter blur-[120px] animate-pulse"
+                style="animation-delay: 2s;"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto relative z-20">
+            <div class="flex items-center justify-center space-x-6 text-white/40 text-sm">
+                <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2-2v10a2 2 0 002 2z"></path></svg> info@synora.es</span>
+                <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.826L10.242 10.242m4.826 4.826l1.101-1.102a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg> synora.es</span>
+            </div>
+
+            <!-- Footer Links -->
+            <div class="max-w-7xl mx-auto relative z-20 mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between text-[10px] text-white/40 uppercase tracking-widest">
+                <div class="mb-4 md:mb-0">&copy; 2026 Synora Solutions. Todos los derechos reservados.</div>
+                <div class="flex space-x-8">
+                    <a href="#" class="hover:text-white transition-colors">Aviso Legal</a>
+                    <a href="#" class="hover:text-white transition-colors">Privacidad</a>
+                    <a href="#" class="hover:text-white transition-colors">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
