@@ -30,29 +30,29 @@ export default function Pillars() {
   ];
 
   return (
-    <section id="que-hacemos" className="py-32 px-6 bg-white relative z-20">
+    <section id="que-hacemos" className="py-32 px-6 bg-white dark:bg-black relative z-20 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-16 mb-20 items-end">
           <div>
-            <h2 className="text-5xl md:text-6xl font-bold leading-[1.1]">
-              Simplificamos el crecimiento, <span className="block font-serif-italic text-slate-400 mt-2">optimizamos tu tiempo</span>
+            <h2 className="text-5xl md:text-6xl font-bold leading-[1.1] text-black dark:text-white">
+              Simplificamos el crecimiento, <span className="block font-serif-italic text-slate-400 dark:text-zinc-500 mt-2">optimizamos tu tiempo</span>
             </h2>
           </div>
           <div className="max-w-md">
-            <p className="text-lg text-slate-600">
+            <p className="text-lg text-slate-600 dark:text-zinc-400">
               No se trata de implantar tecnología compleja, sino de identificar procesos que hoy consumen tu tiempo y convertirlos en flujos que funcionan solos.
             </p>
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-10 border-t border-slate-100 pt-16">
+        <div className="grid md:grid-cols-3 gap-10 border-t border-slate-100 dark:border-white/5 pt-16">
           {pillars.map((pillar, index) => (
-            <div key={index} className="group cursor-pointer p-8 rounded-3xl hover:bg-slate-50 transition-all duration-300 border border-transparent hover:border-slate-100">
-              <div className="w-12 h-12 bg-slate-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-black group-hover:text-white transition-colors">
+            <div key={index} className="group cursor-pointer p-8 rounded-3xl hover:bg-slate-50 dark:hover:bg-zinc-900 transition-all duration-300 border border-transparent hover:border-slate-100 dark:hover:border-white/5">
+              <div className="w-12 h-12 bg-slate-100 dark:bg-white/5 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-black dark:group-hover:bg-white group-hover:text-white dark:group-hover:text-black transition-colors">
                 {pillar.icon}
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-black">{pillar.title}</h3>
-              <p className="text-slate-600 leading-relaxed">{pillar.description}</p>
+              <h3 className="text-2xl font-bold mb-4 text-black dark:text-white">{pillar.title}</h3>
+              <p className="text-slate-600 dark:text-zinc-400 leading-relaxed">{pillar.description}</p>
             </div>
           ))}
         </div>

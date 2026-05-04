@@ -55,12 +55,12 @@ const plans = [
 
 export default function Pricing() {
   return (
-    <section id="precios" className="py-32 px-6 bg-slate-50">
+    <section id="precios" className="py-32 px-6 bg-slate-50 dark:bg-zinc-900/30 border-t border-slate-100 dark:border-white/5 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
-          <span className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4 block">Inversión Inteligente</span>
-          <h2 className="text-5xl md:text-6xl font-bold text-black mb-6 tracking-tight">Planes de Automatización</h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+          <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-4 block">Inversión Inteligente</span>
+          <h2 className="text-5xl md:text-6xl font-bold text-black dark:text-white mb-6 tracking-tight">Planes de Automatización</h2>
+          <p className="text-lg text-slate-600 dark:text-zinc-400 max-w-2xl mx-auto">
             Escala tu negocio con sistemas que trabajan por ti. Sin complicaciones técnicas, solo resultados.
           </p>
         </div>
@@ -69,43 +69,53 @@ export default function Pricing() {
           {plans.map((plan, index) => (
             <div 
               key={index} 
-              className={`bg-white p-10 rounded-[2.5rem] pricing-card flex flex-col relative ${
-                plan.recommended ? "border-2 border-black scale-105 z-10 shadow-xl" : "border border-slate-100"
+              className={`bg-white dark:bg-zinc-900 p-10 rounded-[2.5rem] pricing-card flex flex-col relative transition-all duration-300 ${
+                plan.recommended 
+                  ? "border-2 border-black dark:border-white scale-105 z-10 shadow-xl dark:shadow-white/5" 
+                  : "border border-slate-100 dark:border-white/5"
               }`}
             >
               {plan.recommended && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-black text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-black dark:bg-white text-white dark:text-black px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">
                   Recomendado
                 </div>
               )}
               <div className="mb-8">
-                <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4 ${plan.tagColor}`}>
+                <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4 ${
+                  plan.name === "Plan Esencial" ? "bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400" :
+                  plan.name === "Plan Crecimiento" ? "bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400" :
+                  "bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400"
+                }`}>
                   {plan.tag}
                 </span>
-                <h4 className="text-2xl font-bold text-black">{plan.name}</h4>
+                <h4 className="text-2xl font-bold text-black dark:text-white">{plan.name}</h4>
                 <div className="mt-4 flex flex-col">
                   <div className="flex items-baseline">
-                    <span className="text-5xl font-bold">{plan.price}</span>
-                    <span className="ml-1 text-slate-400 text-sm">/mes</span>
+                    <span className="text-5xl font-bold text-black dark:text-white">{plan.price}</span>
+                    <span className="ml-1 text-slate-400 dark:text-zinc-500 text-sm">/mes</span>
                   </div>
-                  <span className="text-slate-400 text-sm mt-1">+ {plan.setup} Setup inicial</span>
+                  <span className="text-slate-400 dark:text-zinc-500 text-sm mt-1">+ {plan.setup} Setup inicial</span>
                 </div>
               </div>
-              <p className="text-sm text-slate-600 font-medium mb-6">{plan.quote}</p>
-              <ul className="space-y-4 mb-10 text-sm text-slate-600 flex-grow">
+              <p className="text-sm text-slate-600 dark:text-zinc-400 font-medium mb-6">{plan.quote}</p>
+              <ul className="space-y-4 mb-10 text-sm text-slate-600 dark:text-zinc-400 flex-grow">
                 {plan.features.map((feature, i) => (
                   <li key={i} className="flex items-start">
                     <svg className={`w-5 h-5 mr-3 shrink-0 ${plan.recommended ? "text-blue-500" : index === 0 ? "text-green-500" : "text-red-500"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className={feature.includes("Todo lo del") ? "font-bold" : ""}>{feature}</span>
+                    <span className={feature.includes("Todo lo del") ? "font-bold text-black dark:text-white" : ""}>{feature}</span>
                   </li>
                 ))}
               </ul>
-              <Link href="/planes" className="text-center text-xs text-slate-400 hover:text-black mb-4 underline transition-colors">
+              <Link href="/planes" className="text-center text-xs text-slate-400 dark:text-zinc-500 hover:text-black dark:hover:text-white mb-4 underline transition-colors">
                 Ver detalles del plan
               </Link>
-              <Link href="/contacto" className={`block w-full py-4 text-center rounded-2xl font-bold transition-all ${plan.buttonStyle}`}>
+              <Link href="/contacto" className={`block w-full py-4 text-center rounded-2xl font-bold transition-all ${
+                plan.buttonStyle === "bg-black text-white" 
+                  ? "bg-black text-white dark:bg-white dark:text-black hover:bg-zinc-900 dark:hover:bg-zinc-200" 
+                  : "bg-slate-100 text-black hover:bg-black hover:text-white dark:bg-white/10 dark:text-white dark:hover:bg-white dark:hover:text-black"
+              }`}>
                 {plan.recommended ? "Solicitar Plan" : plan.name === "Plan Pro" ? "Hablar con Experto" : "Empezar ahora"}
               </Link>
             </div>
@@ -115,33 +125,27 @@ export default function Pricing() {
         {/* Extras Section */}
         <div className="mt-20">
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-black mb-4">Módulos Adicionales</h3>
-            <p className="text-slate-500">Personaliza tu sistema con herramientas específicas para tu sector.</p>
+            <h3 className="text-3xl font-bold text-black dark:text-white mb-4">Módulos Adicionales</h3>
+            <p className="text-slate-500 dark:text-zinc-400">Personaliza tu sistema con herramientas específicas para tu sector.</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white p-6 rounded-3xl border border-slate-100 hover:shadow-lg transition-all text-center">
-              <h5 className="font-bold text-black mb-2">Captador Viviendas</h5>
-              <div className="text-xl font-bold text-black mb-2">+49€<span className="text-xs text-slate-400">/mes</span></div>
-              <p className="text-xs text-slate-500">Monitorización activa de portales inmobiliarios.</p>
-            </div>
-            <div className="bg-white p-6 rounded-3xl border border-slate-100 hover:shadow-lg transition-all text-center">
-              <h5 className="font-bold text-black mb-2">Property Intelligence</h5>
-              <div className="text-xl font-bold text-black mb-2">+59€<span className="text-xs text-slate-400">/mes</span></div>
-              <p className="text-xs text-slate-500">Valoraciones y análisis de mercado automáticos.</p>
-            </div>
-            <div className="bg-white p-6 rounded-3xl border border-slate-100 hover:shadow-lg transition-all text-center">
-              <h5 className="font-bold text-black mb-2">Transcripción IA</h5>
-              <div className="text-xl font-bold text-black mb-2">+69€<span className="text-xs text-slate-400">/mes</span></div>
-              <p className="text-xs text-slate-500">Resumen automático de reuniones y llamadas.</p>
-            </div>
-            <div className="bg-white p-6 rounded-3xl border border-slate-100 hover:shadow-lg transition-all text-center">
-              <h5 className="font-bold text-black mb-2">Custom Adv.</h5>
-              <div className="text-xl font-bold text-black mb-2">+30-80€<span className="text-xs text-slate-400">/mes</span></div>
-              <p className="text-xs text-slate-500">Automatizaciones avanzadas personalizadas.</p>
-            </div>
+            <ExtraCard title="Captador Viviendas" price="+49€" desc="Monitorización activa de portales inmobiliarios." />
+            <ExtraCard title="Property Intelligence" price="+59€" desc="Valoraciones y análisis de mercado automáticos." />
+            <ExtraCard title="Transcripción IA" price="+69€" desc="Resumen automático de reuniones y llamadas." />
+            <ExtraCard title="Custom Adv." price="+30-80€" desc="Automatizaciones avanzadas personalizadas." />
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function ExtraCard({ title, price, desc }: { title: string; price: string; desc: string }) {
+  return (
+    <div className="bg-white dark:bg-zinc-900 p-6 rounded-3xl border border-slate-100 dark:border-white/5 hover:shadow-lg dark:hover:shadow-white/5 transition-all text-center">
+      <h5 className="font-bold text-black dark:text-white mb-2">{title}</h5>
+      <div className="text-xl font-bold text-black dark:text-white mb-2">{price}<span className="text-xs text-slate-400 dark:text-zinc-500">/mes</span></div>
+      <p className="text-xs text-slate-500 dark:text-zinc-400">{desc}</p>
+    </div>
   );
 }

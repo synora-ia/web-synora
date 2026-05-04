@@ -3,14 +3,14 @@ import FloatingBlobs from "@/components/ui/FloatingBlobs";
 
 export default function Footer() {
   return (
-    <section id="contacto" className="py-32 px-6 bg-black text-white text-center relative overflow-hidden">
+    <section id="contacto" className="py-32 px-6 bg-black text-white text-center relative overflow-hidden transition-colors duration-300">
       <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10"></div>
 
       {/* Abstract glowing background elements */}
       <FloatingBlobs 
         blobs={[
-          { color: "bg-blue-600/20", className: "top-0 left-1/4 w-[40rem] h-[40rem]", animation: "animate-drift-slow" },
-          { color: "bg-purple-600/30", className: "bottom-0 right-1/4 w-[40rem] h-[40rem]", animation: "animate-drift-reverse", delay: "5s", duration: "30s" },
+          { color: "bg-purple-600/20", className: "top-0 left-1/4 w-[40rem] h-[40rem]", animation: "animate-drift-slow" },
+          { color: "bg-orange-600/10", className: "bottom-0 right-1/4 w-[40rem] h-[40rem]", animation: "animate-drift-reverse", delay: "5s", duration: "30s" },
         ]}
       />
 
@@ -21,7 +21,7 @@ export default function Footer() {
         </h2>
         <p className="text-xl text-white/60 mb-12">Estamos listos para hacer que tu negocio trabaje solo. ¿Tú lo estás?</p>
 
-        <a href="mailto:info@synora.es" className="inline-flex items-center justify-center px-10 py-5 bg-white text-black rounded-full text-lg font-bold btn-hover focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/50">
+        <a href="mailto:info@synora.es" className="inline-flex items-center justify-center px-10 py-5 bg-white text-black dark:bg-zinc-800 dark:text-white rounded-full text-lg font-bold btn-hover focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/50">
           Contactar con Synora
         </a>
 
@@ -45,9 +45,9 @@ export default function Footer() {
       <footer className="max-w-7xl mx-auto relative z-20 mt-32 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between text-[10px] text-white/40 uppercase tracking-widest">
         <div className="mb-4 md:mb-0">&copy; 2026 Synora Solutions. Todos los derechos reservados.</div>
         <div className="flex space-x-8">
-          <Link href="#" className="hover:text-white transition-colors">Aviso Legal</Link>
-          <Link href="#" className="hover:text-white transition-colors">Privacidad</Link>
-          <Link href="#" className="hover:text-white transition-colors">Cookies</Link>
+          <Link href="/aviso-legal" className="hover:text-white transition-colors">Aviso Legal</Link>
+          <Link href="/privacidad" className="hover:text-white transition-colors">Privacidad</Link>
+          <Link href="/cookies" className="hover:text-white transition-colors">Cookies</Link>
         </div>
       </footer>
     </section>

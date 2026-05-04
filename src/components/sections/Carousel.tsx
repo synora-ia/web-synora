@@ -82,7 +82,7 @@ export default function Carousel() {
   return (
     <section 
       id="sectores-carousel" 
-      className="bg-black py-32 px-6 relative overflow-hidden border-y border-white/5"
+      className="bg-black py-32 px-6 relative overflow-hidden border-y border-white/5 transition-colors duration-300"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -90,7 +90,7 @@ export default function Carousel() {
         blobs={[
           { color: "bg-purple-600/30", className: "-top-[20%] -left-[10%] w-[70%] h-[70%]", animation: "animate-drift" },
           { color: "bg-orange-600/30", className: "-bottom-[20%] -right-[10%] w-[70%] h-[70%]", animation: "animate-drift-slow", delay: "2s" },
-          { color: "bg-blue-600/20", className: "top-[20%] right-[10%] w-[50%] h-[50%]", animation: "animate-drift-reverse", delay: "4s" },
+          { color: "bg-pink-600/10", className: "top-[20%] right-[10%] w-[50%] h-[50%]", animation: "animate-drift-reverse", delay: "4s" },
         ]}
       />
 
