@@ -17,6 +17,10 @@ export default function Home() {
       {/* Impact Stats */}
       <section className="py-24 px-6 bg-slate-50 dark:bg-zinc-900/50 border-y border-slate-100 dark:border-white/5">
         <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="font-serif-italic text-2xl text-slate-400 dark:text-zinc-500 mb-4">El impacto de Synora</h2>
+            <h3 className="text-4xl md:text-5xl font-bold text-black dark:text-white tracking-tight">Resultados que transforman <br /> <span className="text-slate-400 dark:text-zinc-500">tu día a día.</span></h3>
+          </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <StatCard value="30-40%" label="Reducción Operativa" />
             <StatCard value="24/7" label="Automatización Activa" />
