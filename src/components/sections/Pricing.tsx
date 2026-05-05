@@ -9,10 +9,11 @@ const plans = [
     tagColor: "bg-green-50 text-green-600",
     quote: '"Te aseguro que cualquier persona que te escriba recibe respuesta y entra en tu sistema."',
     features: [
-      "Chatbot de WhatsApp (Captación básica)",
+      "1 Auditoría de Procesos",
+      "Web Connect Incluido",
+      "Chatbot de WhatsApp (Básico)",
       "Automatización de contacto web",
-      "Sistema básico de captación de leads",
-      "Recordatorios automáticos simples",
+      "Sistema de captación de leads",
     ],
     recommended: false,
     buttonStyle: "bg-slate-100 text-black hover:bg-black hover:text-white",
@@ -25,11 +26,11 @@ const plans = [
     tagColor: "bg-blue-50 text-blue-600",
     quote: '"No solo respondes, sino que conviertes más clientes sin estar pendiente."',
     features: [
+      "Hasta 3 Auditorías de Procesos",
+      "Web Connect Incluido",
       "Todo lo del Plan Esencial",
       "Dashboard de control y analítica",
       "Seguimiento de leads avanzado (IA)",
-      "Agente Icebreaker automatizado",
-      "1 Automatización extra a medida",
     ],
     recommended: true,
     buttonStyle: "bg-black text-white",
@@ -42,11 +43,11 @@ const plans = [
     tagColor: "bg-red-50 text-red-600",
     quote: '"Automatizamos parte de tu negocio para que funcione sin ti."',
     features: [
+      "Auditorías Ilimitadas",
+      "Web Connect Incluido",
       "Todo lo del Plan Crecimiento",
-      "Chatbot de gestión interna (Equipo)",
       "Integración con CRM / ERP propio",
-      "2-3 Automatizaciones personalizadas",
-      "Soporte prioritario 24/7",
+      "Automatizaciones personalizadas",
     ],
     recommended: false,
     buttonStyle: "bg-black text-white",
@@ -104,7 +105,7 @@ export default function Pricing() {
                     <svg className={`w-5 h-5 mr-3 shrink-0 ${plan.recommended ? "text-blue-500" : index === 0 ? "text-green-500" : "text-red-500"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className={feature.includes("Todo lo del") ? "font-bold text-black dark:text-white" : ""}>{feature}</span>
+                    <span className={feature.includes("Todo lo del") || feature.includes("Auditoría") || feature.includes("Web Connect") ? "font-bold text-black dark:text-white" : ""}>{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -121,6 +122,9 @@ export default function Pricing() {
             </div>
           ))}
         </div>
+        <p className="text-center text-xs text-slate-400 dark:text-zinc-500 mb-20 max-w-3xl mx-auto px-4">
+          * Los planes y módulos incluyen un volumen generoso de tokens de Inteligencia Artificial para un uso estándar. En caso de uso masivo, el precio se ajustará proporcionalmente al consumo real.
+        </p>
 
         {/* Extras Section */}
         <div className="mt-20">
@@ -128,11 +132,22 @@ export default function Pricing() {
             <h3 className="text-3xl font-bold text-black dark:text-white mb-4">Módulos Adicionales</h3>
             <p className="text-slate-500 dark:text-zinc-400">Personaliza tu sistema con herramientas específicas para tu sector.</p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <ExtraCard title="Captador Viviendas" price="+49€" desc="Monitorización activa de portales inmobiliarios." />
-            <ExtraCard title="Property Intelligence" price="+59€" desc="Valoraciones y análisis de mercado automáticos." />
-            <ExtraCard title="Transcripción IA" price="+69€" desc="Resumen automático de reuniones y llamadas." />
-            <ExtraCard title="Custom Adv." price="+30-80€" desc="Automatizaciones avanzadas personalizadas." />
+          <div className="flex flex-wrap justify-center gap-6">
+            <div className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+              <ExtraCard title="Captador Viviendas" price="Desde +49€" desc="Monitorización activa de portales inmobiliarios." />
+            </div>
+            <div className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+              <ExtraCard title="Property Intelligence" price="Desde +59€" desc="Valoraciones y análisis de mercado automáticos." />
+            </div>
+            <div className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+              <ExtraCard title="Transcripción IA" price="Desde +69€" desc="Resumen automático de reuniones y llamadas." />
+            </div>
+            <div className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+              <ExtraCard title="Web a Medida" price="Desde 349€" subtext="pago único" desc="Creación de web lista para IA. Mantenimiento +20€/mes." />
+            </div>
+            <div className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+              <ExtraCard title="Custom Adv." price="+30-80€" desc="Automatizaciones avanzadas personalizadas." />
+            </div>
           </div>
         </div>
       </div>
@@ -140,11 +155,11 @@ export default function Pricing() {
   );
 }
 
-function ExtraCard({ title, price, desc }: { title: string; price: string; desc: string }) {
+function ExtraCard({ title, price, subtext = "/mes", desc }: { title: string; price: string; subtext?: string; desc: string }) {
   return (
     <div className="bg-white dark:bg-zinc-900 p-6 rounded-3xl border border-slate-100 dark:border-white/5 hover:shadow-lg dark:hover:shadow-white/5 transition-all text-center">
       <h5 className="font-bold text-black dark:text-white mb-2">{title}</h5>
-      <div className="text-xl font-bold text-black dark:text-white mb-2">{price}<span className="text-xs text-slate-400 dark:text-zinc-500">/mes</span></div>
+      <div className="text-xl font-bold text-black dark:text-white mb-2">{price}<span className="text-xs text-slate-400 dark:text-zinc-500 ml-1">{subtext}</span></div>
       <p className="text-xs text-slate-500 dark:text-zinc-400">{desc}</p>
     </div>
   );
