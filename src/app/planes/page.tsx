@@ -44,7 +44,7 @@ export default function PlanesPage() {
                 </thead>
                 <tbody className="text-sm text-slate-600 dark:text-zinc-400">
                   <TableRow label="Setup Inicial (Inversión)" v1="250€" v2="Desde 400€" v3="Desde 700€" />
-                  <TableRow label="Auditorías de Procesos" v1="1 Sesión Incluida" v2="Hasta 3 Sesiones" v3="Ilimitadas" />
+                  <TableRow label="Auditoría Previa" v1="Opcional (Desde 200€)" v2="Opcional (Desde 200€)" v3="Opcional (Desde 200€)" />
                   <TableRow label="Integración Web (Web Connect)" v1="Incluido en Setup" v2="Incluido en Setup" v3="Incluido en Setup" />
                   <TableRow label="WhatsApp Chatbot" v1="Básico" v2="Avanzado (IA)" v3="Multi-agente IA" />
                   <TableRow label="Dashboard de Métricas" v1="Simple" v2="Avanzado (BI)" v3="Personalizado ERP" />
@@ -69,9 +69,9 @@ export default function PlanesPage() {
       <section className="py-24 px-6 bg-white dark:bg-black transition-colors duration-300 border-t border-slate-50 dark:border-white/5">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-black dark:text-white mb-4 tracking-tight">¿Qué hacemos en una Auditoría de Procesos?</h2>
+            <h2 className="text-4xl font-bold text-black dark:text-white mb-4 tracking-tight">¿Cuándo recomendamos una Auditoría?</h2>
             <p className="text-slate-500 dark:text-zinc-400 text-lg max-w-2xl mx-auto">
-              Antes de automatizar, tenemos que entender cómo funcionas. No te vendemos un software genérico; adaptamos la IA a tu negocio real.
+              Si tienes muy claros tus flujos de trabajo, pasamos directamente al Setup. Pero si tu negocio tiene procesos complejos o desordenados, esta sesión previa nos asegura adaptar la IA a tu realidad operativa.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">

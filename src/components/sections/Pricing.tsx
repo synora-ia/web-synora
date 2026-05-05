@@ -9,11 +9,11 @@ const plans = [
     tagColor: "bg-green-50 text-green-600",
     quote: '"Te aseguro que cualquier persona que te escriba recibe respuesta y entra en tu sistema."',
     features: [
-      "1 Auditoría de Procesos",
       "Web Connect Incluido",
       "Chatbot de WhatsApp (Básico)",
       "Automatización de contacto web",
       "Sistema de captación de leads",
+      "Recordatorios automáticos simples",
     ],
     recommended: false,
     buttonStyle: "bg-slate-100 text-black hover:bg-black hover:text-white",
@@ -26,11 +26,11 @@ const plans = [
     tagColor: "bg-blue-50 text-blue-600",
     quote: '"No solo respondes, sino que conviertes más clientes sin estar pendiente."',
     features: [
-      "Hasta 3 Auditorías de Procesos",
       "Web Connect Incluido",
       "Todo lo del Plan Esencial",
       "Dashboard de control y analítica",
       "Seguimiento de leads avanzado (IA)",
+      "Agente Icebreaker automatizado",
     ],
     recommended: true,
     buttonStyle: "bg-black text-white",
@@ -43,9 +43,9 @@ const plans = [
     tagColor: "bg-red-50 text-red-600",
     quote: '"Automatizamos parte de tu negocio para que funcione sin ti."',
     features: [
-      "Auditorías Ilimitadas",
       "Web Connect Incluido",
       "Todo lo del Plan Crecimiento",
+      "Chatbot de gestión interna (Equipo)",
       "Integración con CRM / ERP propio",
       "Automatizaciones personalizadas",
     ],
@@ -96,6 +96,10 @@ export default function Pricing() {
                     <span className="ml-1 text-slate-400 dark:text-zinc-500 text-sm">/mes</span>
                   </div>
                   <span className="text-slate-400 dark:text-zinc-500 text-sm mt-1">+ {plan.setup} Setup inicial</span>
+                  <span className="text-amber-600 dark:text-amber-500/80 font-bold text-xs mt-2 flex items-center bg-amber-50 dark:bg-amber-900/10 px-3 py-1.5 rounded-lg w-fit">
+                    <svg className="w-3.5 h-3.5 mr-1.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    Auditoría Recomendada (Desde 200€)
+                  </span>
                 </div>
               </div>
               <p className="text-sm text-slate-600 dark:text-zinc-400 font-medium mb-6">{plan.quote}</p>
