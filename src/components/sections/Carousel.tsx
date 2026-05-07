@@ -14,7 +14,7 @@ const slides = [
       { title: "Captación 24/7", desc: "IA que califica propietarios y programa visitas automáticamente." },
       { title: "Valoración Instantánea", desc: "Informes de mercado precisos generados en segundos." }
     ],
-    link: "/sectores/inmobiliarias",
+    link: "/inmobiliarias",
     image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80"
   },
   {
@@ -26,7 +26,7 @@ const slides = [
       { title: "Agenda Inteligente", desc: "IA que gestiona huecos, recordatorios y cancelaciones en tiempo real." },
       { title: "Fidelización Activa", desc: "Seguimiento automático de tratamientos y bonos de sesiones." }
     ],
-    link: "/sectores/clinicas",
+    link: "/clinicas",
     image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80"
   },
   {
@@ -38,7 +38,7 @@ const slides = [
       { title: "Prevención de Bajas", desc: "IA que detecta socios en riesgo y activa campañas de retención." },
       { title: "Altas Express", desc: "Proceso de inscripción y pago 100% digital y automatizado." }
     ],
-    link: "/sectores/gimnasios",
+    link: "/gimnasios",
     image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80"
   },
   {
@@ -50,7 +50,7 @@ const slides = [
       { title: "Cero No-Shows", desc: "Confirmación automática y cobro de fianza en reservas críticas." },
       { title: "Guest Intelligence", desc: "Historial de preferencias y alergias integrado en cada reserva." }
     ],
-    link: "/sectores/restaurantes",
+    link: "/restaurantes",
     image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80"
   },
   {
@@ -62,7 +62,7 @@ const slides = [
       { title: "Presupuestos IA", desc: "Generación y envío automático de propuestas técnicas en minutos." },
       { title: "Gestión de Gremios", desc: "Coordinación automática de técnicos y materiales según la obra." }
     ],
-    link: "/sectores/servicios",
+    link: "/servicios",
     image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80"
   }
 ];

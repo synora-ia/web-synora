@@ -188,3 +188,20 @@
 .animate-drift-reverse {
   animation: drift-reverse 20s ease-in-out infinite;
 }
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 12px));
+  }
+}
+
+.animate-scroll {
+  animation: scroll 120s linear infinite;
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
