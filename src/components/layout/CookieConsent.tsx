@@ -37,7 +37,7 @@ export default function CookieConsent() {
           </h4>
           <p className="text-sm text-slate-500 dark:text-zinc-400 leading-relaxed">
             Utilizamos cookies propias y de terceros para mejorar tu experiencia, analizar el tráfico y mostrarte contenido relevante. Puedes aceptar todas las cookies o configurar tus preferencias. Consulta nuestra{" "}
-            <Link href="/privacidad" className="underline hover:text-black dark:hover:text-white transition-colors">Política de Cookies</Link>.
+            <Link href="/privacidad" className="hover:text-black dark:hover:text-white transition-colors">Política de Cookies</Link>.
           </p>
         </div>
         <div className="flex flex-col sm:flex-row gap-3 shrink-0 w-full md:w-auto">

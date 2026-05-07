@@ -1,6 +1,7 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Link from "next/link";
+import IsoModalBadge from "@/components/sections/IsoModalBadge";
 
 export default function PlanesPage() {
   return (
@@ -29,32 +30,38 @@ export default function PlanesPage() {
                   <tr className="border-b border-slate-100 dark:border-white/5">
                     <th className="p-8 text-slate-400 dark:text-zinc-500 font-medium text-sm">Características</th>
                     <th className="p-8">
-                      <span className="block text-xl font-bold text-black dark:text-white">Esencial</span>
-                      <span className="text-xs text-slate-400 dark:text-zinc-500">79€/mes</span>
+                      <span className="block text-xl font-bold text-black dark:text-white">Básico</span>
+                      <span className="text-xs text-slate-400 dark:text-zinc-500">99€/mes</span>
                     </th>
                     <th className="p-8 bg-black dark:bg-white text-white dark:text-black">
-                      <span className="block text-xl font-bold">Crecimiento</span>
-                      <span className="text-xs text-white/50 dark:text-black/50">149€/mes</span>
+                      <span className="block text-xl font-bold">Medio</span>
+                      <span className="text-xs text-white/50 dark:text-black/50">199€/mes</span>
                     </th>
                     <th className="p-8">
                       <span className="block text-xl font-bold text-black dark:text-white">Pro</span>
-                      <span className="text-xs text-slate-400 dark:text-zinc-500">Desde 299€/mes</span>
+                      <span className="text-xs text-slate-400 dark:text-zinc-500">Desde 399€/mes</span>
                     </th>
                   </tr>
                 </thead>
                 <tbody className="text-sm text-slate-600 dark:text-zinc-400">
-                  <TableRow label="Setup Inicial (Inversión)" v1="250€" v2="Desde 400€" v3="Desde 700€" />
+                  <TableRow label="Setup Inicial (Inversión)" v1="350€" v2="Desde 600€" v3="Desde 900€" />
                   <TableRow label="Auditoría Previa" v1="Opcional (Desde 200€)" v2="Opcional (Desde 200€)" v3="Opcional (Desde 200€)" />
-                  <TableRow label="Integración Web (Web Connect)" v1="Incluido en Setup" v2="Incluido en Setup" v3="Incluido en Setup" />
-                  <TableRow label="WhatsApp Chatbot" v1="Básico" v2="Avanzado (IA)" v3="Multi-agente IA" />
-                  <TableRow label="Dashboard de Métricas" v1="Simple" v2="Avanzado (BI)" v3="Personalizado ERP" />
-                  <TableRow label="Soporte Técnico" v1="Email" v2="Prioritario" v3="24/7 + Consultoría" />
-                  <tr className="border-b border-slate-50 dark:border-white/5">
-                    <td className="p-6 font-medium text-black dark:text-white">Software Incluido</td>
-                    <td className="p-6 text-green-600 dark:text-green-400 font-bold">✓ Todo incluido</td>
-                    <td className="p-6 text-green-600 dark:text-green-400 font-bold">✓ Todo incluido</td>
-                    <td className="p-6 text-green-600 dark:text-green-400 font-bold">✓ Todo incluido</td>
-                  </tr>
+
+                  <TableRow label="Agenda + ToDo" v1="✓" v2="✓" v3="✓" />
+                  <TableRow label="Gestión de Leads" v1="✓" v2="✓" v3="✓" />
+                  <TableRow label="Gestión de Documentos" v1="✓" v2="✓" v3="✓" />
+                  <TableRow label="Contestador IceBraker" v1="✓" v2="✓" v3="✓" />
+                  <TableRow label="Automatización Contacto Web" v1="✓" v2="✓" v3="✓" />
+                  <TableRow label="Recordatorios Automáticos" v1="✓" v2="✓" v3="✓" />
+                  <TableRow label="Chatbot de WhatsApp" v1="+49€/mes" v2="✓" v3="✓" />
+                  <TableRow label="Chatbot Web" v1="+49€/mes" v2="✓" v3="✓" />
+                  <TableRow label="WebConnect" v1="+39€/mes" v2="✓" v3="✓" />
+                  <TableRow label="Seguimientos de Leads (IA)" v1="+39€/mes" v2="✓" v3="✓" />
+                  <TableRow label="Analíticas Avanzadas" v1="+29€/mes" v2="+29€/mes" v3="✓" />
+                  <TableRow label="Chatbot de Gestión Interna" v1="+39€/mes" v2="+39€/mes" v3="✓" />
+                  <TableRow label="Transcripción de Reuniones" v1="+39€/mes" v2="+39€/mes" v3="✓" />
+                  <TableRow label="Funnel de Ventas" v1="+59€/mes" v2="+59€/mes" v3="✓" />
+
                 </tbody>
               </table>
             </div>
@@ -70,9 +77,10 @@ export default function PlanesPage() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-black dark:text-white mb-4 tracking-tight">¿Cuándo recomendamos una Auditoría?</h2>
-            <p className="text-slate-500 dark:text-zinc-400 text-lg max-w-2xl mx-auto">
+            <p className="text-slate-500 dark:text-zinc-400 text-lg max-w-2xl mx-auto mb-6">
               Si tienes muy claros tus flujos de trabajo, pasamos directamente al Setup. Pero si tu negocio tiene procesos complejos o desordenados, esta sesión previa nos asegura adaptar la IA a tu realidad operativa.
             </p>
+            <IsoModalBadge />
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-slate-50 dark:bg-zinc-900/30 p-8 rounded-[2rem] border border-slate-100 dark:border-white/5">
@@ -101,7 +109,7 @@ export default function PlanesPage() {
       </section>
 
       {/* Why "Everything Included"? */}
-      <section className="py-32 px-6 bg-slate-50 dark:bg-zinc-900/30 transition-colors duration-300">
+      <section className="py-32 px-6 bg-white dark:bg-black transition-colors duration-300">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-5xl font-bold mb-16 text-center text-black dark:text-white tracking-tight leading-[1.1]">
             Sin facturas sorpresa. <br /> <span className="font-serif-italic text-slate-400 dark:text-zinc-500">Tu cuota mensual lo cubre todo.</span>
@@ -140,110 +148,192 @@ export default function PlanesPage() {
       <section className="py-24 px-6 bg-slate-50 dark:bg-zinc-900/30 border-t border-slate-100 dark:border-white/5 transition-colors duration-300">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-black dark:text-white mb-4 tracking-tight">Módulos Adicionales</h2>
-            <p className="text-slate-500 dark:text-zinc-400 text-lg max-w-2xl mx-auto">Complementa tu plan con herramientas potentes para tu sector. Amplía las capacidades de tu ecosistema Synora cuando lo necesites.</p>
+            <h2 className="text-4xl font-bold text-black dark:text-white mb-4 tracking-tight">Ecosistema Inmobiliario</h2>
+            <p className="text-slate-500 dark:text-zinc-400 text-lg max-w-2xl mx-auto">
+              Optimiza tu agencia con nuestros <strong>packs especializados</strong> (requieren plan mensual) o adquiere <strong>módulos sueltos</strong> de forma totalmente independiente sin necesidad de un plan core.
+            </p>
           </div>
-          <div className="grid lg:grid-cols-3 gap-6">
-            <ModuleDetailCard 
-              title="Captador de Viviendas" 
-              price="+49€" 
-              desde={true}
-              desc="Monitorización activa 24/7 de portales inmobiliarios. Ideal para agencias que quieren captar particulares antes que la competencia." 
-            />
-            <ModuleDetailCard 
-              title="Property Intelligence" 
-              price="+59€" 
-              desde={true}
-              desc="Valoraciones automáticas e informes de mercado generados por IA. Cierra más captaciones enviando dossiers al instante." 
-            />
-            <ModuleDetailCard 
-              title="Transcripción IA" 
-              price="+69€" 
-              desde={true}
-              desc="Tu asistente en reuniones. Graba, transcribe y resume automáticamente los puntos clave y próximos pasos de tus llamadas." 
-            />
-          </div>
-        </div>
-      </section>
 
-      {/* Custom Advanced Section */}
-      <section className="py-24 px-6 bg-white dark:bg-black border-t border-slate-100 dark:border-white/5 transition-colors duration-300">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
-          <div className="md:w-1/2">
-             <span className="text-sm font-bold uppercase tracking-widest text-slate-400 dark:text-zinc-500 mb-4 block">Custom Advanced</span>
-             <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-6 tracking-tight">¿Tienes un proceso muy específico?</h2>
-             <p className="text-slate-600 dark:text-zinc-400 text-lg md:text-xl leading-relaxed mb-8">
-               Diseñamos y mantenemos automatizaciones de alto nivel y flujos multi-paso adaptados al 100% a tu forma de trabajar.
-             </p>
-             <Link href="/contacto" className="inline-flex items-center text-sm font-bold text-black dark:text-white hover:text-slate-500 dark:hover:text-zinc-400 transition-colors border-b-2 border-black dark:border-white pb-1 group">
-               Consultar Viabilidad
-               <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-             </Link>
-          </div>
-          <div className="md:w-1/3 flex flex-col items-start md:items-end text-left md:text-right border-l-4 md:border-l-0 md:border-r-4 border-black dark:border-white pl-6 md:pl-0 md:pr-8 py-4">
-             <div className="text-5xl md:text-6xl font-bold text-black dark:text-white">+30-80€</div>
-             <div className="text-sm font-bold uppercase tracking-widest text-slate-400 dark:text-zinc-500 mt-2">/mes (Estimado)</div>
-          </div>
-        </div>
-      </section>
-
-      {/* Web Services Section */}
-      <section className="py-24 px-6 bg-slate-50 dark:bg-zinc-900/30 border-t border-slate-100 dark:border-white/5 transition-colors duration-300">
-        <div className="max-w-6xl mx-auto">
-          <div className="bg-black dark:bg-white rounded-[2.5rem] p-10 md:p-16 relative overflow-hidden transition-all duration-300 shadow-2xl shadow-black/10 dark:shadow-none">
-            <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent dark:from-black/10 pointer-events-none"></div>
-            <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-10">
-              <div className="max-w-3xl">
-                <span className="inline-block px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest bg-white/10 dark:bg-black/10 text-white dark:text-black mb-6">Infraestructura Digital</span>
-                <h3 className="text-3xl md:text-5xl font-bold text-white dark:text-black mb-6 tracking-tight">¿Tu web actual es un obstáculo para automatizar?</h3>
-                <p className="text-white/70 dark:text-black/70 text-lg md:text-xl leading-relaxed mb-8">
-                  La integración de tu web actual (Web Connect) ya está incluida en tu Setup inicial. Pero si tu página actual es un obstáculo o está obsoleta, diseñamos infraestructuras web premium desde cero preparadas para el ecosistema IA.
-                </p>
-                <div className="grid sm:grid-cols-1 gap-6 max-w-sm">
-                  <div className="border-l-2 border-white/20 dark:border-black/20 pl-5">
-                    <div className="text-white dark:text-black font-bold mb-1 text-lg">Web a Medida</div>
-                    <div className="text-white/90 dark:text-black/90 font-bold text-2xl mb-1">Desde 349€ <span className="text-xs font-normal uppercase tracking-widest text-white/60 dark:text-black/60 ml-1">pago único</span></div>
-                    <div className="text-white/60 dark:text-black/60 text-sm">Creación desde cero. Mantenimiento mensual del hosting no incluido (+20€/mes).</div>
+          {/* Real Estate Section */}
+          <div className="mb-16">
+            <div className="grid lg:grid-cols-2 gap-8">
+              {/* Pack Básico */}
+              <div className="bg-white dark:bg-zinc-900 rounded-[2.5rem] border border-slate-100 dark:border-white/5 overflow-hidden flex flex-col h-full pricing-card transition-all duration-300">
+                <div className="p-10 border-b border-slate-100 dark:border-white/5 bg-slate-50/50 dark:bg-zinc-900/50">
+                  <div className="flex justify-between items-start mb-4">
+                    <div>
+                      <span className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400">Pack Inmobiliario</span>
+                      <h4 className="text-3xl font-bold text-black dark:text-white">Captación</h4>
+                      <p className="text-slate-500 dark:text-zinc-400 mt-2 text-sm max-w-[200px]">Gestión de propiedades, cruce con clientes y publicación centralizada.</p>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-4xl font-bold text-black dark:text-white">+89€</div>
+                      <div className="text-xs text-slate-400 uppercase tracking-wider font-bold mt-1">/mes Pack Completo</div>
+                    </div>
                   </div>
                 </div>
+                <div className="p-8 flex-1 flex flex-col gap-2">
+                  <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-2 px-4">Módulos Individuales</span>
+                  <ModuleItem 
+                    title="Captador Manual" 
+                    price="+29€/mes" 
+                    desc="Herramienta en dashboard para guardar y clasificar propietarios." 
+                  />
+                  <ModuleItem 
+                    title="Publicador Propiedades" 
+                    price="+39€/mes" 
+                    desc="Sincronización de inmuebles desde el dashboard a tu web." 
+                  />
+                  <ModuleItem 
+                    title="Sugerencias IA" 
+                    price="+39€/mes" 
+                    desc="Cruces automáticos de requerimientos de clientes con propiedades." 
+                  />
+                </div>
               </div>
-              <div className="shrink-0 w-full lg:w-auto">
-                <Link href="/contacto" className="block text-center px-10 py-5 bg-white dark:bg-black text-black dark:text-white rounded-full font-bold btn-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-black focus-visible:ring-white dark:focus-visible:ring-offset-white dark:focus-visible:ring-black">
-                  Auditoría Web Gratuita
-                </Link>
+
+              {/* Pack Avanzado */}
+              <div className="bg-black dark:bg-white rounded-[2.5rem] border border-black dark:border-white overflow-hidden flex flex-col h-full text-white dark:text-black shadow-2xl dark:shadow-none pricing-card transition-all duration-300">
+                <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent dark:from-black/10 pointer-events-none"></div>
+                <div className="p-10 border-b border-white/10 dark:border-black/10 relative z-10">
+                  <div className="flex justify-between items-start mb-4">
+                    <div>
+                      <span className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4 bg-white/20 dark:bg-black/10 text-white dark:text-black">Pack Avanzado</span>
+                      <h4 className="text-3xl font-bold">Inteligencia</h4>
+                      <p className="text-white/70 dark:text-black/70 mt-2 text-sm max-w-[220px]">Automatización total del mercado y generación de tasaciones IA.</p>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-4xl font-bold">+149€</div>
+                      <div className="text-xs text-white/60 dark:text-black/50 uppercase tracking-wider font-bold mt-1">/mes Pack Completo</div>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-8 flex-1 flex flex-col gap-2 relative z-10">
+                  <span className="text-xs font-bold text-white/50 dark:text-black/40 uppercase tracking-widest mb-2 px-4">Módulos Individuales</span>
+                  <ModuleItem 
+                    title="Captador Automático" 
+                    price="+69€/mes" 
+                    desc="Scraping de portales y alerta automática de particulares." 
+                    dark
+                  />
+                  <ModuleItem 
+                    title="Property Intelligence" 
+                    price="+59€/mes" 
+                    desc="Análisis de mercado automático para zonas concretas." 
+                    dark
+                  />
+                  <ModuleItem 
+                    title="Informes de Tasación" 
+                    price="+49€/mes" 
+                    desc="Generación de PDF automático con valoración IA para clientes." 
+                    dark
+                  />
+                </div>
               </div>
             </div>
           </div>
+
+          {/* Integrations & Custom */}
+          <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-4 block text-center">Módulos</span>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-white dark:bg-zinc-900 p-8 rounded-[2.5rem] border border-slate-100 dark:border-white/5 flex flex-col sm:flex-row items-start gap-6 hover:shadow-lg dark:hover:shadow-white/5 transition-all pricing-card">
+              <div className="w-16 h-16 rounded-2xl bg-slate-50 dark:bg-white/5 flex items-center justify-center shrink-0 border border-slate-100 dark:border-white/10 mt-1">
+                <svg className="w-8 h-8 text-black dark:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center justify-between mb-2">
+                  <h4 className="text-xl font-bold text-black dark:text-white">Web a Medida & CRM</h4>
+                </div>
+                <div className="mb-4">
+                  <span className="text-2xl font-bold text-black dark:text-white">Desde 349€</span>
+                  <span className="text-xs text-slate-400 dark:text-zinc-500 font-bold uppercase tracking-widest ml-2">Pago único</span>
+                </div>
+                <p className="text-sm text-slate-500 dark:text-zinc-400 leading-relaxed mb-4">¿Tu web actual es un obstáculo para automatizar? Diseñamos infraestructuras web premium preparadas para IA desde cero. Conectamos tu CRM actual al ecosistema Synora.</p>
+                <div className="text-xs text-slate-400 dark:text-zinc-500 bg-slate-50 dark:bg-zinc-800/50 p-3 rounded-xl border border-slate-100 dark:border-white/5">
+                  * Mantenimiento hosting no incluido (+20€/mes).
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white dark:bg-zinc-900 p-8 rounded-[2.5rem] border border-slate-100 dark:border-white/5 flex flex-col sm:flex-row items-start gap-6 hover:shadow-lg dark:hover:shadow-white/5 transition-all pricing-card">
+              <div className="w-16 h-16 rounded-2xl bg-slate-50 dark:bg-white/5 flex items-center justify-center shrink-0 border border-slate-100 dark:border-white/10 mt-1">
+                <svg className="w-8 h-8 text-black dark:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                </svg>
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center justify-between mb-2">
+                  <h4 className="text-xl font-bold text-black dark:text-white">Custom Advanced</h4>
+                </div>
+                <div className="mb-4">
+                  <span className="text-2xl font-bold text-black dark:text-white">+30-80€</span>
+                  <span className="text-xs text-slate-400 dark:text-zinc-500 font-bold uppercase tracking-widest ml-2">/mes (Estimado)</span>
+                </div>
+                <p className="text-sm text-slate-500 dark:text-zinc-400 leading-relaxed mb-4">¿Tienes un proceso muy específico? Diseñamos y mantenemos automatizaciones de alto nivel y flujos multi-paso adaptados al 100% a tu forma de trabajar.</p>
+                <div className="mt-2">
+                  <Link href="/contacto" className="inline-flex items-center text-sm font-bold text-black dark:text-white hover:text-slate-500 dark:hover:text-zinc-400 transition-colors group">
+                    Consultar Viabilidad
+                    <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* A la Carta Section */}
+          <div id="funcionalidades" className="mt-20 pt-20 border-t border-slate-100 dark:border-white/5 scroll-mt-20">
+            <div className="text-center mb-12">
+              <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-4 block">Flexibilidad Total</span>
+              <h3 className="text-3xl font-bold text-black dark:text-white mb-4 tracking-tight">Funcionalidades a la Carta (Sin Plan)</h3>
+              <p className="text-slate-500 dark:text-zinc-400 max-w-2xl mx-auto">
+                <strong>No necesitas contratar un plan mensual.</strong> Adquiere cualquier funcionalidad o módulo de forma 100% independiente para digitalizar procesos específicos de tu negocio.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <FeatureMiniCard title="Chatbot WhatsApp" price="+49€" desc="Atención 24/7 en el canal nº1." />
+              <FeatureMiniCard title="Chatbot Web" price="+49€" desc="Asistente inteligente para tu página web." />
+              <FeatureMiniCard title="WebConnect" price="+39€" desc="Conexión automática entre web y dashboard." />
+              <FeatureMiniCard title="Seguimiento IA" price="+39€" desc="Calificación y seguimiento de leads." />
+              <FeatureMiniCard title="Analíticas IA" price="+29€" desc="Visualización de datos en tiempo real." />
+              <FeatureMiniCard title="Gestión Interna" price="+39€" desc="Tu asistente IA para consultas privadas." />
+              <FeatureMiniCard title="Transcripciones" price="+39€" desc="Resúmenes de reuniones automáticos." />
+              <FeatureMiniCard title="Funnel de Ventas" price="+59€" desc="Flujo automatizado de captación y cierre." />
+            </div>
+          </div>
+
         </div>
       </section>
 
+
+
       {/* Recommendation Guide */}
       <section className="py-32 px-6 bg-white dark:bg-black transition-colors duration-300">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-black dark:text-white mb-4 tracking-tight">¿Cuál es el plan para ti?</h2>
-            <p className="text-slate-500 dark:text-zinc-400">Guía rápida según tu momento actual.</p>
+            <p className="text-slate-500 dark:text-zinc-400 text-lg">Guía rápida según tu momento actual.</p>
           </div>
 
-          <div className="grid gap-6">
+          <div className="grid lg:grid-cols-3 gap-6 lg:gap-8 items-center">
             <RecommendationCard 
-              letter="E" 
-              color="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400" 
-              title='"Solo quiero dejar de perder clientes"' 
-              desc="Ideal para autónomos o pymes que necesitan respuesta inmediata 24/7. El **Plan Esencial** es tu puerta de entrada." 
+              letter="1" 
+              badge="Para Empezar"
+              title="Organización y Control" 
+              desc="El **Plan Básico** (99€/mes) es tu puerta de entrada. Ideal para pymes que necesitan control 24/7. Puedes personalizarlo añadiendo módulos sueltos desde +29€/mes." 
             />
             <RecommendationCard 
-              letter="C" 
-              color="bg-black dark:bg-white text-white dark:text-black" 
-              title='"Quiero un sistema de ventas serio"' 
-              desc="Para empresas que manejan volumen de leads y necesitan calificarlos estratégicamente. El **Plan Crecimiento** es nuestra recomendación." 
+              letter="2" 
+              badge="El Más Elegido"
+              title="Automatización y Ventas" 
+              desc="El **Plan Medio** (199€/mes) es nuestra recomendación. Si eres inmobiliaria, acompáñalo del **Pack Captación** (+89€/mes) para dominar el mercado local desde el primer mes." 
               dark 
             />
             <RecommendationCard 
-              letter="P" 
-              color="bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400" 
-              title='"Necesito eficiencia operativa total"' 
-              desc="Para empresas que quieren integrar automatización en todo su flujo de trabajo y software propio. El **Plan Pro** es tu aliado." 
+              letter="3" 
+              badge="Escalabilidad"
+              title="Infraestructura Total" 
+              desc="Combina el **Plan Pro** (399€/mes) con el **Pack Inteligencia** (+149€/mes) o solicita **Custom Advanced** para tener el ecosistema más avanzado y a medida del sector." 
             />
           </div>
         </div>
@@ -276,32 +366,62 @@ function ListItem({ children, iconColor }: { children: React.ReactNode; iconColo
   );
 }
 
-function RecommendationCard({ letter, color, title, desc, dark = false }: { letter: string; color: string; title: string; desc: string; dark?: boolean }) {
+function RecommendationCard({ letter, badge, title, desc, dark = false }: { letter: string; badge: string; title: string; desc: string; dark?: boolean }) {
+  const formatDesc = (text: string) => {
+    const parts = text.split(/(\*\*.*?\*\*)/);
+    return parts.map((part, i) => {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        return <strong key={i} className={`font-bold ${dark ? "text-white dark:text-black" : "text-black dark:text-white"}`}>{part.slice(2, -2)}</strong>;
+      }
+      return part;
+    });
+  };
+
   return (
-    <div className={`p-8 rounded-[2.5rem] flex flex-col md:flex-row gap-6 items-center pricing-card ${dark ? "bg-black dark:bg-white text-white dark:text-black shadow-2xl shadow-black/20 dark:shadow-none scale-[1.02]" : "bg-slate-50 dark:bg-zinc-900 border border-slate-100 dark:border-white/5"}`}>
-      <div className={`w-16 h-16 rounded-2xl flex items-center justify-center font-bold text-2xl shrink-0 ${dark ? "bg-white/10 dark:bg-black/10" : color}`}>
-        {letter}
+    <div className={`p-10 rounded-[2.5rem] flex flex-col gap-6 items-start relative overflow-hidden transition-all duration-300 h-full ${dark ? "bg-black dark:bg-white text-white dark:text-black shadow-2xl dark:shadow-none lg:scale-[1.05] z-10" : "bg-slate-50 dark:bg-zinc-900 border border-slate-100 dark:border-white/5 hover:bg-slate-100 dark:hover:bg-zinc-800"}`}>
+      {dark && <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent dark:from-black/10 pointer-events-none"></div>}
+      
+      <div className="flex items-center justify-between w-full relative z-10">
+        <div className={`w-14 h-14 rounded-full flex items-center justify-center font-bold text-xl ${dark ? "bg-white/10 dark:bg-black/10" : "bg-white dark:bg-zinc-800 shadow-sm border border-slate-100 dark:border-white/5"}`}>
+          {letter}
+        </div>
+        <span className={`text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full ${dark ? "bg-white/20 dark:bg-black/10 text-white dark:text-black" : "bg-slate-200 dark:bg-zinc-800 text-slate-500 dark:text-zinc-400"}`}>
+          {badge}
+        </span>
       </div>
-      <div>
-        <h4 className={`text-xl font-bold mb-2 ${dark ? "text-white dark:text-black" : "text-black dark:text-white"}`}>{title}</h4>
-        <p className={`text-sm ${dark ? "text-white/60 dark:text-black/60" : "text-slate-500 dark:text-zinc-400"}`}>{desc}</p>
+      
+      <div className="relative z-10 mt-2 flex-1">
+        <h4 className={`text-2xl font-bold mb-4 tracking-tight ${dark ? "text-white dark:text-black" : "text-black dark:text-white"}`}>{title}</h4>
+        <p className={`text-sm leading-relaxed ${dark ? "text-white/80 dark:text-black/80" : "text-slate-600 dark:text-zinc-400"}`}>
+          {formatDesc(desc)}
+        </p>
       </div>
     </div>
   );
 }
 
-function ModuleDetailCard({ title, price, desc, desde = false }: { title: string; price: string; desc: string; desde?: boolean }) {
+function ModuleItem({ title, price, desc, dark = false }: { title: string; price: string; desc: string; dark?: boolean }) {
   return (
-    <div className="bg-white dark:bg-zinc-900 p-8 rounded-[2rem] border border-slate-100 dark:border-white/5 shadow-sm hover:shadow-xl dark:hover:shadow-none transition-all flex flex-col sm:flex-row gap-6 items-start sm:items-center group">
-      <div className="shrink-0 w-24 h-24 rounded-2xl bg-slate-50 dark:bg-white/5 flex items-center justify-center flex-col border border-slate-100 dark:border-white/10 group-hover:border-black dark:group-hover:border-white transition-colors duration-300">
-        {desde && <span className="text-[10px] uppercase tracking-widest text-slate-400 dark:text-zinc-500 font-bold mb-0.5">Desde</span>}
-        <span className="text-xl font-bold text-black dark:text-white">{price}</span>
-        <span className="text-[10px] uppercase tracking-wider text-slate-400 dark:text-zinc-500 font-bold mt-1">/mes</span>
+    <div className={`flex gap-5 p-4 rounded-2xl transition-all border ${dark ? "border-white/5 hover:bg-white/10" : "border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5"}`}>
+      <div className={`shrink-0 h-10 min-w-[70px] px-3 rounded-xl flex items-center justify-center font-bold text-sm ${dark ? "bg-white text-black" : "bg-black text-white dark:bg-white dark:text-black"}`}>
+        {price.split('/')[0]}
       </div>
       <div>
-        <h5 className="text-xl font-bold text-black dark:text-white mb-3">{title}</h5>
-        <p className="text-sm text-slate-500 dark:text-zinc-400 leading-relaxed">{desc}</p>
+        <h5 className={`font-bold mb-1 ${dark ? "text-white dark:text-black" : "text-black dark:text-white"}`}>{title}</h5>
+        <p className={`text-sm leading-relaxed ${dark ? "text-white/70 dark:text-black/70" : "text-slate-500 dark:text-zinc-400"}`}>{desc}</p>
       </div>
+    </div>
+  );
+}
+
+function FeatureMiniCard({ title, price, desc }: { title: string; price: string; desc: string }) {
+  return (
+    <div className="bg-white dark:bg-zinc-900/50 p-6 rounded-2xl border border-slate-100 dark:border-white/5 hover:border-black dark:hover:border-white transition-all">
+      <div className="flex justify-between items-start mb-3">
+        <h5 className="font-bold text-black dark:text-white">{title}</h5>
+        <span className="text-sm font-bold text-black dark:text-white bg-slate-50 dark:bg-white/5 px-2 py-0.5 rounded-lg">{price}</span>
+      </div>
+      <p className="text-xs text-slate-500 dark:text-zinc-400 leading-relaxed">{desc}</p>
     </div>
   );
 }

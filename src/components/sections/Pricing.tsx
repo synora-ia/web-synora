@@ -2,52 +2,51 @@ import Link from "next/link";
 
 const plans = [
   {
-    name: "Plan Esencial",
-    price: "79€",
-    setup: "250€",
-    tag: "No pierdas clientes",
+    name: "Plan Básico",
+    price: "99€",
+    setup: "350€",
+    tag: "Organiza y Captura",
     tagColor: "bg-green-50 text-green-600",
-    quote: '"Te aseguro que cualquier persona que te escriba recibe respuesta y entra en tu sistema."',
+    quote: '"Centraliza todos tus procesos en un solo dashboard inteligente."',
     features: [
-      "Web Connect Incluido",
-      "Chatbot de WhatsApp (Básico)",
+      "Dashboard, Agenda y ToDo",
+      "Gestión de Leads y Docs",
+      "Contestador IceBraker",
       "Automatización de contacto web",
-      "Sistema de captación de leads",
-      "Recordatorios automáticos simples",
+      "Recordatorios automáticos",
     ],
     recommended: false,
     buttonStyle: "bg-slate-100 text-black hover:bg-black hover:text-white",
   },
   {
-    name: "Plan Crecimiento",
-    price: "149€",
-    setup: "Desde 400€",
-    tag: "Sistema de ventas activo",
+    name: "Plan Medio",
+    price: "199€",
+    setup: "Desde 600€",
+    tag: "Ventas en Piloto Automático",
     tagColor: "bg-blue-50 text-blue-600",
-    quote: '"No solo respondes, sino que conviertes más clientes sin estar pendiente."',
+    quote: '"No solo organizas, sino que conviertes más clientes con chatbots y seguimientos."',
     features: [
-      "Web Connect Incluido",
-      "Todo lo del Plan Esencial",
-      "Dashboard de control y analítica",
-      "Seguimiento de leads avanzado (IA)",
-      "Agente Icebreaker automatizado",
+      "Todo lo del Plan Básico",
+      "Chatbot de WhatsApp y Web",
+      "WebConnect integrado",
+      "Seguimiento de leads avanzado",
     ],
     recommended: true,
     buttonStyle: "bg-black text-white",
   },
   {
     name: "Plan Pro",
-    price: "299€",
-    setup: "Desde 700€",
-    tag: "Negocio automatizado",
+    price: "399€",
+    setup: "Desde 900€",
+    tag: "Ecosistema Total",
     tagColor: "bg-red-50 text-red-600",
-    quote: '"Automatizamos parte de tu negocio para que funcione sin ti."',
+    quote: '"Automatizamos internamente tu negocio y analizamos cada dato para escalar."',
     features: [
-      "Web Connect Incluido",
-      "Todo lo del Plan Crecimiento",
-      "Chatbot de gestión interna (Equipo)",
-      "Integración con CRM / ERP propio",
-      "Automatizaciones personalizadas",
+      "Todo lo del Plan Medio",
+      "Analíticas avanzadas en dashboard",
+      "Chatbot de gestión interna",
+      "Transcripción de reuniones",
+      "Funnel de ventas completo",
     ],
     recommended: false,
     buttonStyle: "bg-black text-white",
@@ -83,8 +82,8 @@ export default function Pricing() {
               )}
               <div className="mb-8">
                 <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4 ${
-                  plan.name === "Plan Esencial" ? "bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400" :
-                  plan.name === "Plan Crecimiento" ? "bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400" :
+                  plan.name === "Plan Básico" ? "bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400" :
+                  plan.name === "Plan Medio" ? "bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400" :
                   "bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400"
                 }`}>
                   {plan.tag}
@@ -113,7 +112,7 @@ export default function Pricing() {
                   </li>
                 ))}
               </ul>
-              <Link href="/planes" className="text-center text-xs text-slate-400 dark:text-zinc-500 hover:text-black dark:hover:text-white mb-4 underline transition-colors">
+              <Link href="/planes" className="text-center text-xs text-slate-400 dark:text-zinc-500 hover:text-black dark:hover:text-white mb-4 transition-colors">
                 Ver detalles del plan
               </Link>
               <Link href="/contacto" className={`block w-full py-4 text-center rounded-2xl font-bold transition-all ${
@@ -133,25 +132,30 @@ export default function Pricing() {
         {/* Extras Section */}
         <div className="mt-20">
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-black dark:text-white mb-4">Módulos Adicionales</h3>
-            <p className="text-slate-500 dark:text-zinc-400">Personaliza tu sistema con herramientas específicas para tu sector.</p>
+            <h3 className="text-3xl font-bold text-black dark:text-white mb-4 tracking-tight">Módulos y Soluciones Independientes</h3>
+            <p className="text-slate-500 dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed">
+              <strong>No necesitas un plan mensual para empezar.</strong> Los módulos y soluciones a la carta pueden contratarse de forma independiente. Los packs especializados se añaden a tu suscripción mensual.
+            </p>
           </div>
           <div className="flex flex-wrap justify-center gap-6">
-            <div className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
-              <ExtraCard title="Captador Viviendas" price="Desde +49€" desc="Monitorización activa de portales inmobiliarios." />
+            <div className="w-full md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]">
+              <ExtraCard title="Pack Captación" price="+89€" subtext="/mes" desc="Captador, Publicador y Sugerencias IA para Inmobiliarias." />
             </div>
-            <div className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
-              <ExtraCard title="Property Intelligence" price="Desde +59€" desc="Valoraciones y análisis de mercado automáticos." />
+            <div className="w-full md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]">
+              <ExtraCard title="Pack Inteligencia" price="+149€" subtext="/mes" desc="Scraping automático, valoraciones y Property Intelligence." />
             </div>
-            <div className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
-              <ExtraCard title="Transcripción IA" price="Desde +69€" desc="Resumen automático de reuniones y llamadas." />
+            <div className="w-full md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]">
+              <ExtraCard title="Web a Medida & CRM" price="Desde 349€" subtext="pago único" desc="Diseño web desde cero y conexión de ecosistemas." />
             </div>
-            <div className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
-              <ExtraCard title="Web a Medida" price="Desde 349€" subtext="pago único" desc="Creación de web lista para IA. Mantenimiento +20€/mes." />
+            <div className="w-full md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]">
+              <ExtraCard title="Custom Advanced" price="+30-80€" subtext="/mes" desc="Automatizaciones exclusivas y procesos multi-paso 100% a medida." />
             </div>
-            <div className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
-              <ExtraCard title="Custom Adv." price="+30-80€" desc="Automatizaciones avanzadas personalizadas." />
-            </div>
+          </div>
+          <div className="mt-12 text-center">
+            <Link href="/planes#funcionalidades" className="inline-flex items-center text-sm font-bold text-slate-400 hover:text-black dark:hover:text-white transition-colors group">
+              Ver todas las funcionalidades individuales a la carta
+              <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </Link>
           </div>
         </div>
       </div>

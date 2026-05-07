@@ -18,6 +18,17 @@ export interface SectorData {
     title: string;
     description: string;
   }[];
+  dashboardBenefits: {
+    title: string;
+    description: string;
+    integration: string;
+    image: string;
+  };
+  recommendedPlan: {
+    name: string;
+    price: string;
+    modules: string[];
+  };
 }
 
 export const sectors: Record<string, SectorData> = {
@@ -55,6 +66,17 @@ export const sectors: Record<string, SectorData> = {
       { title: "Estado de Captaciones", description: "Controla visualmente en qué fase está cada propiedad, desde la primera llamada hasta la firma." },
       { title: "Análisis de Mercado Integrado", description: "Accede a las valoraciones de Property Intelligence directamente desde la ficha de cada cliente." },
     ],
+    dashboardBenefits: {
+      title: "Control total de tu cartera",
+      description: "Visualiza en tiempo real el funnel de captación, el rendimiento de tus agentes y el stock disponible sin cambiar de pestaña.",
+      integration: "Se integra con Idealista, Fotocasa y tu CRM actual para centralizar toda la operativa en una sola pantalla inteligente.",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+    },
+    recommendedPlan: {
+      name: "Plan Medio + Pack Inmobiliario",
+      price: "288€/mes",
+      modules: ["Pack Captación", "WebConnect", "Seguimiento Leads IA"],
+    }
   },
   clinicas: {
     slug: "clinicas",
@@ -90,6 +112,17 @@ export const sectors: Record<string, SectorData> = {
       { title: "Gestión de Cobros", description: "Automatización de facturación y recordatorios de pagos pendientes o bonos por agotar." },
       { title: "Encuestas de Satisfacción", description: "Feedback automático tras cada visita para mejorar el servicio y obtener reseñas positivas." },
     ],
+    dashboardBenefits: {
+      title: "Optimización de Agenda 360°",
+      description: "Gestiona citas, disponibilidad de doctores y salas desde un panel visual que predice huecos y minimiza el tiempo ocioso.",
+      integration: "Conexión bidireccional con tu software de gestión actual y WhatsApp Business para automatizar el ciclo del paciente.",
+      image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80",
+    },
+    recommendedPlan: {
+      name: "Plan Medio",
+      price: "199€/mes",
+      modules: ["Chatbot WhatsApp", "Recordatorios Automáticos", "Gestión Documental"],
+    }
   },
   restaurantes: {
     slug: "restaurantes",
@@ -125,6 +158,17 @@ export const sectors: Record<string, SectorData> = {
       { title: "Marketing Automatizado", description: "Envío de ofertas personalizadas en cumpleaños o fechas especiales del cliente." },
       { title: "Análisis de Ocupación", description: "Previsión de demanda para optimizar turnos y compras de materia prima." },
     ],
+    dashboardBenefits: {
+      title: "Tu libro de reservas, evolucionado",
+      description: "Visualiza la ocupación de tus salas, el histórico de clientes y las alertas de alergias en un panel táctil diseñado para el ritmo de la sala.",
+      integration: "Se integra con tu TPV y widget de reservas web para que no pierdas ni una mesa y reduzcas los no-shows a cero.",
+      image: "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=800&q=80",
+    },
+    recommendedPlan: {
+      name: "Plan Básico + Módulos",
+      price: "148€/mes",
+      modules: ["Chatbot WhatsApp", "Confirmación con Fianza", "Guest Intelligence"],
+    }
   },
   gimnasios: {
     slug: "gimnasios",
@@ -160,6 +204,17 @@ export const sectors: Record<string, SectorData> = {
       { title: "Gestión de Recobros", description: "Sistema automático que gestiona cuotas devueltas y avisos de caducidad de tarjetas." },
       { title: "Reserva de Clases", description: "App sencilla para que los socios gestionen sus plazas sin saturar la recepción." },
     ],
+    dashboardBenefits: {
+      title: "Gestión de Socios sin Fricción",
+      description: "Monitoriza el churn preventivo, las altas en tiempo real y la ocupación de clases dirigidas desde un panel de mando central.",
+      integration: "Conexión con tornos de acceso, pasarelas de pago y tu App de socios para automatizar toda la administración.",
+      image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80",
+    },
+    recommendedPlan: {
+      name: "Plan Medio",
+      price: "199€/mes",
+      modules: ["Altas Digitales", "Gestión de Recobros", "Analíticas de Churn"],
+    }
   },
   servicios: {
     slug: "servicios",
@@ -195,5 +250,16 @@ export const sectors: Record<string, SectorData> = {
       { title: "Generación de Presupuestos", description: "Envío automatizado de propuestas técnicas y seguimiento hasta el cierre de la obra." },
       { title: "Organización de Trabajos", description: "Asignación inteligente de tareas según agenda de técnicos y materiales necesarios." },
     ],
+    dashboardBenefits: {
+      title: "Gestión de Obra y Presupuestos",
+      description: "Visualiza qué presupuestos están calientes, asigna cuadrillas por zona y controla el margen de cada proyecto en tiempo real.",
+      integration: "Se integra con formularios de contacto, herramientas de firma digital y WhatsApp para cerrar contratos más rápido.",
+      image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80",
+    },
+    recommendedPlan: {
+      name: "Plan Medio + Custom Advanced",
+      price: "Desde 249€/mes",
+      modules: ["Gestión de Cuadrillas", "Seguimiento de Presupuestos", "Web a Medida"],
+    }
   },
 };

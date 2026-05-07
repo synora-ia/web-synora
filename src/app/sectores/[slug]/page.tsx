@@ -95,35 +95,103 @@ export default async function SectorPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Process/Dashboard Section */}
+      {/* Dashboard Section */}
       <section className="py-32 px-6 bg-white dark:bg-black transition-colors duration-300">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-8 text-black dark:text-white">Gestión Inteligente</h2>
-              <p className="text-lg text-slate-600 dark:text-zinc-400 mb-10">
-                Centralizamos cada aspecto de tu operativa en un único panel diseñado para la máxima eficiencia.
+              <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-4 block">Ecosistema Digital</span>
+              <h2 className="text-4xl md:text-5xl font-bold mb-8 text-black dark:text-white tracking-tight">
+                {sector.dashboardBenefits.title}
+              </h2>
+              <p className="text-lg text-slate-600 dark:text-zinc-400 mb-8 leading-relaxed">
+                {sector.dashboardBenefits.description}
               </p>
 
-              <div className="space-y-8">
+              <div className="bg-slate-50 dark:bg-zinc-900/50 p-8 rounded-3xl border border-slate-100 dark:border-white/5 mb-10">
+                <h5 className="font-bold text-black dark:text-white mb-3 flex items-center">
+                  <svg className="w-5 h-5 mr-2 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                  Integración con tu stack actual
+                </h5>
+                <p className="text-sm text-slate-600 dark:text-zinc-400">
+                  {sector.dashboardBenefits.integration}
+                </p>
+              </div>
+
+              <div className="space-y-6">
                 {sector.process.map((step, index) => (
-                  <div key={index} className="flex items-start space-x-4">
-                    <div className="w-6 h-6 bg-black dark:bg-white text-white dark:text-black rounded-full flex items-center justify-center shrink-0 mt-1 text-xs font-bold">
-                      {index + 1}
+                  <div key={index} className="flex items-start space-x-4 group">
+                    <div className="w-6 h-6 bg-black dark:bg-white text-white dark:text-black rounded-full flex items-center justify-center shrink-0 mt-1 text-[10px] font-bold transition-transform group-hover:scale-110">
+                      0{index + 1}
                     </div>
                     <div>
-                      <h5 className="font-bold text-lg text-black dark:text-white">{step.title}</h5>
-                      <p className="text-slate-500 dark:text-zinc-400">{step.description}</p>
+                      <h5 className="font-bold text-black dark:text-white">{step.title}</h5>
+                      <p className="text-sm text-slate-500 dark:text-zinc-500">{step.description}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="bg-slate-50 dark:bg-zinc-900/50 p-8 rounded-[3rem] shadow-xl dark:shadow-none border border-slate-100 dark:border-white/5">
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Dashboard" className="rounded-2xl shadow-lg mb-6 grayscale-[20%] dark:grayscale-0 transition-all duration-700" />
-              <p className="text-center text-sm font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest">Panel de Control Centralizado</p>
+            <div className="relative">
+              <div className="absolute -inset-4 bg-gradient-to-tr from-blue-500/10 to-purple-500/10 blur-3xl rounded-[4rem] -z-10"></div>
+              <div className="bg-white dark:bg-zinc-900 p-4 rounded-[3rem] shadow-2xl dark:shadow-none border border-slate-100 dark:border-white/5 overflow-hidden">
+                <img 
+                  src={sector.dashboardBenefits.image} 
+                  alt="Dashboard Preview" 
+                  className="rounded-[2rem] w-full aspect-square lg:aspect-auto lg:h-[600px] object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-700" 
+                />
+                <div className="p-6 text-center">
+                  <p className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-[0.2em]">Panel Central de Operaciones</p>
+                </div>
+              </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Recommended Pricing Section */}
+      <section className="py-32 px-6 bg-slate-50 dark:bg-zinc-900/30 border-t border-slate-100 dark:border-white/5 transition-colors duration-300">
+        <div className="max-w-4xl mx-auto text-center">
+          <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-6 block">Configuración Recomendada</span>
+          <h2 className="text-4xl font-bold text-black dark:text-white mb-12 tracking-tight">Tu sistema ideal para {sector.category}</h2>
+          
+          <div className="bg-white dark:bg-zinc-900 p-12 rounded-[3rem] border-2 border-black dark:border-white relative overflow-hidden shadow-2xl">
+            <div className="absolute top-0 right-0 p-8">
+              <span className="bg-black dark:bg-white text-white dark:text-black px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">
+                Best Value
+              </span>
+            </div>
+            
+            <h3 className="text-2xl font-bold text-black dark:text-white mb-2">{sector.recommendedPlan.name}</h3>
+            <div className="text-5xl font-bold text-black dark:text-white mb-8">{sector.recommendedPlan.price}</div>
+            
+            <div className="flex flex-wrap justify-center gap-3 mb-12">
+              {sector.recommendedPlan.modules.map((mod, i) => (
+                <span key={i} className="px-4 py-2 bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 rounded-xl text-sm font-medium text-slate-600 dark:text-zinc-300">
+                  {mod}
+                </span>
+              ))}
+            </div>
+            
+            <Link href="/contacto" className="inline-block px-12 py-5 bg-black dark:bg-white text-white dark:text-black rounded-full font-bold hover:scale-105 transition-transform">
+              Empezar ahora
+            </Link>
+            
+            <p className="mt-6 text-xs text-slate-400 dark:text-zinc-500">
+              * Incluye setup inicial y formación de equipo.
+            </p>
+          </div>
+          
+          <div className="mt-12">
+            <Link href="/planes" className="text-sm font-bold text-slate-400 hover:text-black dark:hover:text-white transition-colors group">
+              Ver todos los planes y módulos individuales 
+              <svg className="w-4 h-4 ml-2 inline-block group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </Link>
           </div>
         </div>
       </section>
