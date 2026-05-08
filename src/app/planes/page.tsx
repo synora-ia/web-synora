@@ -233,48 +233,6 @@ export default function PlanesPage() {
             </div>
           </div>
 
-        {/* Services / Trades Section */}
-        <div className="mb-16">
-          <div className="grid lg:grid-cols-1 gap-8">
-            <div className="bg-white dark:bg-zinc-900 rounded-[2.5rem] border border-slate-100 dark:border-white/5 overflow-hidden flex flex-col md:flex-row pricing-card transition-all duration-300">
-              <div className="p-10 md:w-1/3 border-b md:border-b-0 md:border-r border-slate-100 dark:border-white/5 bg-slate-50/50 dark:bg-zinc-900/50">
-                <div className="flex justify-between items-start mb-4">
-                  <div>
-                    <span className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400">Pack Gestión de Obra</span>
-                    <h4 className="text-3xl font-bold text-black dark:text-white">Gestión de Obra</h4>
-                    <p className="text-slate-500 dark:text-zinc-400 mt-2 text-sm">Control total de presupuestos y gremios en movilidad.</p>
-                  </div>
-                  <div className="text-right">
-                    <div className="text-4xl font-bold text-black dark:text-white">+89€</div>
-                    <div className="text-xs text-slate-400 uppercase tracking-wider font-bold mt-1">/mes Pack Completo</div>
-                  </div>
-                </div>
-              </div>
-              <div className="p-8 flex-1 grid md:grid-cols-2 gap-4">
-                <ModuleItem 
-                  title="Presupuestos Voz/Foto" 
-                  price="+49€/mes" 
-                  desc="IA que genera estimaciones a partir de audios o imágenes de obra." 
-                />
-                <ModuleItem 
-                  title="Gestión de Gremios" 
-                  price="+39€/mes" 
-                  desc="Notificaciones automáticas y coordinación de tareas a oficiales." 
-                />
-                <ModuleItem 
-                  title="Firma Digital" 
-                  price="+29€/mes" 
-                  desc="Aceptación de presupuestos por móvil con validez legal." 
-                />
-                <ModuleItem 
-                  title="Archivo Visual IA" 
-                  price="+29€/mes" 
-                  desc="Organización inteligente de fotos de obra por proyecto." 
-                />
-              </div>
-            </div>
-          </div>
-        </div>
 
 
           {/* Setup & Infrastructure Section */}
