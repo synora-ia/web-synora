@@ -140,12 +140,12 @@ export default function Carousel() {
           ))}
         </div>
 
-        <div className="flex justify-center space-x-3 mt-16">
+        <div className="flex justify-center items-center space-x-3 mt-16 h-6">
           {slides.map((_, index) => (
             <button 
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`w-12 h-1 rounded-full transition-all duration-300 ${
+              className={`w-12 h-1 rounded-full transition-all duration-300 hover:h-2 hover:bg-white/60 ${
                 index === currentSlide ? "bg-white/40" : "bg-white/10"
               }`}
             />
