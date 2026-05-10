@@ -26,8 +26,3 @@ Este documento contiene las propuestas de packs especializados que se han diseñ
 - **Menú Dinámico:** IA que traduce la carta y ofrece sugerencias de maridaje o platos del día.
 - **IA de Reputación:** Gestión automática de respuestas a reseñas en Google/TripAdvisor con análisis de sentimiento.
 
-## 5. Sector Reformas / Servicios
-**Pack Gestión de Obra (+89€/mes)**
-- **Firma Digital:** Aceptación legal de presupuestos desde el móvil del cliente.
-- **Gestión de Gremios:** Panel de control para coordinar avisos y tareas a oficiales externos.
-- **Archivo Visual:** IA que organiza las fotos de obra por proyecto y fase de forma automática.

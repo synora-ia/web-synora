@@ -53,18 +53,6 @@ const slides = [
     link: "/restaurantes",
     image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80"
   },
-  {
-    category: "Sector Servicios",
-    title: "Soluciones para",
-    titleSerif: "Reformas y Obras.",
-    description: "Automatizamos presupuestos, agendas y seguimiento de trabajos. Control total de tus cuadrillas y materiales desde un solo panel.",
-    features: [
-      { title: "Presupuestos IA", desc: "Generación y envío automático de propuestas técnicas en minutos." },
-      { title: "Gestión de Gremios", desc: "Coordinación automática de técnicos y materiales según la obra." }
-    ],
-    link: "/servicios",
-    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80"
-  }
 ];
 
 export default function Carousel() {
