@@ -1,7 +1,15 @@
+"use client";
+
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
+import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 
 export default function Navbar() {
+  const pathname = usePathname();
+
+  const isDashboard = pathname === "/dashboard";
+
   return (
     <nav className="fixed top-0 w-full z-40 glass-nav transition-all duration-300 dark:bg-black/50">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
@@ -14,6 +22,9 @@ export default function Navbar() {
           </Link>
           <Link href="/#que-hacemos" className="hover:text-black dark:hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white rounded px-1">
             ¿Qué hacemos?
+          </Link>
+          <Link href="/#plataforma" className="hover:text-black dark:hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white rounded px-1">
+            Plataforma
           </Link>
           <Link href="/#sectores" className="hover:text-black dark:hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white rounded px-1">
             Sectores

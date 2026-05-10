@@ -8,13 +8,13 @@ export default function ClinicasPage() {
       <Navbar />
       
       {/* Sector Hero */}
-      <header className="hero-gradient pt-40 pb-24 px-6 border-b border-slate-100 dark:border-white/5">
+      <header className="hero-gradient pt-32 md:pt-40 pb-12 md:pb-24 px-6 border-b border-slate-100 dark:border-white/5">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
           <div>
             <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-4 block">
               Especialización / Salud
             </span>
-            <h1 className="text-6xl md:text-7xl font-bold tracking-tight mb-8 text-black dark:text-white">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight mb-8 text-black dark:text-white leading-tight">
               Más que una agenda… <br />
               <span className="font-serif-italic text-slate-500 dark:text-zinc-500">un sistema de cuidado.</span>
             </h1>
@@ -38,27 +38,27 @@ export default function ClinicasPage() {
       </header>
 
       {/* Patient Journey Section - Unique for Healthcare */}
-      <section className="py-32 px-6 bg-white dark:bg-black overflow-hidden">
+      <section className="py-16 md:py-32 px-6 bg-white dark:bg-black overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-24">
-            <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-6">El Ciclo del Paciente 360°</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white mb-6">El Ciclo del Paciente 360°</h2>
             <p className="text-slate-500 dark:text-zinc-400">Automatización humana que mejora la adherencia al tratamiento.</p>
           </div>
 
           <div className="relative">
             <div className="absolute top-1/2 left-0 w-full h-0.5 bg-slate-100 dark:bg-white/5 -translate-y-1/2 hidden lg:block"></div>
-            <div className="grid lg:grid-cols-3 gap-12 relative z-10">
-              <div className="bg-white dark:bg-zinc-900 p-10 rounded-[3rem] border border-slate-100 dark:border-white/5 shadow-xl shadow-slate-200/20 dark:shadow-none">
+            <div className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide lg:grid lg:grid-cols-3 gap-6 lg:gap-12 relative z-10 pb-8 lg:pb-0 -mx-6 px-6 lg:mx-0 lg:px-0 py-4">
+              <div className="min-w-[85vw] snap-center lg:min-w-0 bg-white dark:bg-zinc-900 p-10 rounded-[3rem] border border-slate-100 dark:border-white/5 shadow-xl shadow-slate-200/20 dark:shadow-none">
                 <div className="w-12 h-12 bg-blue-500 text-white rounded-2xl flex items-center justify-center mb-8 font-bold">01</div>
                 <h4 className="text-xl font-bold mb-4 text-black dark:text-white">Reserva Inteligente</h4>
                 <p className="text-sm text-slate-500 dark:text-zinc-400 leading-relaxed">El paciente reserva por WhatsApp o Web. La IA confirma la cita, asigna doctor y sala, y envía las instrucciones previas automáticamente.</p>
               </div>
-              <div className="bg-white dark:bg-zinc-900 p-10 rounded-[3rem] border border-slate-100 dark:border-white/5 shadow-xl shadow-slate-200/20 dark:shadow-none">
+              <div className="min-w-[85vw] snap-center lg:min-w-0 bg-white dark:bg-zinc-900 p-10 rounded-[3rem] border border-slate-100 dark:border-white/5 shadow-xl shadow-slate-200/20 dark:shadow-none">
                 <div className="w-12 h-12 bg-purple-500 text-white rounded-2xl flex items-center justify-center mb-8 font-bold">02</div>
                 <h4 className="text-xl font-bold mb-4 text-black dark:text-white">Recordatorios Sin Falla</h4>
                 <p className="text-sm text-slate-500 dark:text-zinc-400 leading-relaxed">Secuencia de WhatsApp y SMS coordinados 24h y 2h antes. Reducción drástica del ausentismo y huecos vacíos en agenda.</p>
               </div>
-              <div className="bg-white dark:bg-zinc-900 p-10 rounded-[3rem] border border-slate-100 dark:border-white/5 shadow-xl shadow-slate-200/20 dark:shadow-none">
+              <div className="min-w-[85vw] snap-center lg:min-w-0 bg-white dark:bg-zinc-900 p-10 rounded-[3rem] border border-slate-100 dark:border-white/5 shadow-xl shadow-slate-200/20 dark:shadow-none">
                 <div className="w-12 h-12 bg-green-500 text-white rounded-2xl flex items-center justify-center mb-8 font-bold">03</div>
                 <h4 className="text-xl font-bold mb-4 text-black dark:text-white">Post-Tratamiento</h4>
                 <p className="text-sm text-slate-500 dark:text-zinc-400 leading-relaxed">Seguimiento de evolución, encuesta de satisfacción y recordatorio automático para la próxima sesión del plan de cuidado.</p>
@@ -69,7 +69,7 @@ export default function ClinicasPage() {
       </section>
 
       {/* No-Show Impact Section */}
-      <section className="py-32 px-6 bg-slate-50 dark:bg-zinc-900/30">
+      <section className="py-16 md:py-32 px-6 bg-slate-50 dark:bg-zinc-900/30">
         <div className="max-w-7xl mx-auto">
           <div className="bg-black dark:bg-white text-white dark:text-black rounded-[4rem] p-16 md:p-24 flex flex-col md:flex-row items-center gap-16">
             <div className="flex-1 text-center md:text-left">
@@ -95,7 +95,7 @@ export default function ClinicasPage() {
       </section>
 
       {/* Dashboard Section */}
-      <section className="py-32 px-6 bg-white dark:bg-black transition-colors duration-300">
+      <section className="py-16 md:py-32 px-6 bg-white dark:bg-black transition-colors duration-300">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div>
@@ -146,7 +146,7 @@ export default function ClinicasPage() {
       </section>
 
       {/* Recommended Pricing Section */}
-      <section className="py-32 px-6 bg-slate-50 dark:bg-zinc-900/30 transition-colors duration-300">
+      <section className="py-16 md:py-32 px-6 bg-slate-50 dark:bg-zinc-900/30 transition-colors duration-300">
         <div className="max-w-4xl mx-auto text-center">
           <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-6 block">Configuración Recomendada</span>
           <h2 className="text-4xl font-bold text-black dark:text-white mb-12 tracking-tight">Tu sistema ideal para Clínicas</h2>

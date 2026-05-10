@@ -82,7 +82,7 @@ export default function Carousel() {
   return (
     <section 
       id="sectores-carousel" 
-      className="bg-black py-32 px-6 relative overflow-hidden border-y border-white/5 transition-colors duration-300"
+      className="bg-black py-16 md:py-32 px-6 relative overflow-hidden border-y border-white/5 transition-colors duration-300"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >

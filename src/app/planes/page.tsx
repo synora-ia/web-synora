@@ -7,11 +7,11 @@ export default function PlanesPage() {
   return (
     <main className="bg-white dark:bg-black transition-colors duration-300">
       <Navbar />
-      
+
       {/* Hero Section */}
-      <header className="hero-gradient pt-40 pb-20 px-6 text-center">
+      <header className="hero-gradient pt-32 md:pt-40 pb-12 md:pb-20 px-6 text-center">
         <div className="max-w-4xl mx-auto animate-fade-in-up">
-          <h1 className="text-6xl md:text-8xl font-bold text-black dark:text-white mb-8 tracking-tight leading-[0.95]">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold text-black dark:text-white mb-8 tracking-tight leading-[1.1] md:leading-[0.95]">
             Tu escala de <br /> <span className="font-serif-italic text-slate-500 dark:text-zinc-500">crecimiento.</span>
           </h1>
           <p className="text-xl text-slate-600 dark:text-zinc-400 max-w-2xl mx-auto">
@@ -21,11 +21,12 @@ export default function PlanesPage() {
       </header>
 
       {/* Comparative Matrix */}
-      <section className="py-24 px-6 bg-white dark:bg-black transition-colors duration-300">
+      <section className="py-12 md:py-24 px-6 bg-white dark:bg-black transition-colors duration-300">
         <div className="max-w-6xl mx-auto">
-          <div className="bg-white dark:bg-zinc-900 rounded-[2.5rem] shadow-sm dark:shadow-none border border-black/5 dark:border-white/5 overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse">
+          <div className="relative bg-white dark:bg-zinc-900 rounded-[2.5rem] shadow-sm dark:shadow-none border border-black/5 dark:border-white/5 overflow-hidden">
+            <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white dark:from-zinc-900 to-transparent z-10 pointer-events-none md:hidden"></div>
+            <div className="overflow-x-auto relative z-0 pb-4">
+              <table className="w-full text-left border-collapse min-w-[800px]">
                 <thead>
                   <tr className="border-b border-slate-100 dark:border-white/5">
                     <th className="p-8 text-slate-400 dark:text-zinc-500 font-medium text-sm">Características</th>
@@ -73,7 +74,7 @@ export default function PlanesPage() {
       </section>
 
       {/* What is an Audit Section */}
-      <section className="py-24 px-6 bg-white dark:bg-black transition-colors duration-300 border-t border-slate-50 dark:border-white/5">
+      <section className="py-12 md:py-24 px-6 bg-white dark:bg-black transition-colors duration-300 border-t border-slate-50 dark:border-white/5">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-black dark:text-white mb-4 tracking-tight">¿Cuándo recomendamos una Auditoría?</h2>
@@ -109,12 +110,12 @@ export default function PlanesPage() {
       </section>
 
       {/* Why "Everything Included"? */}
-      <section className="py-32 px-6 bg-white dark:bg-black transition-colors duration-300">
+      <section className="py-16 md:py-32 px-6 bg-white dark:bg-black transition-colors duration-300">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-5xl font-bold mb-16 text-center text-black dark:text-white tracking-tight leading-[1.1]">
             Sin facturas sorpresa. <br /> <span className="font-serif-italic text-slate-400 dark:text-zinc-500">Tu cuota mensual lo cubre todo.</span>
           </h2>
-          
+
           <div className="grid md:grid-cols-2 gap-16">
             <div className="space-y-6">
               <h4 className="text-2xl font-bold text-black dark:text-white">¿Qué pagamos nosotros?</h4>
@@ -145,7 +146,7 @@ export default function PlanesPage() {
       </section>
 
       {/* Additional Modules */}
-      <section className="py-24 px-6 bg-slate-50 dark:bg-zinc-900/30 border-t border-slate-100 dark:border-white/5 transition-colors duration-300">
+      <section className="py-12 md:py-24 px-6 bg-slate-50 dark:bg-zinc-900/30 border-t border-slate-100 dark:border-white/5 transition-colors duration-300">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-black dark:text-white mb-4 tracking-tight">Packs Especializados</h2>
@@ -162,7 +163,7 @@ export default function PlanesPage() {
                 <div className="p-10 border-b border-slate-100 dark:border-white/5 bg-slate-50/50 dark:bg-zinc-900/50">
                   <div className="flex justify-between items-start mb-4">
                     <div>
-                      <span className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400">Pack Inmobiliario</span>
+                      <span className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400">Pack Captación</span>
                       <h4 className="text-3xl font-bold text-black dark:text-white">Captación</h4>
                       <p className="text-slate-500 dark:text-zinc-400 mt-2 text-sm max-w-[200px]">Gestión de propiedades, cruce con clientes y publicación centralizada.</p>
                     </div>
@@ -174,20 +175,20 @@ export default function PlanesPage() {
                 </div>
                 <div className="p-8 flex-1 flex flex-col gap-2">
                   <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-2 px-4">Módulos Individuales</span>
-                  <ModuleItem 
-                    title="Captador Manual" 
-                    price="+29€/mes" 
-                    desc="Herramienta en dashboard para guardar y clasificar propietarios." 
+                  <ModuleItem
+                    title="Captador Manual"
+                    price="+29€/mes"
+                    desc="Herramienta en dashboard para guardar y clasificar propietarios."
                   />
-                  <ModuleItem 
-                    title="Publicador Propiedades" 
-                    price="+39€/mes" 
-                    desc="Sincronización de inmuebles desde el dashboard a tu web." 
+                  <ModuleItem
+                    title="Publicador Propiedades"
+                    price="+39€/mes"
+                    desc="Sincronización de inmuebles desde el dashboard a tu web."
                   />
-                  <ModuleItem 
-                    title="Sugerencias IA" 
-                    price="+39€/mes" 
-                    desc="Cruces automáticos de requerimientos de clientes con propiedades." 
+                  <ModuleItem
+                    title="Sugerencias IA"
+                    price="+39€/mes"
+                    desc="Cruces automáticos de requerimientos de clientes con propiedades."
                   />
                 </div>
               </div>
@@ -198,7 +199,7 @@ export default function PlanesPage() {
                 <div className="p-10 border-b border-white/10 dark:border-black/10 relative z-10">
                   <div className="flex justify-between items-start mb-4">
                     <div>
-                      <span className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4 bg-white/20 dark:bg-black/10 text-white dark:text-black">Pack Avanzado</span>
+                      <span className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4 bg-white/20 dark:bg-black/10 text-white dark:text-black">Pack Inteligencia</span>
                       <h4 className="text-3xl font-bold">Inteligencia</h4>
                       <p className="text-white/70 dark:text-black/70 mt-2 text-sm max-w-[220px]">Automatización total del mercado y generación de tasaciones IA.</p>
                     </div>
@@ -210,22 +211,22 @@ export default function PlanesPage() {
                 </div>
                 <div className="p-8 flex-1 flex flex-col gap-2 relative z-10">
                   <span className="text-xs font-bold text-white/50 dark:text-black/40 uppercase tracking-widest mb-2 px-4">Módulos Individuales</span>
-                  <ModuleItem 
-                    title="Captador Automático" 
-                    price="+69€/mes" 
-                    desc="Scraping de portales y alerta automática de particulares." 
+                  <ModuleItem
+                    title="Captador Automático"
+                    price="+69€/mes"
+                    desc="Scraping de portales y alerta automática de particulares."
                     dark
                   />
-                  <ModuleItem 
-                    title="Property Intelligence" 
-                    price="+59€/mes" 
-                    desc="Análisis de mercado automático para zonas concretas." 
+                  <ModuleItem
+                    title="Property Intelligence"
+                    price="+59€/mes"
+                    desc="Análisis de mercado automático para zonas concretas."
                     dark
                   />
-                  <ModuleItem 
-                    title="Informes de Tasación" 
-                    price="+49€/mes" 
-                    desc="Generación de PDF automático con valoración IA para clientes." 
+                  <ModuleItem
+                    title="Informes de Tasación"
+                    price="+49€/mes"
+                    desc="Generación de PDF automático con valoración IA para clientes."
                     dark
                   />
                 </div>
@@ -233,57 +234,15 @@ export default function PlanesPage() {
             </div>
           </div>
 
-        {/* Services / Trades Section */}
-        <div className="mb-16">
-          <div className="grid lg:grid-cols-1 gap-8">
-            <div className="bg-white dark:bg-zinc-900 rounded-[2.5rem] border border-slate-100 dark:border-white/5 overflow-hidden flex flex-col md:flex-row pricing-card transition-all duration-300">
-              <div className="p-10 md:w-1/3 border-b md:border-b-0 md:border-r border-slate-100 dark:border-white/5 bg-slate-50/50 dark:bg-zinc-900/50">
-                <div className="flex justify-between items-start mb-4">
-                  <div>
-                    <span className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400">Pack Gestión de Obra</span>
-                    <h4 className="text-3xl font-bold text-black dark:text-white">Gestión de Obra</h4>
-                    <p className="text-slate-500 dark:text-zinc-400 mt-2 text-sm">Control total de presupuestos y gremios en movilidad.</p>
-                  </div>
-                  <div className="text-right">
-                    <div className="text-4xl font-bold text-black dark:text-white">+89€</div>
-                    <div className="text-xs text-slate-400 uppercase tracking-wider font-bold mt-1">/mes Pack Completo</div>
-                  </div>
-                </div>
-              </div>
-              <div className="p-8 flex-1 grid md:grid-cols-2 gap-4">
-                <ModuleItem 
-                  title="Presupuestos Voz/Foto" 
-                  price="+49€/mes" 
-                  desc="IA que genera estimaciones a partir de audios o imágenes de obra." 
-                />
-                <ModuleItem 
-                  title="Gestión de Gremios" 
-                  price="+39€/mes" 
-                  desc="Notificaciones automáticas y coordinación de tareas a oficiales." 
-                />
-                <ModuleItem 
-                  title="Firma Digital" 
-                  price="+29€/mes" 
-                  desc="Aceptación de presupuestos por móvil con validez legal." 
-                />
-                <ModuleItem 
-                  title="Archivo Visual IA" 
-                  price="+29€/mes" 
-                  desc="Organización inteligente de fotos de obra por proyecto." 
-                />
-              </div>
-            </div>
-          </div>
-        </div>
 
 
           {/* Setup & Infrastructure Section */}
-          <div className="mt-32 pt-20 border-t border-slate-100 dark:border-white/5">
+          <div className="mt-16 md:mt-32 pt-10 md:pt-20 border-t border-slate-100 dark:border-white/5">
             <div className="text-center mb-16">
-              <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-4 block">Base y Despliegue</span>
-              <h3 className="text-4xl font-bold text-black dark:text-white mb-4 tracking-tight">Infraestructura y Servicios de Implantación</h3>
+              <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-4 block">Servicios Previos (Pago Único)</span>
+              <h3 className="text-4xl font-bold text-black dark:text-white mb-4 tracking-tight">Infraestructura y Consultoría</h3>
               <p className="text-slate-500 dark:text-zinc-400 max-w-2xl mx-auto">
-                Servicios de <strong>pago único</strong> para construir la base sólida que tu automatización necesita.
+                Servicios opcionales previos al <strong>Setup Inicial</strong>. Preparamos el terreno construyendo tu web o auditando tus procesos para que la automatización posterior sea un éxito.
               </p>
             </div>
 
@@ -320,131 +279,155 @@ export default function PlanesPage() {
                   </div>
                   <div className="text-right">
                     <div className="text-3xl font-bold text-black dark:text-white">Desde 200€</div>
-                    <div className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">Pago Único</div>
+                    <div className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">Opcional</div>
                   </div>
                 </div>
                 <h4 className="text-2xl font-bold text-black dark:text-white mb-4">Auditoría & Consultoría ISO 9001</h4>
                 <p className="text-slate-600 dark:text-zinc-400 leading-relaxed mb-6">
-                  Analizamos tus procesos actuales y diseñamos el mapa de automatización. Nuestro servicio de consultoría permite a tu negocio obtener el <strong>Certificado ISO 9001</strong> de gestión de calidad.
+                  Analizamos tus procesos actuales y diseñamos el mapa de automatización. Si tu negocio tiene procesos desordenados, esta sesión previa nos asegura adaptar la IA a tu realidad.
                 </p>
                 <ul className="space-y-3 mb-8">
                   <ListItem iconColor="text-amber-500">Mapeo de Procesos Críticos</ListItem>
                   <ListItem iconColor="text-amber-500">Preparación para Certificación ISO</ListItem>
-                  <ListItem iconColor="text-amber-500">Roadmap de Digitalización Personalizado</ListItem>
+                  <ListItem iconColor="text-amber-500">Roadmap de Digitalización</ListItem>
                 </ul>
               </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* Custom Advanced Section */}
+      <section className="py-12 md:py-24 px-6 bg-white dark:bg-black transition-colors duration-300 border-y border-slate-100 dark:border-white/5 relative overflow-hidden">
+
+
+        <div className="max-w-5xl mx-auto px-6 relative z-10">
+          <div className="flex flex-col md:flex-row items-center gap-12">
+            <div className="flex-1">
+              <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-[0.2em] mb-4 block">
+                Ingeniería de Procesos
+              </span>
+              <h3 className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-8 tracking-tight">Custom Advanced</h3>
+              <p className="text-xl text-slate-600 dark:text-zinc-400 mb-10 leading-relaxed max-w-2xl">
+                ¿Tienes un proceso operativo muy específico o necesitas flujos multi-paso complejos? Diseñamos y mantenemos automatizaciones de alto nivel adaptadas al 100% a tu lógica de negocio.
+              </p>
+              <div className="flex flex-wrap gap-x-8 gap-y-4">
+                <div className="flex items-center gap-2 text-sm font-bold text-black dark:text-white">
+                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                  Integración Software Propietario
+                </div>
+                <div className="flex items-center gap-2 text-sm font-bold text-black dark:text-white">
+                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                  Flujos de Decisión Autónomos
+                </div>
+                <div className="flex items-center gap-2 text-sm font-bold text-black dark:text-white">
+                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                  Mantenimiento y Soporte L1
+                </div>
+              </div>
+            </div>
+
+            <div className="w-full md:w-auto shrink-0 text-center md:text-left">
+              <div className="text-sm font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-4">Inversión Estimada</div>
+              <div className="text-6xl font-bold text-black dark:text-white mb-2">+30-80€</div>
+              <div className="text-sm font-bold text-slate-400 dark:text-zinc-500 mb-8 uppercase tracking-widest">/mes</div>
+
+              <Link href="/contacto" className="block w-full px-12 py-5 bg-black dark:bg-white text-white dark:text-black rounded-2xl font-bold hover:scale-[1.02] active:scale-[0.98] transition-all text-center">
+                Consultar Viabilidad
+              </Link>
+
             </div>
           </div>
         </div>
       </section>
 
-      {/* Custom Advanced Section */}
-      <section className="py-24 px-6 bg-white dark:bg-black transition-colors duration-300 border-y border-slate-100 dark:border-white/5 relative overflow-hidden">
-
-            
-            <div className="max-w-5xl mx-auto px-6 relative z-10">
-              <div className="flex flex-col md:flex-row items-center gap-12">
-                <div className="flex-1">
-                  <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-[0.2em] mb-4 block">
-                    Ingeniería de Procesos
-                  </span>
-                  <h3 className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-8 tracking-tight">Custom Advanced</h3>
-                  <p className="text-xl text-slate-600 dark:text-zinc-400 mb-10 leading-relaxed max-w-2xl">
-                    ¿Tienes un proceso operativo muy específico o necesitas flujos multi-paso complejos? Diseñamos y mantenemos automatizaciones de alto nivel adaptadas al 100% a tu lógica de negocio.
-                  </p>
-                  <div className="flex flex-wrap gap-x-8 gap-y-4">
-                    <div className="flex items-center gap-2 text-sm font-bold text-black dark:text-white">
-                      <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
-                      Integración Software Propietario
-                    </div>
-                    <div className="flex items-center gap-2 text-sm font-bold text-black dark:text-white">
-                      <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
-                      Flujos de Decisión Autónomos
-                    </div>
-                    <div className="flex items-center gap-2 text-sm font-bold text-black dark:text-white">
-                      <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
-                      Mantenimiento y Soporte L1
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="w-full md:w-auto shrink-0 text-center md:text-left">
-                  <div className="text-sm font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-4">Inversión Estimada</div>
-                  <div className="text-6xl font-bold text-black dark:text-white mb-2">+30-80€</div>
-                  <div className="text-sm font-bold text-slate-400 dark:text-zinc-500 mb-8 uppercase tracking-widest">/mes</div>
-                  
-                  <Link href="/contacto" className="block w-full px-12 py-5 bg-black dark:bg-white text-white dark:text-black rounded-2xl font-bold hover:scale-[1.02] active:scale-[0.98] transition-all text-center">
-                    Consultar Viabilidad
-                  </Link>
-
-                </div>
+      {/* A la Carta Section */}
+      <section id="funcionalidades" className="py-12 md:py-24 px-6 bg-slate-50 dark:bg-zinc-900/30 transition-colors duration-300 scroll-mt-20 border-t border-slate-100 dark:border-white/5">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-4 block">Flexibilidad Total</span>
+            <h3 className="text-3xl font-bold text-black dark:text-white mb-4 tracking-tight">Funcionalidades a la Carta (Sin Plan)</h3>
+            <p className="text-slate-500 dark:text-zinc-400 max-w-2xl mx-auto">
+              <strong>No necesitas contratar un plan mensual.</strong> Adquiere cualquier funcionalidad o módulo de forma 100% independiente para digitalizar procesos específicos de tu negocio.
+            </p>
+          </div>
+          <div className="space-y-16">
+            <div>
+              <h4 className="text-xl font-bold text-black dark:text-white mb-6 border-b border-slate-100 dark:border-white/5 pb-3">Core & Gestión</h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <FeatureMiniCard title="Dashboard Core" price="+39€" desc="Acceso a tu panel de control, agenda y tareas." />
+                <FeatureMiniCard title="Gestión Leads" price="+39€" desc="Sistema centralizado de clientes y documentos." />
+                <FeatureMiniCard title="Analíticas IA" price="+29€" desc="Visualización de datos en tiempo real." />
+                <FeatureMiniCard title="Gestión Interna" price="+39€" desc="Tu asistente IA para consultas privadas." />
+                <FeatureMiniCard title="Transcripciones" price="+39€" desc="Resúmenes de reuniones automáticos." />
               </div>
             </div>
-        </section>
 
-      {/* A la Carta Section */}
-      <section id="funcionalidades" className="py-24 px-6 bg-slate-50 dark:bg-zinc-900/30 transition-colors duration-300 scroll-mt-20 border-t border-slate-100 dark:border-white/5">
-        <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-4 block">Flexibilidad Total</span>
-              <h3 className="text-3xl font-bold text-black dark:text-white mb-4 tracking-tight">Funcionalidades a la Carta (Sin Plan)</h3>
-              <p className="text-slate-500 dark:text-zinc-400 max-w-2xl mx-auto">
-                <strong>No necesitas contratar un plan mensual.</strong> Adquiere cualquier funcionalidad o módulo de forma 100% independiente para digitalizar procesos específicos de tu negocio.
-              </p>
+            <div>
+              <h4 className="text-xl font-bold text-black dark:text-white mb-6 border-b border-slate-100 dark:border-white/5 pb-3">Atención & Seguimiento</h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <FeatureMiniCard title="Contestador IceBraker" price="+29€" desc="Respuesta automática inicial a nuevos leads." />
+                <FeatureMiniCard title="Recordatorios IA" price="+29€" desc="Avisos automáticos de citas y seguimientos." />
+                <FeatureMiniCard title="Chatbot WhatsApp" price="+49€" desc="Atención 24/7 en el canal nº1." />
+                <FeatureMiniCard title="Chatbot Web" price="+49€" desc="Asistente inteligente para tu página web." />
+                <FeatureMiniCard title="Seguimiento IA" price="+39€" desc="Calificación y seguimiento de leads." />
+              </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <FeatureMiniCard title="Dashboard Core" price="+39€" desc="Acceso a tu panel de control, agenda y tareas." />
-              <FeatureMiniCard title="Gestión Leads" price="+39€" desc="Sistema centralizado de clientes y documentos." />
-              <FeatureMiniCard title="Contestador IceBraker" price="+29€" desc="Respuesta automática inicial a nuevos leads." />
-              <FeatureMiniCard title="Recordatorios IA" price="+29€" desc="Avisos automáticos de citas y seguimientos." />
-              <FeatureMiniCard title="Chatbot WhatsApp" price="+49€" desc="Atención 24/7 en el canal nº1." />
-              <FeatureMiniCard title="Chatbot Web" price="+49€" desc="Asistente inteligente para tu página web." />
-              <FeatureMiniCard title="WebConnect" price="+39€" desc="Conexión automática entre web y dashboard." />
-              <FeatureMiniCard title="Seguimiento IA" price="+39€" desc="Calificación y seguimiento de leads." />
-              <FeatureMiniCard title="Analíticas IA" price="+29€" desc="Visualización de datos en tiempo real." />
-              <FeatureMiniCard title="Gestión Interna" price="+39€" desc="Tu asistente IA para consultas privadas." />
-              <FeatureMiniCard title="Transcripciones" price="+39€" desc="Resúmenes de reuniones automáticos." />
-              <FeatureMiniCard title="Funnel de Ventas" price="+59€" desc="Flujo automatizado de captación y cierre." />
-              <FeatureMiniCard title="Prevención Churn" price="+59€" desc="IA predictiva para detectar y evitar bajas." />
-              <FeatureMiniCard title="Captador Automático" price="+69€" desc="Scraping de portales y alerta de particulares." />
-              <FeatureMiniCard title="Property Intel" price="+59€" desc="Análisis de mercado automático por zonas." />
-              <FeatureMiniCard title="Informes Tasación" price="+49€" desc="Generación de valoraciones IA en PDF." />
-              <FeatureMiniCard title="Captador Manual" price="+29€" desc="Gestión manual de propietarios en dashboard." />
-              <FeatureMiniCard title="Publicador Web" price="+39€" desc="Envío automático de inmuebles a tu web." />
-              <FeatureMiniCard title="Sugerencias IA" price="+39€" desc="Cruce inteligente de clientes y propiedades." />
+
+            <div>
+              <h4 className="text-xl font-bold text-black dark:text-white mb-6 border-b border-slate-100 dark:border-white/5 pb-3">Ventas & Captación</h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <FeatureMiniCard title="WebConnect" price="+39€" desc="Conexión automática entre web y dashboard." />
+                <FeatureMiniCard title="Funnel de Ventas" price="+59€" desc="Flujo automatizado de captación y cierre." />
+                <FeatureMiniCard title="Prevención Churn" price="+59€" desc="IA predictiva para detectar y evitar bajas." />
+                <FeatureMiniCard title="Sugerencias IA" price="+39€" desc="Cruce inteligente de clientes y propiedades." />
+              </div>
             </div>
+
+            <div>
+              <h4 className="text-xl font-bold text-black dark:text-white mb-6 border-b border-slate-100 dark:border-white/5 pb-3">Herramientas Avanzadas</h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <FeatureMiniCard title="Captador Automático" price="+69€" desc="Scraping de portales y alerta de particulares." />
+                <FeatureMiniCard title="Property Intel" price="+59€" desc="Análisis de mercado automático por zonas." />
+                <FeatureMiniCard title="Informes Tasación" price="+49€" desc="Generación de valoraciones IA en PDF." />
+                <FeatureMiniCard title="Captador Manual" price="+29€" desc="Gestión manual de propietarios en dashboard." />
+                <FeatureMiniCard title="Publicador Web" price="+39€" desc="Envío automático de inmuebles a tu web." />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
 
 
       {/* Recommendation Guide */}
-      <section className="py-32 px-6 bg-white dark:bg-black transition-colors duration-300">
+      <section className="py-16 md:py-32 px-6 bg-white dark:bg-black transition-colors duration-300">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-black dark:text-white mb-4 tracking-tight">¿Cuál es el plan para ti?</h2>
             <p className="text-slate-500 dark:text-zinc-400 text-lg">Guía rápida según tu momento actual.</p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-6 lg:gap-8 items-center">
-            <RecommendationCard 
-              letter="1" 
+          <div className="flex overflow-x-auto lg:overflow-visible snap-x snap-mandatory scrollbar-hide lg:grid lg:grid-cols-3 gap-6 lg:gap-8 items-stretch -mx-6 px-6 lg:mx-0 lg:px-0 py-10">
+            <RecommendationCard
+              letter="1"
               badge="Para Empezar"
-              title="Organización y Control" 
-              desc="El **Plan Esencial** (99€/mes) es tu puerta de entrada. Ideal para pymes que necesitan control 24/7. Puedes personalizarlo añadiendo módulos sueltos desde +29€/mes." 
+              title="Organización y Control"
+              desc="El **Plan Esencial** (99€/mes) es tu puerta de entrada. Ideal para pymes que necesitan control 24/7. Puedes personalizarlo añadiendo módulos sueltos desde +29€/mes."
             />
-            <RecommendationCard 
-              letter="2" 
+            <RecommendationCard
+              letter="2"
               badge="El Más Elegido"
-              title="Automatización y Ventas" 
-              desc="El **Plan Crecimiento** (199€/mes) es nuestra recomendación. Si eres inmobiliaria, acompáñalo del **Pack Captación** (+89€/mes) para dominar el mercado local desde el primer mes." 
-              dark 
+              title="Automatización y Ventas"
+              desc="El **Plan Crecimiento** (199€/mes) es nuestra recomendación. Si eres inmobiliaria, acompáñalo del **Pack Captación** (+89€/mes) para dominar el mercado local desde el primer mes."
+              dark
             />
-            <RecommendationCard 
-              letter="3" 
+            <RecommendationCard
+              letter="3"
               badge="Escalabilidad"
-              title="Infraestructura Total" 
-              desc="Combina el **Plan Pro** (399€/mes) con el **Pack Inteligencia** (+149€/mes) o solicita **Custom Advanced** para tener el ecosistema más avanzado y a medida del sector." 
+              title="Infraestructura Total"
+              desc="Combina el **Plan Pro** (399€/mes) con el **Pack Inteligencia** (+149€/mes) o solicita **Custom Advanced** para tener el ecosistema más avanzado y a medida del sector."
             />
           </div>
         </div>
@@ -471,7 +454,7 @@ function ListItem({ children, iconColor }: { children: React.ReactNode; iconColo
     <li className="flex items-center">
       <svg className={`w-4 h-4 mr-3 ${iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-      </svg> 
+      </svg>
       {children}
     </li>
   );
@@ -489,9 +472,9 @@ function RecommendationCard({ letter, badge, title, desc, dark = false }: { lett
   };
 
   return (
-    <div className={`p-10 rounded-[2.5rem] flex flex-col gap-6 items-start relative overflow-hidden transition-all duration-300 h-full ${dark ? "bg-black dark:bg-white text-white dark:text-black shadow-2xl dark:shadow-none lg:scale-[1.05] z-10" : "bg-slate-50 dark:bg-zinc-900 border border-slate-100 dark:border-white/5 hover:bg-slate-100 dark:hover:bg-zinc-800"}`}>
+    <div className={`min-w-[85vw] snap-center lg:min-w-0 p-10 rounded-[2.5rem] flex flex-col gap-6 items-start relative overflow-hidden transition-all duration-300 h-full ${dark ? "bg-black dark:bg-white text-white dark:text-black shadow-2xl dark:shadow-none lg:scale-[1.05] z-10" : "bg-slate-50 dark:bg-zinc-900 border border-slate-100 dark:border-white/5 hover:bg-slate-100 dark:hover:bg-zinc-800"}`}>
       {dark && <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent dark:from-black/10 pointer-events-none"></div>}
-      
+
       <div className="flex items-center justify-between w-full relative z-10">
         <div className={`w-14 h-14 rounded-full flex items-center justify-center font-bold text-xl ${dark ? "bg-white/10 dark:bg-black/10" : "bg-white dark:bg-zinc-800 shadow-sm border border-slate-100 dark:border-white/5"}`}>
           {letter}
@@ -500,7 +483,7 @@ function RecommendationCard({ letter, badge, title, desc, dark = false }: { lett
           {badge}
         </span>
       </div>
-      
+
       <div className="relative z-10 mt-2 flex-1">
         <h4 className={`text-2xl font-bold mb-4 tracking-tight ${dark ? "text-white dark:text-black" : "text-black dark:text-white"}`}>{title}</h4>
         <p className={`text-sm leading-relaxed ${dark ? "text-white/80 dark:text-black/80" : "text-slate-600 dark:text-zinc-400"}`}>

@@ -8,13 +8,13 @@ export default function ServiciosPage() {
       <Navbar />
       
       {/* Sector Hero */}
-      <header className="hero-gradient pt-40 pb-24 px-6 border-b border-slate-100 dark:border-white/5">
+      <header className="hero-gradient pt-32 md:pt-40 pb-12 md:pb-24 px-6 border-b border-slate-100 dark:border-white/5">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
           <div>
             <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-4 block">
               Especialización / Reformas y Servicios
             </span>
-            <h1 className="text-6xl md:text-7xl font-bold tracking-tight mb-8 text-black dark:text-white">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight mb-8 text-black dark:text-white leading-tight">
               Presupuestos… <br />
               <span className="font-serif-italic text-slate-500 dark:text-zinc-500">al instante.</span>
             </h1>
@@ -38,11 +38,11 @@ export default function ServiciosPage() {
       </header>
 
       {/* Quotation Logic Section - Unique for Trades */}
-      <section className="py-32 px-6 bg-white dark:bg-black overflow-hidden">
+      <section className="py-16 md:py-32 px-6 bg-white dark:bg-black overflow-hidden">
         <div className="max-w-7xl mx-auto">
            <div className="grid lg:grid-cols-2 gap-20 items-center">
               <div>
-                 <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-8 tracking-tight">
+                 <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white mb-8 tracking-tight leading-tight">
                     Presupuestos por <br /><span className="text-slate-400">Voz y Foto.</span>
                  </h2>
                  <p className="text-lg text-slate-600 dark:text-zinc-400 mb-12 leading-relaxed">
@@ -98,7 +98,7 @@ export default function ServiciosPage() {
       </section>
 
       {/* Speed Section */}
-      <section className="py-32 px-6 bg-slate-50 dark:bg-zinc-900/30">
+      <section className="py-16 md:py-32 px-6 bg-slate-50 dark:bg-zinc-900/30">
         <div className="max-w-7xl mx-auto">
            <div className="bg-black dark:bg-white text-white dark:text-black rounded-[4rem] p-16 md:p-24 overflow-hidden relative">
               <div className="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
@@ -122,7 +122,7 @@ export default function ServiciosPage() {
       </section>
 
       {/* Dashboard Section */}
-      <section className="py-32 px-6 bg-white dark:bg-black transition-colors duration-300">
+      <section className="py-16 md:py-32 px-6 bg-white dark:bg-black transition-colors duration-300">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div>
@@ -168,7 +168,7 @@ export default function ServiciosPage() {
       </section>
 
       {/* Recommended Pricing Section */}
-      <section className="py-32 px-6 bg-slate-50 dark:bg-zinc-900/30 transition-colors duration-300">
+      <section className="py-16 md:py-32 px-6 bg-slate-50 dark:bg-zinc-900/30 transition-colors duration-300">
         <div className="max-w-4xl mx-auto text-center">
           <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-6 block">Configuración Recomendada</span>
           <h2 className="text-4xl font-bold text-black dark:text-white mb-12 tracking-tight">Tu sistema ideal para Reformas</h2>
@@ -180,7 +180,7 @@ export default function ServiciosPage() {
               </span>
             </div>
             
-            <h3 className="text-2xl font-bold text-black dark:text-white mb-2">Plan Crecimiento + Pack Gestión de Obra</h3>
+            <h3 className="text-2xl font-bold text-black dark:text-white mb-2">Plan Crecimiento + Módulos de Reforma</h3>
             <div className="text-5xl font-bold text-black dark:text-white mb-8">288€/mes</div>
             
             <div className="flex flex-wrap justify-center gap-3 mb-12">

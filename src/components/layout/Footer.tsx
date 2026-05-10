@@ -3,7 +3,7 @@ import FloatingBlobs from "@/components/ui/FloatingBlobs";
 
 export default function Footer() {
   return (
-    <section id="contacto" className="py-32 px-6 bg-black text-white text-center relative overflow-hidden transition-colors duration-300">
+    <section id="contacto" className="py-16 md:py-32 px-6 bg-black text-white text-center relative overflow-hidden transition-colors duration-300">
       <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10"></div>
 
       {/* Abstract glowing background elements */}
@@ -15,7 +15,7 @@ export default function Footer() {
       />
 
       <div className="max-w-4xl mx-auto relative z-20">
-        <h2 className="text-5xl md:text-7xl font-bold mb-8 tracking-tight leading-[1.1]">
+        <h2 className="text-4xl md:text-7xl font-bold mb-8 tracking-tight leading-[1.1]">
           Competitividad <br /> 
           <span className="font-serif-italic text-white/70 block mt-4 font-normal">sin complicaciones.</span>
         </h2>

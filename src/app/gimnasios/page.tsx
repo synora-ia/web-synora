@@ -8,13 +8,13 @@ export default function GimnasiosPage() {
       <Navbar />
       
       {/* Sector Hero */}
-      <header className="hero-gradient pt-40 pb-24 px-6 border-b border-slate-100 dark:border-white/5">
+      <header className="hero-gradient pt-32 md:pt-40 pb-12 md:pb-24 px-6 border-b border-slate-100 dark:border-white/5">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
           <div>
             <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-4 block">
               Especialización / Fitness
             </span>
-            <h1 className="text-6xl md:text-7xl font-bold tracking-tight mb-8 text-black dark:text-white">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight mb-8 text-black dark:text-white leading-tight">
               No pierdas más socios… <br />
               <span className="font-serif-italic text-slate-500 dark:text-zinc-500">fideliza con IA.</span>
             </h1>
@@ -38,11 +38,11 @@ export default function GimnasiosPage() {
       </header>
 
       {/* Churn Prevention Section - Unique for Fitness */}
-      <section className="py-32 px-6 bg-white dark:bg-black overflow-hidden">
+      <section className="py-16 md:py-32 px-6 bg-white dark:bg-black overflow-hidden">
         <div className="max-w-7xl mx-auto">
            <div className="flex flex-col lg:flex-row gap-20 items-center">
               <div className="flex-1">
-                 <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-8 tracking-tight">
+                 <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white mb-8 tracking-tight leading-tight">
                     Anticípate a la <br /><span className="text-slate-400">Baja del Socio.</span>
                  </h2>
                  <p className="text-lg text-slate-600 dark:text-zinc-400 mb-12 leading-relaxed">
@@ -83,20 +83,20 @@ export default function GimnasiosPage() {
       </section>
 
       {/* Frictionless Onboarding Section */}
-      <section className="py-32 px-6 bg-slate-50 dark:bg-zinc-900/30">
+      <section className="py-16 md:py-32 px-6 bg-slate-50 dark:bg-zinc-900/30">
         <div className="max-w-7xl mx-auto">
            <div className="text-center max-w-2xl mx-auto mb-20">
-              <h2 className="text-4xl font-bold text-black dark:text-white mb-6">Altas en 60 Segundos</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-black dark:text-white mb-6">Altas en 60 Segundos</h2>
               <p className="text-slate-500 dark:text-zinc-400">Elimina las barreras en la recepción. Convierte interesados en socios de cuota activa desde su móvil.</p>
            </div>
            
-           <div className="grid md:grid-cols-3 gap-8">
+           <div className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide md:grid md:grid-cols-3 gap-6 md:gap-8 -mx-6 px-6 md:mx-0 md:px-0 py-4">
               {[
                 { t: "Escaneo QR", d: "El cliente escanea un código en la entrada o ve un anuncio en redes." },
                 { t: "WhatsApp IA", d: "El chatbot recoge datos, firma de SEPA y selección de tarifa." },
                 { t: "Acceso Inmediato", d: "Sincronización con el torno o app de reservas. Alta completada." }
               ].map((step, i) => (
-                <div key={i} className="bg-white dark:bg-zinc-900 p-10 rounded-[3rem] border border-slate-100 dark:border-white/5">
+                <div key={i} className="min-w-[85vw] snap-center md:min-w-0 bg-white dark:bg-zinc-900 p-8 md:p-10 rounded-[3rem] border border-slate-100 dark:border-white/5">
                    <div className="text-5xl font-serif-italic text-slate-100 dark:text-white/5 mb-6">{i+1}</div>
                    <h4 className="text-xl font-bold mb-4 text-black dark:text-white">{step.t}</h4>
                    <p className="text-sm text-slate-500 dark:text-zinc-400 leading-relaxed">{step.d}</p>
@@ -107,7 +107,7 @@ export default function GimnasiosPage() {
       </section>
 
       {/* Dashboard Section */}
-      <section className="py-32 px-6 bg-white dark:bg-black transition-colors duration-300">
+      <section className="py-16 md:py-32 px-6 bg-white dark:bg-black transition-colors duration-300">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div>
@@ -153,7 +153,7 @@ export default function GimnasiosPage() {
       </section>
 
       {/* Recommended Pricing Section */}
-      <section className="py-32 px-6 bg-slate-50 dark:bg-zinc-900/30 transition-colors duration-300">
+      <section className="py-16 md:py-32 px-6 bg-slate-50 dark:bg-zinc-900/30 transition-colors duration-300">
         <div className="max-w-4xl mx-auto text-center">
           <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-6 block">Configuración Recomendada</span>
           <h2 className="text-4xl font-bold text-black dark:text-white mb-12 tracking-tight">Tu sistema ideal para Gimnasios</h2>
@@ -166,7 +166,7 @@ export default function GimnasiosPage() {
             </div>
             
             <h3 className="text-2xl font-bold text-black dark:text-white mb-2">Plan Crecimiento + Módulo Churn</h3>
-            <div className="text-5xl font-bold text-black dark:text-white mb-8">229€/mes</div>
+            <div className="text-5xl font-bold text-black dark:text-white mb-8">258€/mes</div>
             
             <div className="flex flex-wrap justify-center gap-3 mb-12">
               {["Prevención de Churn", "Altas WhatsApp", "IA de Fidelización"].map((mod, i) => (

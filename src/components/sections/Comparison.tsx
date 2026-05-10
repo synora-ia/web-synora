@@ -28,11 +28,11 @@ export default function Comparison() {
   ];
 
   return (
-    <section className="py-32 px-6 bg-white dark:bg-black transition-colors duration-300">
+    <section className="py-16 md:py-32 px-6 bg-white dark:bg-black transition-colors duration-300">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-20">
           <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-4 block">Comparativa</span>
-          <h2 className="text-5xl md:text-6xl font-bold text-black dark:text-white mb-6 tracking-tight">
+          <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white mb-6 tracking-tight leading-tight">
             La diferencia es <span className="font-serif-italic text-slate-500 dark:text-zinc-400">el tiempo.</span>
           </h2>
         </div>
@@ -40,7 +40,7 @@ export default function Comparison() {
         <div className="relative rounded-[3rem] overflow-hidden border border-slate-100 dark:border-white/5 shadow-sm">
           <div className="grid md:grid-cols-2">
             {/* Column: Sin Synora */}
-            <div className="bg-slate-50 dark:bg-zinc-900/50 p-12 md:p-16 border-b md:border-b-0 md:border-r border-slate-100 dark:border-white/5">
+            <div className="bg-slate-50 dark:bg-zinc-900/50 p-8 sm:p-12 md:p-16 border-b md:border-b-0 md:border-r border-slate-100 dark:border-white/5">
               <h3 className="text-2xl font-bold text-slate-400 dark:text-zinc-600 mb-12 flex items-center">
                 <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
@@ -58,7 +58,7 @@ export default function Comparison() {
             </div>
 
             {/* Column: Con Synora */}
-            <div className="bg-white dark:bg-zinc-900 p-12 md:p-16 relative overflow-hidden">
+            <div className="bg-white dark:bg-zinc-900 p-8 sm:p-12 md:p-16 relative overflow-hidden">
               {/* Subtle glow for the "With" column */}
               <div className="absolute -top-24 -right-24 w-64 h-64 bg-blue-50 dark:bg-white/5 rounded-full blur-[100px] opacity-60"></div>
               

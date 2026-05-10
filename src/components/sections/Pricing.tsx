@@ -55,28 +55,28 @@ const plans = [
 
 export default function Pricing() {
   return (
-    <section id="precios" className="py-32 px-6 bg-slate-50 dark:bg-zinc-900/30 border-t border-slate-100 dark:border-white/5 transition-colors duration-300">
+    <section id="precios" className="py-16 md:py-32 px-6 bg-slate-50 dark:bg-zinc-900/30 border-t border-slate-100 dark:border-white/5 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
           <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-4 block">Inversión Inteligente</span>
-          <h2 className="text-5xl md:text-6xl font-bold text-black dark:text-white mb-6 tracking-tight">Planes de Automatización</h2>
+          <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white mb-6 tracking-tight leading-tight">Planes de Automatización</h2>
           <p className="text-lg text-slate-600 dark:text-zinc-400 max-w-2xl mx-auto">
             Escala tu negocio con sistemas que trabajan por ti. Sin complicaciones técnicas, solo resultados.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-20">
+        <div className="flex overflow-x-auto md:overflow-visible snap-x snap-mandatory scrollbar-hide md:grid md:grid-cols-3 gap-6 md:gap-8 mb-20 -mx-6 px-6 md:mx-0 md:px-0 py-10">
           {plans.map((plan, index) => (
             <div 
               key={index} 
-              className={`bg-white dark:bg-zinc-900 p-10 rounded-[2.5rem] pricing-card flex flex-col relative transition-all duration-300 ${
+              className={`min-w-[85vw] snap-center md:min-w-0 bg-white dark:bg-zinc-900 p-8 md:p-10 rounded-[2.5rem] pricing-card flex flex-col relative transition-all duration-300 ${
                 plan.recommended 
-                  ? "border-2 border-black dark:border-white scale-105 z-10 shadow-xl dark:shadow-white/5" 
+                  ? "border-2 border-black dark:border-white md:scale-105 z-10 shadow-xl dark:shadow-white/5" 
                   : "border border-slate-100 dark:border-white/5"
               }`}
             >
               {plan.recommended && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-black dark:bg-white text-white dark:text-black px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-black dark:bg-white text-white dark:text-black px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest z-20">
                   Recomendado
                 </div>
               )}

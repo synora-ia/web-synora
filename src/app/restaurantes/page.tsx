@@ -8,13 +8,13 @@ export default function RestaurantesPage() {
       <Navbar />
       
       {/* Sector Hero */}
-      <header className="hero-gradient pt-40 pb-24 px-6 border-b border-slate-100 dark:border-white/5">
+      <header className="hero-gradient pt-32 md:pt-40 pb-12 md:pb-24 px-6 border-b border-slate-100 dark:border-white/5">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
           <div>
             <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-4 block">
               Especialización / Hostelería
             </span>
-            <h1 className="text-6xl md:text-7xl font-bold tracking-tight mb-8 text-black dark:text-white">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight mb-8 text-black dark:text-white leading-tight">
               Mesas llenas… <br />
               <span className="font-serif-italic text-slate-500 dark:text-zinc-500">sin complicaciones.</span>
             </h1>
@@ -38,7 +38,7 @@ export default function RestaurantesPage() {
       </header>
 
       {/* Peak Hour Section - Unique for F&B */}
-      <section className="py-32 px-6 bg-white dark:bg-black overflow-hidden">
+      <section className="py-16 md:py-32 px-6 bg-white dark:bg-black overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div className="order-2 lg:order-1 relative">
@@ -71,7 +71,7 @@ export default function RestaurantesPage() {
                </div>
             </div>
             <div className="order-1 lg:order-2">
-              <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-8 tracking-tight">
+              <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white mb-8 tracking-tight leading-tight">
                 Paz Operativa en <br /><span className="text-slate-400">Hora Punta.</span>
               </h2>
               <p className="text-lg text-slate-600 dark:text-zinc-400 mb-10 leading-relaxed">
@@ -93,15 +93,15 @@ export default function RestaurantesPage() {
       </section>
 
       {/* No-Show Prevention Section */}
-      <section className="py-32 px-6 bg-slate-50 dark:bg-zinc-900/30">
+      <section className="py-16 md:py-32 px-6 bg-slate-50 dark:bg-zinc-900/30">
         <div className="max-w-7xl mx-auto">
            <div className="text-center max-w-3xl mx-auto mb-20">
-              <h2 className="text-4xl font-bold text-black dark:text-white mb-6">Protege tu Facturación</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-black dark:text-white mb-6">Protege tu Facturación</h2>
               <p className="text-slate-500 dark:text-zinc-400">Un restaurante con 40 plazas no puede permitirse un "no-show" de 6 personas un sábado por la noche.</p>
            </div>
            
-           <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-white dark:bg-zinc-900 p-12 rounded-[3rem] border border-slate-100 dark:border-white/5">
+           <div className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide md:grid md:grid-cols-2 gap-6 md:gap-8 -mx-6 px-6 md:mx-0 md:px-0 py-4">
+              <div className="min-w-[85vw] snap-center md:min-w-0 bg-white dark:bg-zinc-900 p-8 md:p-12 rounded-[3rem] border border-slate-100 dark:border-white/5">
                  <div className="w-12 h-12 bg-red-100 dark:bg-red-500/20 text-red-600 dark:text-red-400 rounded-2xl flex items-center justify-center mb-8">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                  </div>
@@ -109,7 +109,7 @@ export default function RestaurantesPage() {
                  <p className="text-slate-500 dark:text-zinc-400 leading-relaxed mb-8">Activa el cobro de una pequeña fianza automática para grupos grandes o fechas críticas (San Valentín, Navidad). El cliente se compromete y tu mesa está protegida.</p>
                  <div className="text-sm font-bold text-black dark:text-white">Reducción del 95% en No-Shows</div>
               </div>
-              <div className="bg-white dark:bg-zinc-900 p-12 rounded-[3rem] border border-slate-100 dark:border-white/5">
+              <div className="min-w-[85vw] snap-center md:min-w-0 bg-white dark:bg-zinc-900 p-8 md:p-12 rounded-[3rem] border border-slate-100 dark:border-white/5">
                  <div className="w-12 h-12 bg-green-100 dark:bg-green-500/20 text-green-600 dark:text-green-400 rounded-2xl flex items-center justify-center mb-8">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                  </div>
@@ -122,7 +122,7 @@ export default function RestaurantesPage() {
       </section>
 
       {/* Dashboard Section */}
-      <section className="py-32 px-6 bg-white dark:bg-black transition-colors duration-300">
+      <section className="py-16 md:py-32 px-6 bg-white dark:bg-black transition-colors duration-300">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div>
@@ -168,7 +168,7 @@ export default function RestaurantesPage() {
       </section>
 
       {/* Recommended Pricing Section */}
-      <section className="py-32 px-6 bg-slate-50 dark:bg-zinc-900/30 transition-colors duration-300">
+      <section className="py-16 md:py-32 px-6 bg-slate-50 dark:bg-zinc-900/30 transition-colors duration-300">
         <div className="max-w-4xl mx-auto text-center">
           <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-6 block">Configuración Recomendada</span>
           <h2 className="text-4xl font-bold text-black dark:text-white mb-12 tracking-tight">Tu sistema ideal para Restaurantes</h2>

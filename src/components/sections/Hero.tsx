@@ -2,11 +2,11 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section id="inicio" className="hero-gradient pt-40 pb-24 px-6 min-h-[90vh] flex flex-col items-center justify-center overflow-hidden">
+    <section id="inicio" className="hero-gradient pt-32 md:pt-40 pb-16 md:pb-24 px-6 min-h-[80vh] md:min-h-[90vh] flex flex-col items-center justify-center overflow-hidden">
       <div className="max-w-5xl mx-auto text-center relative z-10 animate-fade-in-up">
-        <h1 className="text-6xl md:text-8xl font-bold tracking-tight mb-8 text-black dark:text-white leading-[0.95]">
-          Tu negocio no necesita trabajar más, <br />
-          <span className="font-serif-italic text-slate-500 dark:text-zinc-500 block mt-4">necesita trabajar solo.</span>
+        <h1 className="text-4xl sm:text-5xl md:text-8xl font-bold tracking-tight mb-8 text-black dark:text-white leading-[1.1] md:leading-[0.95]">
+          Tu negocio no necesita trabajar más, <br className="hidden sm:block" />
+          <span className="font-serif-italic text-slate-500 dark:text-zinc-500 block mt-2 md:mt-4">necesita trabajar solo.</span>
         </h1>
         <p className="text-lg md:text-xl text-slate-600 dark:text-zinc-400 max-w-2xl mx-auto mb-12">
           Synora es la solución de automatización diseñada para empresas que quieren crecer sin complicarse la

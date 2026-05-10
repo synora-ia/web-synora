@@ -8,13 +8,13 @@ export default function InmobiliariasPage() {
       <Navbar />
       
       {/* Sector Hero */}
-      <header className="hero-gradient pt-40 pb-24 px-6 border-b border-slate-100 dark:border-white/5">
+      <header className="hero-gradient pt-32 md:pt-40 pb-12 md:pb-24 px-6 border-b border-slate-100 dark:border-white/5">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
           <div>
             <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-4 block">
               Especialización / Inmobiliaria
             </span>
-            <h1 className="text-6xl md:text-7xl font-bold tracking-tight mb-8 text-black dark:text-white">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight mb-8 text-black dark:text-white leading-tight">
               No se trata de captar… <br />
               <span className="font-serif-italic text-slate-500 dark:text-zinc-500">sino de convencer.</span>
             </h1>
@@ -38,11 +38,11 @@ export default function InmobiliariasPage() {
       </header>
 
       {/* Property Intelligence Section - Unique for Real Estate */}
-      <section className="py-32 px-6 bg-white dark:bg-black overflow-hidden">
+      <section className="py-16 md:py-32 px-6 bg-white dark:bg-black overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div>
-              <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-8 tracking-tight">
+              <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white mb-8 tracking-tight leading-tight">
                 Autoridad basada en <br /><span className="text-slate-400">Datos Reales.</span>
               </h2>
               <p className="text-lg text-slate-600 dark:text-zinc-400 mb-12 leading-relaxed">
@@ -88,14 +88,14 @@ export default function InmobiliariasPage() {
       </section>
 
       {/* Automated Funnel Section */}
-      <section className="py-32 px-6 bg-slate-50 dark:bg-zinc-900/30 transition-colors duration-300">
+      <section className="py-16 md:py-32 px-6 bg-slate-50 dark:bg-zinc-900/30 transition-colors duration-300">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-6">El Funnel de Captación</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white mb-6">El Funnel de Captación</h2>
             <p className="text-slate-500 dark:text-zinc-400">De la llamada en frío a la exclusiva firmada.</p>
           </div>
           
-          <div className="grid md:grid-cols-4 gap-4 relative">
+          <div className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide md:grid md:grid-cols-4 gap-4 relative -mx-6 px-6 md:mx-0 md:px-0 py-4">
              {[
                { t: "Captación", d: "WebConnect detecta nuevos propietarios en portales antes que nadie." },
                { t: "Calificación", d: "Chatbot IA contacta y filtra por motivación y urgencia." },
@@ -113,7 +113,7 @@ export default function InmobiliariasPage() {
       </section>
 
       {/* Dashboard Section */}
-      <section className="py-32 px-6 bg-white dark:bg-black transition-colors duration-300">
+      <section className="py-16 md:py-32 px-6 bg-white dark:bg-black transition-colors duration-300">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div className="order-2 lg:order-1">
@@ -161,7 +161,7 @@ export default function InmobiliariasPage() {
       </section>
 
       {/* Recommended Pricing Section */}
-      <section className="py-32 px-6 bg-slate-50 dark:bg-zinc-900/30 transition-colors duration-300">
+      <section className="py-16 md:py-32 px-6 bg-slate-50 dark:bg-zinc-900/30 transition-colors duration-300">
         <div className="max-w-4xl mx-auto text-center">
           <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-6 block">Configuración Recomendada</span>
           <h2 className="text-4xl font-bold text-black dark:text-white mb-12 tracking-tight">Tu sistema ideal para Inmobiliarias</h2>
@@ -173,7 +173,7 @@ export default function InmobiliariasPage() {
               </span>
             </div>
             
-            <h3 className="text-2xl font-bold text-black dark:text-white mb-2">Plan Crecimiento + Pack Inmobiliario</h3>
+            <h3 className="text-2xl font-bold text-black dark:text-white mb-2">Plan Crecimiento + Pack Captación</h3>
             <div className="text-5xl font-bold text-black dark:text-white mb-8">288€/mes</div>
             
             <div className="flex flex-wrap justify-center gap-3 mb-12">
