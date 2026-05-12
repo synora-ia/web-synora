@@ -226,8 +226,3 @@ export default function ClinicasPage() {
     </main>
   );
 }
-
-      <Footer />
-    </main>
-  );
-}

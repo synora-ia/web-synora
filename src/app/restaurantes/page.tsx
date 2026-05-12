@@ -244,8 +244,3 @@ export default function RestaurantesPage() {
     </main>
   );
 }
-
-      <Footer />
-    </main>
-  );
-}

@@ -223,8 +223,3 @@ export default function GimnasiosPage() {
     </main>
   );
 }
-
-      <Footer />
-    </main>
-  );
-}

@@ -240,8 +240,3 @@ export default function ServiciosPage() {
     </main>
   );
 }
-
-      <Footer />
-    </main>
-  );
-}
