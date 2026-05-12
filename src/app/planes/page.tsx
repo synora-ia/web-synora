@@ -1,437 +1,462 @@
+"use client";
+
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Link from "next/link";
 import IsoModalBadge from "@/components/sections/IsoModalBadge";
+import { useLanguage } from "@/components/layout/LanguageContext";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function PlanesPage() {
+  const { t, language } = useLanguage();
+
   return (
     <main className="bg-white dark:bg-black transition-colors duration-300">
       <Navbar />
 
       {/* Hero Section */}
       <header className="hero-gradient pt-32 md:pt-40 pb-12 md:pb-20 px-6 text-center">
-        <div className="max-w-4xl mx-auto animate-fade-in-up">
-          <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold text-black dark:text-white mb-8 tracking-tight leading-[1.1] md:leading-[0.95]">
-            Tu escala de <br /> <span className="font-serif-italic text-slate-500 dark:text-zinc-500">crecimiento.</span>
-          </h1>
-          <p className="text-xl text-slate-600 dark:text-zinc-400 max-w-2xl mx-auto">
-            Diseñamos planes que se adaptan al volumen real de tu negocio. Sin sorpresas, con todo incluido.
-          </p>
-        </div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={language}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.4 }}
+            className="max-w-4xl mx-auto"
+          >
+            <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold text-black dark:text-white mb-8 tracking-tight leading-[1.1] md:leading-[0.95]">
+              {t("planes.hero.title1")} <br /> <span className="font-serif-italic text-slate-500 dark:text-zinc-500">{t("planes.hero.title2")}</span>
+            </h1>
+            <p className="text-xl text-slate-600 dark:text-zinc-400 max-w-2xl mx-auto">
+              {t("planes.hero.desc")}
+            </p>
+          </motion.div>
+        </AnimatePresence>
       </header>
 
-      {/* Comparative Matrix */}
-      <section className="py-12 md:py-24 px-6 bg-white dark:bg-black transition-colors duration-300">
-        <div className="max-w-6xl mx-auto">
-          <div className="relative bg-white dark:bg-zinc-900 rounded-[2.5rem] shadow-sm dark:shadow-none border border-black/5 dark:border-white/5 overflow-hidden">
-            <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white dark:from-zinc-900 to-transparent z-10 pointer-events-none md:hidden"></div>
-            <div className="overflow-x-auto relative z-0 pb-4">
-              <table className="w-full text-left border-collapse min-w-[800px]">
-                <thead>
-                  <tr className="border-b border-slate-100 dark:border-white/5">
-                    <th className="p-8 text-slate-400 dark:text-zinc-500 font-medium text-sm">Características</th>
-                    <th className="p-8">
-                      <span className="block text-xl font-bold text-black dark:text-white">Plan Esencial</span>
-                      <span className="text-xs text-slate-400 dark:text-zinc-500">99€/mes</span>
-                    </th>
-                    <th className="p-8 bg-black dark:bg-white text-white dark:text-black">
-                      <span className="block text-xl font-bold">Plan Crecimiento</span>
-                      <span className="text-xs text-white/50 dark:text-black/50">199€/mes</span>
-                    </th>
-                    <th className="p-8">
-                      <span className="block text-xl font-bold text-black dark:text-white">Plan Pro</span>
-                      <span className="text-xs text-slate-400 dark:text-zinc-500">Desde 399€/mes</span>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="text-sm text-slate-600 dark:text-zinc-400">
-                  <TableRow label="Setup Inicial (Inversión)" v1="350€" v2="Desde 600€" v3="Desde 900€" />
-                  <TableRow label="Auditoría Previa" v1="Opcional (Desde 200€)" v2="Opcional (Desde 200€)" v3="Opcional (Desde 200€)" />
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={language}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4 }}
+        >
+          {/* Comparative Matrix */}
+          <section className="py-12 md:py-24 px-6 bg-white dark:bg-black transition-colors duration-300">
+            <div className="max-w-6xl mx-auto">
+              <div className="relative bg-white dark:bg-zinc-900 rounded-[2.5rem] shadow-sm dark:shadow-none border border-black/5 dark:border-white/5 overflow-hidden">
+                <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white dark:from-zinc-900 to-transparent z-10 pointer-events-none md:hidden"></div>
+                <div className="overflow-x-auto relative z-0 pb-4">
+                  <table className="w-full text-left border-collapse min-w-[800px]">
+                    <thead>
+                      <tr className="border-b border-slate-100 dark:border-white/5">
+                        <th className="p-8 text-slate-400 dark:text-zinc-500 font-medium text-sm">{t("planes.matrix.features")}</th>
+                        <th className="p-8">
+                          <span className="block text-xl font-bold text-black dark:text-white">{t("planes.matrix.essential")}</span>
+                          <span className="text-xs text-slate-400 dark:text-zinc-500">99€/{t("planes.matrix.month")}</span>
+                        </th>
+                        <th className="p-8 bg-black dark:bg-white text-white dark:text-black">
+                          <span className="block text-xl font-bold">{t("planes.matrix.growth")}</span>
+                          <span className="text-xs text-white/50 dark:text-black/50">199€/{t("planes.matrix.month")}</span>
+                        </th>
+                        <th className="p-8">
+                          <span className="block text-xl font-bold text-black dark:text-white">{t("planes.matrix.pro")}</span>
+                          <span className="text-xs text-slate-400 dark:text-zinc-500">{t("planes.matrix.from")} 399€/{t("planes.matrix.month")}</span>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-sm text-slate-600 dark:text-zinc-400">
+                      <TableRow label={t("planes.matrix.setup")} v1="350€" v2={`${t("planes.matrix.from")} 600€`} v3={`${t("planes.matrix.from")} 900€`} />
+                      <TableRow label={t("planes.matrix.audit")} v1={`${t("planes.matrix.optional")} (${t("planes.matrix.from")} 200€)`} v2={`${t("planes.matrix.optional")} (${t("planes.matrix.from")} 200€)`} v3={`${t("planes.matrix.optional")} (${t("planes.matrix.from")} 200€)`} />
 
-                  <TableRow label="Agenda + ToDo" v1="✓" v2="✓" v3="✓" />
-                  <TableRow label="Gestión de Leads" v1="✓" v2="✓" v3="✓" />
-                  <TableRow label="Gestión de Documentos" v1="✓" v2="✓" v3="✓" />
-                  <TableRow label="Contestador IceBraker" v1="✓" v2="✓" v3="✓" />
-                  <TableRow label="Automatización Contacto Web" v1="✓" v2="✓" v3="✓" />
-                  <TableRow label="Recordatorios Automáticos" v1="✓" v2="✓" v3="✓" />
-                  <TableRow label="Chatbot de WhatsApp" v1="+49€/mes" v2="✓" v3="✓" />
-                  <TableRow label="Chatbot Web" v1="+49€/mes" v2="✓" v3="✓" />
-                  <TableRow label="WebConnect" v1="+39€/mes" v2="✓" v3="✓" />
-                  <TableRow label="Seguimientos de Leads (IA)" v1="+39€/mes" v2="✓" v3="✓" />
-                  <TableRow label="Analíticas Avanzadas" v1="+29€/mes" v2="+29€/mes" v3="✓" />
-                  <TableRow label="Chatbot de Gestión Interna" v1="+39€/mes" v2="+39€/mes" v3="✓" />
-                  <TableRow label="Transcripción de Reuniones" v1="+39€/mes" v2="+39€/mes" v3="✓" />
-                  <TableRow label="Funnel de Ventas" v1="+59€/mes" v2="+59€/mes" v3="✓" />
+                      <TableRow label={t("planes.matrix.agenda")} v1="✓" v2="✓" v3="✓" />
+                      <TableRow label={t("planes.matrix.leads")} v1="✓" v2="✓" v3="✓" />
+                      <TableRow label={t("planes.matrix.docs")} v1="✓" v2="✓" v3="✓" />
+                      <TableRow label={t("planes.matrix.icebraker")} v1="✓" v2="✓" v3="✓" />
+                      <TableRow label={t("planes.matrix.web_automation")} v1="✓" v2="✓" v3="✓" />
+                      <TableRow label={t("planes.matrix.reminders")} v1="✓" v2="✓" v3="✓" />
+                      <TableRow label={t("planes.matrix.wa_chatbot")} v1={`+49€/${t("planes.matrix.month")}`} v2="✓" v3="✓" />
+                      <TableRow label={t("planes.matrix.web_chatbot")} v1={`+49€/${t("planes.matrix.month")}`} v2="✓" v3="✓" />
+                      <TableRow label={t("planes.matrix.web_connect")} v1={`+39€/${t("planes.matrix.month")}`} v2="✓" v3="✓" />
+                      <TableRow label={t("planes.matrix.ia_followup")} v1={`+39€/${t("planes.matrix.month")}`} v2="✓" v3="✓" />
+                      <TableRow label={t("planes.matrix.analytics")} v1={`+29€/${t("planes.matrix.month")}`} v2={`+29€/${t("planes.matrix.month")}`} v3="✓" />
+                      <TableRow label={t("planes.matrix.internal_ia")} v1={`+39€/${t("planes.matrix.month")}`} v2={`+39€/${t("planes.matrix.month")}`} v3="✓" />
+                      <TableRow label={t("planes.matrix.transcriptions")} v1={`+39€/${t("planes.matrix.month")}`} v2={`+39€/${t("planes.matrix.month")}`} v3="✓" />
+                      <TableRow label={t("planes.matrix.funnel")} v1={`+59€/${t("planes.matrix.month")}`} v2={`+59€/${t("planes.matrix.month")}`} v3="✓" />
 
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <p className="text-center text-xs text-slate-400 dark:text-zinc-500 mt-6 max-w-3xl mx-auto px-4">
-            * Los planes y módulos incluyen un volumen muy generoso de tokens de IA para un uso diario normal. Si tu empresa requiere un volumen masivo de operaciones, el precio mensual se ajustará de forma transparente en base al coste real de consumo.
-          </p>
-        </div>
-      </section>
-
-      {/* What is an Audit Section */}
-      <section className="py-12 md:py-24 px-6 bg-white dark:bg-black transition-colors duration-300 border-t border-slate-50 dark:border-white/5">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-black dark:text-white mb-4 tracking-tight">¿Cuándo recomendamos una Auditoría?</h2>
-            <p className="text-slate-500 dark:text-zinc-400 text-lg max-w-2xl mx-auto mb-6">
-              Si tienes muy claros tus flujos de trabajo, pasamos directamente al Setup. Pero si tu negocio tiene procesos complejos o desordenados, esta sesión previa nos asegura adaptar la IA a tu realidad operativa.
-            </p>
-            <IsoModalBadge />
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-slate-50 dark:bg-zinc-900/30 p-8 rounded-[2rem] border border-slate-100 dark:border-white/5">
-              <div className="w-12 h-12 bg-black dark:bg-white text-white dark:text-black rounded-xl flex items-center justify-center font-bold text-xl mb-6">1</div>
-              <h4 className="text-xl font-bold text-black dark:text-white mb-3">Mapeo del Flujo</h4>
-              <p className="text-slate-600 dark:text-zinc-400 text-sm leading-relaxed">
-                Nos sentamos contigo para diseccionar paso a paso cómo captas, atiendes y cierras a tus clientes. Identificamos cuellos de botella y tareas manuales repetitivas.
-              </p>
-            </div>
-            <div className="bg-slate-50 dark:bg-zinc-900/30 p-8 rounded-[2rem] border border-slate-100 dark:border-white/5">
-              <div className="w-12 h-12 bg-black dark:bg-white text-white dark:text-black rounded-xl flex items-center justify-center font-bold text-xl mb-6">2</div>
-              <h4 className="text-xl font-bold text-black dark:text-white mb-3">Diseño del Sistema</h4>
-              <p className="text-slate-600 dark:text-zinc-400 text-sm leading-relaxed">
-                Proponemos un rediseño de ese flujo delegando las tareas de poco valor a la IA (como cualificar o registrar datos), manteniendo el toque humano donde realmente importa.
-              </p>
-            </div>
-            <div className="bg-slate-50 dark:bg-zinc-900/30 p-8 rounded-[2rem] border border-slate-100 dark:border-white/5">
-              <div className="w-12 h-12 bg-black dark:bg-white text-white dark:text-black rounded-xl flex items-center justify-center font-bold text-xl mb-6">3</div>
-              <h4 className="text-xl font-bold text-black dark:text-white mb-3">Roadmap de Ejecución</h4>
-              <p className="text-slate-600 dark:text-zinc-400 text-sm leading-relaxed">
-                Salimos de la sesión con un plan claro de qué automatizaciones se van a construir, qué herramientas conectaremos (CRM, Web, WhatsApp) y los plazos exactos.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why "Everything Included"? */}
-      <section className="py-16 md:py-32 px-6 bg-white dark:bg-black transition-colors duration-300">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-5xl font-bold mb-16 text-center text-black dark:text-white tracking-tight leading-[1.1]">
-            Sin facturas sorpresa. <br /> <span className="font-serif-italic text-slate-400 dark:text-zinc-500">Tu cuota mensual lo cubre todo.</span>
-          </h2>
-
-          <div className="grid md:grid-cols-2 gap-16">
-            <div className="space-y-6">
-              <h4 className="text-2xl font-bold text-black dark:text-white">¿Qué pagamos nosotros?</h4>
-              <p className="text-slate-600 dark:text-zinc-400 text-base leading-relaxed">
-                Dentro de tu cuota mensual de Synora, nosotros asumimos los costes de las suscripciones premium necesarias:
-              </p>
-              <ul className="space-y-3 text-slate-700 dark:text-zinc-300">
-                <ListItem iconColor="text-blue-500 dark:text-blue-400">Servidores y Hosting (n8n Enterprise)</ListItem>
-                <ListItem iconColor="text-blue-500 dark:text-blue-400">Consumo de Inteligencia Artificial (Uso estándar)</ListItem>
-                <ListItem iconColor="text-blue-500 dark:text-blue-400">Integraciones (Make/Zapier)</ListItem>
-                <ListItem iconColor="text-blue-500 dark:text-blue-400">WhatsApp Business API</ListItem>
-              </ul>
-            </div>
-            <div className="space-y-6">
-              <h4 className="text-2xl font-bold text-black dark:text-white">¿Qué ganas tú?</h4>
-              <p className="text-slate-600 dark:text-zinc-400 text-base leading-relaxed">
-                Transparencia y simplicidad contable. Una sola factura al mes de un solo proveedor local.
-              </p>
-              <ul className="space-y-3 text-slate-700 dark:text-zinc-300">
-                <ListItem iconColor="text-orange-500 dark:text-orange-400">Olvídate de gestionar 5 suscripciones</ListItem>
-                <ListItem iconColor="text-orange-500 dark:text-orange-400">Costes predecibles mes a mes</ListItem>
-                <ListItem iconColor="text-orange-500 dark:text-orange-400">Monitorización 24/7 incluida</ListItem>
-                <ListItem iconColor="text-orange-500 dark:text-orange-400">Evolución constante sin pagar más</ListItem>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Additional Modules */}
-      <section className="py-12 md:py-24 px-6 bg-slate-50 dark:bg-zinc-900/30 border-t border-slate-100 dark:border-white/5 transition-colors duration-300">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-black dark:text-white mb-4 tracking-tight">Packs Especializados</h2>
-            <p className="text-slate-500 dark:text-zinc-400 text-lg max-w-2xl mx-auto">
-              Potencia tu plan con <strong>verticales específicos</strong> diseñados para tu sector.
-            </p>
-          </div>
-
-          {/* Real Estate Section */}
-          <div className="mb-16">
-            <div className="grid lg:grid-cols-2 gap-8">
-              {/* Pack Esencial */}
-              <div className="bg-white dark:bg-zinc-900 rounded-[2.5rem] border border-slate-100 dark:border-white/5 overflow-hidden flex flex-col h-full pricing-card transition-all duration-300">
-                <div className="p-10 border-b border-slate-100 dark:border-white/5 bg-slate-50/50 dark:bg-zinc-900/50">
-                  <div className="flex justify-between items-start mb-4">
-                    <div>
-                      <span className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400">Pack Captación</span>
-                      <h4 className="text-3xl font-bold text-black dark:text-white">Captación</h4>
-                      <p className="text-slate-500 dark:text-zinc-400 mt-2 text-sm max-w-[200px]">Gestión de propiedades, cruce con clientes y publicación centralizada.</p>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-4xl font-bold text-black dark:text-white">+89€</div>
-                      <div className="text-xs text-slate-400 uppercase tracking-wider font-bold mt-1">/mes Pack Completo</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="p-8 flex-1 flex flex-col gap-2">
-                  <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-2 px-4">Módulos Individuales</span>
-                  <ModuleItem
-                    title="Captador Manual"
-                    price="+29€/mes"
-                    desc="Herramienta en dashboard para guardar y clasificar propietarios."
-                  />
-                  <ModuleItem
-                    title="Publicador Propiedades"
-                    price="+39€/mes"
-                    desc="Sincronización de inmuebles desde el dashboard a tu web."
-                  />
-                  <ModuleItem
-                    title="Sugerencias IA"
-                    price="+39€/mes"
-                    desc="Cruces automáticos de requerimientos de clientes con propiedades."
-                  />
+                    </tbody>
+                  </table>
                 </div>
               </div>
-
-              {/* Pack Avanzado */}
-              <div className="bg-black dark:bg-white rounded-[2.5rem] border border-black dark:border-white overflow-hidden flex flex-col h-full text-white dark:text-black shadow-2xl dark:shadow-none pricing-card transition-all duration-300">
-                <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent dark:from-black/10 pointer-events-none"></div>
-                <div className="p-10 border-b border-white/10 dark:border-black/10 relative z-10">
-                  <div className="flex justify-between items-start mb-4">
-                    <div>
-                      <span className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4 bg-white/20 dark:bg-black/10 text-white dark:text-black">Pack Inteligencia</span>
-                      <h4 className="text-3xl font-bold">Inteligencia</h4>
-                      <p className="text-white/70 dark:text-black/70 mt-2 text-sm max-w-[220px]">Automatización total del mercado y generación de tasaciones IA.</p>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-4xl font-bold">+149€</div>
-                      <div className="text-xs text-white/60 dark:text-black/50 uppercase tracking-wider font-bold mt-1">/mes Pack Completo</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="p-8 flex-1 flex flex-col gap-2 relative z-10">
-                  <span className="text-xs font-bold text-white/50 dark:text-black/40 uppercase tracking-widest mb-2 px-4">Módulos Individuales</span>
-                  <ModuleItem
-                    title="Captador Automático"
-                    price="+69€/mes"
-                    desc="Scraping de portales y alerta automática de particulares."
-                    dark
-                  />
-                  <ModuleItem
-                    title="Property Intelligence"
-                    price="+59€/mes"
-                    desc="Análisis de mercado automático para zonas concretas."
-                    dark
-                  />
-                  <ModuleItem
-                    title="Informes de Tasación"
-                    price="+49€/mes"
-                    desc="Generación de PDF automático con valoración IA para clientes."
-                    dark
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-
-          {/* Setup & Infrastructure Section */}
-          <div className="mt-16 md:mt-32 pt-10 md:pt-20 border-t border-slate-100 dark:border-white/5">
-            <div className="text-center mb-16">
-              <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-4 block">Servicios Previos (Pago Único)</span>
-              <h3 className="text-4xl font-bold text-black dark:text-white mb-4 tracking-tight">Infraestructura y Consultoría</h3>
-              <p className="text-slate-500 dark:text-zinc-400 max-w-2xl mx-auto">
-                Servicios opcionales previos al <strong>Setup Inicial</strong>. Preparamos el terreno construyendo tu web o auditando tus procesos para que la automatización posterior sea un éxito.
+              <p className="text-center text-xs text-slate-400 dark:text-zinc-500 mt-6 max-w-3xl mx-auto px-4">
+                {t("planes.matrix.tokens_disclaimer")}
               </p>
             </div>
+          </section>
 
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-white dark:bg-zinc-900 p-10 rounded-[3rem] border border-slate-100 dark:border-white/5 hover:shadow-xl transition-all group">
-                <div className="flex items-start justify-between mb-8">
-                  <div className="w-16 h-16 rounded-2xl bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 flex items-center justify-center">
-                    <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                    </svg>
-                  </div>
-                  <div className="text-right">
-                    <div className="text-3xl font-bold text-black dark:text-white">Desde 349€</div>
-                    <div className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">Pago Único</div>
-                  </div>
-                </div>
-                <h4 className="text-2xl font-bold text-black dark:text-white mb-4">Web a Medida & CRM Connect</h4>
-                <p className="text-slate-600 dark:text-zinc-400 leading-relaxed mb-6">
-                  Si tu web actual es un obstáculo, diseñamos desde cero una infraestructura premium optimizada para IA. Conectamos tus herramientas actuales (CRM, Agendas) para que todo fluya hacia tu Dashboard.
+          {/* What is an Audit Section */}
+          <section className="py-12 md:py-24 px-6 bg-white dark:bg-black transition-colors duration-300 border-t border-slate-50 dark:border-white/5">
+            <div className="max-w-5xl mx-auto">
+              <div className="text-center mb-16">
+                <h2 className="text-4xl font-bold text-black dark:text-white mb-4 tracking-tight">{t("planes.audit.title")}</h2>
+                <p className="text-slate-500 dark:text-zinc-400 text-lg max-w-2xl mx-auto mb-6">
+                  {t("planes.audit.desc")}
                 </p>
-                <ul className="space-y-3 mb-8">
-                  <ListItem iconColor="text-blue-500">Diseño UX/UI Premium</ListItem>
-                  <ListItem iconColor="text-blue-500">Optimización de Conversión (CRO)</ListItem>
-                  <ListItem iconColor="text-blue-500">Sincronización de Datos en Tiempo Real</ListItem>
-                </ul>
+                <IsoModalBadge />
               </div>
-
-              <div className="bg-white dark:bg-zinc-900 p-10 rounded-[3rem] border border-slate-100 dark:border-white/5 hover:shadow-xl transition-all group">
-                <div className="flex items-start justify-between mb-8">
-                  <div className="w-16 h-16 rounded-2xl bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400 flex items-center justify-center">
-                    <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                    </svg>
-                  </div>
-                  <div className="text-right">
-                    <div className="text-3xl font-bold text-black dark:text-white">Desde 200€</div>
-                    <div className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">Opcional</div>
-                  </div>
+              <div className="grid md:grid-cols-3 gap-8">
+                <div className="bg-slate-50 dark:bg-zinc-900/30 p-8 rounded-[2rem] border border-slate-100 dark:border-white/5">
+                  <div className="w-12 h-12 bg-black dark:bg-white text-white dark:text-black rounded-xl flex items-center justify-center font-bold text-xl mb-6">1</div>
+                  <h4 className="text-xl font-bold text-black dark:text-white mb-3">{t("planes.audit.step1_title")}</h4>
+                  <p className="text-slate-600 dark:text-zinc-400 text-sm leading-relaxed">
+                    {t("planes.audit.step1_desc")}
+                  </p>
                 </div>
-                <h4 className="text-2xl font-bold text-black dark:text-white mb-4">Auditoría & Consultoría ISO 9001</h4>
-                <p className="text-slate-600 dark:text-zinc-400 leading-relaxed mb-6">
-                  Analizamos tus procesos actuales y diseñamos el mapa de automatización. Si tu negocio tiene procesos desordenados, esta sesión previa nos asegura adaptar la IA a tu realidad.
+                <div className="bg-slate-50 dark:bg-zinc-900/30 p-8 rounded-[2rem] border border-slate-100 dark:border-white/5">
+                  <div className="w-12 h-12 bg-black dark:bg-white text-white dark:text-black rounded-xl flex items-center justify-center font-bold text-xl mb-6">2</div>
+                  <h4 className="text-xl font-bold text-black dark:text-white mb-3">{t("planes.audit.step2_title")}</h4>
+                  <p className="text-slate-600 dark:text-zinc-400 text-sm leading-relaxed">
+                    {t("planes.audit.step2_desc")}
+                  </p>
+                </div>
+                <div className="bg-slate-50 dark:bg-zinc-900/30 p-8 rounded-[2rem] border border-slate-100 dark:border-white/5">
+                  <div className="w-12 h-12 bg-black dark:bg-white text-white dark:text-black rounded-xl flex items-center justify-center font-bold text-xl mb-6">3</div>
+                  <h4 className="text-xl font-bold text-black dark:text-white mb-3">{t("planes.audit.step3_title")}</h4>
+                  <p className="text-slate-600 dark:text-zinc-400 text-sm leading-relaxed">
+                    {t("planes.audit.step3_desc")}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Why "Everything Included"? */}
+          <section className="py-16 md:py-32 px-6 bg-white dark:bg-black transition-colors duration-300">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-5xl font-bold mb-16 text-center text-black dark:text-white tracking-tight leading-[1.1]">
+                {t("planes.no_surprises.title")} <br /> <span className="font-serif-italic text-slate-400 dark:text-zinc-500">{t("planes.no_surprises.subtitle")}</span>
+              </h2>
+
+              <div className="grid md:grid-cols-2 gap-16">
+                <div className="space-y-6">
+                  <h4 className="text-2xl font-bold text-black dark:text-white">{t("planes.no_surprises.what_we_pay")}</h4>
+                  <p className="text-slate-600 dark:text-zinc-400 text-base leading-relaxed">
+                    {t("planes.no_surprises.what_we_pay_desc")}
+                  </p>
+                  <ul className="space-y-3 text-slate-700 dark:text-zinc-300">
+                    <ListItem iconColor="text-blue-500 dark:text-blue-400">{t("planes.no_surprises.pay_list.0")}</ListItem>
+                    <ListItem iconColor="text-blue-500 dark:text-blue-400">{t("planes.no_surprises.pay_list.1")}</ListItem>
+                    <ListItem iconColor="text-blue-500 dark:text-blue-400">{t("planes.no_surprises.pay_list.2")}</ListItem>
+                    <ListItem iconColor="text-blue-500 dark:text-blue-400">{t("planes.no_surprises.pay_list.3")}</ListItem>
+                  </ul>
+                </div>
+                <div className="space-y-6">
+                  <h4 className="text-2xl font-bold text-black dark:text-white">{t("planes.no_surprises.what_you_gain")}</h4>
+                  <p className="text-slate-600 dark:text-zinc-400 text-base leading-relaxed">
+                    {t("planes.no_surprises.what_you_gain_desc")}
+                  </p>
+                  <ul className="space-y-3 text-slate-700 dark:text-zinc-300">
+                    <ListItem iconColor="text-orange-500 dark:text-orange-400">{t("planes.no_surprises.gain_list.0")}</ListItem>
+                    <ListItem iconColor="text-orange-500 dark:text-orange-400">{t("planes.no_surprises.gain_list.1")}</ListItem>
+                    <ListItem iconColor="text-orange-500 dark:text-orange-400">{t("planes.no_surprises.gain_list.2")}</ListItem>
+                    <ListItem iconColor="text-orange-500 dark:text-orange-400">{t("planes.no_surprises.gain_list.3")}</ListItem>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Additional Modules */}
+          <section className="py-12 md:py-24 px-6 bg-slate-50 dark:bg-zinc-900/30 border-t border-slate-100 dark:border-white/5 transition-colors duration-300">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
+                <h2 className="text-4xl font-bold text-black dark:text-white mb-4 tracking-tight">{t("planes.packs.title")}</h2>
+                <p className="text-slate-500 dark:text-zinc-400 text-lg max-w-2xl mx-auto">
+                  {t("planes.packs.desc1")} <strong>{t("planes.packs.desc2")}</strong> {t("planes.packs.desc3")}
                 </p>
-                <ul className="space-y-3 mb-8">
-                  <ListItem iconColor="text-amber-500">Mapeo de Procesos Críticos</ListItem>
-                  <ListItem iconColor="text-amber-500">Preparación para Certificación ISO</ListItem>
-                  <ListItem iconColor="text-amber-500">Roadmap de Digitalización</ListItem>
-                </ul>
               </div>
-            </div>
-          </div>
 
-        </div>
-      </section>
+              {/* Real Estate Section */}
+              <div className="mb-16">
+                <div className="grid lg:grid-cols-2 gap-8">
+                  {/* Pack Esencial */}
+                  <div className="bg-white dark:bg-zinc-900 rounded-[2.5rem] border border-slate-100 dark:border-white/5 overflow-hidden flex flex-col h-full pricing-card transition-all duration-300">
+                    <div className="p-10 border-b border-slate-100 dark:border-white/5 bg-slate-50/50 dark:bg-zinc-900/50">
+                      <div className="flex justify-between items-start mb-4">
+                        <div>
+                          <span className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400">{t("planes.packs.acquisition_badge")}</span>
+                          <h4 className="text-3xl font-bold text-black dark:text-white">{t("planes.packs.acquisition_title")}</h4>
+                          <p className="text-slate-500 dark:text-zinc-400 mt-2 text-sm max-w-[200px]">{t("planes.packs.acquisition_desc")}</p>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-4xl font-bold text-black dark:text-white">+89€</div>
+                          <div className="text-xs text-slate-400 uppercase tracking-wider font-bold mt-1">/{t("planes.matrix.month")} {t("planes.packs.complete_pack")}</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="p-8 flex-1 flex flex-col gap-2">
+                      <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-2 px-4">{t("planes.packs.individual_modules")}</span>
+                      <ModuleItem
+                        title={t("planes.matrix.leads")}
+                        price="+29€/mes"
+                        desc={t("planes.matrix.leads")}
+                      />
+                      <ModuleItem
+                        title={t("planes.matrix.web_connect")}
+                        price="+39€/mes"
+                        desc={t("planes.matrix.web_connect")}
+                      />
+                      <ModuleItem
+                        title={t("planes.matrix.ia_followup")}
+                        price="+39€/mes"
+                        desc={t("planes.matrix.ia_followup")}
+                      />
+                    </div>
+                  </div>
 
-      {/* Custom Advanced Section */}
-      <section className="py-12 md:py-24 px-6 bg-white dark:bg-black transition-colors duration-300 border-y border-slate-100 dark:border-white/5 relative overflow-hidden">
-
-
-        <div className="max-w-5xl mx-auto px-6 relative z-10">
-          <div className="flex flex-col md:flex-row items-center gap-12">
-            <div className="flex-1">
-              <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-[0.2em] mb-4 block">
-                Ingeniería de Procesos
-              </span>
-              <h3 className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-8 tracking-tight">Custom Advanced</h3>
-              <p className="text-xl text-slate-600 dark:text-zinc-400 mb-10 leading-relaxed max-w-2xl">
-                ¿Tienes un proceso operativo muy específico o necesitas flujos multi-paso complejos? Diseñamos y mantenemos automatizaciones de alto nivel adaptadas al 100% a tu lógica de negocio.
-              </p>
-              <div className="flex flex-wrap gap-x-8 gap-y-4">
-                <div className="flex items-center gap-2 text-sm font-bold text-black dark:text-white">
-                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
-                  Integración Software Propietario
+                  {/* Pack Avanzado */}
+                  <div className="bg-black dark:bg-white rounded-[2.5rem] border border-black dark:border-white overflow-hidden flex flex-col h-full text-white dark:text-black shadow-2xl dark:shadow-none pricing-card transition-all duration-300">
+                    <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent dark:from-black/10 pointer-events-none"></div>
+                    <div className="p-10 border-b border-white/10 dark:border-black/10 relative z-10">
+                      <div className="flex justify-between items-start mb-4">
+                        <div>
+                          <span className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4 bg-white/20 dark:bg-black/10 text-white dark:text-black">{t("planes.packs.intelligence_badge")}</span>
+                          <h4 className="text-3xl font-bold">{t("planes.packs.intelligence_title")}</h4>
+                          <p className="text-white/70 dark:text-black/70 mt-2 text-sm max-w-[220px]">{t("planes.packs.intelligence_desc")}</p>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-4xl font-bold">+149€</div>
+                          <div className="text-xs text-white/60 dark:text-black/50 uppercase tracking-wider font-bold mt-1">/{t("planes.matrix.month")} {t("planes.packs.complete_pack")}</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="p-8 flex-1 flex flex-col gap-2 relative z-10">
+                      <span className="text-xs font-bold text-white/50 dark:text-black/40 uppercase tracking-widest mb-2 px-4">{t("planes.packs.individual_modules")}</span>
+                      <ModuleItem
+                        title={t("planes.matrix.wa_chatbot")}
+                        price="+69€/mes"
+                        desc={t("planes.matrix.wa_chatbot")}
+                        dark
+                      />
+                      <ModuleItem
+                        title={t("planes.matrix.analytics")}
+                        price="+59€/mes"
+                        desc={t("planes.matrix.analytics")}
+                        dark
+                      />
+                      <ModuleItem
+                        title={t("planes.matrix.internal_ia")}
+                        price="+49€/mes"
+                        desc={t("planes.matrix.internal_ia")}
+                        dark
+                      />
+                    </div>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2 text-sm font-bold text-black dark:text-white">
-                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
-                  Flujos de Decisión Autónomos
+              </div>
+
+
+
+              {/* Setup & Infrastructure Section */}
+              <div className="mt-16 md:mt-32 pt-10 md:pt-20 border-t border-slate-100 dark:border-white/5">
+                <div className="text-center mb-16">
+                  <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-4 block">{t("planes.infrastructure.badge")}</span>
+                  <h3 className="text-4xl font-bold text-black dark:text-white mb-4 tracking-tight">{t("planes.infrastructure.title")}</h3>
+                  <p className="text-slate-500 dark:text-zinc-400 max-w-2xl mx-auto">
+                    {t("planes.infrastructure.desc")}
+                  </p>
                 </div>
-                <div className="flex items-center gap-2 text-sm font-bold text-black dark:text-white">
-                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
-                  Mantenimiento y Soporte L1
+
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="bg-white dark:bg-zinc-900 p-10 rounded-[3rem] border border-slate-100 dark:border-white/5 hover:shadow-xl transition-all group">
+                    <div className="flex items-start justify-between mb-8">
+                      <div className="w-16 h-16 rounded-2xl bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+                        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-3xl font-bold text-black dark:text-white">{t("planes.matrix.from")} 349€</div>
+                        <div className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">{t("planes.infrastructure.one_time")}</div>
+                      </div>
+                    </div>
+                    <h4 className="text-2xl font-bold text-black dark:text-white mb-4">{t("planes.infrastructure.web_title")}</h4>
+                    <p className="text-slate-600 dark:text-zinc-400 leading-relaxed mb-6">
+                      {t("planes.infrastructure.web_desc")}
+                    </p>
+                    <ul className="space-y-3 mb-8">
+                      <ListItem iconColor="text-blue-500">{t("planes.infrastructure.web_list.0")}</ListItem>
+                      <ListItem iconColor="text-blue-500">{t("planes.infrastructure.web_list.1")}</ListItem>
+                      <ListItem iconColor="text-blue-500">{t("planes.infrastructure.web_list.2")}</ListItem>
+                    </ul>
+                  </div>
+
+                  <div className="bg-white dark:bg-zinc-900 p-10 rounded-[3rem] border border-slate-100 dark:border-white/5 hover:shadow-xl transition-all group">
+                    <div className="flex items-start justify-between mb-8">
+                      <div className="w-16 h-16 rounded-2xl bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400 flex items-center justify-center">
+                        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-3xl font-bold text-black dark:text-white">{t("planes.matrix.from")} 200€</div>
+                        <div className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">{t("planes.matrix.optional")}</div>
+                      </div>
+                    </div>
+                    <h4 className="text-2xl font-bold text-black dark:text-white mb-4">{t("planes.infrastructure.audit_title")}</h4>
+                    <p className="text-slate-600 dark:text-zinc-400 leading-relaxed mb-6">
+                      {t("planes.infrastructure.audit_desc")}
+                    </p>
+                    <ul className="space-y-3 mb-8">
+                      <ListItem iconColor="text-amber-500">{t("planes.infrastructure.audit_list.0")}</ListItem>
+                      <ListItem iconColor="text-amber-500">{t("planes.infrastructure.audit_list.1")}</ListItem>
+                      <ListItem iconColor="text-amber-500">{t("planes.infrastructure.audit_list.2")}</ListItem>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          {/* Custom Advanced Section */}
+          <section className="py-12 md:py-24 px-6 bg-white dark:bg-black transition-colors duration-300 border-y border-slate-100 dark:border-white/5 relative overflow-hidden">
+
+
+            <div className="max-w-5xl mx-auto px-6 relative z-10">
+              <div className="flex flex-col md:flex-row items-center gap-12">
+                <div className="flex-1">
+                  <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-[0.2em] mb-4 block">
+                    {t("planes.custom_advanced.badge")}
+                  </span>
+                  <h3 className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-8 tracking-tight">Custom Advanced</h3>
+                  <p className="text-xl text-slate-600 dark:text-zinc-400 mb-10 leading-relaxed max-w-2xl">
+                    {t("planes.custom_advanced.desc")}
+                  </p>
+                  <div className="flex flex-wrap gap-x-8 gap-y-4">
+                    <div className="flex items-center gap-2 text-sm font-bold text-black dark:text-white">
+                      <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                      {t("planes.custom_advanced.list.0")}
+                    </div>
+                    <div className="flex items-center gap-2 text-sm font-bold text-black dark:text-white">
+                      <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                      {t("planes.custom_advanced.list.1")}
+                    </div>
+                    <div className="flex items-center gap-2 text-sm font-bold text-black dark:text-white">
+                      <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                      {t("planes.custom_advanced.list.2")}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="w-full md:w-auto shrink-0 text-center md:text-left">
+                  <div className="text-sm font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-4">{t("planes.custom_advanced.investment")}</div>
+                  <div className="text-6xl font-bold text-black dark:text-white mb-2">+30-80€</div>
+                  <div className="text-sm font-bold text-slate-400 dark:text-zinc-500 mb-8 uppercase tracking-widest">/{t("planes.matrix.month")}</div>
+
+                  <Link href="/contacto" className="block w-full px-12 py-5 bg-black dark:bg-white text-white dark:text-black rounded-2xl font-bold hover:scale-[1.02] active:scale-[0.98] transition-all text-center">
+                    {t("planes.custom_advanced.check")}
+                  </Link>
+
                 </div>
               </div>
             </div>
+          </section>
 
-            <div className="w-full md:w-auto shrink-0 text-center md:text-left">
-              <div className="text-sm font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-4">Inversión Estimada</div>
-              <div className="text-6xl font-bold text-black dark:text-white mb-2">+30-80€</div>
-              <div className="text-sm font-bold text-slate-400 dark:text-zinc-500 mb-8 uppercase tracking-widest">/mes</div>
+          {/* A la Carta Section */}
+          <section id="funcionalidades" className="py-12 md:py-24 px-6 bg-slate-50 dark:bg-zinc-900/30 transition-colors duration-300 scroll-mt-20 border-t border-slate-100 dark:border-white/5">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-12">
+                <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-4 block">{t("planes.a_la_carte.badge")}</span>
+                <h3 className="text-3xl font-bold text-black dark:text-white mb-4 tracking-tight">{t("planes.a_la_carte.title")}</h3>
+                <p className="text-slate-500 dark:text-zinc-400 max-w-2xl mx-auto">
+                  <strong>{t("planes.a_la_carte.desc1")}</strong> {t("planes.a_la_carte.desc2")}
+                </p>
+              </div>
+              <div className="space-y-16">
+                <div>
+                  <h4 className="text-xl font-bold text-black dark:text-white mb-6 border-b border-slate-100 dark:border-white/5 pb-3">{t("planes.a_la_carte.core")}</h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <FeatureMiniCard title="Dashboard Core" price="+39€" desc={t("dashboard.badge")} />
+                    <FeatureMiniCard title={t("planes.matrix.leads")} price="+39€" desc={t("planes.matrix.leads")} />
+                    <FeatureMiniCard title={t("planes.matrix.analytics")} price="+29€" desc={t("planes.matrix.analytics")} />
+                    <FeatureMiniCard title={t("planes.matrix.internal_ia")} price="+39€" desc={t("planes.matrix.internal_ia")} />
+                    <FeatureMiniCard title={t("planes.matrix.transcriptions")} price="+39€" desc={t("planes.matrix.transcriptions")} />
+                  </div>
+                </div>
 
-              <Link href="/contacto" className="block w-full px-12 py-5 bg-black dark:bg-white text-white dark:text-black rounded-2xl font-bold hover:scale-[1.02] active:scale-[0.98] transition-all text-center">
-                Consultar Viabilidad
-              </Link>
+                <div>
+                  <h4 className="text-xl font-bold text-black dark:text-white mb-6 border-b border-slate-100 dark:border-white/5 pb-3">{t("planes.a_la_carte.service")}</h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <FeatureMiniCard title={t("planes.matrix.icebraker")} price="+29€" desc={t("planes.matrix.icebraker")} />
+                    <FeatureMiniCard title={t("planes.matrix.reminders")} price="+29€" desc={t("planes.matrix.reminders")} />
+                    <FeatureMiniCard title={t("planes.matrix.wa_chatbot")} price="+49€" desc={t("planes.matrix.wa_chatbot")} />
+                    <FeatureMiniCard title={t("planes.matrix.web_chatbot")} price="+49€" desc={t("planes.matrix.web_chatbot")} />
+                    <FeatureMiniCard title={t("planes.matrix.ia_followup")} price="+39€" desc={t("planes.matrix.ia_followup")} />
+                  </div>
+                </div>
 
-            </div>
-          </div>
-        </div>
-      </section>
+                <div>
+                  <h4 className="text-xl font-bold text-black dark:text-white mb-6 border-b border-slate-100 dark:border-white/5 pb-3">{t("planes.a_la_carte.sales")}</h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <FeatureMiniCard title="WebConnect" price="+39€" desc={t("planes.matrix.web_connect")} />
+                    <FeatureMiniCard title={t("planes.matrix.funnel")} price="+59€" desc={t("planes.matrix.funnel")} />
+                    <FeatureMiniCard title={t("planes.a_la_carte.service")} price="+59€" desc={t("planes.a_la_carte.service")} />
+                    <FeatureMiniCard title={t("planes.matrix.ia_followup")} price="+39€" desc={t("planes.matrix.ia_followup")} />
+                  </div>
+                </div>
 
-      {/* A la Carta Section */}
-      <section id="funcionalidades" className="py-12 md:py-24 px-6 bg-slate-50 dark:bg-zinc-900/30 transition-colors duration-300 scroll-mt-20 border-t border-slate-100 dark:border-white/5">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-4 block">Flexibilidad Total</span>
-            <h3 className="text-3xl font-bold text-black dark:text-white mb-4 tracking-tight">Funcionalidades a la Carta (Sin Plan)</h3>
-            <p className="text-slate-500 dark:text-zinc-400 max-w-2xl mx-auto">
-              <strong>No necesitas contratar un plan mensual.</strong> Adquiere cualquier funcionalidad o módulo de forma 100% independiente para digitalizar procesos específicos de tu negocio.
-            </p>
-          </div>
-          <div className="space-y-16">
-            <div>
-              <h4 className="text-xl font-bold text-black dark:text-white mb-6 border-b border-slate-100 dark:border-white/5 pb-3">Core & Gestión</h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <FeatureMiniCard title="Dashboard Core" price="+39€" desc="Acceso a tu panel de control, agenda y tareas." />
-                <FeatureMiniCard title="Gestión Leads" price="+39€" desc="Sistema centralizado de clientes y documentos." />
-                <FeatureMiniCard title="Analíticas IA" price="+29€" desc="Visualización de datos en tiempo real." />
-                <FeatureMiniCard title="Gestión Interna" price="+39€" desc="Tu asistente IA para consultas privadas." />
-                <FeatureMiniCard title="Transcripciones" price="+39€" desc="Resúmenes de reuniones automáticos." />
+                <div>
+                  <h4 className="text-xl font-bold text-black dark:text-white mb-6 border-b border-slate-100 dark:border-white/5 pb-3">{t("planes.a_la_carte.advanced")}</h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <FeatureMiniCard title={t("planes.packs.acquisition_badge")} price="+69€" desc={t("planes.packs.acquisition_badge")} />
+                    <FeatureMiniCard title="Property Intel" price="+59€" desc="Property Intel" />
+                    <FeatureMiniCard title={t("planes.packs.intelligence_badge")} price="+49€" desc={t("planes.packs.intelligence_badge")} />
+                    <FeatureMiniCard title={t("planes.matrix.leads")} price="+29€" desc={t("planes.matrix.leads")} />
+                    <FeatureMiniCard title={t("planes.matrix.web_connect")} price="+39€" desc={t("planes.matrix.web_connect")} />
+                  </div>
+                </div>
               </div>
             </div>
+          </section>
 
-            <div>
-              <h4 className="text-xl font-bold text-black dark:text-white mb-6 border-b border-slate-100 dark:border-white/5 pb-3">Atención & Seguimiento</h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <FeatureMiniCard title="Contestador IceBraker" price="+29€" desc="Respuesta automática inicial a nuevos leads." />
-                <FeatureMiniCard title="Recordatorios IA" price="+29€" desc="Avisos automáticos de citas y seguimientos." />
-                <FeatureMiniCard title="Chatbot WhatsApp" price="+49€" desc="Atención 24/7 en el canal nº1." />
-                <FeatureMiniCard title="Chatbot Web" price="+49€" desc="Asistente inteligente para tu página web." />
-                <FeatureMiniCard title="Seguimiento IA" price="+39€" desc="Calificación y seguimiento de leads." />
+
+
+          {/* Recommendation Guide */}
+          <section className="py-16 md:py-32 px-6 bg-white dark:bg-black transition-colors duration-300">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
+                <h2 className="text-4xl font-bold text-black dark:text-white mb-4 tracking-tight">{t("planes.guide.title")}</h2>
+                <p className="text-slate-500 dark:text-zinc-400 text-lg">{t("planes.guide.subtitle")}</p>
+              </div>
+
+              <div className="flex overflow-x-auto lg:overflow-visible snap-x snap-mandatory scrollbar-hide lg:grid lg:grid-cols-3 gap-6 lg:gap-8 items-stretch -mx-6 px-6 lg:mx-0 lg:px-0 py-10">
+                <RecommendationCard
+                  letter="1"
+                  badge={t("planes.guide.step1.badge")}
+                  title={t("planes.guide.step1.title")}
+                  desc={t("planes.guide.step1.desc")}
+                />
+                <RecommendationCard
+                  letter="2"
+                  badge={t("planes.guide.step2.badge")}
+                  title={t("planes.guide.step2.title")}
+                  desc={t("planes.guide.step2.desc")}
+                  dark
+                />
+                <RecommendationCard
+                  letter="3"
+                  badge={t("planes.guide.step3.badge")}
+                  title={t("planes.guide.step3.title")}
+                  desc={t("planes.guide.step3.desc")}
+                />
               </div>
             </div>
-
-            <div>
-              <h4 className="text-xl font-bold text-black dark:text-white mb-6 border-b border-slate-100 dark:border-white/5 pb-3">Ventas & Captación</h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <FeatureMiniCard title="WebConnect" price="+39€" desc="Conexión automática entre web y dashboard." />
-                <FeatureMiniCard title="Funnel de Ventas" price="+59€" desc="Flujo automatizado de captación y cierre." />
-                <FeatureMiniCard title="Prevención Churn" price="+59€" desc="IA predictiva para detectar y evitar bajas." />
-                <FeatureMiniCard title="Sugerencias IA" price="+39€" desc="Cruce inteligente de clientes y propiedades." />
-              </div>
-            </div>
-
-            <div>
-              <h4 className="text-xl font-bold text-black dark:text-white mb-6 border-b border-slate-100 dark:border-white/5 pb-3">Herramientas Avanzadas</h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <FeatureMiniCard title="Captador Automático" price="+69€" desc="Scraping de portales y alerta de particulares." />
-                <FeatureMiniCard title="Property Intel" price="+59€" desc="Análisis de mercado automático por zonas." />
-                <FeatureMiniCard title="Informes Tasación" price="+49€" desc="Generación de valoraciones IA en PDF." />
-                <FeatureMiniCard title="Captador Manual" price="+29€" desc="Gestión manual de propietarios en dashboard." />
-                <FeatureMiniCard title="Publicador Web" price="+39€" desc="Envío automático de inmuebles a tu web." />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-
-      {/* Recommendation Guide */}
-      <section className="py-16 md:py-32 px-6 bg-white dark:bg-black transition-colors duration-300">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-black dark:text-white mb-4 tracking-tight">¿Cuál es el plan para ti?</h2>
-            <p className="text-slate-500 dark:text-zinc-400 text-lg">Guía rápida según tu momento actual.</p>
-          </div>
-
-          <div className="flex overflow-x-auto lg:overflow-visible snap-x snap-mandatory scrollbar-hide lg:grid lg:grid-cols-3 gap-6 lg:gap-8 items-stretch -mx-6 px-6 lg:mx-0 lg:px-0 py-10">
-            <RecommendationCard
-              letter="1"
-              badge="Para Empezar"
-              title="Organización y Control"
-              desc="El **Plan Esencial** (99€/mes) es tu puerta de entrada. Ideal para pymes que necesitan control 24/7. Puedes personalizarlo añadiendo módulos sueltos desde +29€/mes."
-            />
-            <RecommendationCard
-              letter="2"
-              badge="El Más Elegido"
-              title="Automatización y Ventas"
-              desc="El **Plan Crecimiento** (199€/mes) es nuestra recomendación. Si eres inmobiliaria, acompáñalo del **Pack Captación** (+89€/mes) para dominar el mercado local desde el primer mes."
-              dark
-            />
-            <RecommendationCard
-              letter="3"
-              badge="Escalabilidad"
-              title="Infraestructura Total"
-              desc="Combina el **Plan Pro** (399€/mes) con el **Pack Inteligencia** (+149€/mes) o solicita **Custom Advanced** para tener el ecosistema más avanzado y a medida del sector."
-            />
-          </div>
-        </div>
-      </section>
+          </section>
+        </motion.div>
+      </AnimatePresence>
 
       <Footer />
     </main>

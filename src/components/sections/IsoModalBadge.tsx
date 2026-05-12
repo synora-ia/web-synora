@@ -1,9 +1,21 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/components/layout/LanguageContext";
 
 export default function IsoModalBadge() {
+  const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
+
+  const formatDesc = (text: string) => {
+    const parts = text.split(/(\*\*.*?\*\*)/);
+    return parts.map((part, i) => {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        return <strong key={i} className="text-black dark:text-white">{part.slice(2, -2)}</strong>;
+      }
+      return part;
+    });
+  };
 
   return (
     <>
@@ -12,12 +24,12 @@ export default function IsoModalBadge() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
         </svg>
         <span className="flex items-center flex-wrap gap-1">
-          Gracias a esta auditoría obtendrás el <strong>certificado ISO 9001.</strong>
+          {t("iso.badge_text")} <strong>{t("iso.badge_strong")}</strong>
           <button 
             onClick={() => setIsOpen(true)}
             className="inline-flex items-center text-slate-500 hover:text-black dark:text-zinc-400 dark:hover:text-white transition-colors group ml-1"
           >
-            Saber más
+            {t("iso.learn_more")}
             <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
           </button>
         </span>
@@ -46,27 +58,26 @@ export default function IsoModalBadge() {
                 </svg>
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-black dark:text-white">Certificado ISO 9001</h3>
-                <p className="text-slate-500 dark:text-zinc-400">Sistema de Gestión de Calidad</p>
+                <h3 className="text-2xl font-bold text-black dark:text-white">{t("iso.title")}</h3>
+                <p className="text-slate-500 dark:text-zinc-400">{t("iso.subtitle")}</p>
               </div>
             </div>
 
             <div className="space-y-6 text-slate-600 dark:text-zinc-300 leading-relaxed">
               <p>
-                La certificación <strong className="text-black dark:text-white">ISO 9001</strong> es el estándar internacional más reconocido para los Sistemas de Gestión de Calidad (SGC). 
-                Durante nuestra Auditoría, no solo mapeamos y optimizamos tus procesos para implementar inteligencia artificial, sino que dejamos documentada toda tu operativa cumpliendo con los estrictos requisitos de esta normativa.
+                {formatDesc(t("iso.desc"))}
               </p>
 
               <div>
-                <h4 className="text-lg font-bold text-black dark:text-white mb-3">¿Qué beneficios aporta a tu empresa?</h4>
+                <h4 className="text-lg font-bold text-black dark:text-white mb-3">{t("iso.benefits_title")}</h4>
                 <ul className="space-y-4">
                   <li className="flex items-start gap-3">
                     <div className="w-6 h-6 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center shrink-0 mt-0.5 text-blue-600 dark:text-blue-400">
                       <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" /></svg>
                     </div>
                     <div>
-                      <strong className="text-black dark:text-white block">Ventaja Competitiva y Confianza</strong>
-                      <span>Demuestra a tus clientes y proveedores que trabajas bajo los más altos estándares internacionales de calidad y seguridad.</span>
+                      <strong className="text-black dark:text-white block">{t("iso.benefit1_title")}</strong>
+                      <span>{t("iso.benefit1_desc")}</span>
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
@@ -74,8 +85,8 @@ export default function IsoModalBadge() {
                       <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" /></svg>
                     </div>
                     <div>
-                      <strong className="text-black dark:text-white block">Acceso a Licitaciones y Grandes Cuentas</strong>
-                      <span>Es un requisito fundamental (o suma muchos puntos) para trabajar con la Administración Pública o grandes corporaciones.</span>
+                      <strong className="text-black dark:text-white block">{t("iso.benefit2_title")}</strong>
+                      <span>{t("iso.benefit2_desc")}</span>
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
@@ -83,8 +94,8 @@ export default function IsoModalBadge() {
                       <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" /></svg>
                     </div>
                     <div>
-                      <strong className="text-black dark:text-white block">Aumento de Eficiencia</strong>
-                      <span>Estandariza tu forma de trabajar. Reduce errores, retrabajos y costes operativos, facilitando además la incorporación de nuevos empleados.</span>
+                      <strong className="text-black dark:text-white block">{t("iso.benefit3_title")}</strong>
+                      <span>{t("iso.benefit3_desc")}</span>
                     </div>
                   </li>
                 </ul>
@@ -92,7 +103,7 @@ export default function IsoModalBadge() {
 
               <div className="bg-slate-50 dark:bg-white/5 p-5 rounded-2xl border border-slate-100 dark:border-white/10 text-sm mt-8">
                 <p>
-                  <strong>¿Cómo lo hacemos posible?</strong> Al analizar en profundidad tus procesos actuales para automatizarlos, generamos la documentación detallada y estandarizada que requiere el sistema ISO. Nosotros construimos los cimientos para que obtengas tu certificación sin esfuerzo extra.
+                  <strong>{t("iso.how_it_works")}</strong> {t("iso.how_it_works_desc")}
                 </p>
               </div>
             </div>

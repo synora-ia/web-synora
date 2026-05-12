@@ -68,13 +68,13 @@ export default function Carousel() {
   }, [isPaused]);
 
   return (
-    <section 
-      id="sectores-carousel" 
+    <section
+      id="sectores-carousel"
       className="bg-black py-16 md:py-32 px-6 relative overflow-hidden border-y border-white/5 transition-colors duration-300"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <FloatingBlobs 
+      <FloatingBlobs
         blobs={[
           { color: "bg-purple-600/30", className: "-top-[20%] -left-[10%] w-[70%] h-[70%]", animation: "animate-drift" },
           { color: "bg-orange-600/30", className: "-bottom-[20%] -right-[10%] w-[70%] h-[70%]", animation: "animate-drift-slow", delay: "2s" },
@@ -85,13 +85,12 @@ export default function Carousel() {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="relative min-h-[500px]">
           {slides.map((slide, index) => (
-            <div 
+            <div
               key={index}
-              className={`grid lg:grid-cols-2 gap-20 items-center transition-all duration-700 ${
-                index === currentSlide 
-                  ? "opacity-100 translate-x-0 relative" 
+              className={`grid lg:grid-cols-2 gap-20 items-center transition-all duration-700 ${index === currentSlide
+                  ? "opacity-100 translate-x-0 relative"
                   : "opacity-0 translate-x-12 absolute inset-0 pointer-events-none"
-              }`}
+                }`}
             >
               <div>
                 <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-white text-xs font-bold uppercase tracking-widest mb-6">
@@ -130,12 +129,11 @@ export default function Carousel() {
 
         <div className="flex justify-center items-center space-x-3 mt-16 h-6">
           {slides.map((_, index) => (
-            <button 
+            <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`w-12 h-1 rounded-full transition-all duration-300 hover:h-2 hover:bg-white/60 ${
-                index === currentSlide ? "bg-white/40" : "bg-white/10"
-              }`}
+              className={`w-12 h-1 rounded-full transition-all duration-300 hover:h-2 hover:bg-white/60 ${index === currentSlide ? "bg-white/40" : "bg-white/10"
+                }`}
             />
           ))}
         </div>

@@ -2,6 +2,7 @@
 
 import { ThemeProvider } from "next-themes";
 import { ReactNode } from "react";
+import { LanguageProvider } from "./LanguageContext";
 
 // Suppress the React 19 script tag warning which is a false positive for next-themes
 if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
@@ -16,8 +17,10 @@ if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
 
 export function Providers({ children }: { children: ReactNode }) {
   return (
-    <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-      {children}
-    </ThemeProvider>
+    <LanguageProvider>
+      <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+        {children}
+      </ThemeProvider>
+    </LanguageProvider>
   );
 }
