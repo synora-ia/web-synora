@@ -84,7 +84,7 @@ export default function Carousel() {
         ]}
       />
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="w-full px-6 md:px-16 lg:px-24 relative z-10">
         <div className="relative min-h-[500px]">
           {slides.map((slide, index) => (
             <div

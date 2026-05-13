@@ -125,92 +125,89 @@ export default function Pricing() {
                 </div>
               </div>
             </div>
-
-            {/* Monthly Modules Section */}
-            <div className="mt-32">
-              <div className="text-center mb-12">
-                <h3 className="text-3xl font-bold text-black dark:text-white mb-4 tracking-tight">{t("pricing.modules.title")}</h3>
-                <p className="text-slate-500 dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-                  {t("pricing.modules.subtitle")}
-                </p>
-              </div>
-
-              <div className="relative overflow-hidden w-full [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-                <div className="flex animate-scroll hover:[animation-play-state:paused] w-fit gap-6 py-4">
-                  {/* First set of cards */}
-                  {modules.map((mod, i) => (
-                    <div key={`pack-1-${i}`} className="w-[280px] shrink-0">
-                      <ExtraCard mod={mod} language={language} />
-                    </div>
-                  ))}
-                  {/* Duplicated set for infinite loop */}
-                  {modules.map((mod, i) => (
-                    <div key={`pack-2-${i}`} className="w-[300px] shrink-0">
-                      <ExtraCard mod={mod} language={language} />
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="mt-12 text-center">
-                <Link href="/planes#funcionalidades" className="inline-flex items-center text-sm font-bold text-slate-400 hover:text-black dark:hover:text-white transition-colors group">
-                  {t("pricing.modules.all")}
-                  <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                </Link>
-              </div>
-            </div>
           </motion.div>
         </AnimatePresence>
       </div>
+
+      {/* Monthly Modules Section - Full Width */}
+      <div className="mt-32 overflow-hidden">
+        <div className="max-w-7xl mx-auto text-center mb-12 px-6">
+          <h3 className="text-3xl font-bold text-black dark:text-white mb-4 tracking-tight">{t("pricing.modules.title")}</h3>
+          <p className="text-slate-500 dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed text-sm">
+            {t("pricing.modules.subtitle")}
+          </p>
+        </div>
+
+        <div className="relative overflow-hidden w-full [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+          <div className="flex animate-scroll hover:[animation-play-state:paused] w-fit gap-6 py-4">
+            {/* First set of cards */}
+            {modules.map((mod, i) => (
+              <div key={`pack-1-${i}`} className="w-[280px] shrink-0">
+                <ExtraCard mod={mod} language={language} />
+              </div>
+            ))}
+            {/* Duplicated set for infinite loop */}
+            {modules.map((mod, i) => (
+              <div key={`pack-2-${i}`} className="w-[300px] shrink-0">
+                <ExtraCard mod={mod} language={language} />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-12 text-center">
+          <Link href="/planes#funcionalidades" className="inline-flex items-center text-sm font-bold text-slate-400 hover:text-black dark:hover:text-white transition-colors group">
+            {t("pricing.modules.all")}
+            <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          </Link>
+        </div>
+      </div>
     </section>
+
   );
 }
 
 function ExtraCard({ mod, language }: { mod: any; language: string }) {
   const { title, desc, setupPrice, monthlyPrice, oneTimePrice, isPack } = mod;
+  const isEs = language === "es";
   
   return (
-    <div className="bg-white dark:bg-zinc-900 p-6 rounded-3xl border border-slate-100 dark:border-white/5 hover:shadow-lg dark:hover:shadow-white/5 transition-all text-center relative overflow-hidden h-full flex flex-col group">
+    <div className="bg-white dark:bg-zinc-900 p-6 rounded-3xl border border-slate-100 dark:border-white/5 hover:shadow-lg dark:hover:shadow-white/5 transition-all text-center relative overflow-hidden h-full flex flex-col justify-center group">
       {isPack && (
         <div className="absolute top-3 right-3 bg-black dark:bg-white text-white dark:text-black px-2 py-0.5 rounded-md text-[8px] font-bold uppercase tracking-widest">
           Pack
         </div>
       )}
       
-      <div className="mb-4">
-        <h5 className="font-bold text-black dark:text-white mb-1">{title}</h5>
-        <p className="text-[10px] text-slate-500 dark:text-zinc-400 leading-relaxed line-clamp-2">{desc}</p>
+      <h5 className="font-bold text-black dark:text-white mb-2">{title}</h5>
+      
+      <div className="flex flex-col items-center justify-center mb-2">
+        <div className="flex flex-col gap-1 w-full max-w-[140px]">
+          {oneTimePrice ? (
+            <div className="text-sm font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 px-3 py-1 rounded-full border border-blue-100 dark:border-blue-800/30">
+              {oneTimePrice}€ {isEs ? "Único" : "Once"}
+            </div>
+          ) : (
+            <div className="flex gap-2 justify-center">
+              {setupPrice !== undefined && (
+                <div className="flex flex-col items-center">
+                  <span className="text-[8px] uppercase tracking-wider text-slate-400">{isEs ? "Instal." : "Setup"}</span>
+                  <span className="text-xs font-bold text-black dark:text-white">{setupPrice}€</span>
+                </div>
+              )}
+              <div className="w-px h-6 bg-slate-200 dark:bg-white/10"></div>
+              {monthlyPrice !== undefined && (
+                <div className="flex flex-col items-center">
+                  <span className="text-[8px] uppercase tracking-wider text-slate-400">{isEs ? "Mes" : "Mo."}</span>
+                  <span className="text-xs font-bold text-black dark:text-white">{monthlyPrice}€</span>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
       </div>
       
-      <div className="mt-auto space-y-2">
-        {oneTimePrice ? (
-          <div className="bg-blue-50 dark:bg-blue-900/20 px-3 py-2 rounded-xl border border-blue-100/50 dark:border-blue-800/30">
-            <span className="text-[9px] font-bold uppercase tracking-wider text-blue-600/70 dark:text-blue-400/70 block">
-              {language === "es" ? "Pago Único" : "One-time"}
-            </span>
-            <span className="text-sm font-bold text-blue-700 dark:text-blue-300">{oneTimePrice}€</span>
-          </div>
-        ) : (
-          <div className="flex gap-2">
-            {setupPrice !== undefined && (
-              <div className="flex-1 bg-slate-50 dark:bg-white/5 px-2 py-1.5 rounded-xl border border-slate-100 dark:border-white/5">
-                <span className="text-[8px] font-bold uppercase tracking-wider text-slate-400 dark:text-zinc-500 block">
-                  {language === "es" ? "Instal." : "Setup"}
-                </span>
-                <span className="text-xs font-bold text-black dark:text-white">{setupPrice}€</span>
-              </div>
-            )}
-            {monthlyPrice !== undefined && (
-              <div className="flex-1 bg-black dark:bg-white px-2 py-1.5 rounded-xl border border-black dark:border-white">
-                <span className="text-[8px] font-bold uppercase tracking-wider text-white/40 dark:text-black/40 block">
-                  {language === "es" ? "Mes" : "Mo."}
-                </span>
-                <span className="text-xs font-bold text-white dark:text-black">{monthlyPrice}€</span>
-              </div>
-            )}
-          </div>
-        )}
-      </div>
+      <p className="text-xs text-slate-500 dark:text-zinc-400 leading-relaxed line-clamp-2 px-2">{desc}</p>
     </div>
   );
 }

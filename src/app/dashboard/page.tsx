@@ -18,6 +18,9 @@ const getModulesRow1 = (modules: any[]) => {
       title: m?.title || fallbackTitle,
       desc: m?.desc || fallbackDesc,
       price: m?.priceLabel || "+39€/mes",
+      setupPrice: m?.setupPrice,
+      monthlyPrice: m?.monthlyPrice,
+      oneTimePrice: m?.oneTimePrice,
     };
   };
 
@@ -42,15 +45,17 @@ const getModulesRow2 = (modules: any[]) => {
       title: m?.title || fallbackTitle,
       desc: m?.desc || fallbackDesc,
       price: m?.priceLabel || "+39€/mes",
+      setupPrice: m?.setupPrice,
+      monthlyPrice: m?.monthlyPrice,
+      oneTimePrice: m?.oneTimePrice,
     };
   };
 
   return [
     { ...getModData("transcriptions", "Transcripción", "Transcripción de audios y llamadas"), icon: "✍️", active: false },
     { ...getModData("funnel", "Funnel de Ventas", "Flujo de ventas automatizado"), icon: "🌪️", active: true },
-    { ...getModData("property_intel", "Property Intel", "Análisis de mercado"), icon: "🛡️", active: false },
+    { ...getModData("property_intel", "Property Intel & Tasación", "Análisis de mercado e informes IA"), icon: "🛡️", active: false },
     { ...getModData("auto_capture", "Captador IA Automático", "Búsqueda activa de propiedades"), icon: "🤖", active: true },
-    { ...getModData("valuation_reports", "Informes de Valoración", "Valoraciones en PDF automático"), icon: "📋", active: false },
     { ...getModData("manual_capture", "Captador Manual", "Gestión de propiedades manual"), icon: "📝", active: true },
     { ...getModData("web_publisher", "Publicador Web", "Envío a web y portales"), icon: "📤", active: false },
     { ...getModData("ai_suggestions", "Sugerencias IA", "Matching inteligente"), icon: "💡", active: true },
@@ -95,7 +100,7 @@ function ModuleBox({ color, label, border, light }: { color: string; label: stri
   );
 }
 
-function ModuleCard({ title, desc, price, active }: { title: string; desc: string; price: string; active?: boolean }) {
+function ModuleCard({ title, desc, active, ...mod }: { title: string; desc: string; active?: boolean; setupPrice?: number; monthlyPrice?: number; oneTimePrice?: number }) {
   const { t, language } = useLanguage();
   const isEs = language === "es";
 
@@ -103,11 +108,29 @@ function ModuleCard({ title, desc, price, active }: { title: string; desc: strin
     <div className="w-[280px] shrink-0 h-[160px]">
       <div className={`bg-white dark:bg-zinc-900 p-6 rounded-3xl border border-slate-100 dark:border-white/5 hover:shadow-lg dark:hover:shadow-white/5 transition-all text-center relative overflow-hidden h-full flex flex-col justify-center`}>
         <h5 className="font-bold text-black dark:text-white mb-2">{title}</h5>
-        <div className="text-xl font-bold text-black dark:text-white mb-2">
+        <div className="flex flex-col items-center justify-center mb-2">
           {active ? (
             <span className="text-green-500 text-sm uppercase tracking-widest font-bold">{isEs ? "Activo" : "Active"}</span>
           ) : (
-            <>{price}</>
+            <div className="flex flex-col gap-1 w-full max-w-[140px]">
+              {mod.oneTimePrice ? (
+                <div className="text-sm font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 px-3 py-1 rounded-full border border-blue-100 dark:border-blue-800/30">
+                  {mod.oneTimePrice}€ {isEs ? "Único" : "Once"}
+                </div>
+              ) : (
+                <div className="flex gap-2 justify-center">
+                  <div className="flex flex-col items-center">
+                    <span className="text-[8px] uppercase tracking-wider text-slate-400">{isEs ? "Instal." : "Setup"}</span>
+                    <span className="text-xs font-bold text-black dark:text-white">{mod.setupPrice}€</span>
+                  </div>
+                  <div className="w-px h-6 bg-slate-200 dark:bg-white/10"></div>
+                  <div className="flex flex-col items-center">
+                    <span className="text-[8px] uppercase tracking-wider text-slate-400">{isEs ? "Mes" : "Mo."}</span>
+                    <span className="text-xs font-bold text-black dark:text-white">{mod.monthlyPrice}€</span>
+                  </div>
+                </div>
+              )}
+            </div>
           )}
         </div>
         <p className="text-xs text-slate-500 dark:text-zinc-400 leading-relaxed line-clamp-2 px-2">{desc}</p>
