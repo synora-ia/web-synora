@@ -121,7 +121,7 @@ export default function Pricing() {
               </p>
             </div>
 
-            <div className="flex overflow-x-auto md:overflow-visible snap-x snap-mandatory scrollbar-hide md:grid md:grid-cols-3 gap-6 md:gap-8 mb-20 -mx-6 px-6 md:mx-0 md:px-0 py-10">
+            <div className="flex overflow-x-auto md:overflow-visible snap-x snap-mandatory scrollbar-hide md:grid md:grid-cols-3 gap-6 md:gap-8 mb-8 -mx-6 px-6 md:mx-0 md:px-0 py-10">
               {plans.map((plan, index) => (
                 <div
                   key={index}
@@ -178,7 +178,7 @@ export default function Pricing() {
                 </div>
               ))}
             </div>
-            <p className="text-center text-xs text-slate-400 dark:text-zinc-500 mb-20 max-w-3xl mx-auto px-4">
+            <p className="text-center text-xs text-slate-400 dark:text-zinc-500 mb-16 max-w-3xl mx-auto px-4">
               {t("pricing.disclaimer")}
             </p>
 
