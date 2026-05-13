@@ -42,18 +42,25 @@ export default function Footer() {
         </AnimatePresence>
 
         <div className="mt-12 flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-6 text-white/40 text-sm">
-          <span className="flex items-center">
+          <a href="mailto:info@synora.es" className="flex items-center hover:text-white transition-colors">
             <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
             info@synora.es
-          </span>
-          <span className="flex items-center">
+          </a>
+          <a 
+            href="https://www.instagram.com/synora.solutions/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="flex items-center hover:text-white transition-colors"
+          >
             <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.826L10.242 10.242m4.826 4.826l1.101-1.102a4 4 0 00-5.656-5.656l-1.1 1.1" />
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" strokeWidth="2" />
+              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" strokeWidth="2" />
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" strokeWidth="2" />
             </svg>
-            synora.es
-          </span>
+            @synora.solutions
+          </a>
         </div>
       </div>
 
