@@ -193,25 +193,26 @@ export default function PlanesPage() {
                         <div className="text-right">
                           <div className="text-4xl font-bold text-black dark:text-white">+89€</div>
                           <div className="text-xs text-slate-400 uppercase tracking-wider font-bold mt-1">/{t("planes.matrix.month")} {t("planes.packs.complete_pack")}</div>
+                          <div className="text-[10px] text-blue-500 font-bold mt-2 bg-blue-50 dark:bg-blue-900/20 px-2 py-1 rounded-md inline-block">{t("planes.packs.requires_plan")}</div>
                         </div>
                       </div>
                     </div>
                     <div className="p-8 flex-1 flex flex-col gap-2">
                       <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-2 px-4">{t("planes.packs.individual_modules")}</span>
                       <ModuleItem
-                        title={t("planes.matrix.leads")}
-                        price="+29€/mes"
-                        desc={t("planes.matrix.leads")}
+                        title={t("planes.modules.web_publisher.title")}
+                        price={`+39€/${t("planes.matrix.month")}`}
+                        desc={t("planes.modules.web_publisher.desc")}
                       />
                       <ModuleItem
-                        title={t("planes.matrix.web_connect")}
-                        price="+39€/mes"
-                        desc={t("planes.matrix.web_connect")}
+                        title={t("planes.modules.ai_suggestions.title")}
+                        price={`+39€/${t("planes.matrix.month")}`}
+                        desc={t("planes.modules.ai_suggestions.desc")}
                       />
                       <ModuleItem
-                        title={t("planes.matrix.ia_followup")}
-                        price="+39€/mes"
-                        desc={t("planes.matrix.ia_followup")}
+                        title={t("planes.modules.manual_capture.title")}
+                        price={`+29€/${t("planes.matrix.month")}`}
+                        desc={t("planes.modules.manual_capture.desc")}
                       />
                     </div>
                   </div>
@@ -229,27 +230,32 @@ export default function PlanesPage() {
                         <div className="text-right">
                           <div className="text-4xl font-bold">+149€</div>
                           <div className="text-xs text-white/60 dark:text-black/50 uppercase tracking-wider font-bold mt-1">/{t("planes.matrix.month")} {t("planes.packs.complete_pack")}</div>
+                          <div className="text-[10px] text-white/80 dark:text-black/80 font-bold mt-2 bg-white/20 dark:bg-black/10 px-2 py-1 rounded-md inline-block">{t("planes.packs.requires_plan")}</div>
                         </div>
+                      </div>
+                      <div className="mt-2 text-sm font-bold text-white/90 dark:text-black/90 flex items-center">
+                        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
+                        {t("planes.packs.includes_base")}
                       </div>
                     </div>
                     <div className="p-8 flex-1 flex flex-col gap-2 relative z-10">
                       <span className="text-xs font-bold text-white/50 dark:text-black/40 uppercase tracking-widest mb-2 px-4">{t("planes.packs.individual_modules")}</span>
                       <ModuleItem
-                        title={t("planes.matrix.wa_chatbot")}
-                        price="+69€/mes"
-                        desc={t("planes.matrix.wa_chatbot")}
+                        title={language === "es" ? "Property Intel" : "Property Intel"}
+                        price={`+59€/${t("planes.matrix.month")}`}
+                        desc={language === "es" ? "Análisis de mercado automático por zonas." : "Automatic market analysis by areas."}
                         dark
                       />
                       <ModuleItem
-                        title={t("planes.matrix.analytics")}
-                        price="+59€/mes"
-                        desc={t("planes.matrix.analytics")}
+                        title={t("planes.modules.valuation.title")}
+                        price={`+49€/${t("planes.matrix.month")}`}
+                        desc={t("planes.modules.valuation.desc")}
                         dark
                       />
                       <ModuleItem
-                        title={t("planes.matrix.internal_ia")}
-                        price="+49€/mes"
-                        desc={t("planes.matrix.internal_ia")}
+                        title={t("planes.modules.auto_capture.title")}
+                        price={`+69€/${t("planes.matrix.month")}`}
+                        desc={t("planes.modules.auto_capture.desc")}
                         dark
                       />
                     </div>
@@ -380,9 +386,8 @@ export default function PlanesPage() {
                   <h4 className="text-xl font-bold text-black dark:text-white mb-6 border-b border-slate-100 dark:border-white/5 pb-3">{t("planes.a_la_carte.core")}</h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     <FeatureMiniCard title="Dashboard Core" price="+39€" desc={t("dashboard.badge")} />
-                    <FeatureMiniCard title={t("planes.matrix.leads")} price="+39€" desc={t("planes.matrix.leads")} />
-                    <FeatureMiniCard title={t("planes.matrix.analytics")} price="+29€" desc={t("planes.matrix.analytics")} />
-                    <FeatureMiniCard title={t("planes.matrix.internal_ia")} price="+39€" desc={t("planes.matrix.internal_ia")} />
+                    <FeatureMiniCard title={t("planes.matrix.analytics")} price="+59€" desc={t("planes.matrix.analytics")} />
+                    <FeatureMiniCard title={t("planes.matrix.internal_ia")} price="+49€" desc={t("planes.matrix.internal_ia")} />
                     <FeatureMiniCard title={t("planes.matrix.transcriptions")} price="+39€" desc={t("planes.matrix.transcriptions")} />
                   </div>
                 </div>
@@ -403,19 +408,18 @@ export default function PlanesPage() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     <FeatureMiniCard title="WebConnect" price="+39€" desc={t("planes.matrix.web_connect")} />
                     <FeatureMiniCard title={t("planes.matrix.funnel")} price="+59€" desc={t("planes.matrix.funnel")} />
-                    <FeatureMiniCard title={t("planes.a_la_carte.service")} price="+59€" desc={t("planes.a_la_carte.service")} />
-                    <FeatureMiniCard title={t("planes.matrix.ia_followup")} price="+39€" desc={t("planes.matrix.ia_followup")} />
+                    <FeatureMiniCard title={t("planes.modules.ai_suggestions.title")} price="+39€" desc={t("planes.modules.ai_suggestions.desc")} />
+                    <FeatureMiniCard title={t("planes.modules.web_publisher.title")} price="+39€" desc={t("planes.modules.web_publisher.desc")} />
                   </div>
                 </div>
 
                 <div>
                   <h4 className="text-xl font-bold text-black dark:text-white mb-6 border-b border-slate-100 dark:border-white/5 pb-3">{t("planes.a_la_carte.advanced")}</h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <FeatureMiniCard title={t("planes.packs.acquisition_badge")} price="+69€" desc={t("planes.packs.acquisition_badge")} />
-                    <FeatureMiniCard title="Property Intel" price="+59€" desc="Property Intel" />
-                    <FeatureMiniCard title={t("planes.packs.intelligence_badge")} price="+49€" desc={t("planes.packs.intelligence_badge")} />
-                    <FeatureMiniCard title={t("planes.matrix.leads")} price="+29€" desc={t("planes.matrix.leads")} />
-                    <FeatureMiniCard title={t("planes.matrix.web_connect")} price="+39€" desc={t("planes.matrix.web_connect")} />
+                    <FeatureMiniCard title="Property Intel" price="+59€" desc={language === "es" ? "Análisis de mercado." : "Market analysis."} />
+                    <FeatureMiniCard title={t("planes.modules.valuation.title")} price="+49€" desc={t("planes.modules.valuation.desc")} />
+                    <FeatureMiniCard title={t("planes.modules.auto_capture.title")} price="+69€" desc={t("planes.modules.auto_capture.desc")} />
+                    <FeatureMiniCard title={t("planes.modules.manual_capture.title")} price="+29€" desc={t("planes.modules.manual_capture.desc")} />
                   </div>
                 </div>
               </div>

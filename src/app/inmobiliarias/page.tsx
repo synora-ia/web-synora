@@ -221,11 +221,11 @@ export default function InmobiliariasPage() {
                   </span>
                 </div>
 
-                <h3 className="text-2xl font-bold text-black dark:text-white mb-2">{isEs ? "Plan Crecimiento + Pack Captación" : "Growth Plan + Acquisition Pack"}</h3>
+                <h3 className="text-2xl font-bold text-black dark:text-white mb-2">{isEs ? "Plan Crecimiento + Pack Inmobiliaria" : "Growth Plan + Real Estate Pack"}</h3>
                 <div className="text-5xl font-bold text-black dark:text-white mb-8">288€/{isEs ? "mes" : "month"}</div>
 
                 <div className="flex flex-wrap justify-center gap-3 mb-12">
-                  {[(isEs ? "Pack Captación" : "Acquisition Pack"), "WebConnect", (isEs ? "Seguimiento Leads IA" : "AI Lead Follow-up")].map((mod, i) => (
+                  {[(isEs ? "Pack Inmobiliaria" : "Real Estate Pack"), (isEs ? "Publicador Web" : "Web Publisher"), (isEs ? "Sugerencias IA" : "AI Suggestions")].map((mod, i) => (
                     <span key={i} className="px-4 py-2 bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 rounded-xl text-sm font-medium text-slate-600 dark:text-zinc-300">
                       {mod}
                     </span>

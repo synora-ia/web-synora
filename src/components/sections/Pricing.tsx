@@ -78,10 +78,9 @@ export default function Pricing() {
   ];
 
   const modules = [
-    { title: language === "es" ? "Pack Captación" : "Capture Pack", price: "+89€", desc: language === "es" ? "Bundle: Captador, Publicador y Sugerencias IA." : "Bundle: Capturer, Publisher and IA Suggestions.", isPack: true },
-    { title: language === "es" ? "Pack Inteligencia" : "Intelligence Pack", price: "+149€", desc: language === "es" ? "Bundle: Scraping, Valoraciones y Property Intel." : "Bundle: Scraping, Valuations and Property Intel.", isPack: true },
+    { title: language === "es" ? "Pack Inmobiliaria" : "Real Estate Pack", price: "+89€", desc: language === "es" ? "Bundle: Captador, Publicador y Sugerencias IA." : "Bundle: Capturer, Publisher and IA Suggestions.", isPack: true },
+    { title: language === "es" ? "Pack Inmobiliaria Pro" : "Real Estate Pro Pack", price: "+149€", desc: language === "es" ? "Bundle: Scraping, Valoraciones y Property Intel." : "Bundle: Scraping, Valuations and Property Intel.", isPack: true },
     { title: "Dashboard Core", price: "+39€", desc: language === "es" ? "Panel de control, agenda y tareas centralizadas." : "Control panel, calendar and centralized tasks." },
-    { title: language === "es" ? "Gestión Leads" : "Lead Management", price: "+39€", desc: language === "es" ? "Sistema central de clientes y documentos." : "Central system for clients and documents." },
     { title: "Contestador IceBraker", price: "+29€", desc: language === "es" ? "Respuesta automática inicial a nuevos leads." : "Initial auto-response to new leads." },
     { title: language === "es" ? "Recordatorios IA" : "AI Reminders", price: "+29€", desc: language === "es" ? "Avisos automáticos de citas y seguimientos." : "Automatic appointment and follow-up alerts." },
     { title: "Chatbot WhatsApp", price: "+49€", desc: language === "es" ? "Atención 24/7 en el canal nº1 de comunicación." : "24/7 support on the #1 communication channel." },
