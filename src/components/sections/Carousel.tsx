@@ -3,61 +3,63 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import FloatingBlobs from "@/components/ui/FloatingBlobs";
-
-const slides = [
-  {
-    category: "Sector Inmobiliario",
-    title: "Soluciones para",
-    titleSerif: "Inmobiliarias.",
-    description: "Automatizamos la captación, valoración y gestión de exclusivas. Convierte tu agencia en una máquina de cerrar operaciones con datos e inteligencia artificial.",
-    features: [
-      { title: "Captación 24/7", desc: "IA que califica propietarios y programa visitas automáticamente." },
-      { title: "Valoración Instantánea", desc: "Informes de mercado precisos generados en segundos." }
-    ],
-    link: "/inmobiliarias",
-    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    category: "Sector Salud",
-    title: "Soluciones para",
-    titleSerif: "Clínicas y Centros.",
-    description: "Optimizamos la gestión de pacientes y agendas para centros médicos, dentales y fisioterapia. Automatización total desde la cita hasta el post-tratamiento.",
-    features: [
-      { title: "Agenda Inteligente", desc: "IA que gestiona huecos, recordatorios y cancelaciones en tiempo real." },
-      { title: "Fidelización Activa", desc: "Seguimiento automático de tratamientos y bonos de sesiones." }
-    ],
-    link: "/clinicas",
-    image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    category: "Sector Fitness",
-    title: "Soluciones para",
-    titleSerif: "Gimnasios y Centros.",
-    description: "Reduce la tasa de bajas con alertas de churn preventivas y automatiza el alta de nuevos socios sin fricciones.",
-    features: [
-      { title: "Prevención de Bajas", desc: "IA que detecta socios en riesgo y activa campañas de retención." },
-      { title: "Altas Express", desc: "Proceso de inscripción y pago 100% digital y automatizado." }
-    ],
-    link: "/gimnasios",
-    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    category: "Sector Hostelería",
-    title: "Soluciones para",
-    titleSerif: "Restaurantes.",
-    description: "Libro de reservas inteligente y gestión de no-shows. Conoce a tus clientes antes de que crucen la puerta.",
-    features: [
-      { title: "Cero No-Shows", desc: "Confirmación automática y cobro de fianza en reservas críticas." },
-      { title: "Guest Intelligence", desc: "Historial de preferencias y alergias integrado en cada reserva." }
-    ],
-    link: "/restaurantes",
-    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80"
-  },
-];
+import { useLanguage } from "../layout/LanguageContext";
 
 export default function Carousel() {
+  const { t } = useLanguage();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+
+  const slides = [
+    {
+      category: t("carousel.inmo.category"),
+      title: t("carousel.solutions_for"),
+      titleSerif: t("carousel.inmo.titleSerif"),
+      description: t("carousel.inmo.description"),
+      features: [
+        { title: t("carousel.inmo.f1_title"), desc: t("carousel.inmo.f1_desc") },
+        { title: t("carousel.inmo.f2_title"), desc: t("carousel.inmo.f2_desc") }
+      ],
+      link: "/inmobiliarias",
+      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      category: t("carousel.health.category"),
+      title: t("carousel.solutions_for"),
+      titleSerif: t("carousel.health.titleSerif"),
+      description: t("carousel.health.description"),
+      features: [
+        { title: t("carousel.health.f1_title"), desc: t("carousel.health.f1_desc") },
+        { title: t("carousel.health.f2_title"), desc: t("carousel.health.f2_desc") }
+      ],
+      link: "/clinicas",
+      image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      category: t("carousel.fitness.category"),
+      title: t("carousel.solutions_for"),
+      titleSerif: t("carousel.fitness.titleSerif"),
+      description: t("carousel.fitness.description"),
+      features: [
+        { title: t("carousel.fitness.f1_title"), desc: t("carousel.fitness.f1_desc") },
+        { title: t("carousel.fitness.f2_title"), desc: t("carousel.fitness.f2_desc") }
+      ],
+      link: "/gimnasios",
+      image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      category: t("carousel.hospitality.category"),
+      title: t("carousel.solutions_for"),
+      titleSerif: t("carousel.hospitality.titleSerif"),
+      description: t("carousel.hospitality.description"),
+      features: [
+        { title: t("carousel.hospitality.f1_title"), desc: t("carousel.hospitality.f1_desc") },
+        { title: t("carousel.hospitality.f2_title"), desc: t("carousel.hospitality.f2_desc") }
+      ],
+      link: "/restaurantes",
+      image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80"
+    },
+  ];
 
   useEffect(() => {
     if (isPaused) return;
@@ -65,7 +67,7 @@ export default function Carousel() {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, [isPaused]);
+  }, [isPaused, slides.length]);
 
   return (
     <section
@@ -112,7 +114,7 @@ export default function Carousel() {
                   ))}
                 </div>
                 <Link href={slide.link} className="inline-flex items-center text-white border-b border-white/30 pb-1 hover:border-white transition-colors font-bold">
-                  Explorar {slide.category.toLowerCase()}
+                  {t("carousel.explore")} {slide.category}
                   <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>

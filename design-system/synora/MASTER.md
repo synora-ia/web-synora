@@ -7,7 +7,7 @@
 ---
 
 **Project:** Synora
-**Generated:** 2026-04-29 00:19:22
+**Generated:** 2026-05-13 22:12:03
 **Category:** Luxury/Premium Brand
 
 ---
@@ -18,24 +18,24 @@
 
 | Role | Hex | CSS Variable |
 |------|-----|--------------|
-| Primary | `#0EA5E9` | `--color-primary` |
-| Secondary | `#38BDF8` | `--color-secondary` |
-| CTA/Accent | `#F97316` | `--color-cta` |
-| Background | `#F0F9FF` | `--color-background` |
-| Text | `#0C4A6E` | `--color-text` |
+| Primary | `#1C1917` | `--color-primary` |
+| Secondary | `#44403C` | `--color-secondary` |
+| CTA/Accent | `#CA8A04` | `--color-cta` |
+| Background | `#FAFAF9` | `--color-background` |
+| Text | `#0C0A09` | `--color-text` |
 
-**Color Notes:** Sky blue trust + warm CTA
+**Color Notes:** Premium dark + gold accent
 
 ### Typography
 
-- **Heading Font:** Bodoni Moda
-- **Body Font:** Jost
-- **Mood:** luxury, minimalist, high-end, sophisticated, refined, premium
-- **Google Fonts:** [Bodoni Moda + Jost](https://fonts.google.com/share?selection.family=Bodoni+Moda:wght@400;500;600;700|Jost:wght@300;400;500;600;700)
+- **Heading Font:** Satoshi
+- **Body Font:** General Sans
+- **Mood:** premium, modern, clean, sophisticated, versatile, balanced
+- **Google Fonts:** [Satoshi + General Sans](https://fonts.google.com/share?selection.family=DM+Sans:wght@400;500;700)
 
 **CSS Import:**
 ```css
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700&family=Jost:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
 ```
 
 ### Spacing Variables
@@ -68,7 +68,7 @@
 ```css
 /* Primary Button */
 .btn-primary {
-  background: #F97316;
+  background: #CA8A04;
   color: white;
   padding: 12px 24px;
   border-radius: 8px;
@@ -85,8 +85,8 @@
 /* Secondary Button */
 .btn-secondary {
   background: transparent;
-  color: #0EA5E9;
-  border: 2px solid #0EA5E9;
+  color: #1C1917;
+  border: 2px solid #1C1917;
   padding: 12px 24px;
   border-radius: 8px;
   font-weight: 600;
@@ -99,7 +99,7 @@
 
 ```css
 .card {
-  background: #F0F9FF;
+  background: #FAFAF9;
   border-radius: 12px;
   padding: 24px;
   box-shadow: var(--shadow-md);
@@ -125,9 +125,9 @@
 }
 
 .input:focus {
-  border-color: #0EA5E9;
+  border-color: #1C1917;
   outline: none;
-  box-shadow: 0 0 0 3px #0EA5E920;
+  box-shadow: 0 0 0 3px #1C191720;
 }
 ```
 
