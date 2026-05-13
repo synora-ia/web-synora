@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect, useCallback } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Link from "next/link";
@@ -9,15 +10,29 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function ClinicasPage() {
   const { t, language } = useLanguage();
   const isEs = language === "es";
+  const [topCard, setTopCard] = useState<"calendar" | "todo">("todo");
+
+  const toggle = useCallback(() => {
+    setTopCard((prev) => (prev === "todo" ? "calendar" : "todo"));
+  }, []);
+
+  useEffect(() => {
+    const id = setInterval(toggle, 4000);
+    return () => clearInterval(id);
+  }, [toggle]);
+
+  const handleClick = (card: "calendar" | "todo") => {
+    setTopCard((prev) => (prev === card ? (card === "todo" ? "calendar" : "todo") : card));
+  };
 
   return (
     <main className="bg-white dark:bg-black transition-colors duration-300">
       <Navbar />
-      
+
       {/* Sector Hero */}
       <header className="hero-gradient pt-32 md:pt-40 pb-12 md:pb-24 px-6 border-b border-slate-100 dark:border-white/5">
         <AnimatePresence mode="wait">
-          <motion.div 
+          <motion.div
             key={language}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -34,7 +49,7 @@ export default function ClinicasPage() {
                 <span className="font-serif-italic text-slate-500 dark:text-zinc-500">{isEs ? "un sistema de cuidado." : "a care system."}</span>
               </h1>
               <p className="text-xl text-slate-600 dark:text-zinc-400 mb-10 max-w-lg leading-relaxed">
-                {isEs 
+                {isEs
                   ? "Optimizamos la gestión de pacientes y agendas para centros médicos, dentales y fisioterapia. Automatización total desde la cita hasta el post-tratamiento."
                   : "We optimize patient and schedule management for medical, dental, and physiotherapy centers. Total automation from appointment to post-treatment."}
               </p>
@@ -78,7 +93,7 @@ export default function ClinicasPage() {
                     <div className="w-12 h-12 bg-blue-500 text-white rounded-2xl flex items-center justify-center mb-8 font-bold">01</div>
                     <h4 className="text-xl font-bold mb-4 text-black dark:text-white">{isEs ? "Reserva Inteligente" : "Smart Booking"}</h4>
                     <p className="text-sm text-slate-500 dark:text-zinc-400 leading-relaxed">
-                      {isEs 
+                      {isEs
                         ? "El paciente reserva por WhatsApp o Web. La IA confirma la cita, asigna doctor y sala, y envía las instrucciones previas automáticamente."
                         : "The patient books via WhatsApp or Web. The AI confirms the appointment, assigns doctor and room, and sends pre-instructions automatically."}
                     </p>
@@ -87,7 +102,7 @@ export default function ClinicasPage() {
                     <div className="w-12 h-12 bg-purple-500 text-white rounded-2xl flex items-center justify-center mb-8 font-bold">02</div>
                     <h4 className="text-xl font-bold mb-4 text-black dark:text-white">{isEs ? "Recordatorios Sin Falla" : "Flawless Reminders"}</h4>
                     <p className="text-sm text-slate-500 dark:text-zinc-400 leading-relaxed">
-                      {isEs 
+                      {isEs
                         ? "Secuencia de WhatsApp y SMS coordinados 24h y 2h antes. Reducción drástica del ausentismo y huecos vacíos en agenda."
                         : "Coordinated WhatsApp and SMS sequence 24h and 2h before. Drastic reduction in no-shows and empty slots in the schedule."}
                     </p>
@@ -96,7 +111,7 @@ export default function ClinicasPage() {
                     <div className="w-12 h-12 bg-green-500 text-white rounded-2xl flex items-center justify-center mb-8 font-bold">03</div>
                     <h4 className="text-xl font-bold mb-4 text-black dark:text-white">{isEs ? "Post-Tratamiento" : "Post-Treatment"}</h4>
                     <p className="text-sm text-slate-500 dark:text-zinc-400 leading-relaxed">
-                      {isEs 
+                      {isEs
                         ? "Seguimiento de evolución, encuesta de satisfacción y recordatorio automático para la próxima sesión del plan de cuidado."
                         : "Progress tracking, satisfaction survey, and automatic reminder for the next session of the care plan."}
                     </p>
@@ -113,7 +128,7 @@ export default function ClinicasPage() {
                 <div className="flex-1 text-center md:text-left">
                   <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tight">-15% <br /><span className="text-white/40 dark:text-black/40 text-3xl font-serif-italic">{isEs ? "Tasa de No-Shows" : "No-Show Rate"}</span></h2>
                   <p className="text-lg text-white/60 dark:text-black/60 mb-10 leading-relaxed">
-                    {isEs 
+                    {isEs
                       ? "Cada cita perdida es un recurso desperdiciado. Nuestro sistema de recordatorios omnicanal garantiza que tu agenda esté siempre llena y tu equipo siempre productivo."
                       : "Every missed appointment is a wasted resource. Our omnichannel reminder system ensures your schedule is always full and your team always productive."}
                   </p>
@@ -124,11 +139,11 @@ export default function ClinicasPage() {
                   </ul>
                 </div>
                 <div className="flex-1 bg-white/10 dark:bg-black/5 backdrop-blur-3xl p-8 rounded-[3rem] border border-white/10 dark:border-black/5">
-                   <div className="text-center">
-                     <div className="text-sm font-bold text-blue-400 uppercase tracking-widest mb-2">{isEs ? "Recuperación Media" : "Average Recovery"}</div>
-                     <div className="text-5xl font-bold mb-4">+1.200€</div>
-                     <p className="text-xs text-white/40 dark:text-black/40">{isEs ? "Ingresos extra mensuales por cada 10 citas rescatadas." : "Extra monthly income for every 10 rescued appointments."}</p>
-                   </div>
+                  <div className="text-center">
+                    <div className="text-sm font-bold text-blue-400 uppercase tracking-widest mb-2">{isEs ? "Recuperación Media" : "Average Recovery"}</div>
+                    <div className="text-5xl font-bold mb-4">+1.200€</div>
+                    <p className="text-xs text-white/40 dark:text-black/40">{isEs ? "Ingresos extra mensuales por cada 10 citas rescatadas." : "Extra monthly income for every 10 rescued appointments."}</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -144,7 +159,7 @@ export default function ClinicasPage() {
                     {isEs ? "Optimización de Agenda 360°" : "360° Schedule Optimization"}
                   </h2>
                   <p className="text-lg text-slate-600 dark:text-zinc-400 mb-8 leading-relaxed">
-                    {isEs 
+                    {isEs
                       ? "Gestiona citas, disponibilidad de doctores y salas desde un panel visual que predice huecos y minimiza el tiempo ocioso."
                       : "Manage appointments, doctor availability and rooms from a visual panel that predicts gaps and minimizes idle time."}
                   </p>
@@ -157,33 +172,78 @@ export default function ClinicasPage() {
                       {isEs ? "Conexión con tu Stack Médico" : "Connection with your Medical Stack"}
                     </h5>
                     <p className="text-sm text-slate-600 dark:text-zinc-400">
-                      {isEs 
+                      {isEs
                         ? "Conexión bidireccional con tu software de gestión actual y WhatsApp Business para automatizar el ciclo del paciente."
                         : "Bi-directional connection with your current management software and WhatsApp Business to automate the patient cycle."}
                     </p>
                   </div>
 
                   <div className="grid grid-cols-2 gap-8">
-                     <div>
-                       <h5 className="font-bold text-black dark:text-white mb-2">{isEs ? "Fidelización" : "Loyalty"}</h5>
-                       <p className="text-xs text-slate-500 dark:text-zinc-400">{isEs ? "Seguimiento automático de tratamientos y bonos de sesiones." : "Automatic tracking of treatments and session vouchers."}</p>
-                     </div>
-                     <div>
-                       <h5 className="font-bold text-black dark:text-white mb-2">{isEs ? "Historial" : "History"}</h5>
-                       <p className="text-xs text-slate-500 dark:text-zinc-400">{isEs ? "Acceso rápido y centralizado a toda la evolución del paciente." : "Fast and centralized access to all patient evolution."}</p>
-                     </div>
+                    <div>
+                      <h5 className="font-bold text-black dark:text-white mb-2">{isEs ? "Fidelización" : "Loyalty"}</h5>
+                      <p className="text-xs text-slate-500 dark:text-zinc-400">{isEs ? "Seguimiento automático de tratamientos y bonos de sesiones." : "Automatic tracking of treatments and session vouchers."}</p>
+                    </div>
+                    <div>
+                      <h5 className="font-bold text-black dark:text-white mb-2">{isEs ? "Historial" : "History"}</h5>
+                      <p className="text-xs text-slate-500 dark:text-zinc-400">{isEs ? "Acceso rápido y centralizado a toda la evolución del paciente." : "Fast and centralized access to all patient evolution."}</p>
+                    </div>
                   </div>
                 </div>
 
-                <div className="relative">
-                  <div className="absolute -inset-4 bg-gradient-to-tr from-blue-500/10 to-purple-500/10 blur-3xl rounded-[4rem] -z-10"></div>
-                  <div className="bg-white dark:bg-zinc-900 p-4 rounded-[3rem] shadow-2xl dark:shadow-none border border-slate-100 dark:border-white/5 overflow-hidden">
-                    <img 
-                      src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80" 
-                      alt="Dashboard Preview" 
-                      className="rounded-[2rem] w-full aspect-square lg:aspect-auto lg:h-[600px] object-cover transition-all duration-700" 
-                    />
-                  </div>
+                <div className="relative mx-auto max-w-5xl">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-[2.5rem] blur-xl opacity-25"></div>
+
+                  {/* Calendar card — position relative to establish container height */}
+                  <motion.div
+                    className="relative cursor-pointer"
+                    style={{ zIndex: topCard === "calendar" ? 20 : 10 }}
+                    animate={{
+                      x: topCard === "calendar" ? 20 : 0,
+                      y: topCard === "calendar" ? -12 : 0,
+                      scale: topCard === "calendar" ? 0.97 : 1,
+                    }}
+                    transition={{ type: "spring", stiffness: 260, damping: 25 }}
+                    onClick={() => handleClick("calendar")}
+                  >
+                    <div className="relative rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl bg-zinc-900">
+                      <div className="absolute top-0 left-0 right-0 h-10 bg-zinc-800/80 flex items-center px-6 gap-2 z-20 border-b border-white/5 backdrop-blur-md">
+                        <div className="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/30"></div>
+                        <div className="w-3 h-3 rounded-full bg-amber-500/20 border border-amber-500/30"></div>
+                        <div className="w-3 h-3 rounded-full bg-emerald-500/20 border border-emerald-500/30"></div>
+                      </div>
+                      <img
+                        alt="Synora Dashboard Calendar"
+                        className="w-full h-auto mt-10 object-cover opacity-90 hover:opacity-100 transition-opacity duration-500"
+                        src="/images/dashboard/dashboard-calendar.png"
+                      />
+                    </div>
+                  </motion.div>
+
+                  {/* Todo card — absolute, stacked on top */}
+                  <motion.div
+                    className="absolute inset-0 cursor-pointer"
+                    style={{ zIndex: topCard === "todo" ? 20 : 10 }}
+                    animate={{
+                      x: topCard === "todo" ? 20 : 0,
+                      y: topCard === "todo" ? -12 : 0,
+                      scale: topCard === "todo" ? 0.97 : 1,
+                    }}
+                    transition={{ type: "spring", stiffness: 260, damping: 25 }}
+                    onClick={() => handleClick("todo")}
+                  >
+                    <div className="relative rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl bg-zinc-900">
+                      <div className="absolute top-0 left-0 right-0 h-10 bg-zinc-800/80 flex items-center px-6 gap-2 z-20 border-b border-white/5 backdrop-blur-md">
+                        <div className="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/30"></div>
+                        <div className="w-3 h-3 rounded-full bg-amber-500/20 border border-amber-500/30"></div>
+                        <div className="w-3 h-3 rounded-full bg-emerald-500/20 border border-emerald-500/30"></div>
+                      </div>
+                      <img
+                        alt="Synora Dashboard Todo"
+                        className="w-full h-auto mt-10 object-cover opacity-90 hover:opacity-100 transition-opacity duration-500"
+                        src="/images/dashboard/dashboard-todo.png"
+                      />
+                    </div>
+                  </motion.div>
                 </div>
               </div>
             </div>
@@ -194,17 +254,17 @@ export default function ClinicasPage() {
             <div className="max-w-4xl mx-auto text-center">
               <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-6 block">{isEs ? "Configuración Recomendada" : "Recommended Configuration"}</span>
               <h2 className="text-4xl font-bold text-black dark:text-white mb-12 tracking-tight">{isEs ? "Tu sistema ideal para Clínicas" : "Your ideal system for Clinics"}</h2>
-              
+
               <div className="bg-white dark:bg-zinc-900 p-12 rounded-[3rem] border-2 border-black dark:border-white relative overflow-hidden shadow-2xl">
                 <div className="absolute top-0 right-0 p-8">
                   <span className="bg-black dark:bg-white text-white dark:text-black px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">
                     Best Value
                   </span>
                 </div>
-                
+
                 <h3 className="text-2xl font-bold text-black dark:text-white mb-2">{isEs ? "Plan Crecimiento" : "Growth Plan"}</h3>
                 <div className="text-5xl font-bold text-black dark:text-white mb-8">199€/{isEs ? "mes" : "month"}</div>
-                
+
                 <div className="flex flex-wrap justify-center gap-3 mb-12">
                   {[isEs ? "Chatbot WhatsApp" : "WhatsApp Chatbot", isEs ? "Recordatorios Automáticos" : "Automatic Reminders", isEs ? "Seguimiento Post-Tratamiento" : "Post-Treatment Follow-up"].map((mod, i) => (
                     <span key={i} className="px-4 py-2 bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 rounded-xl text-sm font-medium text-slate-600 dark:text-zinc-300">
@@ -212,7 +272,7 @@ export default function ClinicasPage() {
                     </span>
                   ))}
                 </div>
-                
+
                 <Link href="/contacto" className="inline-block px-12 py-5 bg-black dark:bg-white text-white dark:text-black rounded-full font-bold hover:scale-105 transition-transform">
                   {isEs ? "Empezar ahora" : "Start now"}
                 </Link>

@@ -62,13 +62,18 @@ export default function Home() {
               className="grid lg:grid-cols-2 gap-20 items-center"
             >
               <div className="order-2 lg:order-1">
-                <div className="relative group cursor-pointer">
-                  <div className="absolute -inset-4 bg-gradient-to-tr from-blue-500/10 to-purple-500/10 blur-3xl rounded-[4rem] -z-10 group-hover:from-blue-500/20 group-hover:to-purple-500/20 transition-all duration-700"></div>
-                  <div className="bg-white dark:bg-zinc-900 p-4 rounded-[3rem] shadow-2xl dark:shadow-none border border-slate-100 dark:border-white/5 overflow-hidden">
+                <div className="relative mx-auto max-w-5xl group">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-[2.5rem] blur-xl opacity-25 group-hover:opacity-40 transition duration-1000"></div>
+                  <div className="relative rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl bg-zinc-900">
+                    <div className="absolute top-0 left-0 right-0 h-10 bg-zinc-800/80 flex items-center px-6 gap-2 z-20 border-b border-white/5 backdrop-blur-md">
+                      <div className="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/30"></div>
+                      <div className="w-3 h-3 rounded-full bg-amber-500/20 border border-amber-500/30"></div>
+                      <div className="w-3 h-3 rounded-full bg-emerald-500/20 border border-emerald-500/30"></div>
+                    </div>
                     <img
-                      src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"
-                      alt="Synora Dashboard Preview"
-                      className="rounded-[2rem] w-full aspect-square lg:aspect-auto lg:h-[500px] object-cover grayscale-[30%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                      alt="Synora Dashboard Mockup"
+                      className="w-full h-auto mt-10 object-cover opacity-90 group-hover:opacity-100 transition-all duration-700"
+                      src="/images/dashboard/dashboard-main.png"
                     />
                   </div>
                 </div>

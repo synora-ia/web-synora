@@ -88,8 +88,8 @@ export default function Carousel() {
             <div
               key={index}
               className={`grid lg:grid-cols-2 gap-20 items-center transition-all duration-700 ${index === currentSlide
-                  ? "opacity-100 translate-x-0 relative"
-                  : "opacity-0 translate-x-12 absolute inset-0 pointer-events-none"
+                ? "opacity-100 translate-x-0 relative"
+                : "opacity-0 translate-x-12 absolute inset-0 pointer-events-none"
                 }`}
             >
               <div>

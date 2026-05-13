@@ -75,7 +75,7 @@ function ModuleBox({ color, label, border, light }: { color: string; label: stri
 function ModuleCard({ title, desc, price, active }: { title: string; desc: string; price: string; active?: boolean }) {
   const { t, language } = useLanguage();
   const isEs = language === "es";
-  
+
   return (
     <div className="w-[280px] shrink-0 h-[160px]">
       <div className={`bg-white dark:bg-zinc-900 p-6 rounded-3xl border border-slate-100 dark:border-white/5 hover:shadow-lg dark:hover:shadow-white/5 transition-all text-center relative overflow-hidden h-full flex flex-col justify-center`}>
@@ -168,7 +168,7 @@ function ActivityFeed() {
           "New user registered",
           "Daily backup finished"
         ];
-        
+
         const idx = Math.floor(Math.random() * 5);
         const newEvent = {
           id: Date.now(),
@@ -223,7 +223,7 @@ export default function DashboardPage() {
           transition={{ duration: 0.5 }}
         >
           {/* Hero Section */}
-          <section className="relative pt-32 md:pt-40 pb-12 md:pb-24 px-6 overflow-hidden">
+          <section className="relative pt-32 md:pt-40 pb-[180px] md:pb-[260px] lg:pb-[320px] px-6">
             <FloatingBlobs
               blobs={[
                 { color: "bg-blue-600/20", className: "-top-[10%] -left-[10%] w-[60%] h-[60%]", animation: "animate-drift" },
@@ -232,7 +232,7 @@ export default function DashboardPage() {
             />
 
             <div className="max-w-7xl mx-auto relative z-10">
-              <div className="text-center max-w-3xl mx-auto mb-20">
+              <div className="text-center max-w-3xl mx-auto">
                 <motion.span
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -257,27 +257,35 @@ export default function DashboardPage() {
                   {t("dashboard.hero.desc")}
                 </motion.p>
               </div>
+            </div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.8 }}
-                className="relative mx-auto max-w-5xl group"
-              >
+            {/* Mockup — absolutamente en el borde inferior del hero, translate-y-1/2 lo solapa en ambas secciones */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              className="absolute bottom-0 left-0 right-0 px-6 translate-y-1/2 z-30"
+            >
+              <div className="relative mx-auto max-w-5xl group">
                 <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-[2.5rem] blur-xl opacity-25 group-hover:opacity-40 transition duration-1000"></div>
-                <div className="relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl bg-black">
+                <div className="relative rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl bg-zinc-900">
+                  <div className="absolute top-0 left-0 right-0 h-10 bg-zinc-800/80 flex items-center px-6 gap-2 z-20 border-b border-white/5 backdrop-blur-md">
+                    <div className="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/30"></div>
+                    <div className="w-3 h-3 rounded-full bg-amber-500/20 border border-amber-500/30"></div>
+                    <div className="w-3 h-3 rounded-full bg-emerald-500/20 border border-emerald-500/30"></div>
+                  </div>
                   <img
-                    src="/home/josep/.gemini/antigravity/brain/c18842ce-8401-4bb3-8eed-bb71b6c66ab5/synora_dashboard_mockup_1778248407901.png"
+                    src="/images/dashboard/dashboard-main.png"
                     alt="Synora Dashboard Mockup"
-                    className="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-700"
+                    className="w-full h-auto mt-10 object-cover opacity-90 group-hover:opacity-100 transition-all duration-700"
                   />
                 </div>
-              </motion.div>
-            </div>
+              </div>
+            </motion.div>
           </section>
 
           {/* Core Functionalities */}
-          <section className="py-16 md:py-32 px-6 bg-slate-50 dark:bg-zinc-900/30 border-y border-slate-100 dark:border-white/5">
+          <section className="pt-[220px] md:pt-[300px] lg:pt-[370px] pb-20 md:pb-32 px-6 bg-slate-50 dark:bg-zinc-900/30 border-y border-slate-100 dark:border-white/5">
             <div className="max-w-7xl mx-auto">
               <div className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide md:grid md:grid-cols-3 gap-6 md:gap-12 -mx-6 px-6 md:mx-0 md:px-0 py-4">
                 <FeatureCard
@@ -523,11 +531,17 @@ export default function DashboardPage() {
                 <div className="lg:w-1/2 order-2 lg:order-1">
                   <div className="relative group">
                     <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-[2.5rem] blur-2xl opacity-25 group-hover:opacity-40 transition duration-1000"></div>
-                    <div className="relative rounded-[2.5rem] overflow-hidden border border-slate-200 dark:border-white/10 shadow-2xl bg-black">
+                    <div className="relative rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl bg-zinc-900 group">
+                      {/* Browser Header dots */}
+                      <div className="absolute top-0 left-0 right-0 h-10 bg-zinc-800/50 flex items-center px-6 gap-2 z-20 border-b border-white/5 backdrop-blur-md">
+                        <div className="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/30"></div>
+                        <div className="w-3 h-3 rounded-full bg-amber-500/20 border border-amber-500/30"></div>
+                        <div className="w-3 h-3 rounded-full bg-emerald-500/20 border border-emerald-500/30"></div>
+                      </div>
                       <img
-                        src="/home/josep/.gemini/antigravity/brain/a0957a5f-bb07-4488-ac23-70b372088658/synora_multi_device_mockup_1778257231505.png"
+                        src="/images/dashboard/dashboard-stats.png"
                         alt="Synora Multi-device Mockup"
-                        className="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-700"
+                        className="w-full h-auto mt-10 object-cover opacity-90 group-hover:opacity-100 transition-all duration-700"
                       />
                     </div>
                   </div>
