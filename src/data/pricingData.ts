@@ -27,6 +27,7 @@ export interface SynoraPlan {
   quote: string;
   recommended: boolean;
   features: string[];
+  buttonStyle?: string;
 }
 
 export function usePricingData() {
@@ -268,6 +269,7 @@ export function usePricingData() {
         "Web Contact Automation",
         "Automatic Reminders",
       ],
+      buttonStyle: "bg-slate-100",
     },
     {
       id: "plan_crecimiento",
@@ -289,6 +291,7 @@ export function usePricingData() {
         "Integrated WebConnect",
         "Advanced Lead Follow-up",
       ],
+      buttonStyle: "bg-black text-white",
     },
     {
       id: "plan_pro",
@@ -312,6 +315,7 @@ export function usePricingData() {
         "Meeting transcription",
         "Complete sales funnel",
       ],
+      buttonStyle: "bg-slate-100",
     }
   ];
 
