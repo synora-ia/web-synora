@@ -16,8 +16,8 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 w-full z-40 glass-nav transition-all duration-300 dark:bg-black/50">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        <Link href="/" className="font-bold text-2xl tracking-tight text-black dark:text-white">
-          Synora<span className="text-slate-400">.</span>
+        <Link href="/" className="font-extrabold text-2xl tracking-tight text-black dark:text-white italic">
+          synora.
         </Link>
         <div className="hidden lg:flex items-center space-x-8 text-sm font-medium text-slate-600 dark:text-slate-400">
           <AnimatePresence mode="wait">
