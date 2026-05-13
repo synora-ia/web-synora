@@ -136,7 +136,7 @@ export default function InmobiliariasPage() {
 
               <div className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide md:grid md:grid-cols-4 gap-4 relative -mx-6 px-6 md:mx-0 md:px-0 py-4">
                 {[
-                  { t: isEs ? "Captación" : "Acquisition", d: isEs ? "WebConnect detecta nuevos propietarios en portales antes que nadie." : "WebConnect detects new owners on portals before anyone else." },
+                  { t: isEs ? "Captación" : "Acquisition", d: isEs ? "El Captador Automático detecta nuevos propietarios en portales antes que nadie." : "The Automatic Capturer detects new owners on portals before anyone else." },
                   { t: isEs ? "Calificación" : "Qualification", d: isEs ? "Chatbot IA contacta y filtra por motivación y urgencia." : "AI Chatbot contacts and filters by motivation and urgency." },
                   { t: isEs ? "Cierre" : "Closing", d: isEs ? "Visita técnica con informe de valoración profesional impreso." : "Technical visit with printed professional valuation report." },
                   { t: isEs ? "Venta" : "Sale", d: isEs ? "Publicación automática en 40 portales con descripciones SEO." : "Automatic publication on 40 portals with SEO descriptions." }

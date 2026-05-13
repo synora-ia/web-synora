@@ -50,8 +50,8 @@ export default function AdminLayout({
       {/* Sidebar */}
       <aside className="w-64 bg-white dark:bg-zinc-900 border-r border-slate-100 dark:border-white/5 flex flex-col fixed h-full z-30">
         <div className="p-8">
-          <Link href="/" className="text-2xl font-bold text-black dark:text-white tracking-tighter">
-            Synora<span className="text-slate-400">Admin</span>
+          <Link href="/" className="text-2xl font-extrabold text-black dark:text-white tracking-tight italic">
+            synora.<span className="text-slate-400 font-bold not-italic">admin</span>
           </Link>
         </div>
         

@@ -5,10 +5,12 @@ import Footer from "@/components/layout/Footer";
 import Link from "next/link";
 import IsoModalBadge from "@/components/sections/IsoModalBadge";
 import { useLanguage } from "@/components/layout/LanguageContext";
+import { usePricingData } from "@/data/pricingData";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function PlanesPage() {
   const { t, language } = useLanguage();
+  const { plans, modules } = usePricingData();
 
   return (
     <main className="bg-white dark:bg-black transition-colors duration-300">
@@ -52,46 +54,54 @@ export default function PlanesPage() {
                   <table className="w-full text-left border-collapse min-w-[800px]">
                     <thead>
                       <tr className="border-b border-slate-100 dark:border-white/5">
-                        <th className="p-8 text-slate-400 dark:text-zinc-500 font-medium text-sm">{t("planes.matrix.features")}</th>
+                        <th className="p-8 text-slate-400 dark:text-zinc-500 font-medium text-sm">
+                          {language === "es" ? "Características" : "Features"}
+                        </th>
                         <th className="p-8">
-                          <span className="block text-xl font-bold text-black dark:text-white">{t("planes.matrix.essential")}</span>
-                          <span className="text-xs text-slate-400 dark:text-zinc-500">99€/{t("planes.matrix.month")}</span>
+                          <span className="block text-xl font-bold text-black dark:text-white">
+                            {language === "es" ? "Plan Esencial" : "Essential Plan"}
+                          </span>
+                          <span className="text-xs text-slate-400 dark:text-zinc-500">99€/{language === "es" ? "mes" : "month"}</span>
                         </th>
                         <th className="p-8 bg-black dark:bg-white text-white dark:text-black">
-                          <span className="block text-xl font-bold">{t("planes.matrix.growth")}</span>
-                          <span className="text-xs text-white/50 dark:text-black/50">199€/{t("planes.matrix.month")}</span>
+                          <span className="block text-xl font-bold">
+                            {language === "es" ? "Plan Crecimiento" : "Growth Plan"}
+                          </span>
+                          <span className="text-xs text-white/50 dark:text-black/50">199€/{language === "es" ? "mes" : "month"}</span>
                         </th>
                         <th className="p-8">
-                          <span className="block text-xl font-bold text-black dark:text-white">{t("planes.matrix.pro")}</span>
-                          <span className="text-xs text-slate-400 dark:text-zinc-500">{t("planes.matrix.from")} 399€/{t("planes.matrix.month")}</span>
+                          <span className="block text-xl font-bold text-black dark:text-white">
+                            {language === "es" ? "Plan Pro" : "Pro Plan"}
+                          </span>
+                          <span className="text-xs text-slate-400 dark:text-zinc-500">
+                            {language === "es" ? "Desde" : "From"} 399€/{language === "es" ? "mes" : "month"}
+                          </span>
                         </th>
                       </tr>
                     </thead>
                     <tbody className="text-sm text-slate-600 dark:text-zinc-400">
-                      <TableRow label={t("planes.matrix.setup")} v1="350€" v2={`${t("planes.matrix.from")} 600€`} v3={`${t("planes.matrix.from")} 900€`} />
-                      <TableRow label={t("planes.matrix.audit")} v1={`${t("planes.matrix.optional")} (${t("planes.matrix.from")} 200€)`} v2={`${t("planes.matrix.optional")} (${t("planes.matrix.from")} 200€)`} v3={`${t("planes.matrix.optional")} (${t("planes.matrix.from")} 200€)`} />
+                      <TableRow label={language === "es" ? "Setup Inicial" : "Initial Setup"} v1="350€" v2={`${language === "es" ? "Desde" : "From"} 600€`} v3={`${language === "es" ? "Desde" : "From"} 900€`} />
+                      <TableRow label={language === "es" ? "Auditoría de Procesos" : "Process Audit"} v1={`${language === "es" ? "Opcional" : "Optional"} (${language === "es" ? "Desde" : "From"} 200€)`} v2={`${language === "es" ? "Opcional" : "Optional"} (${language === "es" ? "Desde" : "From"} 200€)`} v3={`${language === "es" ? "Opcional" : "Optional"} (${language === "es" ? "Desde" : "From"} 200€)`} />
 
-                      <TableRow label={t("planes.matrix.agenda")} v1="✓" v2="✓" v3="✓" />
-                      <TableRow label={t("planes.matrix.leads")} v1="✓" v2="✓" v3="✓" />
-                      <TableRow label={t("planes.matrix.docs")} v1="✓" v2="✓" v3="✓" />
-                      <TableRow label={t("planes.matrix.icebraker")} v1="✓" v2="✓" v3="✓" />
-                      <TableRow label={t("planes.matrix.web_automation")} v1="✓" v2="✓" v3="✓" />
-                      <TableRow label={t("planes.matrix.reminders")} v1="✓" v2="✓" v3="✓" />
-                      <TableRow label={t("planes.matrix.wa_chatbot")} v1={`+49€/${t("planes.matrix.month")}`} v2="✓" v3="✓" />
-                      <TableRow label={t("planes.matrix.web_chatbot")} v1={`+49€/${t("planes.matrix.month")}`} v2="✓" v3="✓" />
-                      <TableRow label={t("planes.matrix.web_connect")} v1={`+39€/${t("planes.matrix.month")}`} v2="✓" v3="✓" />
-                      <TableRow label={t("planes.matrix.ia_followup")} v1={`+39€/${t("planes.matrix.month")}`} v2="✓" v3="✓" />
-                      <TableRow label={t("planes.matrix.analytics")} v1={`+29€/${t("planes.matrix.month")}`} v2={`+29€/${t("planes.matrix.month")}`} v3="✓" />
-                      <TableRow label={t("planes.matrix.internal_ia")} v1={`+39€/${t("planes.matrix.month")}`} v2={`+39€/${t("planes.matrix.month")}`} v3="✓" />
-                      <TableRow label={t("planes.matrix.transcriptions")} v1={`+39€/${t("planes.matrix.month")}`} v2={`+39€/${t("planes.matrix.month")}`} v3="✓" />
-                      <TableRow label={t("planes.matrix.funnel")} v1={`+59€/${t("planes.matrix.month")}`} v2={`+59€/${t("planes.matrix.month")}`} v3="✓" />
-
+                      <TableRow label={language === "es" ? "Agenda Centralizada" : "Centralized Calendar"} v1="✓" v2="✓" v3="✓" />
+                      <TableRow label={language === "es" ? "Gestión de Leads (CRM)" : "Lead Management (CRM)"} v1="✓" v2="✓" v3="✓" />
+                      <TableRow label={language === "es" ? "Gestión Documental" : "Document Management"} v1="✓" v2="✓" v3="✓" />
+                      <TableRow label={language === "es" ? "Contestador IceBraker" : "IceBraker Responder"} v1="✓" v2="✓" v3="✓" />
+                      <TableRow label={language === "es" ? "Automatización Web" : "Web Automation"} v1="✓" v2="✓" v3="✓" />
+                      <TableRow label={language === "es" ? "Recordatorios Automáticos" : "Automatic Reminders"} v1="✓" v2="✓" v3="✓" />
+                      <TableRow label={modules.find(m => m.id === "wa_chatbot")?.title || ""} v1={modules.find(m => m.id === "wa_chatbot")?.priceLabel || ""} v2="✓" v3="✓" />
+                      <TableRow label={modules.find(m => m.id === "web_chatbot")?.title || ""} v1={modules.find(m => m.id === "web_chatbot")?.priceLabel || ""} v2="✓" v3="✓" />
+                      <TableRow label={modules.find(m => m.id === "ia_followup")?.title || ""} v1={modules.find(m => m.id === "ia_followup")?.priceLabel || ""} v2="✓" v3="✓" />
+                      <TableRow label={modules.find(m => m.id === "analytics")?.title || ""} v1={modules.find(m => m.id === "analytics")?.priceLabel || ""} v2={modules.find(m => m.id === "analytics")?.priceLabel || ""} v3="✓" />
+                      <TableRow label={modules.find(m => m.id === "internal_ia")?.title || ""} v1={modules.find(m => m.id === "internal_ia")?.priceLabel || ""} v2={modules.find(m => m.id === "internal_ia")?.priceLabel || ""} v3="✓" />
+                      <TableRow label={modules.find(m => m.id === "transcriptions")?.title || ""} v1={modules.find(m => m.id === "transcriptions")?.priceLabel || ""} v2={modules.find(m => m.id === "transcriptions")?.priceLabel || ""} v3="✓" />
+                      <TableRow label={modules.find(m => m.id === "funnel")?.title || ""} v1={modules.find(m => m.id === "funnel")?.priceLabel || ""} v2={modules.find(m => m.id === "funnel")?.priceLabel || ""} v3="✓" />
                     </tbody>
                   </table>
                 </div>
               </div>
               <p className="text-center text-xs text-slate-400 dark:text-zinc-500 mt-6 max-w-3xl mx-auto px-4">
-                {t("planes.matrix.tokens_disclaimer")}
+                {language === "es" ? "* Los costes de uso de IA (tokens de OpenAI/Anthropic/Twilio) se facturan directamente a la tarjeta del cliente a final de mes, sin margen por parte de Synora." : "* AI usage costs (OpenAI/Anthropic/Twilio tokens) are billed directly to the client's card at the end of the month, with no markup from Synora."}
               </p>
             </div>
           </section>
@@ -191,7 +201,7 @@ export default function PlanesPage() {
                           <p className="text-slate-500 dark:text-zinc-400 mt-2 text-sm max-w-[200px]">{t("planes.packs.acquisition_desc")}</p>
                         </div>
                         <div className="text-right">
-                          <div className="text-4xl font-bold text-black dark:text-white">+89€</div>
+                          <div className="text-4xl font-bold text-black dark:text-white">{modules.find(m => m.id === "pack_inmobiliaria")?.priceLabel?.split('/')[0]}</div>
                           <div className="text-xs text-slate-400 uppercase tracking-wider font-bold mt-1">/{t("planes.matrix.month")} {t("planes.packs.complete_pack")}</div>
                           <div className="text-[10px] text-blue-500 font-bold mt-2 bg-blue-50 dark:bg-blue-900/20 px-2 py-1 rounded-md inline-block">{t("planes.packs.requires_plan")}</div>
                         </div>
@@ -201,17 +211,17 @@ export default function PlanesPage() {
                       <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-2 px-4">{t("planes.packs.individual_modules")}</span>
                       <ModuleItem
                         title={t("planes.modules.web_publisher.title")}
-                        price={`+39€/${t("planes.matrix.month")}`}
+                        price={modules.find(m => m.id === "web_publisher")?.priceLabel || "+39€"}
                         desc={t("planes.modules.web_publisher.desc")}
                       />
                       <ModuleItem
                         title={t("planes.modules.ai_suggestions.title")}
-                        price={`+39€/${t("planes.matrix.month")}`}
+                        price={modules.find(m => m.id === "ai_suggestions")?.priceLabel || "+39€"}
                         desc={t("planes.modules.ai_suggestions.desc")}
                       />
                       <ModuleItem
                         title={t("planes.modules.manual_capture.title")}
-                        price={`+29€/${t("planes.matrix.month")}`}
+                        price={modules.find(m => m.id === "manual_capture")?.priceLabel || "+29€"}
                         desc={t("planes.modules.manual_capture.desc")}
                       />
                     </div>
@@ -239,22 +249,22 @@ export default function PlanesPage() {
                       </div>
                     </div>
                     <div className="p-8 flex-1 flex flex-col gap-2 relative z-10">
-                      <span className="text-xs font-bold text-white/50 dark:text-black/40 uppercase tracking-widest mb-2 px-4">{t("planes.packs.individual_modules")}</span>
+                      <span className="text-xs font-bold text-white/40 dark:text-black/40 uppercase tracking-widest mb-2 px-4">{t("planes.packs.individual_modules")}</span>
                       <ModuleItem
-                        title={language === "es" ? "Property Intel" : "Property Intel"}
-                        price={`+59€/${t("planes.matrix.month")}`}
+                        title="Property Intel"
+                        price={modules.find(m => m.id === "property_intel")?.priceLabel || "+59€"}
                         desc={language === "es" ? "Análisis de mercado automático por zonas." : "Automatic market analysis by areas."}
                         dark
                       />
                       <ModuleItem
                         title={t("planes.modules.valuation.title")}
-                        price={`+49€/${t("planes.matrix.month")}`}
+                        price={modules.find(m => m.id === "valuation_reports")?.priceLabel || "+49€"}
                         desc={t("planes.modules.valuation.desc")}
                         dark
                       />
                       <ModuleItem
                         title={t("planes.modules.auto_capture.title")}
-                        price={`+69€/${t("planes.matrix.month")}`}
+                        price={modules.find(m => m.id === "auto_capture")?.priceLabel || "+69€"}
                         desc={t("planes.modules.auto_capture.desc")}
                         dark
                       />
@@ -375,53 +385,40 @@ export default function PlanesPage() {
           <section id="funcionalidades" className="py-12 md:py-24 px-6 bg-slate-50 dark:bg-zinc-900/30 transition-colors duration-300 scroll-mt-20 border-t border-slate-100 dark:border-white/5">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
-                <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-4 block">{t("planes.a_la_carte.badge")}</span>
-                <h3 className="text-3xl font-bold text-black dark:text-white mb-4 tracking-tight">{t("planes.a_la_carte.title")}</h3>
+                <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-4 block">
+                  {language === "es" ? "Módulos y Add-ons" : "Modules & Add-ons"}
+                </span>
+                <h3 className="text-3xl font-bold text-black dark:text-white mb-4 tracking-tight">
+                  {language === "es" ? "Funcionalidades a la Carta" : "A la Carte Features"}
+                </h3>
                 <p className="text-slate-500 dark:text-zinc-400 max-w-2xl mx-auto">
-                  <strong>{t("planes.a_la_carte.desc1")}</strong> {t("planes.a_la_carte.desc2")}
+                  <strong>{language === "es" ? "Construye tu propio ecosistema." : "Build your own ecosystem."}</strong> {language === "es" ? "Añade módulos extra a tu plan base según tus necesidades específicas." : "Add extra modules to your base plan according to your specific needs."}
                 </p>
               </div>
               <div className="space-y-16">
-                <div>
-                  <h4 className="text-xl font-bold text-black dark:text-white mb-6 border-b border-slate-100 dark:border-white/5 pb-3">{t("planes.a_la_carte.core")}</h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <FeatureMiniCard title="Dashboard Core" price="+39€" desc={t("dashboard.badge")} />
-                    <FeatureMiniCard title={t("planes.matrix.analytics")} price="+59€" desc={t("planes.matrix.analytics")} />
-                    <FeatureMiniCard title={t("planes.matrix.internal_ia")} price="+49€" desc={t("planes.matrix.internal_ia")} />
-                    <FeatureMiniCard title={t("planes.matrix.transcriptions")} price="+39€" desc={t("planes.matrix.transcriptions")} />
-                  </div>
-                </div>
+                {["core", "service", "sales", "advanced"].map((category) => {
+                  const categoryModules = modules.filter(m => m.category === category);
+                  if (categoryModules.length === 0) return null;
 
-                <div>
-                  <h4 className="text-xl font-bold text-black dark:text-white mb-6 border-b border-slate-100 dark:border-white/5 pb-3">{t("planes.a_la_carte.service")}</h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <FeatureMiniCard title={t("planes.matrix.icebraker")} price="+29€" desc={t("planes.matrix.icebraker")} />
-                    <FeatureMiniCard title={t("planes.matrix.reminders")} price="+29€" desc={t("planes.matrix.reminders")} />
-                    <FeatureMiniCard title={t("planes.matrix.wa_chatbot")} price="+49€" desc={t("planes.matrix.wa_chatbot")} />
-                    <FeatureMiniCard title={t("planes.matrix.web_chatbot")} price="+49€" desc={t("planes.matrix.web_chatbot")} />
-                    <FeatureMiniCard title={t("planes.matrix.ia_followup")} price="+39€" desc={t("planes.matrix.ia_followup")} />
-                  </div>
-                </div>
+                  let categoryTitle = "";
+                  if (category === "core") categoryTitle = language === "es" ? "Core & Gestión" : "Core & Management";
+                  if (category === "service") categoryTitle = language === "es" ? "Servicio y Atención" : "Service & Support";
+                  if (category === "sales") categoryTitle = language === "es" ? "Ventas y Captación" : "Sales & Acquisition";
+                  if (category === "advanced") categoryTitle = language === "es" ? "Herramientas Avanzadas" : "Advanced Tools";
 
-                <div>
-                  <h4 className="text-xl font-bold text-black dark:text-white mb-6 border-b border-slate-100 dark:border-white/5 pb-3">{t("planes.a_la_carte.sales")}</h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <FeatureMiniCard title="WebConnect" price="+39€" desc={t("planes.matrix.web_connect")} />
-                    <FeatureMiniCard title={t("planes.matrix.funnel")} price="+59€" desc={t("planes.matrix.funnel")} />
-                    <FeatureMiniCard title={t("planes.modules.ai_suggestions.title")} price="+39€" desc={t("planes.modules.ai_suggestions.desc")} />
-                    <FeatureMiniCard title={t("planes.modules.web_publisher.title")} price="+39€" desc={t("planes.modules.web_publisher.desc")} />
-                  </div>
-                </div>
-
-                <div>
-                  <h4 className="text-xl font-bold text-black dark:text-white mb-6 border-b border-slate-100 dark:border-white/5 pb-3">{t("planes.a_la_carte.advanced")}</h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <FeatureMiniCard title="Property Intel" price="+59€" desc={language === "es" ? "Análisis de mercado." : "Market analysis."} />
-                    <FeatureMiniCard title={t("planes.modules.valuation.title")} price="+49€" desc={t("planes.modules.valuation.desc")} />
-                    <FeatureMiniCard title={t("planes.modules.auto_capture.title")} price="+69€" desc={t("planes.modules.auto_capture.desc")} />
-                    <FeatureMiniCard title={t("planes.modules.manual_capture.title")} price="+29€" desc={t("planes.modules.manual_capture.desc")} />
-                  </div>
-                </div>
+                  return (
+                    <div key={category}>
+                      <h4 className="text-xl font-bold text-black dark:text-white mb-6 border-b border-slate-100 dark:border-white/5 pb-3">
+                        {categoryTitle}
+                      </h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        {categoryModules.map(mod => (
+                          <FeatureMiniCard key={mod.id} title={mod.title} price={mod.priceLabel} desc={mod.desc} />
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </section>
@@ -540,9 +537,9 @@ function ModuleItem({ title, price, desc, dark = false }: { title: string; price
 function FeatureMiniCard({ title, price, desc }: { title: string; price: string; desc: string }) {
   return (
     <div className="bg-white dark:bg-zinc-900/50 p-6 rounded-2xl border border-slate-100 dark:border-white/5 hover:border-black dark:hover:border-white transition-all">
-      <div className="flex justify-between items-start mb-3">
-        <h5 className="font-bold text-black dark:text-white">{title}</h5>
-        <span className="text-sm font-bold text-black dark:text-white bg-slate-50 dark:bg-white/5 px-2 py-0.5 rounded-lg">{price}</span>
+      <div className="flex flex-wrap justify-between items-start gap-2 mb-3">
+        <h5 className="font-bold text-black dark:text-white mt-1 pr-2">{title}</h5>
+        <span className="text-sm font-bold text-black dark:text-white bg-slate-50 dark:bg-white/5 px-2.5 py-1 rounded-lg whitespace-nowrap border border-slate-100 dark:border-white/5 shadow-sm">{price}</span>
       </div>
       <p className="text-xs text-slate-500 dark:text-zinc-400 leading-relaxed">{desc}</p>
     </div>

@@ -7,32 +7,55 @@ import { motion, AnimatePresence } from "framer-motion";
 import FloatingBlobs from "@/components/ui/FloatingBlobs";
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/components/layout/LanguageContext";
+import { usePricingData } from "@/data/pricingData";
 
 // --- Constants ---
-const getModulesRow1 = (t: any) => [
-  { title: "Dashboard Core", icon: "📊", desc: t("module.core.desc"), price: "39€", active: true },
-  { title: t("module.leads.title"), icon: "👤", desc: t("module.leads.desc"), price: "39€", active: true },
-  { title: "Contestador IceBraker", icon: "🧊", desc: t("module.icebreaker.desc"), price: "29€", active: false },
-  { title: t("module.reminders.title"), icon: "⏰", desc: t("module.reminders.desc"), price: "29€", active: true },
-  { title: "Chatbot WhatsApp", icon: "💬", desc: t("module.whatsapp.desc"), price: "49€", active: true },
-  { title: "Chatbot Web", icon: "🤖", desc: t("module.chatbot_web.desc"), price: "49€", active: false },
-  { title: "WebConnect", icon: "🌐", desc: t("module.webconnect.desc"), price: "39€", active: true },
-  { title: t("module.tracking.title"), icon: "🔍", desc: t("module.tracking.desc"), price: "39€", active: true },
-  { title: t("module.analytics.title"), icon: "📈", desc: t("module.analytics.desc"), price: "29€", active: false },
-  { title: t("module.internal.title"), icon: "🏢", desc: t("module.internal.desc"), price: "39€", active: false },
-];
+const getModulesRow1 = (modules: any[]) => {
+  const getMod = (id: string) => modules.find((m: any) => m.id === id);
+  const getModData = (id: string, fallbackTitle: string, fallbackDesc: string) => {
+    const m = getMod(id);
+    return {
+      title: m?.title || fallbackTitle,
+      desc: m?.desc || fallbackDesc,
+      price: m?.priceLabel || "+39€/mes",
+    };
+  };
 
-const getModulesRow2 = (t: any) => [
-  { title: t("module.transcriptions.title"), icon: "✍️", desc: t("module.transcriptions.desc"), price: "39€", active: false },
-  { title: t("module.funnel.title"), icon: "🌪️", desc: t("module.funnel.desc"), price: "59€", active: true },
-  { title: t("module.churn.title"), icon: "🛡️", desc: t("module.churn.desc"), price: "59€", active: false },
-  { title: t("module.autocaptor.title"), icon: "🤖", desc: t("module.autocaptor.desc"), price: "69€", active: true },
-  { title: "Property Intel", icon: "🏠", desc: t("module.property_intel.desc"), price: "59€", active: false },
-  { title: t("module.valuation.title"), icon: "📋", desc: t("module.valuation.desc"), price: "49€", active: false },
-  { title: t("module.manual_captor.title"), icon: "📝", desc: t("module.manual_captor.desc"), price: "29€", active: true },
-  { title: t("module.publisher.title"), icon: "📤", desc: t("module.publisher.desc"), price: "39€", active: false },
-  { title: t("module.suggestions.title"), icon: "💡", desc: t("module.suggestions.desc"), price: "39€", active: true },
-];
+  return [
+    { ...getModData("dashboard_core", "Dashboard Core", "Dashboard centralizado"), icon: "📊", active: true },
+    { ...getModData("leads_management", "Gestión de Leads", "Gestión de contactos centralizada"), icon: "👤", active: true },
+    { ...getModData("icebraker", "Contestador IceBraker", "Contestador automático"), icon: "🧊", active: false },
+    { ...getModData("reminders", "Recordatorios automáticos", "Envío de recordatorios"), icon: "⏰", active: true },
+    { ...getModData("wa_chatbot", "Chatbot WhatsApp", "IA conversacional en WA"), icon: "💬", active: true },
+    { ...getModData("web_chatbot", "Chatbot Web", "IA conversacional en web"), icon: "🤖", active: false },
+    { ...getModData("web_connect", "WebConnect", "Conexión web"), icon: "🌐", active: true },
+    { ...getModData("analytics", "Analytics & Tracking", "Analíticas avanzadas"), icon: "🔍", active: true },
+    { ...getModData("internal_ia", "IA Interna", "Asistente interno para el equipo"), icon: "🏢", active: false },
+  ];
+};
+
+const getModulesRow2 = (modules: any[]) => {
+  const getMod = (id: string) => modules.find((m: any) => m.id === id);
+  const getModData = (id: string, fallbackTitle: string, fallbackDesc: string) => {
+    const m = getMod(id);
+    return {
+      title: m?.title || fallbackTitle,
+      desc: m?.desc || fallbackDesc,
+      price: m?.priceLabel || "+39€/mes",
+    };
+  };
+
+  return [
+    { ...getModData("transcriptions", "Transcripción", "Transcripción de audios y llamadas"), icon: "✍️", active: false },
+    { ...getModData("funnel", "Funnel de Ventas", "Flujo de ventas automatizado"), icon: "🌪️", active: true },
+    { ...getModData("property_intel", "Property Intel", "Análisis de mercado"), icon: "🛡️", active: false },
+    { ...getModData("auto_capture", "Captador IA Automático", "Búsqueda activa de propiedades"), icon: "🤖", active: true },
+    { ...getModData("valuation_reports", "Informes de Valoración", "Valoraciones en PDF automático"), icon: "📋", active: false },
+    { ...getModData("manual_capture", "Captador Manual", "Gestión de propiedades manual"), icon: "📝", active: true },
+    { ...getModData("web_publisher", "Publicador Web", "Envío a web y portales"), icon: "📤", active: false },
+    { ...getModData("ai_suggestions", "Sugerencias IA", "Matching inteligente"), icon: "💡", active: true },
+  ];
+};
 
 // --- Helper Components ---
 
@@ -84,7 +107,7 @@ function ModuleCard({ title, desc, price, active }: { title: string; desc: strin
           {active ? (
             <span className="text-green-500 text-sm uppercase tracking-widest font-bold">{isEs ? "Activo" : "Active"}</span>
           ) : (
-            <>+{price}<span className="text-xs text-slate-400 dark:text-zinc-500 ml-1 font-normal">{isEs ? "/mes" : "/month"}</span></>
+            <>{price}</>
           )}
         </div>
         <p className="text-xs text-slate-500 dark:text-zinc-400 leading-relaxed line-clamp-2 px-2">{desc}</p>
@@ -209,6 +232,7 @@ function ActivityFeed() {
 
 export default function DashboardPage() {
   const { t, language } = useLanguage();
+  const { modules } = usePricingData();
 
   return (
     <main className="bg-white dark:bg-black transition-colors duration-300 min-h-screen">
@@ -437,10 +461,10 @@ export default function DashboardPage() {
 
             <div className="space-y-4">
               {/* Row 1: Moving Right */}
-              <ModuleMarquee direction="right" modules={getModulesRow1(t)} />
+              <ModuleMarquee direction="right" modules={getModulesRow1(modules)} />
 
               {/* Row 2: Moving Left */}
-              <ModuleMarquee direction="left" modules={getModulesRow2(t)} />
+              <ModuleMarquee direction="left" modules={getModulesRow2(modules)} />
             </div>
 
             <div className="max-w-7xl mx-auto text-center mt-20 px-6">

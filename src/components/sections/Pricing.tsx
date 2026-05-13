@@ -4,102 +4,11 @@ import Link from "next/link";
 import { useLanguage } from "../layout/LanguageContext";
 import { motion, AnimatePresence } from "framer-motion";
 
+import { usePricingData } from "@/data/pricingData";
+
 export default function Pricing() {
   const { t, language } = useLanguage();
-
-  const plans = [
-    {
-      name: language === "es" ? "Plan Esencial" : "Essential Plan",
-      price: "99€",
-      setup: "350€",
-      tag: language === "es" ? "Organiza y Captura" : "Organize and Capture",
-      tagColor: "bg-green-50 text-green-600",
-      quote: t("pillars.card1.desc"), // Reusing desc for simplicity or hardcoding
-      features: language === "es" ? [
-        "Dashboard, Agenda y ToDo",
-        "Gestión de Leads y Docs",
-        "Contestador IceBraker",
-        "Automatización de contacto web",
-        "Recordatorios automáticos",
-      ] : [
-        "Dashboard, Calendar and ToDo",
-        "Lead and Document Management",
-        "IceBraker Auto-responder",
-        "Web Contact Automation",
-        "Automatic Reminders",
-      ],
-      recommended: false,
-      buttonStyle: "bg-slate-100 text-black hover:bg-black hover:text-white",
-    },
-    {
-      name: language === "es" ? "Plan Crecimiento" : "Growth Plan",
-      price: "199€",
-      setup: language === "es" ? "Desde 600€" : "From 600€",
-      tag: language === "es" ? "Ventas en Piloto Automático" : "Autopilot Sales",
-      tagColor: "bg-blue-50 text-blue-600",
-      quote: language === "es" ? '"No solo organizas, sino que conviertes más clientes con chatbots y seguimientos."' : '"You don\'t just organize, you convert more customers with chatbots and follow-ups."',
-      features: language === "es" ? [
-        "Todo lo del Plan Esencial",
-        "Chatbot de WhatsApp y Web",
-        "WebConnect integrado",
-        "Seguimiento de leads avanzado",
-      ] : [
-        "Everything in Essential Plan",
-        "WhatsApp and Web Chatbot",
-        "Integrated WebConnect",
-        "Advanced Lead Follow-up",
-      ],
-      recommended: true,
-      buttonStyle: "bg-black text-white",
-    },
-    {
-      name: language === "es" ? "Plan Pro" : "Pro Plan",
-      price: "399€",
-      setup: language === "es" ? "Desde 900€" : "From 900€",
-      tag: language === "es" ? "Ecosistema Total" : "Total Ecosystem",
-      tagColor: "bg-red-50 text-red-600",
-      quote: language === "es" ? '"Automatizamos internamente tu negocio y analizamos cada dato para escalar."' : '"We automate your business internally and analyze every data point to scale."',
-      features: language === "es" ? [
-        "Todo lo del Plan Crecimiento",
-        "Analíticas avanzadas en dashboard",
-        "Chatbot de gestión interna",
-        "Transcripción de reuniones",
-        "Funnel de ventas completo",
-      ] : [
-        "Everything in Growth Plan",
-        "Advanced Dashboard Analytics",
-        "Internal Management Chatbot",
-        "Meeting Transcription",
-        "Complete Sales Funnel",
-      ],
-      recommended: false,
-      buttonStyle: "bg-black text-white",
-    },
-  ];
-
-  const modules = [
-    { title: language === "es" ? "Pack Inmobiliaria" : "Real Estate Pack", price: "+89€", desc: language === "es" ? "Bundle: Captador, Publicador y Sugerencias IA." : "Bundle: Capturer, Publisher and IA Suggestions.", isPack: true },
-    { title: language === "es" ? "Pack Inmobiliaria Pro" : "Real Estate Pro Pack", price: "+149€", desc: language === "es" ? "Bundle: Scraping, Valoraciones y Property Intel." : "Bundle: Scraping, Valuations and Property Intel.", isPack: true },
-    { title: "Dashboard Core", price: "+39€", desc: language === "es" ? "Panel de control, agenda y tareas centralizadas." : "Control panel, calendar and centralized tasks." },
-    { title: "Contestador IceBraker", price: "+29€", desc: language === "es" ? "Respuesta automática inicial a nuevos leads." : "Initial auto-response to new leads." },
-    { title: language === "es" ? "Recordatorios IA" : "AI Reminders", price: "+29€", desc: language === "es" ? "Avisos automáticos de citas y seguimientos." : "Automatic appointment and follow-up alerts." },
-    { title: "Chatbot WhatsApp", price: "+49€", desc: language === "es" ? "Atención 24/7 en el canal nº1 de comunicación." : "24/7 support on the #1 communication channel." },
-    { title: "Chatbot Web", price: "+49€", desc: language === "es" ? "Asistente inteligente para tu página web." : "Smart assistant for your website." },
-    { title: "WebConnect", price: "+39€", desc: language === "es" ? "Conexión automática entre web y dashboard." : "Automatic connection between web and dashboard." },
-    { title: language === "es" ? "Seguimiento IA" : "AI Follow-up", price: "+39€", desc: language === "es" ? "Calificación y seguimiento inteligente de leads." : "Smart lead scoring and follow-up." },
-    { title: language === "es" ? "Analíticas IA" : "AI Analytics", price: "+29€", desc: language === "es" ? "Visualización de datos de negocio en tiempo real." : "Real-time business data visualization." },
-    { title: language === "es" ? "Gestión Interna" : "Internal Management", price: "+39€", desc: language === "es" ? "Tu asistente IA para consultas privadas." : "Your AI assistant for private queries." },
-    { title: language === "es" ? "Transcripciones" : "Transcriptions", price: "+39€", desc: language === "es" ? "Resúmenes de reuniones automáticos." : "Automatic meeting summaries." },
-    { title: "Funnel de Ventas", price: "+59€", desc: language === "es" ? "Flujo automatizado de captación y cierre." : "Automated capture and closing flow." },
-    { title: language === "es" ? "Prevención Churn" : "Churn Prevention", price: "+59€", desc: language === "es" ? "IA predictiva para detectar y evitar bajas." : "Predictive AI to detect and prevent churn." },
-    { title: language === "es" ? "Captador Automático" : "Automatic Capturer", price: "+69€", desc: language === "es" ? "Scraping de portales y alerta de particulares." : "Portal scraping and private party alerts." },
-    { title: "Property Intel", price: "+59€", desc: language === "es" ? "Análisis de mercado automático por zonas." : "Automatic market analysis by areas." },
-    { title: language === "es" ? "Informes Tasación" : "Valuation Reports", price: "+49€", desc: language === "es" ? "Generación de valoraciones IA en PDF." : "AI valuation generation in PDF." },
-    { title: language === "es" ? "Captador Manual" : "Manual Capturer", price: "+29€", desc: language === "es" ? "Gestión manual de propietarios en dashboard." : "Manual owner management in dashboard." },
-    { title: language === "es" ? "Publicador Web" : "Web Publisher", price: "+39€", desc: language === "es" ? "Envío automático de inmuebles a tu web." : "Automatic sending of properties to your web." },
-    { title: language === "es" ? "Sugerencias IA" : "AI Suggestions", price: "+39€", desc: language === "es" ? "Cruce inteligente de clientes y propiedades." : "Smart matching of clients and properties." },
-    { title: "Custom Advanced", price: "+30-80€", desc: language === "es" ? "Automatizaciones exclusivas y flujos a medida." : "Exclusive automations and custom flows." }
-  ];
+  const { plans, modules } = usePricingData();
 
   return (
     <section id="precios" className="py-16 md:py-32 px-6 bg-slate-50 dark:bg-zinc-900/30 border-t border-slate-100 dark:border-white/5 transition-colors duration-300">
@@ -231,13 +140,13 @@ export default function Pricing() {
                   {/* First set of cards */}
                   {modules.map((card, i) => (
                     <div key={`pack-1-${i}`} className="w-[280px] shrink-0">
-                      <ExtraCard {...card} />
+                      <ExtraCard title={card.title} price={card.priceLabel} desc={card.desc} isPack={card.isPack} />
                     </div>
                   ))}
                   {/* Duplicated set for infinite loop */}
                   {modules.map((card, i) => (
                     <div key={`pack-2-${i}`} className="w-[300px] shrink-0">
-                      <ExtraCard {...card} />
+                      <ExtraCard title={card.title} price={card.priceLabel} desc={card.desc} isPack={card.isPack} />
                     </div>
                   ))}
                 </div>
@@ -257,10 +166,7 @@ export default function Pricing() {
   );
 }
 
-function ExtraCard({ title, price, subtext = "/mes", desc, isPack = false }: { title: string; price: string; subtext?: string; desc: string, isPack?: boolean }) {
-  const { language } = useLanguage();
-  const subtextVal = language === "es" ? subtext : "/month";
-
+function ExtraCard({ title, price, desc, isPack = false }: { title: string; price: string; desc: string, isPack?: boolean }) {
   return (
     <div className="bg-white dark:bg-zinc-900 p-6 rounded-3xl border border-slate-100 dark:border-white/5 hover:shadow-lg dark:hover:shadow-white/5 transition-all text-center relative overflow-hidden h-full flex flex-col justify-center">
       {isPack && (
@@ -269,7 +175,7 @@ function ExtraCard({ title, price, subtext = "/mes", desc, isPack = false }: { t
         </div>
       )}
       <h5 className="font-bold text-black dark:text-white mb-2">{title}</h5>
-      <div className="text-xl font-bold text-black dark:text-white mb-2">{price}<span className="text-xs text-slate-400 dark:text-zinc-500 ml-1">{subtextVal}</span></div>
+      <div className="text-xl font-bold text-black dark:text-white mb-2">{price}</div>
       <p className="text-xs text-slate-500 dark:text-zinc-400 leading-relaxed">{desc}</p>
     </div>
   );
