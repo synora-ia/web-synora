@@ -101,7 +101,7 @@ export default function PlanesPage() {
                 </div>
               </div>
               <p className="text-center text-xs text-slate-400 dark:text-zinc-500 mt-6 max-w-3xl mx-auto px-4">
-                {language === "es" ? "* Los costes de uso de IA (tokens de OpenAI/Anthropic/Twilio) se facturan directamente a la tarjeta del cliente a final de mes, sin margen por parte de Synora." : "* AI usage costs (OpenAI/Anthropic/Twilio tokens) are billed directly to the client's card at the end of the month, with no markup from Synora."}
+                {t("planes.matrix.tokens_disclaimer")}
               </p>
             </div>
           </section>
@@ -209,21 +209,9 @@ export default function PlanesPage() {
                     </div>
                     <div className="p-8 flex-1 flex flex-col gap-2">
                       <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-2 px-4">{t("planes.packs.individual_modules")}</span>
-                      <ModuleItem
-                        title={t("planes.modules.web_publisher.title")}
-                        price={modules.find(m => m.id === "web_publisher")?.priceLabel || "+39€"}
-                        desc={t("planes.modules.web_publisher.desc")}
-                      />
-                      <ModuleItem
-                        title={t("planes.modules.ai_suggestions.title")}
-                        price={modules.find(m => m.id === "ai_suggestions")?.priceLabel || "+39€"}
-                        desc={t("planes.modules.ai_suggestions.desc")}
-                      />
-                      <ModuleItem
-                        title={t("planes.modules.manual_capture.title")}
-                        price={modules.find(m => m.id === "manual_capture")?.priceLabel || "+29€"}
-                        desc={t("planes.modules.manual_capture.desc")}
-                      />
+                      <ModuleItem mod={modules.find(m => m.id === "web_publisher")!} language={language} />
+                      <ModuleItem mod={modules.find(m => m.id === "ai_suggestions")!} language={language} />
+                      <ModuleItem mod={modules.find(m => m.id === "manual_capture")!} language={language} />
                     </div>
                   </div>
 
@@ -238,7 +226,7 @@ export default function PlanesPage() {
                           <p className="text-white/70 dark:text-black/70 mt-2 text-sm max-w-[220px]">{t("planes.packs.intelligence_desc")}</p>
                         </div>
                         <div className="text-right">
-                          <div className="text-4xl font-bold">+149€</div>
+                          <div className="text-4xl font-bold">+{modules.find(m => m.id === "pack_inmobiliaria_pro")?.monthlyPrice}€</div>
                           <div className="text-xs text-white/60 dark:text-black/50 uppercase tracking-wider font-bold mt-1">/{t("planes.matrix.month")} {t("planes.packs.complete_pack")}</div>
                           <div className="text-[10px] text-white/80 dark:text-black/80 font-bold mt-2 bg-white/20 dark:bg-black/10 px-2 py-1 rounded-md inline-block">{t("planes.packs.requires_plan")}</div>
                         </div>
@@ -250,24 +238,8 @@ export default function PlanesPage() {
                     </div>
                     <div className="p-8 flex-1 flex flex-col gap-2 relative z-10">
                       <span className="text-xs font-bold text-white/40 dark:text-black/40 uppercase tracking-widest mb-2 px-4">{t("planes.packs.individual_modules")}</span>
-                      <ModuleItem
-                        title="Property Intel"
-                        price={modules.find(m => m.id === "property_intel")?.priceLabel || "+59€"}
-                        desc={language === "es" ? "Análisis de mercado automático por zonas." : "Automatic market analysis by areas."}
-                        dark
-                      />
-                      <ModuleItem
-                        title={t("planes.modules.valuation.title")}
-                        price={modules.find(m => m.id === "valuation_reports")?.priceLabel || "+49€"}
-                        desc={t("planes.modules.valuation.desc")}
-                        dark
-                      />
-                      <ModuleItem
-                        title={t("planes.modules.auto_capture.title")}
-                        price={modules.find(m => m.id === "auto_capture")?.priceLabel || "+69€"}
-                        desc={t("planes.modules.auto_capture.desc")}
-                        dark
-                      />
+                      <ModuleItem mod={modules.find(m => m.id === "property_intel")!} language={language} dark />
+                      <ModuleItem mod={modules.find(m => m.id === "auto_capture")!} language={language} dark />
                     </div>
                   </div>
                 </div>
@@ -411,9 +383,9 @@ export default function PlanesPage() {
                       <h4 className="text-xl font-bold text-black dark:text-white mb-6 border-b border-slate-100 dark:border-white/5 pb-3">
                         {categoryTitle}
                       </h4>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         {categoryModules.map(mod => (
-                          <FeatureMiniCard key={mod.id} title={mod.title} price={mod.priceLabel} desc={mod.desc} />
+                          <FeatureMiniCard key={mod.id} mod={mod} language={language} />
                         ))}
                       </div>
                     </div>
@@ -520,28 +492,88 @@ function RecommendationCard({ letter, badge, title, desc, dark = false }: { lett
   );
 }
 
-function ModuleItem({ title, price, desc, dark = false }: { title: string; price: string; desc: string; dark?: boolean }) {
+function ModuleItem({ mod, language, dark = false }: { mod: any; language: string; dark?: boolean }) {
+  const { title, desc, setupPrice, monthlyPrice, oneTimePrice } = mod;
+  
   return (
-    <div className={`flex gap-5 p-4 rounded-2xl transition-all border ${dark ? "border-white/5 hover:bg-white/10" : "border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5"}`}>
-      <div className={`shrink-0 h-10 min-w-[70px] px-3 rounded-xl flex items-center justify-center font-bold text-sm ${dark ? "bg-white text-black" : "bg-black text-white dark:bg-white dark:text-black"}`}>
-        {price.split('/')[0]}
-      </div>
+    <div className={`flex flex-col gap-3 p-5 rounded-[1.5rem] transition-all border ${dark ? "border-white/10 hover:bg-white/5" : "border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5"}`}>
       <div>
-        <h5 className={`font-bold mb-1 ${dark ? "text-white dark:text-black" : "text-black dark:text-white"}`}>{title}</h5>
-        <p className={`text-sm leading-relaxed ${dark ? "text-white/70 dark:text-black/70" : "text-slate-500 dark:text-zinc-400"}`}>{desc}</p>
+        <h5 className={`font-bold mb-1 text-base ${dark ? "text-white dark:text-black" : "text-black dark:text-white"}`}>{title}</h5>
+        <p className={`text-xs leading-relaxed ${dark ? "text-white/60 dark:text-black/60" : "text-slate-500 dark:text-zinc-400"}`}>{desc}</p>
+      </div>
+      
+      <div className="flex gap-2 mt-auto">
+        {oneTimePrice ? (
+          <div className={`flex-1 flex items-center justify-between px-3 py-1.5 rounded-lg border ${dark ? "bg-white/10 border-white/10 text-white" : "bg-blue-50 dark:bg-blue-900/20 border-blue-100 dark:border-blue-800/30 text-blue-700 dark:text-blue-300"}`}>
+            <span className="text-[9px] font-bold uppercase tracking-wider opacity-60">
+              {language === "es" ? "Pago Único" : "One-time"}
+            </span>
+            <span className="text-xs font-bold">{oneTimePrice}€</span>
+          </div>
+        ) : (
+          <>
+            {setupPrice !== undefined && (
+              <div className={`flex-1 flex items-center justify-between px-3 py-1.5 rounded-lg border ${dark ? "bg-white/10 border-white/10 text-white" : "bg-slate-50 dark:bg-white/5 border-slate-100 dark:border-white/5 text-slate-600 dark:text-zinc-400"}`}>
+                <span className="text-[9px] font-bold uppercase tracking-wider opacity-60">
+                  {language === "es" ? "Inst." : "Setup"}
+                </span>
+                <span className="text-xs font-bold">{setupPrice}€</span>
+              </div>
+            )}
+            {monthlyPrice !== undefined && (
+              <div className={`flex-1 flex items-center justify-between px-3 py-1.5 rounded-lg ${dark ? "bg-white text-black" : "bg-black text-white dark:bg-white dark:text-black"}`}>
+                <span className="text-[9px] font-bold uppercase tracking-wider opacity-60">
+                  {language === "es" ? "Mes" : "Mo."}
+                </span>
+                <span className="text-xs font-bold">{monthlyPrice}€</span>
+              </div>
+            )}
+          </>
+        )}
       </div>
     </div>
   );
 }
 
-function FeatureMiniCard({ title, price, desc }: { title: string; price: string; desc: string }) {
+function FeatureMiniCard({ mod, language }: { mod: any; language: string }) {
+  const { title, desc, setupPrice, monthlyPrice, oneTimePrice } = mod;
+  
   return (
-    <div className="bg-white dark:bg-zinc-900/50 p-6 rounded-2xl border border-slate-100 dark:border-white/5 hover:border-black dark:hover:border-white transition-all">
-      <div className="flex flex-wrap justify-between items-start gap-2 mb-3">
-        <h5 className="font-bold text-black dark:text-white mt-1 pr-2">{title}</h5>
-        <span className="text-sm font-bold text-black dark:text-white bg-slate-50 dark:bg-white/5 px-2.5 py-1 rounded-lg whitespace-nowrap border border-slate-100 dark:border-white/5 shadow-sm">{price}</span>
+    <div className="bg-white dark:bg-zinc-900/50 p-6 rounded-[2rem] border border-slate-100 dark:border-white/5 hover:border-black dark:hover:border-white transition-all flex flex-col h-full group">
+      <div className="mb-5">
+        <h5 className="font-bold text-black dark:text-white text-lg mb-2 tracking-tight">{title}</h5>
+        <p className="text-xs text-slate-500 dark:text-zinc-400 leading-relaxed line-clamp-2">{desc}</p>
       </div>
-      <p className="text-xs text-slate-500 dark:text-zinc-400 leading-relaxed">{desc}</p>
+      
+      <div className="flex flex-col gap-2 mt-auto">
+        {oneTimePrice ? (
+          <div className="flex items-center justify-between bg-blue-50 dark:bg-blue-900/20 px-4 py-2.5 rounded-xl border border-blue-100/50 dark:border-blue-800/30">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-blue-600/70 dark:text-blue-400/70">
+              {language === "es" ? "Pago Único" : "One-time"}
+            </span>
+            <span className="text-sm font-bold text-blue-700 dark:text-blue-300">{oneTimePrice}€</span>
+          </div>
+        ) : (
+          <>
+            {setupPrice !== undefined && (
+              <div className="flex items-center justify-between bg-slate-50 dark:bg-white/5 px-4 py-2 rounded-xl border border-slate-100 dark:border-white/5">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-zinc-500">
+                  {language === "es" ? "Instalación" : "Setup"}
+                </span>
+                <span className="text-sm font-bold text-black dark:text-white">{setupPrice}€</span>
+              </div>
+            )}
+            {monthlyPrice !== undefined && (
+              <div className="flex items-center justify-between bg-black dark:bg-white px-4 py-2 rounded-xl border border-black dark:border-white">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-white/40 dark:text-black/40">
+                  {language === "es" ? "Mensual" : "Monthly"}
+                </span>
+                <span className="text-sm font-bold text-white dark:text-black">{monthlyPrice}€</span>
+              </div>
+            )}
+          </>
+        )}
+      </div>
     </div>
   );
 }

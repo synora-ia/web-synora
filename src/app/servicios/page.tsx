@@ -217,7 +217,7 @@ export default function ServiciosPage() {
                 </div>
 
                 <h3 className="text-2xl font-bold text-black dark:text-white mb-2">{isEs ? "Plan Crecimiento + Módulos de Reforma" : "Growth Plan + Renovation Modules"}</h3>
-                <div className="text-5xl font-bold text-black dark:text-white mb-8">288€/{isEs ? "mes" : "month"}</div>
+                <div className="text-5xl font-bold text-black dark:text-white mb-8">287€/{isEs ? "mes" : "month"}</div>
 
                 <div className="flex flex-wrap justify-center gap-3 mb-12">
                   {[isEs ? "Presupuestos Voz/Foto" : "Voice/Photo Quotes", isEs ? "Gestión de Gremios" : "Trade Management", isEs ? "Firma Digital" : "Digital Signature"].map((mod, i) => (

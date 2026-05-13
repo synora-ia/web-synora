@@ -12,6 +12,9 @@ export interface SynoraModule {
   isPack?: boolean;
   includedInGrowth?: boolean;
   includedInPro?: boolean;
+  setupPrice?: number;
+  monthlyPrice?: number;
+  oneTimePrice?: number;
 }
 
 export interface SynoraPlan {
@@ -40,25 +43,31 @@ export function usePricingData() {
       category: "core",
       icon: "📊",
       includedInGrowth: true,
-      includedInPro: true
+      includedInPro: true,
+      setupPrice: 20,
+      monthlyPrice: 39
     },
     {
       id: "analytics",
       title: language === "es" ? "Analíticas Avanzadas" : "Advanced Analytics",
       desc: language === "es" ? "Visualización de datos de negocio en tiempo real." : "Real-time business data visualization.",
-      priceLabel: "+29€/mes",
+      priceLabel: "+25€/mes",
       category: "core",
       icon: "📈",
-      includedInPro: true
+      includedInPro: true,
+      setupPrice: 10,
+      monthlyPrice: 25
     },
     {
       id: "internal_ia",
       title: language === "es" ? "Gestión Interna" : "Internal Management",
       desc: language === "es" ? "Tu asistente IA para consultas privadas." : "Your AI assistant for private queries.",
-      priceLabel: "+39€/mes",
+      priceLabel: "+49€/mes",
       category: "core",
       icon: "🏢",
-      includedInPro: true
+      includedInPro: true,
+      setupPrice: 30,
+      monthlyPrice: 49
     },
     {
       id: "transcriptions",
@@ -67,7 +76,9 @@ export function usePricingData() {
       priceLabel: "+39€/mes",
       category: "core",
       icon: "✍️",
-      includedInPro: true
+      includedInPro: true,
+      setupPrice: 20,
+      monthlyPrice: 39
     },
 
     // --- SERVICE (Atención) ---
@@ -75,21 +86,25 @@ export function usePricingData() {
       id: "icebraker",
       title: "Contestador IceBraker",
       desc: language === "es" ? "Respuesta automática inicial a nuevos leads." : "Initial auto-response to new leads.",
-      priceLabel: "+29€/mes",
+      priceLabel: "+15€/mes",
       category: "service",
       icon: "⚡",
       includedInGrowth: true,
-      includedInPro: true
+      includedInPro: true,
+      setupPrice: 10,
+      monthlyPrice: 15
     },
     {
       id: "reminders",
       title: language === "es" ? "Recordatorios IA" : "AI Reminders",
       desc: language === "es" ? "Avisos automáticos de citas y seguimientos." : "Automatic appointment and follow-up alerts.",
-      priceLabel: "+29€/mes",
+      priceLabel: "+25€/mes",
       category: "service",
       icon: "⏰",
       includedInGrowth: true,
-      includedInPro: true
+      includedInPro: true,
+      setupPrice: 10,
+      monthlyPrice: 25
     },
     {
       id: "wa_chatbot",
@@ -99,7 +114,9 @@ export function usePricingData() {
       category: "service",
       icon: "💬",
       includedInGrowth: true,
-      includedInPro: true
+      includedInPro: true,
+      setupPrice: 30,
+      monthlyPrice: 49
     },
     {
       id: "web_chatbot",
@@ -109,7 +126,9 @@ export function usePricingData() {
       category: "service",
       icon: "🤖",
       includedInGrowth: true,
-      includedInPro: true
+      includedInPro: true,
+      setupPrice: 30,
+      monthlyPrice: 49
     },
     {
       id: "ia_followup",
@@ -117,7 +136,9 @@ export function usePricingData() {
       desc: language === "es" ? "Calificación y seguimiento inteligente de leads." : "Smart lead scoring and follow-up.",
       priceLabel: "+39€/mes",
       category: "service",
-      icon: "👥"
+      icon: "👥",
+      setupPrice: 15,
+      monthlyPrice: 39
     },
 
     // --- SALES (Ventas y Captación) ---
@@ -125,34 +146,40 @@ export function usePricingData() {
       id: "web_connect",
       title: "WebConnect",
       desc: language === "es" ? "Conexión automática entre web y dashboard." : "Automatic connection between web and dashboard.",
-      priceLabel: language === "es" ? "+60€ (Pago único)" : "+60€ (One-time)",
+      priceLabel: language === "es" ? "59€ (Pago único)" : "59€ (One-time)",
       category: "sales",
-      icon: "🌐"
+      icon: "🌐",
+      oneTimePrice: 59
     },
     {
       id: "funnel",
       title: "Funnel de Ventas",
       desc: language === "es" ? "Flujo automatizado de captación y cierre." : "Automated capture and closing flow.",
-      priceLabel: "+59€/mes",
+      priceLabel: "+49€/mes",
       category: "sales",
       icon: "🔄",
-      includedInPro: true
+      includedInPro: true,
+      setupPrice: 25,
+      monthlyPrice: 49
     },
     {
       id: "ai_suggestions",
       title: language === "es" ? "Sugerencias IA" : "AI Suggestions",
       desc: language === "es" ? "Cruce inteligente de clientes y propiedades." : "Smart matching of clients and properties.",
-      priceLabel: "+39€/mes",
+      priceLabel: "+29€/mes",
       category: "sales",
-      icon: "💡"
+      icon: "💡",
+      setupPrice: 15,
+      monthlyPrice: 29
     },
     {
       id: "web_publisher",
       title: language === "es" ? "Publicador Web" : "Web Publisher",
       desc: language === "es" ? "Envío automático de inmuebles a tu web." : "Automatic sending of properties to your web.",
-      priceLabel: "+39€/mes",
+      priceLabel: language === "es" ? "15€ (Pago único)" : "15€ (One-time)",
       category: "sales",
-      icon: "📤"
+      icon: "📤",
+      oneTimePrice: 15
     },
 
     // --- ADVANCED & PACKS ---
@@ -160,17 +187,21 @@ export function usePricingData() {
       id: "pack_inmobiliaria",
       title: language === "es" ? "Pack Inmobiliaria" : "Real Estate Pack",
       desc: language === "es" ? "Bundle: Captador, Publicador y Sugerencias IA." : "Bundle: Capturer, Publisher and IA Suggestions.",
-      priceLabel: "+89€/mes",
+      priceLabel: "+25€/mes",
       category: "pack",
-      isPack: true
+      isPack: true,
+      setupPrice: 30,
+      monthlyPrice: 25
     },
     {
       id: "pack_inmobiliaria_pro",
       title: language === "es" ? "Pack Inmobiliaria Pro" : "Real Estate Pro Pack",
-      desc: language === "es" ? "Bundle: Scraping, Valoraciones y Property Intel." : "Bundle: Scraping, Valuations and Property Intel.",
-      priceLabel: "+149€/mes",
+      desc: language === "es" ? "Bundle: Scraping avanzado y Property Intelligence & Tasación." : "Bundle: Advanced Scraping and Property Intelligence & Valuations.",
+      priceLabel: "+125€/mes",
       category: "pack",
-      isPack: true
+      isPack: true,
+      setupPrice: 30,
+      monthlyPrice: 125
     },
     {
       id: "churn_prevention",
@@ -178,39 +209,38 @@ export function usePricingData() {
       desc: language === "es" ? "Detección de riesgo de baja y secuencias IA de retención." : "Churn risk detection and AI retention sequences.",
       priceLabel: "+49€/mes",
       category: "advanced",
-      icon: "🛡️"
+      icon: "🛡️",
+      setupPrice: 15,
+      monthlyPrice: 49
     },
     {
       id: "property_intel",
-      title: "Property Intel",
-      desc: language === "es" ? "Análisis de mercado automático por zonas." : "Automatic market analysis by areas.",
-      priceLabel: "+59€/mes",
+      title: language === "es" ? "Property Intel & Tasación" : "Property Intel & Valuations",
+      desc: language === "es" ? "Análisis de mercado por zonas y generación de informes de tasación IA." : "Market analysis by areas and AI valuation report generation.",
+      priceLabel: "+69€/mes",
       category: "advanced",
-      icon: "🧠"
-    },
-    {
-      id: "valuation_reports",
-      title: language === "es" ? "Informes Tasación" : "Valuation Reports",
-      desc: language === "es" ? "Generación de valoraciones IA en PDF." : "AI valuation generation in PDF.",
-      priceLabel: "+49€/mes",
-      category: "advanced",
-      icon: "📄"
+      icon: "🧠",
+      setupPrice: 20,
+      monthlyPrice: 69
     },
     {
       id: "auto_capture",
       title: language === "es" ? "Captador Automático" : "Automatic Capturer",
       desc: language === "es" ? "Scraping de portales y alerta de particulares." : "Portal scraping and private party alerts.",
-      priceLabel: "+69€/mes",
+      priceLabel: "+75€/mes",
       category: "advanced",
-      icon: "🕸️"
+      icon: "🕸️",
+      setupPrice: 15,
+      monthlyPrice: 75
     },
     {
       id: "manual_capture",
       title: language === "es" ? "Captador Manual" : "Manual Capturer",
       desc: language === "es" ? "Gestión manual de propietarios en dashboard." : "Manual owner management in dashboard.",
-      priceLabel: "+29€/mes",
+      priceLabel: language === "es" ? "10€ (Pago único)" : "10€ (One-time)",
       category: "advanced",
-      icon: "✍️"
+      icon: "✍️",
+      oneTimePrice: 10
     }
   ];
 

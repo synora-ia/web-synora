@@ -138,15 +138,15 @@ export default function Pricing() {
               <div className="relative overflow-hidden w-full [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
                 <div className="flex animate-scroll hover:[animation-play-state:paused] w-fit gap-6 py-4">
                   {/* First set of cards */}
-                  {modules.map((card, i) => (
+                  {modules.map((mod, i) => (
                     <div key={`pack-1-${i}`} className="w-[280px] shrink-0">
-                      <ExtraCard title={card.title} price={card.priceLabel} desc={card.desc} isPack={card.isPack} />
+                      <ExtraCard mod={mod} language={language} />
                     </div>
                   ))}
                   {/* Duplicated set for infinite loop */}
-                  {modules.map((card, i) => (
+                  {modules.map((mod, i) => (
                     <div key={`pack-2-${i}`} className="w-[300px] shrink-0">
-                      <ExtraCard title={card.title} price={card.priceLabel} desc={card.desc} isPack={card.isPack} />
+                      <ExtraCard mod={mod} language={language} />
                     </div>
                   ))}
                 </div>
@@ -166,17 +166,51 @@ export default function Pricing() {
   );
 }
 
-function ExtraCard({ title, price, desc, isPack = false }: { title: string; price: string; desc: string, isPack?: boolean }) {
+function ExtraCard({ mod, language }: { mod: any; language: string }) {
+  const { title, desc, setupPrice, monthlyPrice, oneTimePrice, isPack } = mod;
+  
   return (
-    <div className="bg-white dark:bg-zinc-900 p-6 rounded-3xl border border-slate-100 dark:border-white/5 hover:shadow-lg dark:hover:shadow-white/5 transition-all text-center relative overflow-hidden h-full flex flex-col justify-center">
+    <div className="bg-white dark:bg-zinc-900 p-6 rounded-3xl border border-slate-100 dark:border-white/5 hover:shadow-lg dark:hover:shadow-white/5 transition-all text-center relative overflow-hidden h-full flex flex-col group">
       {isPack && (
         <div className="absolute top-3 right-3 bg-black dark:bg-white text-white dark:text-black px-2 py-0.5 rounded-md text-[8px] font-bold uppercase tracking-widest">
           Pack
         </div>
       )}
-      <h5 className="font-bold text-black dark:text-white mb-2">{title}</h5>
-      <div className="text-xl font-bold text-black dark:text-white mb-2">{price}</div>
-      <p className="text-xs text-slate-500 dark:text-zinc-400 leading-relaxed">{desc}</p>
+      
+      <div className="mb-4">
+        <h5 className="font-bold text-black dark:text-white mb-1">{title}</h5>
+        <p className="text-[10px] text-slate-500 dark:text-zinc-400 leading-relaxed line-clamp-2">{desc}</p>
+      </div>
+      
+      <div className="mt-auto space-y-2">
+        {oneTimePrice ? (
+          <div className="bg-blue-50 dark:bg-blue-900/20 px-3 py-2 rounded-xl border border-blue-100/50 dark:border-blue-800/30">
+            <span className="text-[9px] font-bold uppercase tracking-wider text-blue-600/70 dark:text-blue-400/70 block">
+              {language === "es" ? "Pago Único" : "One-time"}
+            </span>
+            <span className="text-sm font-bold text-blue-700 dark:text-blue-300">{oneTimePrice}€</span>
+          </div>
+        ) : (
+          <div className="flex gap-2">
+            {setupPrice !== undefined && (
+              <div className="flex-1 bg-slate-50 dark:bg-white/5 px-2 py-1.5 rounded-xl border border-slate-100 dark:border-white/5">
+                <span className="text-[8px] font-bold uppercase tracking-wider text-slate-400 dark:text-zinc-500 block">
+                  {language === "es" ? "Instal." : "Setup"}
+                </span>
+                <span className="text-xs font-bold text-black dark:text-white">{setupPrice}€</span>
+              </div>
+            )}
+            {monthlyPrice !== undefined && (
+              <div className="flex-1 bg-black dark:bg-white px-2 py-1.5 rounded-xl border border-black dark:border-white">
+                <span className="text-[8px] font-bold uppercase tracking-wider text-white/40 dark:text-black/40 block">
+                  {language === "es" ? "Mes" : "Mo."}
+                </span>
+                <span className="text-xs font-bold text-white dark:text-black">{monthlyPrice}€</span>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
