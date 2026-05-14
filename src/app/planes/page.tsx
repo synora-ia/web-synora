@@ -12,6 +12,24 @@ export default function PlanesPage() {
   const { t, language } = useLanguage();
   const { plans, modules } = usePricingData();
 
+  const matrixData = [
+    { label: language === "es" ? "Setup Inicial" : "Initial Setup", v1: "350€", v2: `${language === "es" ? "Desde" : "From"} 600€`, v3: `${language === "es" ? "Desde" : "From"} 900€` },
+    { label: language === "es" ? "Auditoría de Procesos" : "Process Audit", v1: `${language === "es" ? "Opcional" : "Optional"} (${language === "es" ? "Desde" : "From"} 200€)`, v2: `${language === "es" ? "Opcional" : "Optional"} (${language === "es" ? "Desde" : "From"} 200€)`, v3: `${language === "es" ? "Opcional" : "Optional"} (${language === "es" ? "Desde" : "From"} 200€)` },
+    { label: language === "es" ? "Agenda Centralizada" : "Centralized Calendar", v1: "✓", v2: "✓", v3: "✓" },
+    { label: language === "es" ? "Gestión de Leads (CRM)" : "Lead Management (CRM)", v1: "✓", v2: "✓", v3: "✓" },
+    { label: language === "es" ? "Gestión Documental" : "Document Management", v1: "✓", v2: "✓", v3: "✓" },
+    { label: language === "es" ? "Contestador IceBraker" : "IceBraker Responder", v1: "✓", v2: "✓", v3: "✓" },
+    { label: language === "es" ? "Automatización Web" : "Web Automation", v1: "✓", v2: "✓", v3: "✓" },
+    { label: language === "es" ? "Recordatorios Automáticos" : "Automatic Reminders", v1: "✓", v2: "✓", v3: "✓" },
+    { label: modules.find(m => m.id === "wa_chatbot")?.title || "", v1: modules.find(m => m.id === "wa_chatbot")?.priceLabel || "", v2: "✓", v3: "✓" },
+    { label: modules.find(m => m.id === "web_chatbot")?.title || "", v1: modules.find(m => m.id === "web_chatbot")?.priceLabel || "", v2: "✓", v3: "✓" },
+    { label: modules.find(m => m.id === "ia_followup")?.title || "", v1: modules.find(m => m.id === "ia_followup")?.priceLabel || "", v2: "✓", v3: "✓" },
+    { label: modules.find(m => m.id === "analytics")?.title || "", v1: modules.find(m => m.id === "analytics")?.priceLabel || "", v2: modules.find(m => m.id === "analytics")?.priceLabel || "", v3: "✓" },
+    { label: modules.find(m => m.id === "internal_ia")?.title || "", v1: modules.find(m => m.id === "internal_ia")?.priceLabel || "", v2: modules.find(m => m.id === "internal_ia")?.priceLabel || "", v3: "✓" },
+    { label: modules.find(m => m.id === "transcriptions")?.title || "", v1: modules.find(m => m.id === "transcriptions")?.priceLabel || "", v2: modules.find(m => m.id === "transcriptions")?.priceLabel || "", v3: "✓" },
+    { label: modules.find(m => m.id === "funnel")?.title || "", v1: modules.find(m => m.id === "funnel")?.priceLabel || "", v2: modules.find(m => m.id === "funnel")?.priceLabel || "", v3: "✓" },
+  ];
+
   return (
     <main className="bg-white dark:bg-black transition-colors duration-300">
       <Navbar />
@@ -49,12 +67,13 @@ export default function PlanesPage() {
           <section className="py-12 md:py-24 px-6 bg-white dark:bg-black transition-colors duration-300">
             <div className="max-w-6xl mx-auto">
               <div className="relative bg-white dark:bg-zinc-900 rounded-[2.5rem] shadow-sm dark:shadow-none border border-black/5 dark:border-white/5 overflow-hidden">
-                <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white dark:from-zinc-900 to-transparent z-10 pointer-events-none md:hidden"></div>
-                <div className="overflow-x-auto relative z-0 pb-4">
+                
+                {/* Desktop Layout (Table) */}
+                <div className="hidden md:block overflow-x-auto relative z-0 pb-4">
                   <table className="w-full text-left border-collapse min-w-[800px]">
                     <thead>
                       <tr className="border-b border-slate-100 dark:border-white/5">
-                        <th className="p-8 text-slate-400 dark:text-zinc-500 font-medium text-sm">
+                        <th className="p-8 text-slate-400 dark:text-zinc-500 font-medium text-sm sticky left-0 bg-white dark:bg-zinc-900 z-20 shadow-[1px_0_0_0_rgba(0,0,0,0.05)] dark:shadow-[1px_0_0_0_rgba(255,255,255,0.05)]">
                           {language === "es" ? "Características" : "Features"}
                         </th>
                         <th className="p-8">
@@ -80,25 +99,36 @@ export default function PlanesPage() {
                       </tr>
                     </thead>
                     <tbody className="text-sm text-slate-600 dark:text-zinc-400">
-                      <TableRow label={language === "es" ? "Setup Inicial" : "Initial Setup"} v1="350€" v2={`${language === "es" ? "Desde" : "From"} 600€`} v3={`${language === "es" ? "Desde" : "From"} 900€`} />
-                      <TableRow label={language === "es" ? "Auditoría de Procesos" : "Process Audit"} v1={`${language === "es" ? "Opcional" : "Optional"} (${language === "es" ? "Desde" : "From"} 200€)`} v2={`${language === "es" ? "Opcional" : "Optional"} (${language === "es" ? "Desde" : "From"} 200€)`} v3={`${language === "es" ? "Opcional" : "Optional"} (${language === "es" ? "Desde" : "From"} 200€)`} />
-
-                      <TableRow label={language === "es" ? "Agenda Centralizada" : "Centralized Calendar"} v1="✓" v2="✓" v3="✓" />
-                      <TableRow label={language === "es" ? "Gestión de Leads (CRM)" : "Lead Management (CRM)"} v1="✓" v2="✓" v3="✓" />
-                      <TableRow label={language === "es" ? "Gestión Documental" : "Document Management"} v1="✓" v2="✓" v3="✓" />
-                      <TableRow label={language === "es" ? "Contestador IceBraker" : "IceBraker Responder"} v1="✓" v2="✓" v3="✓" />
-                      <TableRow label={language === "es" ? "Automatización Web" : "Web Automation"} v1="✓" v2="✓" v3="✓" />
-                      <TableRow label={language === "es" ? "Recordatorios Automáticos" : "Automatic Reminders"} v1="✓" v2="✓" v3="✓" />
-                      <TableRow label={modules.find(m => m.id === "wa_chatbot")?.title || ""} v1={modules.find(m => m.id === "wa_chatbot")?.priceLabel || ""} v2="✓" v3="✓" />
-                      <TableRow label={modules.find(m => m.id === "web_chatbot")?.title || ""} v1={modules.find(m => m.id === "web_chatbot")?.priceLabel || ""} v2="✓" v3="✓" />
-                      <TableRow label={modules.find(m => m.id === "ia_followup")?.title || ""} v1={modules.find(m => m.id === "ia_followup")?.priceLabel || ""} v2="✓" v3="✓" />
-                      <TableRow label={modules.find(m => m.id === "analytics")?.title || ""} v1={modules.find(m => m.id === "analytics")?.priceLabel || ""} v2={modules.find(m => m.id === "analytics")?.priceLabel || ""} v3="✓" />
-                      <TableRow label={modules.find(m => m.id === "internal_ia")?.title || ""} v1={modules.find(m => m.id === "internal_ia")?.priceLabel || ""} v2={modules.find(m => m.id === "internal_ia")?.priceLabel || ""} v3="✓" />
-                      <TableRow label={modules.find(m => m.id === "transcriptions")?.title || ""} v1={modules.find(m => m.id === "transcriptions")?.priceLabel || ""} v2={modules.find(m => m.id === "transcriptions")?.priceLabel || ""} v3="✓" />
-                      <TableRow label={modules.find(m => m.id === "funnel")?.title || ""} v1={modules.find(m => m.id === "funnel")?.priceLabel || ""} v2={modules.find(m => m.id === "funnel")?.priceLabel || ""} v3="✓" />
+                      {matrixData.map((row, i) => (
+                        <TableRow key={i} label={row.label} v1={row.v1} v2={row.v2} v3={row.v3} />
+                      ))}
                     </tbody>
                   </table>
                 </div>
+
+                {/* Mobile Layout (Cards) */}
+                <div className="md:hidden flex flex-col divide-y divide-slate-100 dark:divide-white/5">
+                  {matrixData.map((row, i) => (
+                    <div key={i} className="p-6 space-y-4 bg-white dark:bg-zinc-900">
+                      <h4 className="font-bold text-black dark:text-white text-base">{row.label}</h4>
+                      <div className="space-y-3">
+                        <div className="flex justify-between items-center text-sm">
+                          <span className="text-slate-500 dark:text-zinc-400">{language === "es" ? "Plan Esencial" : "Essential Plan"}</span>
+                          <span className="font-medium text-black dark:text-white text-right">{row.v1}</span>
+                        </div>
+                        <div className="flex justify-between items-center text-sm">
+                          <span className="text-slate-500 dark:text-zinc-400">{language === "es" ? "Plan Crecimiento" : "Growth Plan"}</span>
+                          <span className="font-bold text-black dark:text-white text-right">{row.v2}</span>
+                        </div>
+                        <div className="flex justify-between items-center text-sm">
+                          <span className="text-slate-500 dark:text-zinc-400">{language === "es" ? "Plan Pro" : "Pro Plan"}</span>
+                          <span className="font-medium text-black dark:text-white text-right">{row.v3}</span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
               </div>
               <p className="text-center text-xs text-slate-400 dark:text-zinc-500 mt-6 max-w-3xl mx-auto px-4">
                 {t("planes.matrix.tokens_disclaimer")}
@@ -439,7 +469,7 @@ export default function PlanesPage() {
 function TableRow({ label, v1, v2, v3 }: { label: string; v1: string; v2: string; v3: string }) {
   return (
     <tr className="border-b border-slate-50 dark:border-white/5">
-      <td className="p-6 font-medium text-black dark:text-white">{label}</td>
+      <td className="p-6 font-medium text-black dark:text-white sticky left-0 bg-white dark:bg-zinc-900 z-10 shadow-[1px_0_0_0_rgba(0,0,0,0.05)] dark:shadow-[1px_0_0_0_rgba(255,255,255,0.05)]">{label}</td>
       <td className="p-6">{v1}</td>
       <td className="p-6">{v2}</td>
       <td className="p-6">{v3}</td>
@@ -470,7 +500,7 @@ function RecommendationCard({ letter, badge, title, desc, dark = false }: { lett
   };
 
   return (
-    <div className={`min-w-[85vw] snap-center lg:min-w-0 p-10 rounded-[2.5rem] flex flex-col gap-6 items-start relative overflow-hidden transition-all duration-300 h-full ${dark ? "bg-black dark:bg-white text-white dark:text-black shadow-2xl dark:shadow-none lg:scale-[1.05] z-10" : "bg-slate-50 dark:bg-zinc-900 border border-slate-100 dark:border-white/5 hover:bg-slate-100 dark:hover:bg-zinc-800"}`}>
+    <div className={`min-w-[85vw] snap-center lg:min-w-0 p-10 rounded-[2.5rem] flex flex-col gap-6 items-start relative overflow-hidden transition-all duration-300 h-auto ${dark ? "bg-black dark:bg-white text-white dark:text-black shadow-2xl dark:shadow-none lg:scale-[1.05] z-10" : "bg-slate-50 dark:bg-zinc-900 border border-slate-100 dark:border-white/5 hover:bg-slate-100 dark:hover:bg-zinc-800"}`}>
       {dark && <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent dark:from-black/10 pointer-events-none"></div>}
 
       <div className="flex items-center justify-between w-full relative z-10">

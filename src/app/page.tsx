@@ -61,7 +61,7 @@ export default function Home() {
               transition={{ duration: 0.4 }}
               className="grid lg:grid-cols-2 gap-20 items-center"
             >
-              <div className="order-2 lg:order-1">
+              <div className="order-2 lg:order-1 hidden lg:block">
                 <div className="relative mx-auto max-w-5xl group">
                   <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-[2.5rem] blur-xl opacity-25 group-hover:opacity-40 transition duration-1000"></div>
                   <div className="relative rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl bg-zinc-900">
@@ -79,7 +79,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="order-1 lg:order-2">
+              <div className="order-1 lg:order-2 flex flex-col items-center lg:items-start text-center lg:text-left">
                 <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest mb-4 block">{t("home.platform.badge")}</span>
                 <h2 className="text-4xl md:text-5xl font-bold mb-8 text-black dark:text-white tracking-tight">
                   {t("home.platform.title1")} <br />
@@ -89,15 +89,15 @@ export default function Home() {
                   {t("home.platform.desc")}
                 </p>
 
-                <ul className="space-y-4 text-sm font-bold text-black dark:text-white mb-10">
-                  <li className="flex items-center"><svg className="w-5 h-5 mr-3 text-slate-400" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg>{t("home.platform.feat1")}</li>
-                  <li className="flex items-center"><svg className="w-5 h-5 mr-3 text-slate-400" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg>{t("home.platform.feat2")}</li>
-                  <li className="flex items-center"><svg className="w-5 h-5 mr-3 text-slate-400" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg>{t("home.platform.feat3")}</li>
+                <ul className="space-y-4 text-sm font-bold text-black dark:text-white mb-10 flex flex-col items-center lg:items-start">
+                  <li className="flex items-center justify-center lg:justify-start"><svg className="w-5 h-5 mr-3 text-slate-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg>{t("home.platform.feat1")}</li>
+                  <li className="flex items-center justify-center lg:justify-start"><svg className="w-5 h-5 mr-3 text-slate-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg>{t("home.platform.feat2")}</li>
+                  <li className="flex items-center justify-center lg:justify-start"><svg className="w-5 h-5 mr-3 text-slate-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg>{t("home.platform.feat3")}</li>
                 </ul>
 
-                <Link href="/dashboard" className="inline-flex items-center justify-center px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-full font-bold hover:scale-105 transition-transform">
+                <Link href="/dashboard" className="inline-flex items-center justify-center px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-full font-bold hover:scale-105 transition-transform w-full md:w-auto">
                   {t("home.platform.cta")}
-                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                  <svg className="w-4 h-4 ml-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                 </Link>
               </div>
             </motion.div>

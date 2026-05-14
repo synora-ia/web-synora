@@ -86,27 +86,27 @@ export default function Carousel() {
       />
 
       <div className="w-full px-6 md:px-16 lg:px-24 relative z-10">
-        <div className="relative min-h-[500px]">
+        <div className="relative min-h-[350px] lg:min-h-[500px] flex items-center">
           {slides.map((slide, index) => (
             <div
               key={index}
-              className={`grid lg:grid-cols-2 gap-20 items-center transition-all duration-700 ${index === currentSlide
-                ? "opacity-100 translate-x-0 relative"
-                : "opacity-0 translate-x-12 absolute inset-0 pointer-events-none"
+              className={`grid lg:grid-cols-2 gap-10 lg:gap-20 items-center transition-all duration-700 ${index === currentSlide
+                ? "opacity-100 translate-x-0 relative w-full"
+                : "opacity-0 translate-x-12 absolute inset-0 pointer-events-none w-full"
                 }`}
             >
-              <div>
+              <div className="text-center lg:text-left flex flex-col items-center lg:items-start w-full">
                 <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-white text-xs font-bold uppercase tracking-widest mb-6">
                   {slide.category}
                 </span>
-                <h2 className="text-5xl md:text-6xl font-bold text-white mb-8 tracking-tight">
+                <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 lg:mb-8 tracking-tight">
                   {slide.title} <br />
                   <span className="font-serif-italic text-white/60">{slide.titleSerif}</span>
                 </h2>
-                <p className="text-xl text-white/60 mb-12 leading-relaxed">
+                <p className="text-lg md:text-xl text-white/60 mb-8 lg:mb-12 leading-relaxed max-w-lg mx-auto lg:mx-0">
                   {slide.description}
                 </p>
-                <div className="grid sm:grid-cols-2 gap-8 mb-12">
+                <div className="hidden lg:grid sm:grid-cols-2 gap-8 mb-12">
                   {slide.features.map((f, i) => (
                     <div key={i}>
                       <h4 className="text-white font-bold text-lg mb-2">{f.title}</h4>
@@ -114,14 +114,14 @@ export default function Carousel() {
                     </div>
                   ))}
                 </div>
-                <Link href={slide.link} className="inline-flex items-center text-white border-b border-white/30 pb-1 hover:border-white transition-colors font-bold">
+                <Link href={slide.link} className="inline-flex items-center text-white border-b border-white/30 pb-1 hover:border-white transition-colors font-bold text-sm md:text-base">
                   {t("carousel.explore")} {slide.category}
                   <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </Link>
               </div>
-              <div className="relative">
+              <div className="relative hidden lg:block">
                 <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-white/10">
                   <img src={slide.image} alt={slide.titleSerif} className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700" />
                 </div>

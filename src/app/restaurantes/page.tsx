@@ -44,7 +44,7 @@ export default function RestaurantesPage() {
                 </Link>
               </div>
             </div>
-            <div className="relative group">
+            <div className="relative group hidden lg:block">
               <div className="absolute -inset-1 bg-gradient-to-tr from-blue-500/20 to-purple-500/20 blur-2xl rounded-[3rem] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
               <div className="relative rounded-[3rem] overflow-hidden shadow-2xl dark:shadow-white/5 border border-transparent dark:border-white/10">
                 <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80" alt="Restaurante" className="w-full h-[500px] object-cover scale-105 group-hover:scale-100 transition-transform duration-700" />
