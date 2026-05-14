@@ -273,8 +273,8 @@ export default function DashboardPage() {
           <section className="relative pt-32 md:pt-40 pb-[180px] md:pb-[260px] lg:pb-[320px] px-6">
             <FloatingBlobs
               blobs={[
-                { color: "bg-blue-600/20", className: "-top-[10%] -left-[10%] w-[60%] h-[60%]", animation: "animate-drift" },
-                { color: "bg-purple-600/20", className: "-bottom-[10%] -right-[10%] w-[60%] h-[60%]", animation: "animate-drift-slow", delay: "2s" },
+                { color: "blob-1", className: "-top-[10%] -left-[10%] w-[60%] h-[60%]", animation: "animate-drift" },
+                { color: "blob-3", className: "-bottom-[10%] -right-[10%] w-[60%] h-[60%]", animation: "animate-drift-slow", delay: "2s" },
               ]}
             />
 

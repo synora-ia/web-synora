@@ -78,9 +78,9 @@ export default function Carousel() {
     >
       <FloatingBlobs
         blobs={[
-          { color: "bg-purple-600/30", className: "-top-[20%] -left-[10%] w-[70%] h-[70%]", animation: "animate-drift" },
-          { color: "bg-orange-600/30", className: "-bottom-[20%] -right-[10%] w-[70%] h-[70%]", animation: "animate-drift-slow", delay: "2s" },
-          { color: "bg-pink-600/10", className: "top-[20%] right-[10%] w-[50%] h-[50%]", animation: "animate-drift-reverse", delay: "4s" },
+          { color: "blob-1", className: "-top-[20%] -left-[10%] w-[70%] h-[70%]", animation: "animate-drift" },
+          { color: "blob-2", className: "-bottom-[20%] -right-[10%] w-[70%] h-[70%]", animation: "animate-drift-slow", delay: "2s" },
+          { color: "blob-3", className: "top-[20%] right-[10%] w-[50%] h-[50%]", animation: "animate-drift-reverse", delay: "4s" },
         ]}
       />
 

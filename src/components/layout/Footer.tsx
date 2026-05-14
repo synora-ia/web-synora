@@ -15,8 +15,9 @@ export default function Footer() {
       {/* Abstract glowing background elements */}
       <FloatingBlobs
         blobs={[
-          { color: "bg-purple-600/20", className: "top-0 left-1/4 w-[40rem] h-[40rem]", animation: "animate-drift-slow" },
-          { color: "bg-orange-600/10", className: "bottom-0 right-1/4 w-[40rem] h-[40rem]", animation: "animate-drift-reverse", delay: "5s", duration: "30s" },
+          { color: "blob-3", className: "top-0 left-1/4 w-[40rem] h-[40rem]", animation: "animate-drift-slow" },
+          { color: "blob-2", className: "bottom-0 right-1/4 w-[40rem] h-[40rem]", animation: "animate-drift-reverse", delay: "5s", duration: "30s" },
+          { color: "blob-1", className: "top-1/4 right-1/3 w-[30rem] h-[30rem]", animation: "animate-drift", delay: "2s" },
         ]}
       />
 

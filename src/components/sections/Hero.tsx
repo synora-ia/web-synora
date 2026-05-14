@@ -8,7 +8,7 @@ export default function Hero() {
   const { t, language } = useLanguage();
 
   return (
-    <section id="inicio" className="hero-gradient pt-32 md:pt-40 pb-16 md:pb-24 px-6 min-h-[80vh] md:min-h-[90vh] flex flex-col items-center justify-center overflow-hidden">
+    <section id="inicio" className="hero-gradient pt-32 md:pt-40 pb-16 md:pb-24 px-6 min-h-[80vh] md:min-h-[90vh] flex flex-col items-center justify-center overflow-hidden relative">
       <div className="max-w-5xl mx-auto text-center relative z-10">
         <AnimatePresence mode="wait">
           <motion.div
