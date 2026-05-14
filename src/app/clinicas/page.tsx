@@ -121,33 +121,105 @@ export default function ClinicasPage() {
             </div>
           </section>
 
-          {/* No-Show Impact Section */}
-          <section className="py-16 md:py-32 px-6 bg-slate-50 dark:bg-zinc-900/30">
+          {/* No-Show Impact Section — Redesigned */}
+          <section className="py-16 md:py-32 px-6 bg-slate-50 dark:bg-zinc-900/30 overflow-hidden">
             <div className="max-w-7xl mx-auto">
-              <div className="bg-black dark:bg-white text-white dark:text-black rounded-[4rem] p-16 md:p-24 flex flex-col md:flex-row items-center gap-16">
-                <div className="flex-1 text-center md:text-left">
-                  <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tight">-15% <br /><span className="text-white/40 dark:text-black/40 text-3xl font-serif-italic">{isEs ? "Tasa de No-Shows" : "No-Show Rate"}</span></h2>
-                  <p className="text-lg text-white/60 dark:text-black/60 mb-10 leading-relaxed">
-                    {isEs
-                      ? "Cada cita perdida es un recurso desperdiciado. Nuestro sistema de recordatorios omnicanal garantiza que tu agenda esté siempre llena y tu equipo siempre productivo."
-                      : "Every missed appointment is a wasted resource. Our omnichannel reminder system ensures your schedule is always full and your team always productive."}
-                  </p>
-                  <ul className="space-y-4 text-sm font-bold uppercase tracking-widest text-white/80 dark:text-black/80">
-                    <li className="flex items-center"><svg className="w-4 h-4 mr-3 text-blue-400" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg>{isEs ? "WhatsApp Business Integrado" : "Integrated WhatsApp Business"}</li>
-                    <li className="flex items-center"><svg className="w-4 h-4 mr-3 text-blue-400" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg>{isEs ? "Re-agendado Automático" : "Automatic Re-scheduling"}</li>
-                    <li className="flex items-center"><svg className="w-4 h-4 mr-3 text-blue-400" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg>{isEs ? "Confirmación por SMS" : "SMS Confirmation"}</li>
-                  </ul>
-                </div>
-                <div className="flex-1 bg-white/10 dark:bg-black/5 backdrop-blur-3xl p-8 rounded-[3rem] border border-white/10 dark:border-black/5">
-                  <div className="text-center">
-                    <div className="text-sm font-bold text-blue-400 uppercase tracking-widest mb-2">{isEs ? "Recuperación Media" : "Average Recovery"}</div>
-                    <div className="text-5xl font-bold mb-4">+1.200€</div>
-                    <p className="text-xs text-white/40 dark:text-black/40">{isEs ? "Ingresos extra mensuales por cada 10 citas rescatadas." : "Extra monthly income for every 10 rescued appointments."}</p>
+              {/* Main card */}
+              <div className="relative rounded-[3rem] overflow-hidden">
+                {/* Gradient background using brand colors */}
+                <div className="absolute inset-0 bg-[#09090b]" />
+                <div className="absolute inset-0 opacity-35"
+                  style={{
+                    background: `radial-gradient(ellipse at 20% 50%, var(--brand-c1) 0%, transparent 55%),
+                                 radial-gradient(ellipse at 80% 30%, var(--brand-c3) 0%, transparent 50%),
+                                 radial-gradient(ellipse at 60% 90%, var(--brand-c2) 0%, transparent 45%)`
+                  }}
+                />
+                {/* Noise texture */}
+                <div className="absolute inset-0 opacity-20 mix-blend-overlay"
+                  style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+                    backgroundSize: "128px"
+                  }}
+                />
+
+                <div className="relative z-10 p-10 md:p-16 lg:p-24">
+                  <div className="grid lg:grid-cols-2 gap-16 items-center">
+
+                    {/* Left: text */}
+                    <div>
+                      <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-white/60 text-xs font-bold uppercase tracking-widest mb-8 border border-white/10">
+                        <span className="w-1.5 h-1.5 rounded-full bg-white/60 animate-pulse" />
+                        {isEs ? "Impacto Clínico" : "Clinical Impact"}
+                      </span>
+
+                      <h2 className="text-5xl md:text-7xl font-bold text-white mb-3 tracking-tight leading-none">
+                        -15%
+                      </h2>
+                      <p className="font-serif-italic text-white/40 text-2xl mb-8">
+                        {isEs ? "Tasa de No-Shows" : "No-Show Rate"}
+                      </p>
+
+                      <p className="text-lg text-white/60 mb-10 leading-relaxed max-w-md">
+                        {isEs
+                          ? "Cada cita perdida es un recurso desperdiciado. Nuestro sistema de recordatorios omnicanal garantiza que tu agenda esté siempre llena y tu equipo siempre productivo."
+                          : "Every missed appointment is a wasted resource. Our omnichannel reminder system ensures your schedule is always full and your team always productive."}
+                      </p>
+
+                      <ul className="space-y-3">
+                        {[
+                          isEs ? "WhatsApp Business Integrado" : "Integrated WhatsApp Business",
+                          isEs ? "Re-agendado Automático" : "Automatic Re-scheduling",
+                          isEs ? "Confirmación por SMS" : "SMS Confirmation",
+                        ].map((item) => (
+                          <li key={item} className="flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-white/70">
+                            <span className="w-5 h-5 rounded-full bg-white/10 border border-white/20 flex items-center justify-center shrink-0">
+                              <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                              </svg>
+                            </span>
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Right: stat cards */}
+                    <div className="grid grid-cols-1 gap-4">
+                      {/* Big recovery card */}
+                      <div className="bg-white/8 backdrop-blur-xl border border-white/10 rounded-[2rem] p-8">
+                        <div className="text-xs font-bold text-white/40 uppercase tracking-widest mb-3">
+                          {isEs ? "Recuperación Media" : "Average Recovery"}
+                        </div>
+                        <div className="text-6xl font-bold text-white mb-2 tracking-tighter">+1.200€</div>
+                        <p className="text-sm text-white/40">
+                          {isEs ? "Ingresos extra mensuales por cada 10 citas rescatadas." : "Extra monthly income for every 10 rescued appointments."}
+                        </p>
+                      </div>
+
+                      {/* Two smaller stat cards */}
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="bg-white/8 backdrop-blur-xl border border-white/10 rounded-[1.5rem] p-6">
+                          <div className="text-3xl font-bold text-white mb-1">24h</div>
+                          <p className="text-xs text-white/40 uppercase tracking-widest font-bold">
+                            {isEs ? "Primer recordatorio" : "First reminder"}
+                          </p>
+                        </div>
+                        <div className="bg-white/8 backdrop-blur-xl border border-white/10 rounded-[1.5rem] p-6">
+                          <div className="text-3xl font-bold text-white mb-1">3×</div>
+                          <p className="text-xs text-white/40 uppercase tracking-widest font-bold">
+                            {isEs ? "Canales activos" : "Active channels"}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
               </div>
             </div>
           </section>
+
 
           {/* Dashboard Section */}
           <section className="py-16 md:py-32 px-6 bg-white dark:bg-black transition-colors duration-300">

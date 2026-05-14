@@ -77,6 +77,7 @@ export default function Carousel() {
       onMouseLeave={() => setIsPaused(false)}
     >
       <FloatingBlobs
+        opacity="opacity-35"
         blobs={[
           { color: "blob-1", className: "-top-[20%] -left-[10%] w-[70%] h-[70%]", animation: "animate-drift" },
           { color: "blob-2", className: "-bottom-[20%] -right-[10%] w-[70%] h-[70%]", animation: "animate-drift-slow", delay: "2s" },
