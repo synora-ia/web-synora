@@ -31,6 +31,7 @@ export default function Navbar() {
     { href: "/#plataforma", label: t("nav.platform") },
     { href: "/#sectores", label: t("nav.sectors") },
     { href: "/#precios", label: t("nav.pricing") },
+    { href: "/blog", label: language === "es" ? "Blog" : "Blog" },
   ];
 
   return (

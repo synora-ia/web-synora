@@ -10,6 +10,7 @@ import Comparison from "@/components/sections/Comparison";
 import Link from "next/link";
 import { useLanguage } from "@/components/layout/LanguageContext";
 import { motion, AnimatePresence } from "framer-motion";
+import { PageViewTracker, TrackedClick } from "@/components/analytics/Trackers";
 
 export default function Home() {
   const { t, language } = useLanguage();
@@ -95,10 +96,12 @@ export default function Home() {
                   <li className="flex items-center justify-center lg:justify-start"><svg className="w-5 h-5 mr-3 text-slate-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg>{t("home.platform.feat3")}</li>
                 </ul>
 
-                <Link href="/dashboard" className="inline-flex items-center justify-center px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-full font-bold hover:scale-105 transition-transform w-full md:w-auto">
-                  {t("home.platform.cta")}
-                  <svg className="w-4 h-4 ml-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                </Link>
+                <TrackedClick name="Home_Dashboard_CTA">
+                  <Link href="/dashboard" className="inline-flex items-center justify-center px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-full font-bold hover:scale-105 transition-transform w-full md:w-auto">
+                    {t("home.platform.cta")}
+                    <svg className="w-4 h-4 ml-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                  </Link>
+                </TrackedClick>
               </div>
             </motion.div>
           </AnimatePresence>
