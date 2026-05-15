@@ -27,19 +27,39 @@ export function GlobalPageViewTracker() {
   useEffect(() => {
     if (!pathname) return;
     
-    // Excluir áreas privadas/administrativas
     if (pathname.startsWith("/admin") || pathname.startsWith("/dashboard")) {
       return;
     }
 
-    // Formatear el nombre para que se vea limpio en el panel
-    // '/' -> 'Home'
-    // '/contacto' -> 'contacto'
-    // '/blog/mi-post' -> 'blog/mi-post'
     const pageName = pathname === "/" ? "Home" : pathname.slice(1);
-    
     trackEvent("pageview", "view", pageName);
   }, [pathname]);
+
+  // Nuevo: Escuchador Global de Clics
+  useEffect(() => {
+    const handleGlobalClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      
+      // Buscamos el botón o enlace más cercano al clic
+      const interactiveElement = target.closest('button, a');
+      
+      if (interactiveElement) {
+        // Obtenemos un nombre descriptivo (texto, aria-label o título)
+        const label = interactiveElement.getAttribute('aria-label') || 
+                      interactiveElement.getAttribute('title') || 
+                      interactiveElement.textContent?.trim().substring(0, 30) || 
+                      "unnamed_interaction";
+
+        // No trackeamos clics en áreas administrativas
+        if (window.location.pathname.startsWith("/admin")) return;
+
+        trackEvent("click", "interaction", label);
+      }
+    };
+
+    window.addEventListener('click', handleGlobalClick);
+    return () => window.removeEventListener('click', handleGlobalClick);
+  }, []);
 
   return null;
 }
