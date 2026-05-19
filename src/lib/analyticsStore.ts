@@ -38,7 +38,7 @@ async function syncEventToRemote(category: string, action: string, label: string
       const ipRes = await fetch('https://api.ipify.org?format=json');
       const ipData = await ipRes.json();
       ip = ipData.ip;
-    } catch (e) { /* ignore */ }
+    } catch { /* ignore */ }
 
     const payload = {
       category,
@@ -60,7 +60,7 @@ async function syncEventToRemote(category: string, action: string, label: string
       headers: SB_HEADERS,
       body: JSON.stringify(payload),
     }).catch(err => console.error("Analytics sync error:", err));
-  } catch (e) {
+  } catch {
     // Silencioso
   }
 }

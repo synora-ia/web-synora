@@ -7,11 +7,12 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function CookieConsent() {
   const [isVisible, setIsVisible] = useState(false);
-  const { t, language } = useLanguage();
+  const { language } = useLanguage();
 
   useEffect(() => {
     const consent = localStorage.getItem("cookie-consent");
     if (!consent) {
+       
       setIsVisible(true);
     }
   }, []);

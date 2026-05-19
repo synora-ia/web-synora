@@ -85,7 +85,7 @@ const organizationSchema = {
   logo: "https://synora.es/logo.png",
   description:
     "Plataforma de automatización operativa para pymes en España. Especialistas en inmobiliarias, clínicas, restaurantes y empresas de servicios.",
-  sameAs: [],
+  sameAs: ["https://www.instagram.com/synora.solutions/"],
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer support",
@@ -114,6 +114,27 @@ const websiteSchema = {
   },
 };
 
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Synora Platform",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web, Cloud",
+  url: "https://synora.es",
+  description: "Automatización operativa con Inteligencia Artificial para pymes, clínicas e inmobiliarias.",
+  offers: {
+    "@type": "Offer",
+    price: "149.00",
+    priceCurrency: "EUR",
+    description: "Plan Esencial de automatización para pymes."
+  },
+  provider: {
+    "@type": "Organization",
+    name: "Synora",
+    url: "https://synora.es"
+  }
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -129,6 +150,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
         />
       </head>
       <body className="antialiased selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black bg-white dark:bg-black text-black dark:text-white transition-colors duration-300" suppressHydrationWarning>

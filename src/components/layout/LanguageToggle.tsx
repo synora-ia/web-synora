@@ -1,7 +1,7 @@
 "use client";
 
 import { useLanguage } from "./LanguageContext";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 export default function LanguageToggle() {
   const { language, setLanguage } = useLanguage();

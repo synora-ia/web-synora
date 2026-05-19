@@ -4,16 +4,13 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 import LanguageToggle from "./LanguageToggle";
-import { usePathname } from "next/navigation";
+
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "./LanguageContext";
 
 export default function Navbar() {
-  const pathname = usePathname();
   const { t, language } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
-
-  const isDashboard = pathname === "/dashboard";
 
   // Prevent scrolling when mobile menu is open
   useEffect(() => {

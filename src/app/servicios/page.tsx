@@ -1,3 +1,5 @@
+ 
+ 
 "use client";
 
 import Navbar from "@/components/layout/Navbar";
@@ -7,7 +9,7 @@ import { useLanguage } from "@/components/layout/LanguageContext";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function ServiciosPage() {
-  const { t, language } = useLanguage();
+  const { language } = useLanguage();
   const isEs = language === "es";
 
   return (

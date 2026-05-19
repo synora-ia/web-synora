@@ -123,6 +123,7 @@ export default function Carousel() {
               </div>
               <div className="relative hidden lg:block">
                 <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-white/10">
+                  { }
                   <img src={slide.image} alt={slide.titleSerif} className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700" />
                 </div>
               </div>

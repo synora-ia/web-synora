@@ -7,9 +7,11 @@ type Language = "es" | "en";
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
+   
   t: (key: string) => any;
 }
 
+ 
 const translations: Record<Language, Record<string, any>> = {
   es: {
     "nav.start": "Inicio",
@@ -20,12 +22,12 @@ const translations: Record<Language, Record<string, any>> = {
     "nav.contact": "Contactar",
     "hero.title1": "Tu negocio no necesita trabajar más,",
     "hero.title2": "necesita trabajar solo.",
-    "hero.subtitle": "Synora es la solución de automatización diseñada para empresas que quieren crecer sin complicarse la vida. Transformamos procesos manuales en flujos inteligentes.",
+    "hero.subtitle": "Synora es la plataforma líder de automatización operativa en España. Sustituimos tareas manuales por Inteligencia Artificial para que tu pyme crezca sin aumentar los costes de personal.",
     "hero.cta1": "Ver Soluciones",
     "hero.cta2": "Agendar Auditoría",
     "pillars.title1": "Trabaja menos,",
     "pillars.title2": "produce más.",
-    "pillars.subtitle": "Transformamos los procesos rotos que consumen tu tiempo diario en flujos de trabajo inteligentes que funcionan de forma autónoma.",
+    "pillars.subtitle": "Transformamos los procesos operativos manuales en flujos de trabajo 100% autónomos gracias a nuestra tecnología de agentes de Inteligencia Artificial.",
     "pillars.card1.title": "Automatización 24/7",
     "pillars.card1.stat": "+10h liberadas/semana",
     "pillars.card1.desc": "Lo repetitivo se gestiona solo y en segundo plano sin intervención manual. Mensajes, citas y avisos en piloto automático.",
@@ -84,7 +86,7 @@ const translations: Record<Language, Record<string, any>> = {
     "home.platform.badge": "Tu Centro de Control",
     "home.platform.title1": "Una única plataforma para",
     "home.platform.title2": "gobernarlo todo.",
-    "home.platform.desc": "Olvídate de saltar entre 10 herramientas distintas. El Dashboard de Synora centraliza tus automatizaciones, embudos de venta, clientes y métricas clave en un solo lugar.",
+    "home.platform.desc": "El 80% de las pymes pierden tiempo valioso usando múltiples herramientas. El Dashboard de Synora soluciona esto centralizando tu CRM, automatizaciones de WhatsApp, embudos de venta y analíticas en una única plataforma.",
     "home.platform.feat1": "Monitorización en tiempo real",
     "home.platform.feat2": "Integración con tu CRM actual",
     "home.platform.feat3": "Gestión de agentes y roles",
@@ -719,14 +721,13 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>("es");
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     const savedLang = localStorage.getItem("language") as Language;
     if (savedLang && (savedLang === "es" || savedLang === "en")) {
+       
       setLanguageState(savedLang);
     }
-    setMounted(true);
   }, []);
 
   const setLanguage = (lang: Language) => {
@@ -734,6 +735,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     localStorage.setItem("language", lang);
   };
 
+   
   const t = (key: string): any => {
     return translations[language][key] || key;
   };

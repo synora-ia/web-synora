@@ -167,7 +167,7 @@ export default function Pricing() {
   );
 }
 
-function ExtraCard({ mod, language }: { mod: any; language: string }) {
+function ExtraCard({ mod, language }: { mod: { title: string; desc: string; setupPrice?: number; monthlyPrice?: number; oneTimePrice?: number; isPack?: boolean; }; language: string }) {
   const { title, desc, setupPrice, monthlyPrice, oneTimePrice, isPack } = mod;
   const isEs = language === "es";
   

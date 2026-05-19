@@ -8,6 +8,10 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: ["/admin/", "/admin/login", "/dashboard/"],
       },
+      {
+        userAgent: ["GPTBot", "ClaudeBot", "PerplexityBot", "OAI-SearchBot", "Google-Extended"],
+        allow: "/",
+      }
     ],
     sitemap: "https://synora.es/sitemap.xml",
     host: "https://synora.es",
