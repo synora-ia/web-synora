@@ -1,5 +1,5 @@
- 
- 
+
+
 "use client";
 
 import Navbar from "@/components/layout/Navbar";
@@ -69,9 +69,9 @@ export default function PlanesPage() {
           <section className="py-12 md:py-24 px-6 bg-white dark:bg-black transition-colors duration-300">
             <div className="max-w-6xl mx-auto">
               <div className="relative bg-white dark:bg-zinc-900 rounded-[2.5rem] shadow-sm dark:shadow-none border border-black/5 dark:border-white/5 overflow-hidden">
-                
+
                 {/* Desktop Layout (Table) */}
-                <div className="hidden md:block overflow-x-auto relative z-0 pb-4">
+                <div className="hidden md:block overflow-x-auto relative z-0">
                   <table className="w-full text-left border-collapse min-w-[800px]">
                     <thead>
                       <tr className="border-b border-slate-100 dark:border-white/5">
@@ -526,14 +526,14 @@ function RecommendationCard({ letter, badge, title, desc, dark = false }: { lett
 
 function ModuleItem({ mod, language, dark = false }: { mod: any; language: string; dark?: boolean }) {
   const { title, desc, setupPrice, monthlyPrice, oneTimePrice } = mod;
-  
+
   return (
     <div className={`flex flex-col gap-3 p-5 rounded-[1.5rem] transition-all border ${dark ? "border-white/10 hover:bg-white/5" : "border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5"}`}>
       <div>
         <h5 className={`font-bold mb-1 text-base ${dark ? "text-white dark:text-black" : "text-black dark:text-white"}`}>{title}</h5>
         <p className={`text-xs leading-relaxed ${dark ? "text-white/60 dark:text-black/60" : "text-slate-500 dark:text-zinc-400"}`}>{desc}</p>
       </div>
-      
+
       <div className="flex gap-2 mt-auto">
         {oneTimePrice ? (
           <div className={`flex-1 flex items-center justify-between px-3 py-1.5 rounded-lg border ${dark ? "bg-white/10 border-white/10 text-white" : "bg-blue-50 dark:bg-blue-900/20 border-blue-100 dark:border-blue-800/30 text-blue-700 dark:text-blue-300"}`}>
@@ -569,14 +569,14 @@ function ModuleItem({ mod, language, dark = false }: { mod: any; language: strin
 
 function FeatureMiniCard({ mod, language }: { mod: any; language: string }) {
   const { title, desc, setupPrice, monthlyPrice, oneTimePrice } = mod;
-  
+
   return (
     <div className="bg-white dark:bg-zinc-900/50 p-6 rounded-[2rem] border border-slate-100 dark:border-white/5 hover:border-black dark:hover:border-white transition-all flex flex-col h-full group">
       <div className="mb-5">
         <h5 className="font-bold text-black dark:text-white text-lg mb-2 tracking-tight">{title}</h5>
         <p className="text-xs text-slate-500 dark:text-zinc-400 leading-relaxed line-clamp-2">{desc}</p>
       </div>
-      
+
       <div className="flex flex-col gap-2 mt-auto">
         {oneTimePrice ? (
           <div className="flex items-center justify-between bg-blue-50 dark:bg-blue-900/20 px-4 py-2.5 rounded-xl border border-blue-100/50 dark:border-blue-800/30">
