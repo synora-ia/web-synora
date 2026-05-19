@@ -5,6 +5,7 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Link from "next/link";
+import Image from "next/image";
 import { useLanguage } from "@/components/layout/LanguageContext";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -49,7 +50,7 @@ export default function RestaurantesPage() {
             <div className="relative group hidden lg:block">
               <div className="absolute -inset-1 bg-gradient-to-tr from-blue-500/20 to-purple-500/20 blur-2xl rounded-[3rem] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
               <div className="relative rounded-[3rem] overflow-hidden shadow-2xl dark:shadow-white/5 border border-transparent dark:border-white/10">
-                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80" alt="Restaurante" className="w-full h-[500px] object-cover scale-105 group-hover:scale-100 transition-transform duration-700" />
+                <Image src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80" width={1200} height={500} alt="Restaurante" className="w-full h-[500px] object-cover scale-105 group-hover:scale-100 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
               </div>
             </div>
@@ -198,8 +199,10 @@ export default function RestaurantesPage() {
                 <div className="relative">
                   <div className="absolute -inset-4 bg-gradient-to-tr from-blue-500/10 to-purple-500/10 blur-3xl rounded-[4rem] -z-10"></div>
                   <div className="bg-white dark:bg-zinc-900 p-4 rounded-[3rem] shadow-2xl dark:shadow-none border border-slate-100 dark:border-white/5 overflow-hidden">
-                    <img
+                    <Image
                       src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=800&q=80"
+                      width={800}
+                      height={600}
                       alt="Dashboard Preview"
                       className="rounded-[2rem] w-full aspect-square lg:aspect-auto lg:h-[600px] object-cover transition-all duration-700"
                     />

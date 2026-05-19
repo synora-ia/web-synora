@@ -8,6 +8,7 @@ import Carousel from "@/components/sections/Carousel";
 import Pricing from "@/components/sections/Pricing";
 import Comparison from "@/components/sections/Comparison";
 import Link from "next/link";
+import Image from "next/image";
 import { useLanguage } from "@/components/layout/LanguageContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { PageViewTracker, TrackedClick } from "@/components/analytics/Trackers";
@@ -71,8 +72,10 @@ export default function Home() {
                       <div className="w-3 h-3 rounded-full bg-amber-500/20 border border-amber-500/30"></div>
                       <div className="w-3 h-3 rounded-full bg-emerald-500/20 border border-emerald-500/30"></div>
                     </div>
-                    <img
+                    <Image
                       alt="Synora Dashboard Mockup"
+                      width={1200}
+                      height={800}
                       className="w-full h-auto mt-10 object-cover opacity-90 group-hover:opacity-100 transition-all duration-700"
                       src="/images/dashboard/dashboard-main.png"
                     />

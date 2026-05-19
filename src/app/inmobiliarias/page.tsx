@@ -5,6 +5,7 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Link from "next/link";
+import Image from "next/image";
 import { useLanguage } from "@/components/layout/LanguageContext";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -52,7 +53,7 @@ export default function InmobiliariasPage() {
             <div className="relative group hidden lg:block">
               <div className="absolute -inset-1 bg-gradient-to-tr from-blue-500/20 to-purple-500/20 blur-2xl rounded-[3rem] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
               <div className="relative rounded-[3rem] overflow-hidden shadow-2xl dark:shadow-white/5 border border-transparent dark:border-white/10">
-                <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80" alt="Inmobiliaria" className="w-full h-[500px] object-cover scale-105 group-hover:scale-100 transition-transform duration-700" />
+                <Image src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80" width={1200} height={500} alt="Inmobiliaria" className="w-full h-[500px] object-cover scale-105 group-hover:scale-100 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
               </div>
             </div>
@@ -166,8 +167,10 @@ export default function InmobiliariasPage() {
                         <div className="w-3 h-3 rounded-full bg-amber-500/20 border border-amber-500/30"></div>
                         <div className="w-3 h-3 rounded-full bg-emerald-500/20 border border-emerald-500/30"></div>
                       </div>
-                      <img
+                      <Image
                         alt="Synora Dashboard Map"
+                        width={1200}
+                        height={800}
                         className="w-full h-auto mt-10 object-cover opacity-90 group-hover:opacity-100 transition-all duration-700"
                         src="/images/dashboard/dashboard-map.png"
                       />

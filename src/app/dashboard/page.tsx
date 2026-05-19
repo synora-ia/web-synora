@@ -11,6 +11,7 @@ import FloatingBlobs from "@/components/ui/FloatingBlobs";
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/components/layout/LanguageContext";
 import { usePricingData } from "@/data/pricingData";
+import Image from "next/image";
 
 // --- Constants ---
 const getModulesRow1 = (modules: any[]) => {
@@ -324,9 +325,11 @@ export default function DashboardPage() {
                     <div className="w-3 h-3 rounded-full bg-amber-500/20 border border-amber-500/30"></div>
                     <div className="w-3 h-3 rounded-full bg-emerald-500/20 border border-emerald-500/30"></div>
                   </div>
-                  <img
+                  <Image
                     src="/images/dashboard/dashboard-main.png"
                     alt="Synora Dashboard Mockup"
+                    width={1200}
+                    height={800}
                     className="w-full h-auto mt-10 object-cover opacity-90 group-hover:opacity-100 transition-all duration-700"
                   />
                 </div>
@@ -588,9 +591,11 @@ export default function DashboardPage() {
                         <div className="w-3 h-3 rounded-full bg-amber-500/20 border border-amber-500/30"></div>
                         <div className="w-3 h-3 rounded-full bg-emerald-500/20 border border-emerald-500/30"></div>
                       </div>
-                      <img
+                      <Image
                         src="/images/dashboard/dashboard-stats.png"
                         alt="Synora Multi-device Mockup"
+                        width={1200}
+                        height={800}
                         className="w-full h-auto mt-10 object-cover opacity-90 group-hover:opacity-100 transition-all duration-700"
                       />
                     </div>
