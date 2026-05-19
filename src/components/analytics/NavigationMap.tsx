@@ -90,7 +90,7 @@ function timeDiff(a: string, b: string): string {
 
 // ─── Builders ─────────────────────────────────────────────────────────────────
 
-function buildSessions(logs: AnalyticsLog[]): JourneySession[] {
+function buildSessions(logs: AnalyticsLog[], currentIp: string | null = null): JourneySession[] {
   const map: Record<string, AnalyticsLog[]> = {};
   for (const log of logs) {
     if (!map[log.session_id]) map[log.session_id] = [];
@@ -119,10 +119,16 @@ function buildSessions(logs: AnalyticsLog[]): JourneySession[] {
       };
     })
     .filter((s) => s.stops.length > 0)
-    .sort((a, b) => new Date(b.lastSeen).getTime() - new Date(a.lastSeen).getTime());
+    .sort((a, b) => {
+      if (currentIp) {
+        if (a.ip === currentIp && b.ip !== currentIp) return -1;
+        if (b.ip === currentIp && a.ip !== currentIp) return 1;
+      }
+      return new Date(b.lastSeen).getTime() - new Date(a.lastSeen).getTime();
+    });
 }
 
-function buildIpGroups(sessions: JourneySession[]): IpGroup[] {
+function buildIpGroups(sessions: JourneySession[], currentIp: string | null = null): IpGroup[] {
   const map: Record<string, JourneySession[]> = {};
   for (const s of sessions) {
     if (!map[s.ip]) map[s.ip] = [];
@@ -137,7 +143,13 @@ function buildIpGroups(sessions: JourneySession[]): IpGroup[] {
       lastSeen: list.reduce((max, s) => (s.lastSeen > max ? s.lastSeen : max), ""),
       totalClicks: list.reduce((acc, s) => acc + s.totalClicks, 0),
     }))
-    .sort((a, b) => new Date(b.lastSeen).getTime() - new Date(a.lastSeen).getTime());
+    .sort((a, b) => {
+      if (currentIp) {
+        if (a.ip === currentIp && b.ip !== currentIp) return -1;
+        if (b.ip === currentIp && a.ip !== currentIp) return 1;
+      }
+      return new Date(b.lastSeen).getTime() - new Date(a.lastSeen).getTime();
+    });
 }
 
 // ─── JourneyFlow ──────────────────────────────────────────────────────────────
@@ -246,8 +258,19 @@ function JourneyFlow({ session }: { session: JourneySession }) {
 // ─── NavigationMap ────────────────────────────────────────────────────────────
 
 export function NavigationMap({ logs }: { logs: AnalyticsLog[] }) {
-  const sessions = buildSessions(logs);
-  const ipGroups = buildIpGroups(sessions);
+  const [currentIp, setCurrentIp] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetch("https://api.ipify.org?format=json")
+      .then(res => res.json())
+      .then(data => {
+        if (data.ip) setCurrentIp(data.ip);
+      })
+      .catch(() => {});
+  }, []);
+
+  const sessions = buildSessions(logs, currentIp);
+  const ipGroups = buildIpGroups(sessions, currentIp);
 
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [expandedIps, setExpandedIps] = useState<Set<string>>(new Set());
@@ -256,7 +279,7 @@ export function NavigationMap({ logs }: { logs: AnalyticsLog[] }) {
   useEffect(() => {
     if (ipGroups[0]?.ip) setExpandedIps(new Set([ipGroups[0].ip]));
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [logs.length]);
+  }, [logs.length, currentIp]);
 
   if (sessions.length === 0) return null;
 
@@ -323,6 +346,11 @@ export function NavigationMap({ logs }: { logs: AnalyticsLog[] }) {
                 <div className="flex items-center gap-2">
                   <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${isRecent ? "bg-emerald-400" : "bg-zinc-600"}`} />
                   <span className="font-mono text-xs font-bold text-black dark:text-white">{group.ip}</span>
+                  {group.ip === currentIp && (
+                    <span className="text-[9px] font-mono font-bold bg-violet-500/20 text-violet-600 dark:text-violet-400 px-1.5 py-0.5 rounded">
+                      Tú
+                    </span>
+                  )}
                   <span className="text-[10px] font-mono text-slate-400">
                     · {group.sessions.length} ses.
                   </span>
@@ -396,6 +424,11 @@ export function NavigationMap({ logs }: { logs: AnalyticsLog[] }) {
                     <span className="font-mono text-xs font-bold text-black dark:text-white truncate">
                       {group.ip}
                     </span>
+                    {group.ip === currentIp && (
+                      <span className="text-[9px] font-mono font-bold bg-violet-500/20 text-violet-600 dark:text-violet-400 px-1.5 py-0.5 rounded flex-shrink-0">
+                        Tú
+                      </span>
+                    )}
                   </div>
                   <div className="flex items-center gap-2 flex-shrink-0 ml-2">
                     <span className="text-[10px] font-mono text-slate-400">
