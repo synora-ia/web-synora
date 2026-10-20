@@ -1,0 +1,197 @@
+/* COPIA PARA LA WEB PÚBLICA (synora-aurora), hecha el 15/10/2026 desde
+   dashboard-synora/src/components/esfera/. No se edita aquí: si la esfera
+   cambia en el CRM, se vuelve a copiar entera. El original de verdad es
+   Desktop/esferas-aurea, de Josep. */
+
+/* LA ESFERA · estilos del componente
+   Portado de Desktop/esferas-aurea/esfera.css (Josep, 14/10/2026). Mismo
+   diseño, con todo prefijado `esf-` para no chocar con el CRM (que ya tiene
+   .card, .badge, .bar, .mini…). Las reglas de diseño son suyas y están
+   aprobadas: un solo color mate, perla en reposo, color = cómo está e
+   insignia = qué hace, ojos de tinta, y nada de bocas, brazos ni adornos. */
+
+/* Colores animables: el cuerpo pasa del perla al color del estado con una transición suave */
+@property --esf-tono { syntax: '<color>'; inherits: true; initial-value: #e6e8ee; }
+@property --esf-t    { syntax: '<percentage>'; inherits: true; initial-value: 0%; }
+
+/* ================= componente ================= */
+/* --esf-surface es el color de lo que hay detrás: el anillo de la insignia se
+   funde con él. En el CRM, el lienzo de Aurora; dentro de un panel, el panel. */
+.esf { --R: min(34vw, 25vh, 136px); --ink: #1b1c24; --pearl: #e9eaee; --surface: var(--esf-surface, var(--void, #0d0e12)); position: relative; display: inline-block; }
+.esf.esf-mini { --R: 28px; }
+.esf.esf-light { --surface: var(--esf-surface, var(--void, #f4f5f8)); }
+
+.esf-orb { --esf-tono: #e6e8ee; --esf-t: 0%;
+       --body: color-mix(in oklab, var(--pearl) calc(100% - var(--esf-t)), var(--esf-tono));
+       position: relative; width: calc(var(--R) * 2); height: calc(var(--R) * 2); cursor: pointer; outline: none;
+       --dur: .5s;   /* velocidad del cambio de color: más rápida cuanto más urgente (ver estados) */
+       transition: --esf-tono var(--dur) ease, --esf-t var(--dur) ease, transform .45s cubic-bezier(.3,1.4,.5,1), width .4s ease, height .4s ease; }
+.esf-orb:focus-visible { box-shadow: 0 0 0 3px color-mix(in oklab, var(--esf-tono) 60%, transparent); border-radius: 50%; }
+.esf-shadow { position: absolute; left: 18%; right: 18%; bottom: -12%; height: 10%; border-radius: 50%; background: rgba(0,0,0,.45); filter: blur(calc(var(--R) * .07)); }
+.esf-light .esf-shadow { background: rgba(20,22,40,.28); }
+.esf-body { position: absolute; inset: 0; border-radius: 50%;
+        background: radial-gradient(circle at 34% 27%, color-mix(in oklab, var(--body) 45%, white) 0%, var(--body) 46%, color-mix(in oklab, var(--body) 72%, #2c2e3a) 100%);
+        box-shadow: inset 0 calc(var(--R) * -.05) calc(var(--R) * .14) rgba(0,0,0,.12);
+        animation: esf-breathe 3.4s ease-in-out infinite; }
+/* sobre fondo claro la perla se perdería: contorno sutil y sombra más marcada */
+.esf-light .esf-body { box-shadow: inset 0 calc(var(--R) * -.05) calc(var(--R) * .14) rgba(0,0,0,.12), 0 0 0 1px rgba(20,22,40,.08), 0 6px 18px rgba(20,22,40,.18); }
+@keyframes esf-breathe { 50% { transform: scale(1.025, .985); } }
+
+.esf-eyes { position: absolute; left: 50%; top: 50%; width: 0; height: 0; }
+.esf-eye { --w: calc(var(--R) * .17); --h: calc(var(--R) * .3);
+       position: absolute; width: var(--w); height: var(--h); margin: calc(var(--h) / -2 - var(--R) * .07) 0 0 calc(var(--w) / -2);
+       background: var(--ink); border-radius: 999px; border: 0 solid var(--ink);
+       transition: width .22s, height .22s, margin .22s, border-radius .22s, background .22s, transform .12s; }
+.esf-eye.esf-l { left: calc(var(--R) * -.18); }
+.esf-eye.esf-r { left: calc(var(--R) * .18); }
+.esf-blink .esf-eye { transform: scaleY(.1); }
+
+.esf-badge { position: absolute; right: -2%; top: -2%; width: calc(var(--R) * .46); height: calc(var(--R) * .46); min-width: 16px; min-height: 16px; border-radius: 50%;
+         background: var(--esf-tono); box-shadow: 0 0 0 max(2px, calc(var(--R) * .04)) var(--surface); display: grid; place-items: center;
+         transform: scale(0); transition: transform .35s cubic-bezier(.3,1.6,.5,1); }
+.esf-badge.esf-on { transform: scale(1); }
+.esf-badge svg { width: 58%; height: 58%; fill: none; stroke: #fff; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.esf-badge .esf-dots { display: flex; gap: 12%; width: 62%; justify-content: center; }
+.esf-badge .esf-dots b { width: 22%; aspect-ratio: 1; border-radius: 50%; background: #fff; animation: esf-dot 1s ease-in-out infinite; }
+.esf-badge .esf-dots b:nth-child(2) { animation-delay: .15s; } .esf-badge .esf-dots b:nth-child(3) { animation-delay: .3s; }
+@keyframes esf-dot { 0%, 60%, 100% { transform: translateY(0); opacity: .55; } 30% { transform: translateY(-45%); opacity: 1; } }
+
+/* anillo de progreso, del color del estado */
+.esf-ring { position: absolute; inset: -11%; width: 122%; height: 122%; transform: rotate(-90deg); opacity: 0; transition: opacity .3s; pointer-events: none; overflow: visible; }
+.esf-ring.esf-on { opacity: 1; }
+.esf-ring circle { fill: none; stroke-width: 3.2; vector-effect: non-scaling-stroke; }
+.esf-mini .esf-ring circle { stroke-width: 3; }
+.esf-ring .esf-track { stroke: rgba(255,255,255,.1); }
+.esf-light .esf-ring .esf-track { stroke: rgba(20,22,40,.1); }
+.esf-ring .esf-bar { stroke: var(--esf-tono); stroke-linecap: round; transition: stroke-dasharray .45s ease; }
+
+.esf-zz { position: absolute; right: 4%; top: -4%; font-size: calc(var(--R) * .22); font-weight: 600; color: var(--esf-tono); opacity: 0; pointer-events: none; }
+.esf-zz + .esf-zz { font-size: calc(var(--R) * .17); }
+
+/* ---- estados ---- */
+.esf-orb[data-state="think"] .esf-eye, .esf-orb[data-state="work"] .esf-eye, .esf-orb[data-state="search"] .esf-eye { --h: calc(var(--R) * .26); }
+.esf-orb[data-state="need"] .esf-eye { --w: calc(var(--R) * .22); --h: calc(var(--R) * .36); }
+.esf-orb[data-state="need"] .esf-body { animation: esf-bounce .9s cubic-bezier(.3,0,.4,1) infinite; }
+.esf-orb[data-state="need"] .esf-shadow, .esf-orb[data-state="ask"].esf-urgent .esf-shadow { animation: esf-shadow-k .9s cubic-bezier(.3,0,.4,1) infinite; }
+@keyframes esf-bounce { 0%, 100% { transform: translateY(0) scale(1.04, .96); } 45% { transform: translateY(-9%) scale(.97, 1.03); } }
+@keyframes esf-shadow-k { 45% { transform: scale(.8); opacity: .6; } }
+.esf-orb[data-state="ask"] { transform: rotate(-10deg); }
+/* si lleva rato esperando, insiste más */
+.esf-orb.esf-urgent .esf-body { animation: esf-bounce-hard .6s cubic-bezier(.3,0,.4,1) infinite !important; }
+.esf-orb.esf-urgent .esf-shadow { animation: esf-shadow-k .6s cubic-bezier(.3,0,.4,1) infinite !important; }
+@keyframes esf-bounce-hard { 0%, 100% { transform: translateY(0) scale(1.07, .93); } 45% { transform: translateY(-15%) scale(.95, 1.05); } }
+.esf-orb.esf-urgent .esf-ring .esf-track { stroke: color-mix(in oklab, var(--esf-tono) 45%, transparent); }
+.esf-orb[data-state="done"] .esf-eye { --w: calc(var(--R) * .22); --h: calc(var(--R) * .14); background: transparent; border-width: max(2px, calc(var(--R) * .055)) max(2px, calc(var(--R) * .055)) 0; border-radius: 999px 999px 0 0; margin-top: calc(var(--R) * -.12); }
+.esf-orb[data-state="done"] .esf-body { animation: esf-hop .55s cubic-bezier(.3,0,.4,1) 2, esf-breathe 3.4s ease-in-out 1.1s infinite; }
+@keyframes esf-hop { 50% { transform: translateY(-8%) scale(.97, 1.03); } }
+.esf-orb[data-state="error"] .esf-eye { --h: max(2px, calc(var(--R) * .06)); }
+.esf-orb[data-state="error"] .esf-body { animation: esf-shake .4s ease-in-out 1, esf-breathe 3.4s ease-in-out .4s infinite; }
+@keyframes esf-shake { 20%, 60% { transform: translateX(-4%); } 40%, 80% { transform: translateX(4%); } }
+.esf-orb[data-state="sleep"] .esf-eye { --w: calc(var(--R) * .2); --h: calc(var(--R) * .1); background: transparent; border-width: 0 max(2px, calc(var(--R) * .045)) max(2px, calc(var(--R) * .045)); border-radius: 0 0 999px 999px; margin-top: calc(var(--R) * -.04); }
+.esf-orb[data-state="sleep"] .esf-body { animation: esf-breathe 5s ease-in-out infinite; }
+.esf-orb[data-state="sleep"] .esf-zz { animation: esf-zz-k 2.8s ease-out infinite; }
+.esf-orb[data-state="sleep"] .esf-zz + .esf-zz { animation-delay: 1.4s; }
+/* aviso: te informa sin bloquear; un saltito suave y se va solo */
+.esf-orb[data-state="notice"] .esf-eye { --w: calc(var(--R) * .19); --h: calc(var(--R) * .32); }
+.esf-orb[data-state="notice"] .esf-body { animation: esf-nudge .7s cubic-bezier(.3,0,.4,1) 1, esf-breathe 3.4s ease-in-out .7s infinite; }
+@keyframes esf-nudge { 35% { transform: translateY(-7%) scale(.98, 1.02); } 70% { transform: translateY(0) scale(1.02, .98); } }
+/* sin conexión: apagada, sin color y con los ojos entornados hasta que vuelve la conexión */
+.esf-orb[data-state="offline"] .esf-body { filter: saturate(.25) brightness(.82); animation: esf-breathe 6s ease-in-out infinite; }
+.esf-orb[data-state="offline"] .esf-eye { --h: max(3px, calc(var(--R) * .11)); }
+@keyframes esf-zz-k { 0% { opacity: 0; transform: translate(0, 0); } 25% { opacity: .9; } 100% { opacity: 0; transform: translate(calc(var(--R) * .25), calc(var(--R) * -.5)); } }
+/* ---- voz y chat ----
+   --lvl (0 a 1) es el volumen: el del micrófono al escuchar, el de la voz al hablar. */
+.esf-halo { position: absolute; inset: -7%; border-radius: 50%; border: max(2px, calc(var(--R) * .035)) solid var(--esf-tono); opacity: 0; pointer-events: none; transition: opacity .3s; }
+.esf-orb[data-state="listen"] .esf-halo { opacity: calc(.18 + var(--lvl) * .7); transform: scale(calc(1 + var(--lvl) * .2)); transition: opacity .3s, transform .08s linear; }
+.esf-orb[data-state="listen"] .esf-body { animation: none; transform: scale(calc(1 + var(--lvl) * .05)); transition: transform .08s linear; }
+.esf-orb[data-state="listen"] .esf-eye { --w: calc(var(--R) * .19); --h: calc(var(--R) * .33); }
+.esf-orb[data-state="listen"] { transform: translateY(-2%) scale(1.03); }
+.esf-orb[data-state="speak"] .esf-body { animation: none; transform: scale(calc(1 + var(--lvl) * .025), calc(1 + var(--lvl) * .06)); transition: transform .08s linear; }
+.esf-orb[data-state="speak"] .esf-eye { --h: calc(var(--R) * (.24 + var(--lvl) * .07)); transition: width .22s, margin .22s, background .22s, transform .12s; }
+.esf-orb[data-state="hear"] .esf-eye { --h: calc(var(--R) * .27); }
+.esf-orb.esf-nod .esf-body { animation: esf-nod-k .22s ease-out !important; }
+@keyframes esf-nod-k { 40% { transform: translateY(2.5%) scale(1.01, .99); } }
+
+/* ---- transiciones entre estados ----
+   Los gestos del conjunto usan las propiedades sueltas scale / translate / rotate, así no
+   chocan con las animaciones de cada estado, que usan transform. */
+.esf-orb[data-state="need"], .esf-orb[data-state="error"], .esf-orb[data-state="listen"], .esf-orb[data-state="notice"] { --dur: .2s; }
+.esf-orb[data-state="idle"], .esf-orb[data-state="sleep"], .esf-orb[data-state="think"], .esf-orb[data-state="hear"] { --dur: .9s; }
+.esf-orb.esf-shift { animation: esf-shift-k .38s cubic-bezier(.3,0,.4,1); }   /* microgesto al cambiar de estado */
+@keyframes esf-shift-k { 35% { scale: 1.06 .94; } 70% { scale: .98 1.02; } }
+.esf-badge.esf-on.esf-swap { transform: scale(.2) rotate(-120deg); transition-duration: .14s; transition-timing-function: ease-in; }
+.esf-orb.esf-enter { animation: esf-enter-k .75s cubic-bezier(.3,1.5,.5,1) both; }   /* al abrir: aparece y crece */
+@keyframes esf-enter-k { from { scale: .2; opacity: 0; } 60% { opacity: 1; } }
+/* reposo con vida: pequeños gestos aleatorios y espaciados */
+.esf-orb.esf-hop1 { animation: esf-hop1-k .7s cubic-bezier(.3,0,.4,1); }
+@keyframes esf-hop1-k { 40% { translate: 0 -7%; scale: .97 1.03; } 75% { translate: 0 0; scale: 1.03 .97; } }
+.esf-orb.esf-tilt { animation: esf-tilt-k 1.6s ease-in-out; }
+@keyframes esf-tilt-k { 30%, 70% { rotate: 7deg; } }
+/* anillo completo: brilla un instante */
+.esf-ring.esf-full .esf-bar { stroke-width: 5; filter: drop-shadow(0 0 4px var(--esf-tono)); transition: stroke-dasharray .45s ease, stroke-width .25s; }
+/* batería: con la pestaña en segundo plano o la esfera fuera de la pantalla, todo quieto */
+.esf.esf-paused, .esf.esf-paused * { animation-play-state: paused !important; }
+
+/* ---- burbuja arrastrable y menú (pulsación larga) ---- */
+.esf-mini .esf-orb { touch-action: none; }
+.esf.esf-snap { transition: translate .4s cubic-bezier(.3,1.35,.5,1); }
+.esf.esf-dragging .esf-orb { scale: 1.08; transition: scale .15s; }
+.esf-menu { position: absolute; right: 0; bottom: calc(100% + 14px); min-width: 196px; padding: 6px; border-radius: 14px; background: #1a1b22; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 14px 34px rgba(0,0,0,.45);
+        opacity: 0; transform: translateY(6px) scale(.96); transform-origin: bottom right; pointer-events: none; transition: opacity .18s, transform .22s cubic-bezier(.3,1.3,.5,1); z-index: 12; }
+.esf.esf-izq .esf-menu { right: auto; left: 0; transform-origin: bottom left; }
+.esf:not(.esf-mini) .esf-menu { right: auto; left: 50%; bottom: auto; top: calc(100% + 18px); transform: translate(-50%, 6px) scale(.96); transform-origin: top center; }
+.esf-menu.esf-open { opacity: 1; transform: none; pointer-events: auto; }
+.esf:not(.esf-mini) .esf-menu.esf-open { transform: translate(-50%, 0); }
+.esf-menu button { display: block; width: 100%; padding: 10px 12px; border: 0; border-radius: 10px; background: none; color: #f1f1f5; font: inherit; font-size: 14px; text-align: left; cursor: pointer; }
+.esf-menu button:hover, .esf-menu button:focus-visible { background: rgba(255,255,255,.07); outline: none; }
+.esf-light .esf-menu { background: #fff; border-color: rgba(20,22,40,.08); box-shadow: 0 14px 34px rgba(20,22,40,.18); }
+.esf-light .esf-menu button { color: #1d1f29; } .esf-light .esf-menu button:hover, .esf-light .esf-menu button:focus-visible { background: #f2f3f7; }
+
+.esf-orb.esf-poke .esf-body { animation: esf-squash .4s ease-out !important; }
+.esf-orb.esf-poke .esf-eye { --h: max(2px, calc(var(--R) * .05)) !important; }
+@keyframes esf-squash { 30% { transform: scale(1.12, .88); } 65% { transform: scale(.96, 1.04); } }
+
+/* ---- tarjeta para responder (permiso / pregunta) ---- */
+.esf-card { position: absolute; left: 50%; top: calc(100% + 26px); width: min(320px, 88vw); transform: translate(-50%, 8px) scale(.97); opacity: 0; pointer-events: none;
+        background: #1a1b22; border: 1px solid rgba(255,255,255,.08); border-radius: 18px; padding: 16px; box-shadow: 0 18px 40px rgba(0,0,0,.45);
+        transition: opacity .2s, transform .25s cubic-bezier(.3,1.3,.5,1); z-index: 10; text-align: left; }
+.esf-card.esf-open { opacity: 1; transform: translate(-50%, 0) scale(1); pointer-events: auto; }
+.esf-card .esf-k { display: flex; align-items: center; gap: 8px; font-size: 12px; color: color-mix(in oklab, var(--esf-tono) 70%, white); text-transform: uppercase; letter-spacing: .08em; }
+.esf-card .esf-k::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--esf-tono); }
+.esf-card h3 { margin: 8px 0 4px; font-size: 17px; font-weight: 500; color: #f3f3f7; line-height: 1.35; }
+.esf-card p { margin: 0; font-size: 14px; color: #a3a5b4; line-height: 1.45; }
+.esf-card p:empty { display: none; }
+.esf-card .esf-acts { display: flex; gap: 8px; margin-top: 14px; }
+.esf-card .esf-acts.esf-col { flex-direction: column; }
+.esf-card button { flex: 1; padding: 11px 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); color: #f3f3f7; font: inherit; font-size: 14px; cursor: pointer; }
+.esf-card button:focus-visible { outline: 2px solid var(--esf-tono); outline-offset: 2px; }
+.esf-card button.esf-primary { background: var(--esf-tono); border-color: transparent; color: #17130a; font-weight: 500; }
+.esf-card .esf-x { position: absolute; right: 10px; top: 10px; flex: none; width: 28px; height: 28px; padding: 0; border: 0; background: none; color: #8e90a0; font-size: 18px; line-height: 1; }
+.esf-light .esf-card { background: #fff; border-color: rgba(20,22,40,.08); box-shadow: 0 18px 40px rgba(20,22,40,.18); }
+.esf-light .esf-card h3 { color: #1d1f29; } .esf-light .esf-card p { color: #5d6070; }
+.esf-light .esf-card button { background: #f2f3f7; border-color: rgba(20,22,40,.08); color: #1d1f29; }
+.esf-light .esf-card button.esf-primary { background: var(--esf-tono); color: #17130a; }
+.esf-light .esf-card .esf-k { color: color-mix(in oklab, var(--esf-tono) 75%, black); }
+/* en la versión pequeña la tarjeta sale hacia arriba, alineada a su lado */
+.esf-mini .esf-card { left: auto; right: 0; top: auto; bottom: calc(100% + 16px); transform: translateY(8px) scale(.97); transform-origin: bottom right; }
+.esf-mini.esf-izq .esf-card { right: auto; left: 0; transform-origin: bottom left; }
+.esf-mini .esf-card.esf-open { transform: none; }
+
+/* ---- versión pequeña: etiqueta al lado con lo que está haciendo ---- */
+.esf-pill { position: absolute; right: calc(100% + 12px); top: 50%; transform: translate(6px, -50%); opacity: 0; white-space: nowrap; pointer-events: none;
+        background: #fff; color: #1d1f29; font-size: 13px; padding: 7px 12px; border-radius: 999px; box-shadow: 0 4px 14px rgba(20,22,40,.14);
+        display: flex; align-items: center; gap: 7px; transition: opacity .25s, transform .25s; max-width: 46vw; overflow: hidden; text-overflow: ellipsis; }
+.esf-pill::before { content: ""; flex: none; width: 7px; height: 7px; border-radius: 50%; background: var(--esf-tono); }
+.esf-pill.esf-on { opacity: 1; transform: translate(0, -50%); }
+/* pegada a la izquierda, la etiqueta sale por la derecha (si no, se saldría de la pantalla) */
+.esf.esf-izq .esf-pill { right: auto; left: calc(100% + 12px); transform: translate(-6px, -50%); }
+.esf.esf-izq .esf-pill.esf-on { transform: translate(0, -50%); }
+
+/* quien pida menos movimiento: solo color e insignia */
+@media (prefers-reduced-motion: reduce) {
+  .esf-body, .esf-shadow, .esf-badge .esf-dots b, .esf-zz { animation: none !important; }
+  .esf-orb[data-state="listen"] .esf-halo { transform: none; }
+  .esf-orb.esf-shift, .esf-orb.esf-enter, .esf-orb.esf-hop1, .esf-orb.esf-tilt { animation: none !important; }
+  .esf-orb { transition: --esf-tono .3s, --esf-t .3s; }
+  .esf-orb[data-state="sleep"] .esf-zz { opacity: .8; }
+}
