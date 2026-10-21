@@ -586,6 +586,8 @@ footer{border-top:1px solid var(--line);padding-block:44px;margin-top:40px}
 .ej-piezas{font-size:.86rem;color:var(--t2);padding-top:12px;border-top:1px solid var(--line)}
 .foot-correo{font-size:.9rem;color:var(--t2);width:fit-content}
 .foot-correo:hover{color:var(--t1)}
+.foot-tel{display:flex;gap:14px}
+.contacto-directo{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
 .agente{display:grid;grid-template-columns:minmax(260px,.8fr) 1.2fr;gap:clamp(24px,4vw,56px);align-items:center}
 /* Sin marco: solo un halo violeta muy suave detrás, que se funde con el fondo. */
 .agente-escena{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px;

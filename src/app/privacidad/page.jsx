@@ -71,7 +71,7 @@ export default function Privacidad() {
 
         <h3>Si nos escribes</h3>
         <p>
-          Cuando nos contactas por correo o con el{" "}
+          Cuando nos contactas por correo, por WhatsApp, por teléfono o con el{" "}
           <Link href="/contacto">formulario de contacto</Link>, tratamos los
           datos que tú nos das —nombre y correo, y si quieres apellidos,
           teléfono, empresa y lo que nos cuentes— para responderte. Solo el
@@ -120,6 +120,7 @@ export default function Privacidad() {
         <ul>
           <li><strong>Alojamiento de la web:</strong> <Dato campo="alojamiento" etiqueta="proveedor de alojamiento" />.</li>
           <li><strong>Correo electrónico</strong> y las herramientas con las que recibimos y gestionamos los mensajes del formulario (nuestro CRM y la herramienta de automatización que se los entrega).</li>
+          <li><strong>WhatsApp:</strong> WhatsApp Ireland Limited, si nos escribes por ahí. Lo que nos mandes también lo trata WhatsApp según sus propias condiciones, que aceptaste al usar la aplicación.</li>
           {CON_GA && (
             <li><strong>Analítica web:</strong> Google Ireland Limited (Google Analytics), solo si has aceptado sus cookies.</li>
           )}

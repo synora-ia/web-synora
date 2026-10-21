@@ -20,7 +20,7 @@ export const TITULAR = {
 
   /* Opcionales, pero ayudan a que Google y las IA reconozcan a Synora como
      empresa real: salen en los datos estructurados en cuanto se rellenan. */
-  telefono: null, //    p. ej. "+34 600 000 000"
+  telefono: "+34 634 27 72 10", // el mismo que la ficha de Google Business
   redes: [], //         enlaces completos: Instagram, LinkedIn, ficha de Google Business…
 
   /* Obligatorio si es sociedad inscrita en el Registro Mercantil. */
@@ -30,6 +30,14 @@ export const TITULAR = {
   alojamiento: null, // proveedor donde se aloja la web, p. ej. "Vercel Inc."
   alojamientoPais: null, // p. ej. "Estados Unidos (adherido al Data Privacy Framework UE-EE. UU.)"
 };
+
+/* Derivados del teléfono: el enlace para llamar y el de WhatsApp (el número
+   tiene WhatsApp; si algún día deja de tenerlo, pon WHATSAPP a null). */
+const DIGITOS = TITULAR.telefono?.replace(/\D/g, "");
+export const TEL = DIGITOS ? `tel:+${DIGITOS}` : null;
+export const WHATSAPP = DIGITOS ? `https://wa.me/${DIGITOS}` : null;
+/* Para enseñarlo: sin el prefijo +34, que en España sobra. */
+export const TELEFONO_CORTO = TITULAR.telefono?.replace(/^\+34\s*/, "") ?? null;
 
 /* Cambia esta fecha cada vez que se toque cualquiera de los tres textos. */
 export const ACTUALIZADO = "21 de octubre de 2026";

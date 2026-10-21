@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { TITULAR } from "@/datos/titular";
+import { TITULAR, TEL, WHATSAPP, TELEFONO_CORTO } from "@/datos/titular";
 import { BotonCookies } from "./Cookies";
 
 /* Previstas pero sin página todavía: Sectores, Proceso y Blog. No se
@@ -34,6 +34,14 @@ export default function Footer() {
             {/* Quien duda busca el correo aquí. Sale cuando esté en titular.js. */}
             {TITULAR.email && (
               <a className="foot-correo" href={`mailto:${TITULAR.email}`}>{TITULAR.email}</a>
+            )}
+            {TEL && (
+              <span className="foot-tel">
+                <a className="foot-correo" href={TEL}>{TELEFONO_CORTO}</a>
+                {WHATSAPP && (
+                  <a className="foot-correo" href={WHATSAPP} target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                )}
+              </span>
             )}
           </div>
           <div className="links">
