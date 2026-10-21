@@ -12,8 +12,8 @@ import { MODULOS } from "../../datos/precios";
 const PRECIO_ASISTENTE = MODULOS.flatMap((g) => g.items).find(([n]) => n === "Asistente interno con IA")?.[2];
 
 export const metadata = meta({
-  titulo: "CRM a medida y modular para pymes",
-  descripcion: "Un CRM que se adapta a tu empresa: más de 15 módulos para captar, convertir y gestionar clientes. Empiezas por lo que necesitas. Primera conversación gratis.",
+  titulo: "CRM para pymes a medida, conectado a WhatsApp",
+  descripcion: "CRM para pymes hecho a tu medida: todos tus clientes en un sitio, chatbot de WhatsApp, recordatorios de citas y seguimiento automático. Desde 59 €/mes, sin permanencia.",
   ruta: "/crm",
 });
 
@@ -55,7 +55,7 @@ const CAPACIDADES = [
 const SECTORES = [
   ["Inmobiliarias", "Captación, tasación, embudo."],
   ["Clínicas", "Agenda, recordatorios, fidelización."],
-  ["Gimnasios", "Bajas, altas, seguimiento."],
+  ["Asesorías y gestorías", "Clientes, documentos, plazos."],
   ["Restaurantes", "Reservas, confirmación, ficha."],
 ];
 
@@ -67,7 +67,7 @@ export default function Crm() {
       <JsonLd datos={ldServicio({ nombre: "CRM a medida", tipo: "Desarrollo e implantación de CRM", descripcion: "CRM modular a medida para pymes: captar, convertir, gestionar y decidir, con módulos por sector.", ruta: "/crm", desde: [["CRM a medida", 59]] })} />
       <section className="hero">
         <div className="wrap hero-copy">
-          <span className="eyebrow rv">CRM a medida para pymes</span>
+          <span className="eyebrow rv">CRM para pymes</span>
           <h1 className="sheen rv">
             Un CRM que se adapta a tu empresa.
             <br />

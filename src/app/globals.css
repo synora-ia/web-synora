@@ -708,6 +708,28 @@ footer{border-top:1px solid var(--line);padding-block:44px;margin-top:40px}
   margin-top:28px;padding-top:22px;border-top:1px solid var(--line);font-size:.8rem;color:var(--t3)}
 .foot-legal nav{display:flex;flex-wrap:wrap;gap:6px 18px}
 .foot-legal a{font-size:.8rem}
+.enlace-cookies{font:inherit;font-size:.8rem;color:var(--t3);background:none;border:0;padding:0;cursor:pointer;transition:color .2s}
+.enlace-cookies:hover{color:var(--t1)}
+/* Dentro de un texto legal se comporta como un enlace más. */
+.enlace-cookies.ilink,.enlace-cookies.ilink:hover{font-size:inherit;color:var(--t1);padding-block:0}
+
+/* ═══════════ AVISO DE COOKIES ═══════════
+   Solo existe si hay GA_ID (datos/analitica.js). Rechazar y Aceptar son el
+   mismo botón: ni color ni tamaño empujan a aceptar (lo pide la AEPD). */
+.cookies{position:fixed;left:16px;right:16px;bottom:16px;z-index:60;margin-inline:auto;max-width:620px;
+  display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;padding:16px 18px 16px 22px;
+  background:var(--nav-bg);backdrop-filter:blur(18px) saturate(140%);
+  border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--nav-shadow);
+  animation:cookies-entra .4s ease backwards}
+.cookies p{flex:1 1 300px;margin:0;font-size:.87rem;line-height:1.5;color:var(--t2)}
+.cookies p strong{color:var(--t1);font-weight:600}
+.cookies-botones{display:flex;gap:10px;flex:none}
+.cookies-btn{font:inherit;font-size:.87rem;font-weight:600;min-width:104px;min-height:44px;padding:0 18px;
+  border-radius:999px;border:1px solid var(--line-2);background:var(--glass-2);color:var(--t1);cursor:pointer;
+  transition:background .2s,border-color .2s}
+.cookies-btn:hover{background:var(--hover-2)}
+@keyframes cookies-entra{from{opacity:0;transform:translateY(12px)}}
+@media (prefers-reduced-motion:reduce){.cookies{animation:none}}
 
 /* ═══════════ TEXTOS LEGALES ═══════════
    No están en la maqueta. Mismas piezas de Aurora (eyebrow, sheen, chips,
@@ -956,6 +978,10 @@ footer{border-top:1px solid var(--line);padding-block:44px;margin-top:40px}
   .foot a,.foot-legal a{display:inline-block;padding-block:12px}
   .foot-legal{margin-top:16px;padding-top:12px}
   .foot-legal nav{gap:0 18px}
+  .enlace-cookies{padding-block:12px}
+  .cookies{left:12px;right:12px;bottom:12px;padding:16px}
+  .cookies-botones{width:100%}
+  .cookies-btn{flex:1}
   .eyebrow,.tick,.step .n,.agente-estado,.campo > label,.campo > legend,
   .crow.hd span,.ficha dt,.ltable th,.legal .meta,.kpi span,.ag-prop .k{font-size:12px}
 }

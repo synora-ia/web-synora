@@ -3,6 +3,8 @@ import "./globals.css";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import Atmos from "./components/Atmos";
+import Cookies from "./components/Cookies";
+import { VERIFICACION } from "@/datos/analitica";
 
 /* Las tres familias de la maqueta, ahora autoalojadas por next/font:
    desaparecen los preconnect a Google y el salto de texto al cargar.
@@ -35,6 +37,11 @@ export const metadata = {
   },
   description:
     "Montamos el CRM, la web y las automatizaciones que hacen que tu empresa funcione sin que estés encima.",
+  /* Search Console y Bing Webmaster Tools: los códigos van en datos/analitica.js. */
+  verification: {
+    ...(VERIFICACION.google && { google: VERIFICACION.google }),
+    ...(VERIFICACION.bing && { other: { "msvalidate.01": VERIFICACION.bing } }),
+  },
 };
 
 /* [FIX] La maqueta no tenía <meta viewport>: en un móvil real la página se
@@ -79,6 +86,7 @@ export default function RootLayout({ children }) {
           <main id="contenido">{children}</main>
           <Footer />
         </div>
+        <Cookies />
       </body>
     </html>
   );

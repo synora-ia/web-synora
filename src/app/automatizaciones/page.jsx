@@ -10,8 +10,8 @@ import { A_MEDIDA } from "../../datos/precios";
 const DESDE = A_MEDIDA.find((x) => x.nombre === "Automatización a medida")?.precio;
 
 export const metadata = meta({
-  titulo: "Automatización de procesos para empresas",
-  descripcion: "Conectamos WhatsApp, correo, calendarios, tu programa de gestión, el TPV y la facturación para que los datos dejen de pasar por tus manos. Sin cambiar de sistema.",
+  titulo: "Automatizar WhatsApp y procesos de empresa con IA",
+  descripcion: "Automatizamos WhatsApp Business, los recordatorios de citas y los procesos de tu empresa con IA y n8n, conectando las herramientas que ya usas. Desde 250 €.",
   ruta: "/automatizaciones",
 });
 
@@ -63,7 +63,7 @@ export default function Automatizaciones() {
       <JsonLd datos={ldServicio({ nombre: "Automatización de procesos", tipo: "Automatización e integración de sistemas", descripcion: "Integración de WhatsApp, correo, calendarios, ERP, TPV y facturación para automatizar la captación, el seguimiento, las tareas internas y los informes.", ruta: "/automatizaciones", desde: [["Automatización a medida", 250]] })} />
       <section className="hero">
         <div className="wrap hero-copy">
-          <span className="eyebrow rv">Automatización de procesos para pymes</span>
+          <span className="eyebrow rv">Automatización de WhatsApp y procesos con IA</span>
           <h1 className="sheen rv">
             Tus herramientas ya existen.
             <br />

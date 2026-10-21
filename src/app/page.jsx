@@ -5,8 +5,8 @@ import { meta, ldEmpresa } from "../datos/seo";
 import JsonLd from "./components/JsonLd";
 
 export const metadata = meta({
-  titulo: "CRM a medida, webs y automatizaciones para pymes · Synora",
-  descripcion: "Montamos tu CRM a medida, tu web o app y las automatizaciones que conectan tus herramientas. Para que tu negocio funcione sin que estés encima.",
+  titulo: "CRM, páginas web y automatizaciones para pymes · Synora",
+  descripcion: "CRM para pymes a medida, diseño de páginas web y apps, y automatización de WhatsApp y procesos con IA. Para que tu negocio funcione sin que estés encima.",
   ruta: "/",
   absoluto: true,
 });
@@ -40,7 +40,7 @@ const PILARES = [
     tick: "02 — Desarrollo",
     titulo: "Lo montamos y lo gestionas tú",
     texto:
-      "Web, tienda, app móvil y área privada, con panel de gestión si quieres cambiarlas tú.",
+      "Página web, tienda online, app móvil y área privada, con panel de gestión si quieres cambiarlas tú.",
     cta: "Ver desarrollo",
   },
   {
@@ -82,8 +82,8 @@ const PASOS = [
 
 const SECTORES = [
   ["Inmobiliarias", "Captación 24/7 y tasación con IA."],
-  ["Clínicas", "Agenda, recordatorios y pacientes que vuelven."],
-  ["Gimnasios", "Menos bajas y altas sin papeleo."],
+  ["Clínicas", "Dentales, de fisio o estética: agenda, recordatorios y pacientes que vuelven."],
+  ["Asesorías y gestorías", "Clientes, documentos y plazos en un solo sitio."],
   ["Restaurantes", "Menos reservas perdidas y ficha de cliente."],
 ];
 

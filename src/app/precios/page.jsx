@@ -10,7 +10,7 @@ import {
 } from "../../datos/precios";
 
 export const metadata = meta({
-  titulo: "Precios de CRM a medida, automatizaciones y webs",
+  titulo: "Precios de CRM, páginas web y automatizaciones",
   descripcion:
     "Planes de CRM desde 59 €/mes, módulos sueltos desde 15 €/mes y proyectos de web, app o automatización con precio cerrado. Sin pagar lo que no usas.",
   ruta: "/precios",

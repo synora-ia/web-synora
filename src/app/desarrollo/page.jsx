@@ -9,8 +9,8 @@ import { SIN_CRM } from "../../datos/precios";
 const MANTENIMIENTO = SIN_CRM.find(([n]) => n === "Mantenimiento de web o app")?.[2];
 
 export const metadata = meta({
-  titulo: "Desarrollo web, tiendas online y apps a medida",
-  descripcion: "Webs rápidas y listas para posicionar, tiendas online conectadas a tu stock y apps para Android e iOS. Todo conectado a tu operativa, y el código es tuyo.",
+  titulo: "Diseño de páginas web, tiendas online y apps",
+  descripcion: "Diseño de páginas web a medida desde 600 €, tiendas online y apps para Android e iOS sin pasar por las tiendas. Rápidas, listas para Google y el código es tuyo.",
   ruta: "/desarrollo",
 });
 
@@ -75,15 +75,15 @@ export default function Desarrollo() {
       <JsonLd datos={ldServicio({ nombre: "Desarrollo web y de aplicaciones", tipo: "Desarrollo de software a medida", descripcion: "Webs a medida, tiendas online, aplicaciones web instalables para Android e iOS y áreas privadas, conectadas a la operativa del negocio.", ruta: "/desarrollo", desde: [["Web a medida", 600], ["Tienda online", 800], ["App para Android e iOS (PWA)", 800]] })} />
       <section className="hero">
         <div className="wrap hero-copy">
-          <span className="eyebrow rv">Webs, tiendas online y apps a medida</span>
+          <span className="eyebrow rv">Diseño de páginas web, tiendas y apps</span>
           <h1 className="sheen rv">
             No hacemos páginas.
             <br />
             <em className="glow-txt">Montamos sistemas</em>.
           </h1>
           <p className="lead rv">
-            Webs, tiendas online y aplicaciones móviles. Todo conectado a tu
-            negocio, no como piezas sueltas.
+            Páginas web, tiendas online y aplicaciones móviles. Todo conectado
+            a tu negocio, no como piezas sueltas.
           </p>
           <div className="cta-row rv">
             <Link className="btn" href="/contacto?motivo=desarrollo">

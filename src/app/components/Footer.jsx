@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { TITULAR } from "@/datos/titular";
+import { BotonCookies } from "./Cookies";
 
 /* Previstas pero sin página todavía: Sectores, Proceso y Blog. No se
    enseñan hasta que existan; cuando estén, se añade aquí una línea por
@@ -53,6 +54,8 @@ export default function Footer() {
                 {l.label}
               </Link>
             ))}
+            {/* Solo aparece con Google Analytics activo (datos/analitica.js). */}
+            <BotonCookies />
           </nav>
         </div>
       </div>
