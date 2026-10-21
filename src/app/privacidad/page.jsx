@@ -64,7 +64,7 @@ export default function Privacidad() {
             <ul>
               <li><strong>Finalidad:</strong> saber qué funciona de la web para mejorarla.</li>
               <li><strong>Base jurídica:</strong> tu consentimiento (art. 6.1.a del RGPD y art. 22.2 de la LSSI-CE), que puedes retirar cuando quieras desde «Configurar cookies», en el pie de la web.</li>
-              <li><strong>Conservación:</strong> las cookies duran como máximo dos años, y los datos de las visitas se guardan en Google Analytics catorce meses.</li>
+              <li><strong>Conservación:</strong> las cookies duran como máximo dos años, y los datos de las visitas se guardan en Google Analytics dos meses.</li>
             </ul>
           </>
         )}
