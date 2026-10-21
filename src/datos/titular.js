@@ -16,7 +16,7 @@ export const TITULAR = {
   razonSocial: null, // p. ej. "Synora Soluciones, S.L."  (o nombre y apellidos si eres autónomo)
   nif: null, //         p. ej. "B12345678"
   domicilio: null, //   dirección completa: calle, número, CP, municipio, provincia
-  email: null, //       correo de contacto Y para ejercer derechos RGPD
+  email: "synora.automatizaciones@gmail.com", // contacto Y para ejercer derechos RGPD
 
   /* Opcionales, pero ayudan a que Google y las IA reconozcan a Synora como
      empresa real: salen en los datos estructurados en cuanto se rellenan. */
