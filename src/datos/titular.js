@@ -32,4 +32,4 @@ export const TITULAR = {
 };
 
 /* Cambia esta fecha cada vez que se toque cualquiera de los tres textos. */
-export const ACTUALIZADO = "15 de octubre de 2026";
+export const ACTUALIZADO = "21 de octubre de 2026";

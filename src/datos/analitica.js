@@ -8,7 +8,7 @@
 /* ID de medición de Google Analytics 4: Administrar → Flujos de datos →
    la web → «ID de medición», con forma "G-XXXXXXXXXX".
    Al ponerlo, cambia también ACTUALIZADO en titular.js: las políticas cambian. */
-export const GA_ID = null;
+export const GA_ID = "G-1Z3VW3SP0S";
 
 /* Códigos de verificación de propiedad (solo el código, sin la etiqueta):
    Google Search Console → «Etiqueta HTML» → el valor de content="…"
