@@ -3,6 +3,8 @@ import Carrusel from "../components/Carrusel";
 import Reveal from "../components/Reveal";
 import { meta, ldServicio } from "../../datos/seo";
 import JsonLd from "../components/JsonLd";
+import Faq from "../components/Faq";
+import { FAQ_AUTOMATIZACIONES } from "../../datos/faq";
 import { A_MEDIDA } from "../../datos/precios";
 
 const DESDE = A_MEDIDA.find((x) => x.nombre === "Automatización a medida")?.precio;
@@ -58,10 +60,10 @@ const SALIDAS = [
 export default function Automatizaciones() {
   return (
     <Reveal>
-      <JsonLd datos={ldServicio({ nombre: "Automatización de procesos", tipo: "Automatización e integración de sistemas", descripcion: "Integración de WhatsApp, correo, calendarios, ERP, TPV y facturación para automatizar la captación, el seguimiento, las tareas internas y los informes.", ruta: "/automatizaciones" })} />
+      <JsonLd datos={ldServicio({ nombre: "Automatización de procesos", tipo: "Automatización e integración de sistemas", descripcion: "Integración de WhatsApp, correo, calendarios, ERP, TPV y facturación para automatizar la captación, el seguimiento, las tareas internas y los informes.", ruta: "/automatizaciones", desde: [["Automatización a medida", 250]] })} />
       <section className="hero">
         <div className="wrap hero-copy">
-          <span className="eyebrow rv">03 — Automatizaciones</span>
+          <span className="eyebrow rv">Automatización de procesos para pymes</span>
           <h1 className="sheen rv">
             Tus herramientas ya existen.
             <br />
@@ -211,6 +213,8 @@ export default function Automatizaciones() {
           </p>
         </div>
       </section>
+
+      <Faq titulo="Preguntas sobre automatizaciones" preguntas={FAQ_AUTOMATIZACIONES} />
 
       <section>
         <div className="wrap rv">

@@ -10,6 +10,7 @@
    por debajo de ~60 caracteres para que no se corten. Descripciones: entre
    ~120 y 160, con una razón para pulsar. */
 import { TITULAR } from "./titular";
+import { PLANES, PLAN_SOLO } from "./precios";
 
 export const SITIO = {
   url: "https://synora.es",
@@ -58,6 +59,27 @@ export function ldEmpresa() {
   if (TITULAR.nif) org.vatID = TITULAR.nif;
   if (TITULAR.email) org.email = TITULAR.email;
   if (TITULAR.domicilio) org.address = { "@type": "PostalAddress", streetAddress: TITULAR.domicilio, addressCountry: "ES" };
+  if (TITULAR.telefono) org.telephone = TITULAR.telefono;
+  if (TITULAR.email || TITULAR.telefono) {
+    org.contactPoint = { "@type": "ContactPoint", contactType: "sales", areaServed: "ES", availableLanguage: "es",
+      ...(TITULAR.email && { email: TITULAR.email }), ...(TITULAR.telefono && { telephone: TITULAR.telefono }) };
+  }
+  if (TITULAR.redes?.length) org.sameAs = TITULAR.redes;
+  /* Los planes del CRM con su precio: es lo que un asistente de IA necesita
+     para responder «¿cuánto cuesta?» sin inventar. Salen de precios.js. */
+  org.hasOfferCatalog = {
+    "@type": "OfferCatalog",
+    name: "Planes del CRM de Synora",
+    itemListElement: [...PLANES, PLAN_SOLO].map((p) => ({
+      "@type": "Offer",
+      name: `Plan ${p.nombre}`,
+      description: p.para,
+      price: p.cuota,
+      priceCurrency: "EUR",
+      priceSpecification: { "@type": "UnitPriceSpecification", price: p.cuota, priceCurrency: "EUR", unitText: "MONTH", valueAddedTaxIncluded: false },
+      url: `${SITIO.url}/precios`,
+    })),
+  };
   return {
     "@context": "https://schema.org",
     "@graph": [
@@ -67,7 +89,8 @@ export function ldEmpresa() {
   };
 }
 
-export function ldServicio({ nombre, tipo, descripcion, ruta }) {
+/* desde: [[nombre, precio mínimo en €], …] → ofertas «desde X €». */
+export function ldServicio({ nombre, tipo, descripcion, ruta, desde = [] }) {
   const url = `${SITIO.url}${ruta}`;
   return {
     "@context": "https://schema.org",
@@ -81,6 +104,15 @@ export function ldServicio({ nombre, tipo, descripcion, ruta }) {
         url,
         provider: { "@id": ORG_ID },
         areaServed: { "@type": "Country", name: "España" },
+        ...(desde.length && {
+          offers: desde.map(([n, precio]) => ({
+            "@type": "Offer",
+            name: n,
+            priceCurrency: "EUR",
+            priceSpecification: { "@type": "PriceSpecification", minPrice: precio, priceCurrency: "EUR", valueAddedTaxIncluded: false },
+            url: `${SITIO.url}/precios`,
+          })),
+        }),
       },
       {
         "@type": "BreadcrumbList",

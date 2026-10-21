@@ -3,6 +3,8 @@ import Carrusel from "../components/Carrusel";
 import Reveal from "../components/Reveal";
 import { meta, ldServicio } from "../../datos/seo";
 import JsonLd from "../components/JsonLd";
+import Faq from "../components/Faq";
+import { FAQ_CRM } from "../../datos/faq";
 import AgenteDemo from "../components/AgenteDemo";
 import { MODULOS } from "../../datos/precios";
 
@@ -62,10 +64,10 @@ const BARRAS = [36, 54, 43, 70, 61, 82, 96];
 export default function Crm() {
   return (
     <Reveal>
-      <JsonLd datos={ldServicio({ nombre: "CRM a medida", tipo: "Desarrollo e implantación de CRM", descripcion: "CRM modular a medida para pymes: captar, convertir, gestionar y decidir, con módulos por sector.", ruta: "/crm" })} />
+      <JsonLd datos={ldServicio({ nombre: "CRM a medida", tipo: "Desarrollo e implantación de CRM", descripcion: "CRM modular a medida para pymes: captar, convertir, gestionar y decidir, con módulos por sector.", ruta: "/crm", desde: [["CRM a medida", 59]] })} />
       <section className="hero">
         <div className="wrap hero-copy">
-          <span className="eyebrow rv">01 — CRM</span>
+          <span className="eyebrow rv">CRM a medida para pymes</span>
           <h1 className="sheen rv">
             Un CRM que se adapta a tu empresa.
             <br />
@@ -244,6 +246,8 @@ export default function Crm() {
           </Carrusel>
         </div>
       </section>
+
+      <Faq titulo="Preguntas sobre el CRM" preguntas={FAQ_CRM} />
 
       <section>
         <div className="wrap rv">

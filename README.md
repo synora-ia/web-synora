@@ -96,6 +96,10 @@ revise la gestoría o un abogado cuando estén los datos reales.
   Medido con Lighthouse en móvil y la red frenada de verdad (4G lenta,
   procesador ×4), el LCP bajó de 2,7–3,0 s a 2,0–2,5 s: había dos hojas de
   estilo que bloqueaban el pintado.
+- **Para asistentes de IA**: `/llms.txt` (resumen en texto, generado desde
+  `precios.js` y `faq.js`), preguntas frecuentes con FAQPage en CRM, Desarrollo,
+  Automatizaciones y Precios, y los planes y precios como `Offer` en los datos
+  estructurados. Todo el contenido sale en el HTML, sin depender de JavaScript.
 - **`.rv-ya`**: lo que va justo después del hero entra por CSS, sin esperar
   al JavaScript.
 - Google retiró en mayo de 2026 los resultados enriquecidos de FAQ: una
@@ -105,6 +109,8 @@ revise la gestoría o un abogado cuando estén los datos reales.
 ## Pendiente
 
 - Rellenar `src/datos/titular.js` (y con él, el correo del pie y de Contacto).
+  Ahí van también `telefono` y `redes` (Instagram, LinkedIn, Google Business):
+  salen solos en los datos estructurados y en `/llms.txt`.
 - Poner `CONTACTO_WEBHOOK_URL` en el alojamiento (el n8n de producción).
 - **Precios** (`src/datos/precios.js`): sin confirmar el plan Solo (59 € y su
   puesta en marcha), la automatización desde 250 € y las cuotas aparte

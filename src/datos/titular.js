@@ -18,6 +18,11 @@ export const TITULAR = {
   domicilio: null, //   dirección completa: calle, número, CP, municipio, provincia
   email: null, //       correo de contacto Y para ejercer derechos RGPD
 
+  /* Opcionales, pero ayudan a que Google y las IA reconozcan a Synora como
+     empresa real: salen en los datos estructurados en cuanto se rellenan. */
+  telefono: null, //    p. ej. "+34 600 000 000"
+  redes: [], //         enlaces completos: Instagram, LinkedIn, ficha de Google Business…
+
   /* Obligatorio si es sociedad inscrita en el Registro Mercantil. */
   registro: null, //    p. ej. "Registro Mercantil de Valencia, Tomo 1234, Folio 56, Hoja V-78901"
 

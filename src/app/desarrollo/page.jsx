@@ -2,6 +2,8 @@ import Link from "next/link";
 import Reveal from "../components/Reveal";
 import { meta, ldServicio } from "../../datos/seo";
 import JsonLd from "../components/JsonLd";
+import Faq from "../components/Faq";
+import { FAQ_DESARROLLO } from "../../datos/faq";
 import { SIN_CRM } from "../../datos/precios";
 
 const MANTENIMIENTO = SIN_CRM.find(([n]) => n === "Mantenimiento de web o app")?.[2];
@@ -70,10 +72,10 @@ const COMPROMISOS = [
 export default function Desarrollo() {
   return (
     <Reveal>
-      <JsonLd datos={ldServicio({ nombre: "Desarrollo web y de aplicaciones", tipo: "Desarrollo de software a medida", descripcion: "Webs a medida, tiendas online, aplicaciones web instalables para Android e iOS y áreas privadas, conectadas a la operativa del negocio.", ruta: "/desarrollo" })} />
+      <JsonLd datos={ldServicio({ nombre: "Desarrollo web y de aplicaciones", tipo: "Desarrollo de software a medida", descripcion: "Webs a medida, tiendas online, aplicaciones web instalables para Android e iOS y áreas privadas, conectadas a la operativa del negocio.", ruta: "/desarrollo", desde: [["Web a medida", 600], ["Tienda online", 800], ["App para Android e iOS (PWA)", 800]] })} />
       <section className="hero">
         <div className="wrap hero-copy">
-          <span className="eyebrow rv">02 — Desarrollo</span>
+          <span className="eyebrow rv">Webs, tiendas online y apps a medida</span>
           <h1 className="sheen rv">
             No hacemos páginas.
             <br />
@@ -168,6 +170,8 @@ export default function Desarrollo() {
           </div>
         </div>
       </section>
+
+      <Faq titulo="Preguntas sobre webs y apps" preguntas={FAQ_DESARROLLO} />
 
       <section>
         <div className="wrap rv">
