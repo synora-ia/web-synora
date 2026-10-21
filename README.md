@@ -100,6 +100,10 @@ revise la gestoría o un abogado cuando estén los datos reales.
   `precios.js` y `faq.js`), preguntas frecuentes con FAQPage en CRM, Desarrollo,
   Automatizaciones y Precios, y los planes y precios como `Offer` en los datos
   estructurados. Todo el contenido sale en el HTML, sin depender de JavaScript.
+- **IndexNow** (Bing, y con él ChatGPT): tras publicar cambios de texto,
+  `node scripts/indexnow.mjs` avisa de todas las páginas del sitemap (o
+  `node scripts/indexnow.mjs /crm` de una sola). La clave es el `.txt` de
+  `public/`: no se borra.
 - **`.rv-ya`**: lo que va justo después del hero entra por CSS, sin esperar
   al JavaScript.
 - Google retiró en mayo de 2026 los resultados enriquecidos de FAQ: una
