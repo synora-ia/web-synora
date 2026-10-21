@@ -102,7 +102,7 @@ revise la gestoría o un abogado cuando estén los datos reales.
   estructurados. Todo el contenido sale en el HTML, sin depender de JavaScript.
 - **IndexNow** (Bing, y con él ChatGPT): tras publicar cambios de texto,
   `node scripts/indexnow.mjs` avisa de todas las páginas del sitemap (o
-  `node scripts/indexnow.mjs /crm` de una sola). La clave es el `.txt` de
+  `node scripts/indexnow.mjs crm` de una sola, sin barra). La clave es el `.txt` de
   `public/`: no se borra.
 - **`.rv-ya`**: lo que va justo después del hero entra por CSS, sin esperar
   al JavaScript.
