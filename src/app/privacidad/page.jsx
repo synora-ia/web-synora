@@ -1,5 +1,6 @@
 import Link from "next/link";
-import LegalPage, { Dato, Email } from "../components/Legal";
+import LegalPage, { Dato, Titular, Email } from "../components/Legal";
+import { TITULAR } from "../../datos/titular";
 import { meta } from "../../datos/seo";
 import { GA_ID } from "../../datos/analitica";
 
@@ -25,10 +26,10 @@ export default function Privacidad() {
       <div>
         <h2>1. Responsable del tratamiento</h2>
         <p>
-          El responsable de tus datos es{" "}
-          <Dato campo="razonSocial" etiqueta="razón social" />, con NIF{" "}
-          <Dato campo="nif" etiqueta="NIF" /> y domicilio en{" "}
-          <Dato campo="domicilio" etiqueta="domicilio" />. Para cualquier
+          El responsable de tus datos es <Titular />
+          {TITULAR.nif && <>, con NIF <Dato campo="nif" /></>}
+          {TITULAR.domicilio && <>{TITULAR.nif ? " y" : ","} domicilio en <Dato campo="domicilio" /></>}
+          . Para cualquier
           cuestión sobre privacidad puedes escribirnos a <Email />.
         </p>
       </div>
@@ -118,7 +119,7 @@ export default function Privacidad() {
           tratamiento), con contrato que les obliga a protegerlos:
         </p>
         <ul>
-          <li><strong>Alojamiento de la web:</strong> <Dato campo="alojamiento" etiqueta="proveedor de alojamiento" />.</li>
+          <li><strong>Alojamiento de la web:</strong> {TITULAR.alojamiento ? <Dato campo="alojamiento" /> : "el proveedor del servidor donde se publica"}.</li>
           <li><strong>Correo electrónico</strong> y las herramientas con las que recibimos y gestionamos los mensajes del formulario (nuestro CRM y la herramienta de automatización que se los entrega).</li>
           <li><strong>WhatsApp:</strong> WhatsApp Ireland Limited, si nos escribes por ahí. Lo que nos mandes también lo trata WhatsApp según sus propias condiciones, que aceptaste al usar la aplicación.</li>
           {CON_GA && (
@@ -126,9 +127,9 @@ export default function Privacidad() {
           )}
         </ul>
         <p>
-          <strong>Transferencias internacionales:</strong> el alojamiento se
-          presta desde <Dato campo="alojamientoPais" etiqueta="país del alojamiento" />.
-          {CON_GA && " Google puede tratar datos de analítica en Estados Unidos."}
+          <strong>Transferencias internacionales:</strong>{" "}
+          {TITULAR.alojamientoPais && <>el alojamiento se presta desde <Dato campo="alojamientoPais" />. </>}
+          {CON_GA && "Google puede tratar datos de analítica en Estados Unidos. "}
           Cuando un proveedor está fuera del Espacio Económico Europeo, solo
           trabajamos con los que ofrecen las garantías del RGPD: una decisión
           de adecuación de la Comisión Europea (como el Marco de Privacidad de

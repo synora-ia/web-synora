@@ -1,8 +1,10 @@
 /* ═══════════════════════════════════════════════════════════════════════════
    DATOS DEL TITULAR DE LA WEB
    Único sitio donde se rellenan. Los tres textos legales y el pie los leen
-   de aquí. Mientras un campo valga null, la web enseña en su lugar una marca
-   ámbar «Pendiente», bien visible: no se puede publicar sin darse cuenta.
+   de aquí. Mientras un campo valga null, NO se enseña (Josep pidió el 21/10
+   ocultar las marcas «Pendiente»): su fila o su trozo de frase desaparece.
+   Ojo: la LSSI (art. 10) exige razón social, NIF, domicilio y registro; hasta
+   que estén, el aviso legal está incompleto aunque no se note.
 
    OJO: synora.es publica hoy NIF B00000000, «Calle de la Automatización, 1»
    y hola@synora.com. Son datos de relleno, no reales. No copiarlos aquí.

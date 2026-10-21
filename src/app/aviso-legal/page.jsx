@@ -1,5 +1,6 @@
 import Link from "next/link";
 import LegalPage, { Dato, Titular, Email } from "../components/Legal";
+import { TITULAR } from "../../datos/titular";
 import { meta } from "../../datos/seo";
 
 export const metadata = meta({
@@ -22,19 +23,24 @@ export default function AvisoLegal() {
           Servicios de la Sociedad de la Información y de Comercio Electrónico
           (LSSI-CE), estos son los datos del titular de este sitio web:
         </p>
+        {/* Solo las filas que ya tienen dato (titular.js). */}
         <dl className="ficha">
-          <dt>Titular</dt>
-          <dd><Dato campo="razonSocial" etiqueta="razón social" /></dd>
-          <dt>Nombre comercial</dt>
-          <dd><Dato campo="nombreComercial" etiqueta="nombre comercial" /></dd>
-          <dt>NIF</dt>
-          <dd><Dato campo="nif" etiqueta="NIF" /></dd>
-          <dt>Domicilio</dt>
-          <dd><Dato campo="domicilio" etiqueta="domicilio" /></dd>
-          <dt>Correo</dt>
-          <dd><Email /></dd>
-          <dt>Datos registrales</dt>
-          <dd><Dato campo="registro" etiqueta="inscripción en el Registro Mercantil" /></dd>
+          {[
+            ["Titular", "razonSocial"],
+            ["Nombre comercial", "nombreComercial"],
+            ["NIF", "nif"],
+            ["Domicilio", "domicilio"],
+            ["Correo", "email"],
+            ["Teléfono", "telefono"],
+            ["Datos registrales", "registro"],
+          ]
+            .filter(([, campo]) => TITULAR[campo])
+            .map(([rotulo, campo]) => (
+              <div key={campo} style={{ display: "contents" }}>
+                <dt>{rotulo}</dt>
+                <dd>{campo === "email" ? <Email /> : <Dato campo={campo} />}</dd>
+              </div>
+            ))}
         </dl>
       </div>
 

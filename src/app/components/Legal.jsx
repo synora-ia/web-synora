@@ -9,11 +9,11 @@ const PAGINAS = [
   { href: "/cookies", label: "Cookies" },
 ];
 
-/* Un dato del titular, o la marca ámbar si aún no está rellenado. */
-export function Dato({ campo, etiqueta }) {
+/* Un dato del titular; si aún no está rellenado, nada (ver titular.js).
+   Quien lo usa dentro de una frase debe comprobar antes que exista. */
+export function Dato({ campo }) {
   const v = TITULAR[campo];
-  if (v) return <>{v}</>;
-  return <span className="pend">Pendiente: {etiqueta}</span>;
+  return v ? <>{v}</> : null;
 }
 
 /* Nombre con el que el titular aparece en el texto: la razón social si
@@ -24,7 +24,7 @@ export function Titular() {
 
 export function Email() {
   const e = TITULAR.email;
-  if (!e) return <span className="pend">Pendiente: email</span>;
+  if (!e) return null;
   return <a href={`mailto:${e}`}>{e}</a>;
 }
 

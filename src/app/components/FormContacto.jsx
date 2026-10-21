@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { Dato, Email } from "./Legal";
+import { Titular, Email } from "./Legal";
 import { PLANES, PLAN_SOLO, EJEMPLOS } from "@/datos/precios";
 
 const INTERESES = ["CRM", "Web o app", "Automatizaciones", "Auditoría", "Aún no lo sé"];
@@ -189,7 +189,7 @@ export default function FormContacto() {
           propia petición, y aceptar un texto no es una base válida. */}
       <p className="form-legal">
         <strong>Protección de datos.</strong> Responsable:{" "}
-        <Dato campo="razonSocial" etiqueta="razón social" />. Finalidad:
+        <Titular />. Finalidad:
         responder a tu consulta y, si lo pides, prepararte una propuesta.
         Legitimación: tu propia solicitud. Destinatarios: no se ceden a
         terceros salvo obligación legal; los tratan por nuestra cuenta los
