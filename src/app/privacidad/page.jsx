@@ -119,7 +119,9 @@ export default function Privacidad() {
           tratamiento), con contrato que les obliga a protegerlos:
         </p>
         <ul>
-          <li><strong>Alojamiento de la web:</strong> {TITULAR.alojamiento ? <Dato campo="alojamiento" /> : "el proveedor del servidor donde se publica"}.</li>
+          {TITULAR.alojamiento && (
+            <li><strong>Alojamiento de la web:</strong> <Dato campo="alojamiento" />.</li>
+          )}
           <li><strong>Correo electrónico</strong> y las herramientas con las que recibimos y gestionamos los mensajes del formulario (nuestro CRM y la herramienta de automatización que se los entrega).</li>
           <li><strong>WhatsApp:</strong> WhatsApp Ireland Limited, si nos escribes por ahí. Lo que nos mandes también lo trata WhatsApp según sus propias condiciones, que aceptaste al usar la aplicación.</li>
           {CON_GA && (

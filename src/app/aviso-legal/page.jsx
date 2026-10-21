@@ -18,10 +18,12 @@ export default function AvisoLegal() {
     >
       <div>
         <h2>1. Quiénes somos</h2>
+        {/* La cita a la LSSI solo cuando los datos que exige están todos
+            (titular.js); mientras, una entrada neutra. */}
         <p>
-          En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de
-          Servicios de la Sociedad de la Información y de Comercio Electrónico
-          (LSSI-CE), estos son los datos del titular de este sitio web:
+          {TITULAR.razonSocial && TITULAR.nif && TITULAR.domicilio
+            ? "En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), estos son los datos del titular de este sitio web:"
+            : "Estos son los datos del titular de este sitio web:"}
         </p>
         {/* Solo las filas que ya tienen dato (titular.js). */}
         <dl className="ficha">
